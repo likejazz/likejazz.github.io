@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Activation, Cost Functions
-last-modified: 2019/07/27
+last-modified: 2020/06/06 16:23:33
 ---
 
 <!-- TOC -->
@@ -17,13 +17,17 @@ last-modified: 2019/07/27
     - [mean_absolute_error](#mean_absolute_error)
     - [categorical_crossentropy](#categorical_crossentropy)
     - [binary_crossentropy](#binary_crossentropy)
+        - [참고](#참고)
 - [기타 함수](#기타-함수)
     - [LogSumExp](#logsumexp)
 
 <!-- /TOC -->
 
 # Activation Functions
-- ReLU, He 초기값(표준편차 $${\sqrt{\frac{n}{2}}}$$), 편향(b)은 0으로 초기화하는게 일반적이다. ([참고](http://nmhkahn.github.io/NN))
+- ReLU, He 초기값(표준편차 $${\sqrt{\frac{n}{2}}}$$), 편향(b)은 0으로 초기화하는게 일반적이다. [^fn-init]
+
+[^fn-init]: <http://nmhkahn.github.io/NN>
+
 - Sigmoid $${\sigma}(x)=\frac{1}{1+e^{-x}}$$ Xavier 초기값(표준편차 $${\frac{1}{\sqrt{n}}}$$)
 - $$tanh(x)=2{\sigma}(2x)-1$$ *tanch*, 시그모이드로 간단히 표현할 수 있다.
     - 시그모이드와 달리 함수값이 zero-centered 되어 있다.
@@ -126,6 +130,11 @@ Keras의 `categorical_crossentropy`는 tf에서 `tf.nn.softmax_cross_entropy_wit
 <img src="http://deeplearning.net/software/theano/_images/math/7ee0b6d5ab6ceb7a7b9d64cf9ec94a1622721761.png" />[1](http://deeplearning.net/software/theano/library/tensor/nnet/nnet.html#theano.tensor.nnet.nnet.categorical_crossentropy)
 
 binary classification에 대해서만 사용한다. negative를 위 수식처럼 1-true로 함께 학습한다. multi class에서 사용한다고 전체 negative에 대해 학습하는 수식은 아니므로 주의가 필요하다.
+
+### 참고
+binary crossentropy 그래프. 당연히 5:5로 구분될때 엔트로피가 1로 가장 높고, 한쪽으로 쏠리면 0이 된다.
+
+<img src="https://user-images.githubusercontent.com/1250095/83938559-66735900-a810-11ea-8452-8d8114171aaa.png">
 
 # 기타 함수
 ## LogSumExp
