@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 사다리 게임, 절대 걸리지 않는 법
-tags: ["Machine Learning, Statistics"]
+tags: ["Statistics"]
 ---
 
 <div class="message">

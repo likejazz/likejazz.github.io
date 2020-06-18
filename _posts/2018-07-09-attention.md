@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Attention Mechanism 시각화
-tags: ["Deep Learning for NLP"]
+tags: ["Deep Learning", "NLP"]
 ---
 
 <div class="message">

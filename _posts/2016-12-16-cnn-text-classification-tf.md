@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CNN을 이용한 한국어 문장 분류
-tags: ["Deep Learning for NLP"]
+tags: ["Deep Learning", "NLP"]
 ---
 
 <div class="message">

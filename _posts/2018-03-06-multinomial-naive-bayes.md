@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 나이브 베이즈 알고리즘 확률 모델
-tags: ["Machine Learning, Statistics"]
+tags: ["Machine Learning"]
 ---
 
 <div class="message">

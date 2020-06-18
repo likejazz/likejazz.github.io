@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 안녕, 세상아
-tags: Productivity
+tags: ["Hello", "World"]
 ---
 
 <div class="message">

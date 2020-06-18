@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 코사인 유사도의 의미
-tags: ["Machine Learning, Statistics"]
+tags: ["Machine Learning"]
 ---
 
 <div class="message">

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 해석 가능한 머신러닝
-tags: ["Machine Learning, Statistics"]
+tags: ["Machine Learning"]
 
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '문자열 검색: Boyer-Moore 알고리즘'
-tags: ["Algorithms, Data Structure"]
+tags: ["Algorithms", "NLP"]
 ---
 
 <div class="message">

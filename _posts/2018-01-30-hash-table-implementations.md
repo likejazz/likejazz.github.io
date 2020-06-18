@@ -1,7 +1,7 @@
 ---
 layout: post
 title: C++, Java 해시 테이블 구현
-tags: ["Algorithms, Data Structure"]
+tags: ["Data Structure"]
 ---
 
 <div class="message">
