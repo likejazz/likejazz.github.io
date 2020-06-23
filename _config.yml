@@ -29,12 +29,9 @@ author:
 version:             1.0.0
 github:
   repo:              https://github.com/poole/poole
-paginate: 10
-paginate_path: "/page/:num/"
 
 # Custom Gems
 plugins:
-  - jekyll-paginate
   - jekyll-redirect-from
   - jekyll-sitemap
 
