@@ -1,15 +1,13 @@
 ---
 layout: wiki 
 title: Python
-last-modified: 2020/06/06 12:44:43
+last-modified: 2020/07/08 15:47:25
 ---
 
 <!-- TOC -->
 
 - [Pythonic way](#pythonic-way)
-    - [List Comprehension](#list-comprehension)
-        - [Nested Loops](#nested-loops)
-        - [Other Comprehensions](#other-comprehensions)
+    - [Array](#array)
 - [Books](#books)
     - [고성능 파이썬 <sub>2013, 2016</sub>](#고성능-파이썬-2013-2016)
 - [Links](#links)
@@ -42,30 +40,34 @@ last-modified: 2020/06/06 12:44:43
 `product`: 이터레이터에 있는 아이템들의 카테시안 곱을 반환한다.  
 `permutations`, `combinations` 포함
 
-## List Comprehension
-### Nested Loops
+## Array
 ```python
-flattened = []
-for row in matrix:
-    for n in row:
-        flattened.append(n)
+A = array.array('i', range(1, 10000))
+L = list(range(1, 10000))
+R = range(1, 10000)
+N = np.array(range(1,10000))
 ```
 
-Here’s a **list comprehension** that does the same thing:
-```python
-flattened = [n for row in matrix for n in row]
+배열을 설정하고 `sum()` 결과를 확인한다.
+
+```
+In [38]: %timeit sum(A)
+    ...: %timeit sum(L)
+    ...: %timeit sum(R)
+    ...: %timeit sum(N)
+147 µs ± 1.19 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+37.9 µs ± 588 ns per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+159 µs ± 1.25 µs per loop (mean ± std. dev. of 7 runs, 10000 loops each)
+748 µs ± 3.72 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
-### Other Comprehensions
-```python
-flipped = {}
-for key, value in original.items():
-    flipped[value] = key
-```
+`array`는 `range`와 아무 차이가 없다. 오히려 리스트가 $$\frac{1}{4}$$수준이다. 뿐만 아니라 `numpy`는 5배 더 느리다. 문제는 "unboxed" 이기 때문이다. [^fn-tim] array, numpy 모두 primitive type을 갖지만 `sum()`이 동작하기 위해서는 python object가 되어야 한다. 자바에도 동일한 boxing/unboxing이 있다. numpy도 그래서 object로 변환되면서 오히려 더 늦다. 따라서, 자료형이 아무리 primitive type이라도 여러 동작을 수행하기 위한 메소드가 primitive type을 처리하지 못한다면 아무 의미가 없다. 따라서 sum 조차 없는 `array`는 그다지 유용하지 않다. 반면 numpy는 풍부한 메소드를 제공하며, sum 또한 자체 numpy의 primitive type을 지원하는 `np.sum()`이 있기 때문에 이를 이용하면 range 대비 30배 더 빠르게 수행할 수 있다.
 
-That same code written as a **dictionary comprehension**:
-```python
-flipped = {value: key for key, value in original.items()}
+[^fn-tim]: <https://stackoverflow.com/a/36778655>
+
+```
+In [39]: %timeit np.sum(N)  # 또는 N.sum()
+5.07 µs ± 36.8 ns per loop (mean ± std. dev. of 7 runs, 100000 loops each)
 ```
 
 # Books
