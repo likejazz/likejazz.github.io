@@ -45,7 +45,7 @@ tags: ["Book"]
 - [교보문고](https://bit.ly/3feaYxi)
 - [YES24](https://bit.ly/3iGw8Gw)
 - [알라딘](http://aladin.kr/p/2fU2N)
-- [인터파크]
+- [인터파크](https://bit.ly/3f9SyOg)
 
 및 전국 교보문고 매장
 
