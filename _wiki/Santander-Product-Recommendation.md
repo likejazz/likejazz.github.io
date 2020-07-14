@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Santander Product Recommendation
-last-modified: 2020/07/14 11:02:33
+last-modified: 2020/07/14 17:04:52
 ---
 
 <!-- TOC -->
@@ -61,6 +61,7 @@ df[(df['ult_fec_cli_1t_year_prev'] == -99) & (df['fecha_dato'] == '2016-04-28') 
 multiple conditions에 대한 갯수. 컬럼명을 지정하지 않으면 모든 컬럼에 대한 갯수가 나온다.
 
 ```
+pd.set_option("display.max_rows", 999)
 trn[(trn['ult_fec_cli_1t_year_prev'] == -99) & (trn['fecha_dato'] == '2016-04-28')].head(2).transpose()
 ```
 columns 제한 때문에 가로로 모두 출력되지 않을때 세로 출력.
