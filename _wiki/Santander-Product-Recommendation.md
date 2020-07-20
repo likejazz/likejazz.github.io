@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Santander Product Recommendation
-last-modified: 2020/07/17 17:02:50
+last-modified: 2020/07/20 12:01:17
 ---
 
 <!-- TOC -->
@@ -22,7 +22,8 @@ last-modified: 2020/07/17 17:02:50
 
 # 개요
 [Kaggle Competition](https://www.kaggle.com/c/santander-product-recommendation)  
-고객이 은행의 24개의 금융 상품 중 새롭게 가입하는 상품 추천하기
+고객이 은행의 24개의 금융 상품 중 새롭게 가입하는 상품 추천하기[^fn-code]
+[^fn-code]: <https://github.com/jsrimr/kaggle_santaner/tree/master/kaggle_santander_product_recommendation>
 
 # EDA
 ```python
@@ -82,11 +83,11 @@ MAP@7에 비어있는 값에 대한 처리도 추가하려 했으나, 편의상 
 검증: 2016-05 1개월치
 
 ```
-XGBoost                       : 0.8427
-Random Forest(n_estimators=10): 0.7786
-Random Forest(n_estimators=50): 0.8142
-Decision Tree                 : 0.7786
-Gradient Boosting             : 0.8434 (3min 34s elapsed)
+XGBoost                       : 0.8427 (2min 26s)
+Random Forest(n_estimators=10): 0.7786 (1.21s)
+Random Forest(n_estimators=50): 0.8142 (5.44s)
+Decision Tree                 : 0.6506 (0.8s)
+Gradient Boosting             : 0.8434 (3min 34s)
 SVC                           :
 ```
 
