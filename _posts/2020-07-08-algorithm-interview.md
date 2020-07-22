@@ -76,7 +76,7 @@ tags: ["Book"]
 
 <img src="https://user-images.githubusercontent.com/1250095/87880669-819bd000-ca2e-11ea-9408-db5e57861de3.jpg" width="50%">
 
-탈고를 하면 모든게 끝인줄 알았습니다. 그러나 마지막까지 치열한 교정 작업을 거쳐야만 했습니다. 이 과정에서 전체 문제를 다시 한 번 풀이하고, 틀린 부분이 없나 꼼꼼이 살펴보았습니다.
+탈고를 하면 모든게 끝인줄 알았습니다. 그러나 마지막까지 치열한 교정 작업을 거쳐야만 했습니다. 이 과정에서 전체 문제를 다시 한 번 풀이하고, 틀린 부분이 없나 꼼꼼히 살펴보았습니다.
 
 <img src="https://user-images.githubusercontent.com/1250095/87880732-05ee5300-ca2f-11ea-9ee0-5100aef2f20c.jpg" width="80%">
 

@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Santander Product Recommendation
-last-modified: 2020/07/22 14:12:53
+last-modified: 2020/07/22 14:45:02
 ---
 
 <!-- TOC -->
@@ -19,6 +19,7 @@ last-modified: 2020/07/22 14:12:53
         - [SVM](#svm)
         - [Neural Network](#neural-network)
         - [LightGBM](#lightgbm)
+        - [CatBoost](#catboost)
 - [Winner's Code](#winners-code)
 
 <!-- /TOC -->
@@ -95,7 +96,7 @@ SVM(LinearSVC, scaled)        : 0.8191 (5min 6s)
 Random Forest(n_estimators=50): 0.8142 (5.44s)
 Random Forest(n_estimators=10): 0.7786 (1.21s)
 Bernoulli Naive Bayes         : 0.7508 (0.09s)
-SVM(kernel='rbf')             : 0.6821 (7hr 31min 13s)
+SVM(kernel='rbf', scaled)     : 0.6821 (7hr 31min 13s)
 Decision Tree                 : 0.6506 (0.8s)
 ```
 
@@ -146,5 +147,8 @@ SVM과 유사하게 동일한 값만 나오며 학습이 되지 않는다. 네�
 
 ### LightGBM
 XGBoost 보다 훨씬 빠르지만 성능이 더 떨어진다. `boosting_type='gbrt'` 보다 `dart`일때 성능이 훨씬 좋다. 속도는 2배 느려진다.
+
+### CatBoost
+progress bar가 default로 나오는게 아름답다. 학습은 가장 오래 걸렸지만 그만큼 성능은 잘 나온다.
 
 # Winner's Code
