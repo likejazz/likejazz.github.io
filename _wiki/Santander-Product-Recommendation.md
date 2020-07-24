@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Santander Product Recommendation
-last-modified: 2020/07/23 15:03:57
+last-modified: 2020/07/23 15:46:20
 ---
 
 <!-- TOC -->
@@ -27,6 +27,7 @@ last-modified: 2020/07/23 15:03:57
 # 개요
 [Kaggle Competition](https://www.kaggle.com/c/santander-product-recommendation)  
 고객이 은행의 24개의 금융 상품 중 새롭게 가입하는 상품 추천하기[^fn-code]
+
 [^fn-code]: <https://github.com/jsrimr/kaggle_santaner/tree/master/kaggle_santander_product_recommendation>
 
 # EDA

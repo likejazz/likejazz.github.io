@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/07/23 14:15:47
+last-modified: 2020/07/24 14:52:19
 ---
 
 <!-- TOC -->
@@ -10,8 +10,8 @@ last-modified: 2020/07/23 14:15:47
 - [설치](#설치)
     - [Ubuntu](#ubuntu)
     - [Deep Learning](#deep-learning)
+    - [디스크 마운트](#디스크-마운트)
 - [운영](#운영)
-    - [디스크 마운트[^fn-mount]](#디스크-마운트^fn-mount)
 
 <!-- /TOC -->
 
@@ -27,7 +27,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSwZ37DGZfsOmT1zj40zT9uPnbNi5prL8fVEebvwWW
 # 설치
 ## Ubuntu
 Ubuntu 20.04 LTS, SSD(Boot) 10G  
-`Management, security, disks, networking, sole tenancy`에서 Disks, `+ Add new disk`, `Type: Local SSD scratch disk (maximum 24)` 빠른 파일 로딩을 위해 Local SSDs x 1 (NVME, 385 GB) 지정
+`Management, security, disks, networking, sole tenancy`에서 Disks, `+ Add new disk`, `Type: Local SSD scratch disk (maximum 24)` 빠른 파일 로딩을 위해 Local SSDs x 1 (NVME, 385 GB) 지정. 그러나, Local SSD는 instance stop이 안된다. 비용 절감을 할 수 없다.
 
 ```
 # Anaconda
@@ -46,29 +46,32 @@ $ sudo apt install gcc cmake
 
 `Deep Learning Image: PyTorch 1.4.0 and fastai m51` 설치
 
-Seoul 리전에서는 Tesla T4 인스턴스를 만들 수 없다. does not have enough resources available to fulfill the request 라고. 그래서 Tokyo에 생성했다.
+~~Seoul 리전에서는 Tesla T4 인스턴스를 만들 수 없다. does not have enough resources available to fulfill the request 라고. 그래서 Tokyo에 생성했다.~~ 우리쪽 quota 부족으로 보인다. all quotas에서 요청을 하면 5분 이내에 바로 처리해준다. 반영되는데는 최대 15분 소요.
 
-anaconda가 이미 설치되어 있다. nvtop 설치. apk에는 없어서 소스 컴파일 설치.
+처음 접속할때 CUDA 최초 설치 필요. anaconda는 이미 설치되어 있다. nvtop 설치[^fn-nvtop] apk에는 없어서 소스 컴파일 설치했다.
 
-# 운영
-## 디스크 마운트[^fn-mount]
+[^fn-nvtop]: <https://github.com/Syllo/nvtop#nvtop-build>
 
-[^fn-mount]: <https://devopscube.com/mount-extra-disks-on-google-cloud/>
+XGBoost, CatBoost는 GPU 버전이 바로 설치되지만, LightGBM는 별도 옵션으로 설치(소스 컴파일됨)해야 한다. pytorch는 지난 3월에 릴리즈된 1.4.0이 이미 설치되어 있다.
+
+## 디스크 마운트
+SSD Persistent Disk는 이미 마운트 되어 있다. 아래는 LocalSSD의 경우인데, 이 instances는 stop이 안되기 때문에 비용 절감을 할 수 없다.
 
 ```console
 $ lsblk
-$ sudo mkfs.ext4 -F /dev/nvme0n1
+$ sudo mkfs.ext4 -F /dev/sdb
 $ sudo mkdir -p /ml-experiments
-$ sudo mount /dev/nvme0n1 /ml-experiments
+$ sudo mount /dev/sdb /ml-experiments
 $ sudo chmod a+w /ml-experiments
 $ df -h
 ```
 
+# 운영
 ```
 # 조회
 $ gcloud compute instances list --project=xxx
 
-# 운영
-$ gcloud compute instances start ml-experiments --project=xxx  # 시작
-$ gcloud compute instances stop ml-experiments --project=xxx   # 중지
+# 시작/중지
+$ gcloud compute instances start stark-seoul --zone=asia-northeast3-c --project=xxx  # 시작
+$ gcloud compute instances stop stark-seoul --zone=asia-northeast3-c --project=xxx  # 중지
 ```
