@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/07/24 14:52:19
+last-modified: 2020/07/24 17:06:11
 ---
 
 <!-- TOC -->
@@ -12,6 +12,7 @@ last-modified: 2020/07/24 14:52:19
     - [Deep Learning](#deep-learning)
     - [디스크 마운트](#디스크-마운트)
 - [운영](#운영)
+- [ML Ops](#ml-ops)
 
 <!-- /TOC -->
 
@@ -75,3 +76,8 @@ $ gcloud compute instances list --project=xxx
 $ gcloud compute instances start stark-seoul --zone=asia-northeast3-c --project=xxx  # 시작
 $ gcloud compute instances stop stark-seoul --zone=asia-northeast3-c --project=xxx  # 중지
 ```
+
+# ML Ops
+ML Engine: Serving scikit-learn, XGBoost tutorial[^fn-serv]
+
+[^fn-serv]:<https://cloud.google.com/blog/products/gcp/serving-real-time-scikit-learn-and-xgboost-predictions>

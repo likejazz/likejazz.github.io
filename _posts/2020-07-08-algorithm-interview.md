@@ -19,6 +19,7 @@ tags: ["Book"]
 - [과정](#과정)
 - [판매처](#판매처)
 - [참고](#참고)
+- [SNS](#sns)
 
 <!-- /TOC -->
 
@@ -108,3 +109,9 @@ tags: ["Book"]
 문제 풀이 코드는 깃허브, 책에 대한 상세한 소개는 출판사 블로그를 참고하세요.  
 - [onlybooks/algorithm-interview - GitHub](https://github.com/onlybooks/algorithm-interview)
 - [파이썬 알고리즘 인터뷰 - 책만](https://www.onlybook.co.kr/entry/algorithm-interview)
+
+## SNS
+《파이썬 알고리즘 인터뷰》를 소개한 SNS 글을 소개합니다.
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fzzsza%2Fposts%2F2706265252808533&width=500" width="500" height="636" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fresious%2Fposts%2F3411057615620193&width=500" width="500" height="790" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
