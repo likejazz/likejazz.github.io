@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/07/24 17:06:11
+last-modified: 2020/07/25 00:38:56
 ---
 
 <!-- TOC -->
@@ -53,7 +53,7 @@ $ sudo apt install gcc cmake
 
 [^fn-nvtop]: <https://github.com/Syllo/nvtop#nvtop-build>
 
-XGBoost, CatBoost는 GPU 버전이 바로 설치되지만, LightGBM는 별도 옵션으로 설치(소스 컴파일됨)해야 한다. pytorch는 지난 3월에 릴리즈된 1.4.0이 이미 설치되어 있다.
+XGBoost, CatBoost는 GPU 버전이 바로 설치되지만, LightGBM는 별도 옵션으로 설치(소스 컴파일됨)해야 한다. pytorch는 지난 3월에 릴리즈된 1.4.0이 이미 설치되어 있다. CuDF를 설치하고 싶었으나 conda로만 설치가 가능하고, 설치가 진행이 안되서 실패.
 
 ## 디스크 마운트
 SSD Persistent Disk는 이미 마운트 되어 있다. 아래는 LocalSSD의 경우인데, 이 instances는 stop이 안되기 때문에 비용 절감을 할 수 없다.
