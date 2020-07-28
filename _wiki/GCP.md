@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/07/27 01:17:55
+last-modified: 2020/07/28 14:15:02
 ---
 
 <!-- TOC -->
@@ -16,23 +16,21 @@ last-modified: 2020/07/27 01:17:55
 - [운영](#운영)
 - [ML Ops](#ml-ops)
     - [Anaconda](#anaconda)
+    - [데이터](#데이터)
 
 <!-- /TOC -->
 
 # SSH 접속
-gcloud를 이용하는 방법은 너무 불편하여 ssh로 바로 접속이 가능하도록 셋팅하다.
+gcloud를 이용하는 방법은 너무 불편하여 ssh로 바로 접속이 가능하도록 셋팅했다.
 
-compute engine에서 ssh keys에 gcp-user,
-```
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSwZ37DGZfsOmT1zj40zT9uPnbNi5prL8fVEebvwWW9hYsbZ7ctcS9MXuUW3rUoDxlCyxIYBwqDqqbKTiUua94B1OpSzvsWwSOQ/... gcp-user
-```
-`cat ~/.ssh/id_rsa_gcp.pub`를 등록했다. Metadata > SSH Keys에 등록되어 있어 자유롭게 접속 가능. network interface details에서 내 IP에 대해 all allow 처리로 편리하게 사용한다.
+`cat ~/.ssh/id_rsa_gcp.pub`를 Metadata > SSH Keys에 등록했다. 해당 프로젝트 모든 서버에서 ssh 접속 가능. network interface details에서 내 IP에 대해 all allow 처리로 편리하게 사용한다.
 
 # 설치
 ## Ubuntu
 Ubuntu 20.04 LTS, SSD(Boot) 10G  
-`Management, security, disks, networking, sole tenancy`에서 Disks, `+ Add new disk`, `Type: Local SSD scratch disk (maximum 24)` 빠른 파일 로딩을 위해 Local SSDs x 1 (NVME, 385 GB) 지정. 그러나, Local SSD는 instance stop이 안된다. 비용 절감을 할 수 없다. 아래는 conda 및 gcc, cmake 설치.
+`Management, security, disks, networking, sole tenancy`에서 Disks, `+ Add new disk`, `Type: Local SSD scratch disk (maximum 24)` 빠른 파일 로딩을 위해 Local SSDs x 1 (NVME, 385 GB) 지정. 그러나, Local SSD는 instance stop이 안된다. 비용 절감을 할 수 없다. 
 
+아래는 conda 및 gcc, cmake 별도 설치하는 과정:
 ```
 # Anaconda
 $ wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
@@ -66,7 +64,10 @@ $ sudo make install
 XGBoost, CatBoost는 GPU 버전이 바로 설치되지만, LightGBM는 별도 옵션으로 설치(소스 컴파일됨)해야 한다. pytorch는 지난 3월에 릴리즈된 1.4.0이 이미 설치되어 있다. CuDF를 설치하고 싶었으나 conda로만 설치가 가능하고, 설치 진행이 안되서 실패.
 
 ## Deep Learning VM
-RAPIDS XGBoost를 experimental 버전으로 바로 지원한다. conda 설치에 시달릴 필요가 없다. 가장 편리하다.
+RAPIDS XGBoost를 experimental 버전으로 바로 지원한다. conda 설치에 시달릴 필요가 없다. 특히 CuDF를 바로 사용할 수 있어 이 이미지를 택했다. PyCharm에서 Remote Python으로 Python Console로 실험. Jupyter 보다 더 편하다. 다만 큰 파일은 오래 걸리므로 `Show Variables`는 turn off.
+
+아래는 XGBoost를 `gpu_hist`로 학습하는 모습이다.
+<img src="https://user-images.githubusercontent.com/1250095/88621747-35125d80-d0dc-11ea-8ed8-a0d5832dfd2d.png" width="70%">
 
 ## 디스크 마운트
 SSD Persistent Disk는 이미 마운트 되어 있다. 아래는 LocalSSD의 경우인데, 이 instance는 stop이 안되기 때문에 비용 절감을 할 수 없다.
@@ -125,3 +126,11 @@ $ conda config --set channel_priority flexible
 느리고, 설정에 sensitive한 설치로 conda 설치에 대한 신뢰가 많이 떨어져 있다. 다행히 Deep Learning VM으로 이미 RAPIDS가 설치된 이미지로 부팅할 수 있다.
 
 [^fn-conda]: <https://medium.com/rapids-ai/rapids-0-7-release-drops-pip-packages-47fc966e9472>
+
+## 데이터
+Google Storage에 올려두고 로컬에 없을 경우 다운로드 하도록 구성.
+```python
+from google.cloud import storage
+client = storage.Client()
+```
+추후 BigQuery로 gstorage에 있는 JSON 분석 과정 추가.
