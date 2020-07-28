@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/07/28 14:15:02
+last-modified: 2020/07/28 15:04:51
 ---
 
 <!-- TOC -->
@@ -11,8 +11,8 @@ last-modified: 2020/07/28 14:15:02
     - [Ubuntu](#ubuntu)
     - [Deep Learning Image](#deep-learning-image)
     - [Deep Learning VM](#deep-learning-vm)
-    - [디스크 마운트](#디스크-마운트)
 - [설정](#설정)
+    - [디스크 마운트](#디스크-마운트)
 - [운영](#운영)
 - [ML Ops](#ml-ops)
     - [Anaconda](#anaconda)
@@ -61,13 +61,25 @@ $ sudo make install
 
 [^fn-nvtop]: <https://github.com/Syllo/nvtop#nvtop-build>
 
-XGBoost, CatBoost는 GPU 버전이 바로 설치되지만, LightGBM는 별도 옵션으로 설치(소스 컴파일됨)해야 한다. pytorch는 지난 3월에 릴리즈된 1.4.0이 이미 설치되어 있다. CuDF를 설치하고 싶었으나 conda로만 설치가 가능하고, 설치 진행이 안되서 실패.
+XGBoost, CatBoost는 GPU 버전이 바로 설치되지만, LightGBM는 별도 옵션으로 설치(소스 컴파일됨)해야 한다. pytorch는 지난 3월에 릴리즈된 1.4.0이 이미 설치되어 있다. cuDF를 설치하고 싶었으나 conda로만 설치가 가능하고, 설치 진행이 안되서 실패.
 
 ## Deep Learning VM
-RAPIDS XGBoost를 experimental 버전으로 바로 지원한다. conda 설치에 시달릴 필요가 없다. 특히 CuDF를 바로 사용할 수 있어 이 이미지를 택했다. PyCharm에서 Remote Python으로 Python Console로 실험. Jupyter 보다 더 편하다. 다만 큰 파일은 오래 걸리므로 `Show Variables`는 turn off.
+RAPIDS XGBoost를 experimental 버전으로 바로 지원한다. conda 설치에 시달릴 필요가 없다. 특히 cuDF를 바로 사용할 수 있어 이 이미지를 택했다. PyCharm에서 Remote Python으로 Python Console로 실험. Jupyter 보다 더 편하다. 다만 큰 데이터는 오래 걸리므로 `Show Variables`는 turn off.
 
 아래는 XGBoost를 `gpu_hist`로 학습하는 모습이다.
 <img src="https://user-images.githubusercontent.com/1250095/88621747-35125d80-d0dc-11ea-8ed8-a0d5832dfd2d.png" width="70%">
+
+PyTorch 설치:
+```console
+$ conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
+```
+CUDA 10.0이라서 PyTorch는 1.4.0 버전이 설치된다. pip 설치는 CUDA 버전이 맞지 않다며 실행되지 않음.
+
+# 설정
+```
+$ vi ~/.bash_aliases
+alias ll='ls -al'
+```
 
 ## 디스크 마운트
 SSD Persistent Disk는 이미 마운트 되어 있다. 아래는 LocalSSD의 경우인데, 이 instance는 stop이 안되기 때문에 비용 절감을 할 수 없다.
@@ -79,12 +91,6 @@ $ sudo mkdir -p /ml-experiments
 $ sudo mount /dev/sdb /ml-experiments
 $ sudo chmod a+w /ml-experiments
 $ df -h
-```
-
-# 설정
-```
-$ vi ~/.bash_aliases
-alias ll='ls -al'
 ```
 
 # 운영
