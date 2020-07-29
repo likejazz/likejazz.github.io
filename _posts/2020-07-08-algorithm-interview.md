@@ -17,9 +17,9 @@ tags: ["Book"]
 
 - [소회](#소회)
 - [과정](#과정)
+- [SNS](#sns)
 - [판매처](#판매처)
 - [참고](#참고)
-- [SNS](#sns)
 
 <!-- /TOC -->
 
@@ -99,6 +99,16 @@ tags: ["Book"]
 
 온라인 서점에서도 4대 서점 판매 1위를 석권하며 순항 중에 있습니다. 여전히 초급 실용서가 판매 순위 상위를 차지하는 국내 도서 시장에서는 매우 고무적인 일입니다. 무엇보다 《파이썬 알고리즘 인터뷰》로 인해 우리나라에 기본기가 튼튼한 좋은 개발자가 더 늘어날 수 있다면 그것으로 소임을 다한 것에 여한이 없습니다. 나아가 이 책이 여러분의 커리어에 좋은 길잡이가 되길 기원합니다.
 
+## SNS
+《파이썬 알고리즘 인터뷰》를 소개한 SNS 글을 소개합니다.
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fzzsza%2Fposts%2F2706265252808533&width=500" width="500" height="636" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkanghun.ahn%2Fposts%2F3541612815906406&width=500" width="500" height="670" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fresious%2Fposts%2F3411057615620193&width=500" width="500" height="790" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftobyilee%2Fposts%2F10219441469561987&width=500" width="500" height="834" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
 ## 판매처
 ![책](/images/2020/book-cover.jpg)  
 《파이썬 알고리즘 인터뷰》는 다음 판매처에서 구매하실 수 있습니다.
@@ -113,13 +123,3 @@ tags: ["Book"]
 문제 풀이 코드는 깃허브, 책에 대한 상세한 소개는 출판사 블로그를 참고하세요.  
 - [onlybooks/algorithm-interview - GitHub](https://github.com/onlybooks/algorithm-interview)
 - [파이썬 알고리즘 인터뷰 - 책만](https://www.onlybook.co.kr/entry/algorithm-interview)
-
-## SNS
-《파이썬 알고리즘 인터뷰》를 소개한 SNS 글을 소개합니다.
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fzzsza%2Fposts%2F2706265252808533&width=500" width="500" height="636" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkanghun.ahn%2Fposts%2F3541612815906406&width=500" width="500" height="670" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fresious%2Fposts%2F3411057615620193&width=500" width="500" height="790" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
-
-<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftobyilee%2Fposts%2F10219441469561987&width=500" width="500" height="834" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
