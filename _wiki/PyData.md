@@ -1,7 +1,7 @@
 ---
 layout: wiki 
-title: 통계학 기술
-last-modified: 2020/07/30 20:15:05
+title: PyData
+last-modified: 2020/07/31 14:50:57
 ---
 
 <!-- TOC -->

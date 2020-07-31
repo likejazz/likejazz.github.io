@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/07/30 12:43:00
+last-modified: 2020/07/31 18:21:31
 ---
 
 <!-- TOC -->
@@ -132,6 +132,15 @@ $ conda config --set channel_priority flexible
 느리고, 설정에 sensitive한 설치로 conda 설치에 대한 신뢰가 많이 떨어져 있다. 다행히 Deep Learning VM으로 이미 RAPIDS가 설치된 이미지로 부팅할 수 있다.
 
 [^fn-conda]: <https://medium.com/rapids-ai/rapids-0-7-release-drops-pip-packages-47fc966e9472>
+
+conda 버전을 낮추면 된다는 얘기가 있어 따라해봤으나 여전히 안된다. 특히 4.6.x에서는 아예 killed 되어 버렸다. 여전히 RAPIDS conda 설치는 실패.
+
+```console
+$ conda install conda=4.6.14
+$ wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe
+$ ./conda-4.7.5-linux-64.exe install -p /opt/conda conda=4.7.5
+$ conda install -c rapidsai -c nvidia -c conda-forge -c defaults rapids=0.14 python=3.7 cudatoolkit=10.1
+```
 
 ## 데이터
 Google Storage에 올려두고 로컬에 파일이 없을 경우 다운로드 하도록 구성.
