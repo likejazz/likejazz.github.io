@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/07/31 18:21:31
+last-modified: 2020/08/02 20:37:17
 ---
 
 <!-- TOC -->
@@ -14,9 +14,11 @@ last-modified: 2020/07/31 18:21:31
 - [설정](#설정)
     - [디스크 마운트](#디스크-마운트)
 - [운영](#운영)
-- [ML Ops](#ml-ops)
+- [MLOps](#mlops)
     - [Anaconda](#anaconda)
-    - [데이터](#데이터)
+    - [Google Cloud Storage](#google-cloud-storage)
+        - [CLI](#cli)
+    - [BigQuery](#bigquery)
 
 <!-- /TOC -->
 
@@ -103,7 +105,7 @@ $ gcloud compute instances start stark-seoul --zone=asia-northeast3-c --project=
 $ gcloud compute instances stop stark-seoul --zone=asia-northeast3-c --project=xxx  # 중지
 ```
 
-# ML Ops
+# MLOps
 ML Engine: [Serving scikit-learn, XGBoost tutorial](https://cloud.google.com/blog/products/gcp/serving-real-time-scikit-learn-and-xgboost-predictions)
 
 ## Anaconda
@@ -142,8 +144,8 @@ $ ./conda-4.7.5-linux-64.exe install -p /opt/conda conda=4.7.5
 $ conda install -c rapidsai -c nvidia -c conda-forge -c defaults rapids=0.14 python=3.7 cudatoolkit=10.1
 ```
 
-## 데이터
-Google Storage에 올려두고 로컬에 파일이 없을 경우 다운로드 하도록 구성.
+## Google Cloud Storage
+Cloud Storage에 올려두고 로컬에 파일이 없을 경우 다운로드 하도록 구성.
 ```python
 import os
 from google.cloud import storage
@@ -161,3 +163,23 @@ if not os.path.exists(PATH + '/' + FILE):
     print('Downloaded to {}'.format(PATH + '/' + blob.name))
 ```
 추후 BigQuery로 gstorage에 있는 JSON 분석 과정 추가.
+
+### CLI
+```console
+$ gsutil cp vada-xxx.csv gs://stark-xxx
+Copying file://vada-xxx.csv [Content-Type=text/csv]...
+\ [1 files][ 54.5 MiB/ 54.5 MiB]    1.1 MiB/s
+Operation completed over 1 objects/54.5 MiB.
+```
+
+## BigQuery
+hive에서 `limit 1000000`으로 ~~csv download 후,~~ 다음과 같이 데이터가 csv 포맷이 되도록 쿼리 한다.
+
+```sql
+INSERT OVERWRITE DIRECTORY '/user/xxx/output.csv' 
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY ',' 
+select * from table_xxx limit 1000000
+```
+
+`/user/xxx/output.csv`를 클릭하여 file browser에서 열고 download. 이후 gcs에 upload. bigquery에서 create native table from gcs로 schema는 auto detect. header rows to skip은 1. invalid columns가 많을 경우 error count를 충분히 늘려주면 도움이 된다. bigquery dataset은 위치를 default로 한다. seoul(asia-northeast3)로 강제 지정했더니 gcs에서 import시 `Cannot read and write in different locations: source: asia, destination: asia-northeast3` 오류 발생.
