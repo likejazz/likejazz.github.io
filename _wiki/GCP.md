@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/08/04 11:14:35
+last-modified: 2020/08/05 14:22:08
 ---
 
 <!-- TOC -->
@@ -164,15 +164,32 @@ if not os.path.exists(PATH + '/' + FILE):
 
     print('Downloaded to {}'.format(PATH + '/' + blob.name))
 ```
-추후 BigQuery로 gstorage에 있는 JSON 분석 과정 추가.
 
 ## CLI
+hive에서 gcs까지 과정
 ```console
-$ gsutil cp vada-xxx.csv gs://stark-xxx
-Copying file://vada-xxx.csv [Content-Type=text/csv]...
-\ [1 files][ 54.5 MiB/ 54.5 MiB]    1.1 MiB/s
-Operation completed over 1 objects/54.5 MiB.
+# 원격 서버
+$ ssh xxx@10.12.109.xxx
+
+# 분석 결과 CSV export
+$ hive -e "INSERT OVERWRITE DIRECTORY '/user/xxx/output6.csv'
+ROW FORMAT DELIMITED 
+FIELDS TERMINATED BY ',' 
+select * from ignxxx.adaptive_advice_system_data_refined_6 limit 1000"
+ 
+# CSV 결과 조회
+$ hdfs dfs -ls output6.csv
+ 
+# 로컬로 가져오기
+$ hdfs dfs -get /user/xxx/output6.csv
+
+# append header required.
+
+# 맥북에서 streaming으로 GCS 업로드(5.3G 약 5분 소요, 로컬 디스크 공간 필요 없음)
+$ scp xxx@10.12.109.xxx:output6.csv/000000_0 /dev/stdout | gsutil cp - gs://stark-xxx/output6.csv
 ```
+
+원래 회사 유선망으로 100MB/s가 나오는데, 50MB/s 정도였고 remote server에서 가져오는 동안 멈춰있는 것으로 보인다.
 
 # BigQuery
 hive에서 `limit 1000000`으로 ~~csv download 후,~~ 다음과 같이 데이터가 csv 포맷이 되도록 쿼리 한다.
