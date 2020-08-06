@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/08/05 14:22:08
+last-modified: 2020/08/06 11:59:17
 ---
 
 <!-- TOC -->
@@ -183,7 +183,8 @@ $ hdfs dfs -ls output6.csv
 # 로컬로 가져오기
 $ hdfs dfs -get /user/xxx/output6.csv
 
-# append header required.
+# Append header(Linux only)
+$ sed -i '1i HEADER' output6.csv
 
 # 맥북에서 streaming으로 GCS 업로드(5.3G 약 5분 소요, 로컬 디스크 공간 필요 없음)
 $ scp xxx@10.12.109.xxx:output6.csv/000000_0 /dev/stdout | gsutil cp - gs://stark-xxx/output6.csv
