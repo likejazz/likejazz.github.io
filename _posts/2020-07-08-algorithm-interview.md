@@ -111,6 +111,8 @@ tags: ["Book"]
 
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ftobyilee%2Fposts%2F10219441469561987&width=500" width="500" height="834" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffupfin.geek%2Fposts%2F1443546749367637&width=500" width="500" height="739" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
 <img src="https://user-images.githubusercontent.com/1250095/89048945-74b2a100-d38b-11ea-85ec-65226dfa2f07.png" width="60%">
 
 요즘은 독자분들이 인터넷 서점에는 리뷰를 잘 올리지 않는 것 같습니다. 개인적으로 안타깝게 생각하며, 그러다 보니 몇 안되는 댓글로 인해 잘못된 정보를 접할 수 있어 예스24에 올라온 댓글에 대해 이 자리를 통해 답변을 드립니다. 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》을 짜깁기 한 책이 아닙니다. 지난 수 년간 직접 실험하고 풀이한 내용, 그 동안의 면접관으로서의 오랜 경험을 정리하여 직접 집필한 책입니다. 동일한 '코딩 인터뷰'를 주제로 했다는 점을 제외하면 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》과는 완전히 다른 책이며, 한글로 된 더 좋은 책을 만들기 위해 최선을 다한 책입니다. 몇 페이지만 열어봐도 완전히 다른 책임은 금방 알아차릴 수 있을텐데, 저자와 출판사의 지난 수 년간의 노력을 헛되이 하는 이런 근거 없는 댓글은 매우 안타깝습니다.
