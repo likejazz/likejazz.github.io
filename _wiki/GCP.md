@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/08/06 11:59:17
+last-modified: 2020/08/08 11:54:33
 ---
 
 <!-- TOC -->
@@ -172,37 +172,28 @@ hive에서 gcs까지 과정
 $ ssh xxx@10.12.109.xxx
 
 # 분석 결과 CSV export
-$ hive -e "INSERT OVERWRITE DIRECTORY '/user/xxx/output6.csv'
+$ hive -e "INSERT OVERWRITE DIRECTORY 'output6.csv'
 ROW FORMAT DELIMITED 
 FIELDS TERMINATED BY ',' 
-select * from ignxxx.adaptive_advice_system_data_refined_6 limit 1000"
+select * from ignxxx.aas_6 limit 1000"
  
 # CSV 결과 조회
 $ hdfs dfs -ls output6.csv
  
 # 로컬로 가져오기
-$ hdfs dfs -get /user/xxx/output6.csv
+$ hdfs dfs -get output6.csv
 
 # Append header(Linux only)
-$ sed -i '1i HEADER' output6.csv
+$ sed -i '1i HEADER' aas_6.csv
 
 # 맥북에서 streaming으로 GCS 업로드(5.3G 약 5분 소요, 로컬 디스크 공간 필요 없음)
-$ scp xxx@10.12.109.xxx:output6.csv/000000_0 /dev/stdout | gsutil cp - gs://stark-xxx/output6.csv
+$ scp xxx@10.12.109.xxx:aas_6.csv /dev/stdout | gsutil cp - gs://stark-xxx/aas_6.csv
 ```
 
 원래 회사 유선망으로 100MB/s가 나오는데, 50MB/s 정도였고 remote server에서 가져오는 동안 멈춰있는 것으로 보인다.
 
 # BigQuery
-hive에서 `limit 1000000`으로 ~~csv download 후,~~ 다음과 같이 데이터가 csv 포맷이 되도록 쿼리 한다.
-
-```sql
-INSERT OVERWRITE DIRECTORY '/user/xxx/output.csv' 
-ROW FORMAT DELIMITED 
-FIELDS TERMINATED BY ',' 
-select * from table_xxx limit 1000000  -- 1M에서 650MB
-```
-
-`/user/xxx/output.csv`를 클릭하여 file browser에서 열고 download. 이후 최상단에 header만 추가해서 gcs에 upload. bigquery에서 create native table from gcs로 schema는 auto detect. header rows to skip은 1. invalid columns가 많을 경우 error count를 충분히 늘려주면 도움이 된다. bigquery dataset은 위치를 default로 한다. seoul(asia-northeast3)로 강제 지정했더니 gcs에서 import시 `Cannot read and write in different locations: source: asia, destination: asia-northeast3` 오류 발생. raw file은 gsutil을 이용해 gcs로 업로드 하는데, 사내 유선망은 100MB/s가 나와서 5.3G도 어렵지 않게 업로드 완료.
+bigquery에서 create native table from gcs로 schema는 auto detect. `Header rows to skip:`은 1. 컬럼이 string으로 잡히면 에러가 거의 안나는데, 이번에는 float으로 잡혀서 문자열에 대해 모두 에러 발생. invalid columns가 많을 경우 `Number of errors allowed:`를 충분히 늘려주면 도움이 된다. (1000 이상) bigquery dataset은 위치를 default로 한다. seoul(asia-northeast3)로 강제 지정했더니 gcs에서 import시 `Cannot read and write in different locations: source: asia, destination: asia-northeast3` 오류 발생. raw file은 gsutil을 이용해 gcs로 업로드 하는데, 사내 유선망은 100MB/s가 나와서 5.3G도 어렵지 않게 업로드 완료.
 
 ## 권한
 BigQuery 쿼리 결과를 로컬 pandas로 내려서 분석 시도. Data Studio는 사용법도 다르고 무엇보다 data source connection 오류가 있어서 데이터를 부르지도 못했다. 로컬 분석은 가이드[^fn-guide]를 참고했다.

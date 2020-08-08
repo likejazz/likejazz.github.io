@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ! '파이썬 알고리즘 인터뷰 출간 안내'
-tags: ["Book"]
+tags: ["Book", "Coding Interview"]
 ---
 
 <div class="message">
