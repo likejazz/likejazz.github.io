@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ! '알고리즘 코딩 테스트 책 출간!'
+title: ! '알고리즘 코딩 테스트 책 출간 안내'
 tags: ["Book", "Coding Interview"]
 ---
 
