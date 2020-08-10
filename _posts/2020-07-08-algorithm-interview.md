@@ -16,8 +16,9 @@ tags: ["Book", "Coding Interview"]
 <!-- TOC -->
 
 - [들어가며](#들어가며)
-- [과정](#과정)
+- [집필 과정](#집필-과정)
 - [SNS](#sns)
+- [서평](#서평)
 - [판매처](#판매처)
 - [참고](#참고)
 
@@ -29,7 +30,9 @@ tags: ["Book", "Coding Interview"]
 
 좋은 개발자를 선발하기 위한 출제 위원회의 움직임도 바빠졌습니다. 주요 알고리즘을 녹여 내면서도 응시자들에게 친근하게 다가서기 위해 카카오 캐릭터를 이용한 수십 항목의 문제를 만들었고, 출제 위원들이 각자 돌아가며 꼼꼼히 문제를 풀이해 나갔습니다. 피어 리뷰를 통해 충분히 논의를 진행했고, 다수결로 출제 여부를 확정했습니다. 지루한 절차가 반복됐지만 꼭 필요하고도 합리적인 과정이었습니다. 그렇게 여러 단계를 거쳐 최종적으로 총 7개 문제를 엄선했고, 이 문제들은 지금까지도 좋은 평가를 받으며 블라인드 채용의 모범 사례가 되었습니다. 당시의 성공 덕분에 이후에도 블라인드 채용은 계속 이어지고 있으며 다른 기업의 채용에까지 영향을 미쳤으니, 돌이켜 보면 그 자랑스러운 역사의 현장에 일원으로서 함께할 수 있었다는 사실이 그저 영광스러울 따름입니다.
 
-[좋은 개발자란 어떤 개발자인가](http://docs.likejazz.com/senior-developers/) 라는 주제는 오랜 저의 고민이기도 합니다.  
+당시 개발자 공채가 끝난 후 저는 카카오 기술 블로그에 [카카오 신입 공채 1차 코딩 테스트 문제 해설](https://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/)을 직접 정리하여 작성했습니다. 그 전까지만 해도 모든 기업들은 코딩 테스트 이후에 문제는 비공개로 처리하여 문제 유출을 방지하는 것이 원칙이었습니다. 그러나 당시 카카오의 출제 위원회에는 문제를 공개하여 업계의 발전을 도모하고자 하는 도전적이고 진취적인 생각을 가진 사람들로 가득했고, 결국 모든 문제를 공개하고 직접 해설까지 곁들인 [국내 기업 최초의 코딩 테스트 해설](https://tech.kakao.com/2017/09/27/kakao-blind-recruitment-round-1/)을 발행하기에 이르렀습니다. 이후에도 카카오는 물론 네이버, 라인 등 많은 기업들이 제 글을 참고하여 코딩 테스트 해설을 게시하고 있으니, 업계의 발전과 좋은 문화 정착에 기여했다는 점에 자부심과 뿌듯함을 느낍니다.
+
+[좋은 개발자란 어떤 개발자인가](http://docs.likejazz.com/senior-developers/) 라는 주제는 사실 오랜 저의 고민이기도 합니다.  
 
 지난 몇 년간은 좋은 개발자를 채용하기 위해 누구보다 노력해왔으며, 또한 제 자신이 여전히 현업에 종사하는 개발자로서 더 좋은 개발자가 되기 위해 꾸준히 노력해왔습니다. 이 책에는 수많은 면접자들을 대상으로 코딩 테스트를 출제한 경험, 기술 인터뷰를 수행한 경험, 그리고 면접을 더 잘하기 위해 수많은 회사의 코딩 면접, 기술 면접 과정을 면밀히 살펴본 경험을 담았습니다. 그리고 이를 바탕으로, 저 또한 이직을 시도하면서 겪은 여러 가지 다양한 경험까지도 녹여내어 종합했습니다. 면접관으로서, 또는 면접자로서 겪은 다양한 경험은 한동안 면접관의 입장에서는 미처 느끼지 못했던 잘못된 관행들을 다시금 면접자의 입장에서 깨닫게 되는 좋은 계기가 됐고, 이직 후에는 더 좋은 면접관으로 거듭나게 됐으며, 이 책을 통해 그간의 경험들을 모두 잘 정리해 담아냈음은 물론입니다.
 
@@ -47,7 +50,7 @@ tags: ["Book", "Coding Interview"]
 
 이 책을 위해 지난 일 년여 간은 거의 매일 밤 알고리즘 문제를 풀이해 왔습니다. 이 책은 매 주말 집필에 몰두해온 노력과 고민의 결실입니다. 뿐만 아니라 이 책은 IT 업계 최고의 개발자들인 많은 분들이 공헌해주신 결실이기도 합니다. 그간 오랜 여정에 도움을 주신 많은 분들께 진심으로 감사의 말씀을 전합니다.
 
-## 과정
+## 집필 과정
 그간 알고리즘 인터뷰를 진행해오면서 배우고 싶을 정도로 뛰어난 분들도 있었지만, 아예 손도 못대고 서로 어색한 시간만 보내는 경우도 적지 않았습니다. 무엇이 문제이길래 구글, 페이스북은 그렇게 잘 한다는 알고리즘을 우리는 손도 못대고 있는 것일까요.
 
 물론 알고리즘 인터뷰에 대한 반박은 잘 알고 있습니다. 당장 실무에 필요한 역량이 훨씬 더 중요하다는 점도 충분히 잘 알고 있습니다. 그러나 좋은 식당에 가장 중요한 것은 기본기 라고 백종원은 늘 강조합니다. 좋은 개발자에게 가장 중요한 역량 또한 기본기 라고 저는 생각합니다. 알고리즘은 기초이자 곧 기본입니다. 기본기가 튼튼해야 훌륭한 제품을 만들 수 있습니다. 마이크로소프트가 수십 년간 최고의 자리를 지킬 수 있었던 것도, 구글, 페이스북이 계속해서 좋은 제품으로 시장을 선도하는 이유도, 튼튼한 기본기 때문이라고 믿어 의심치 않습니다.
@@ -110,6 +113,8 @@ tags: ["Book", "Coding Interview"]
 
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkanghun.ahn%2Fposts%2F3541612815906406&width=500" width="500" height="670" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
+<iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D10159100101597125%26set%3Da.10150688345107125%26type%3D3&width=500" width="500" height="777" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsstrato.kong%2Fposts%2F3208482612569863&width=500" width="500" height="452" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fresious%2Fposts%2F3411057615620193&width=500" width="500" height="790" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
@@ -118,9 +123,10 @@ tags: ["Book", "Coding Interview"]
 
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Ffupfin.geek%2Fposts%2F1443546749367637&width=500" width="500" height="739" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
+## 서평
 <img src="https://user-images.githubusercontent.com/1250095/89048945-74b2a100-d38b-11ea-85ec-65226dfa2f07.png" width="60%">
 
-요즘은 독자분들이 인터넷 서점에는 리뷰를 잘 올리지 않는 것 같습니다. 개인적으로 안타깝게 생각하며, 그러다 보니 몇 안되는 댓글로 인해 잘못된 정보를 접할 수 있어 예스24에 올라온 댓글에 대해 이 자리를 통해 답변을 드립니다. 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》을 짜깁기 한 책이 아닙니다. 지난 수 년간 직접 실험하고 풀이한 내용, 그 동안의 면접관으로서의 오랜 경험을 정리하여 직접 집필한 책입니다. 동일한 '코딩 인터뷰'를 주제로 했다는 점을 제외하면 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》과는 완전히 다른 책이며, 한글로 된 더 좋은 책을 만들기 위해 최선을 다한 책입니다. 몇 페이지만 열어봐도 완전히 다른 책임은 금방 알아차릴 수 있을텐데, 저자와 출판사의 지난 수 년간의 노력을 헛되이 하는 이런 근거 없는 댓글은 매우 안타깝습니다.
+요즘은 독자분들이 인터넷 서점에는 리뷰를 잘 올리지 않는 것 같습니다. 개인적으로 안타깝게 생각하며, 그러다 보니 몇 안되는 댓글로 인해 잘못된 정보를 접할 수 있어 예스24에 올라온 댓글에 대해 이 자리를 통해 답변을 드립니다. 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》을 짜깁기 한 책이 아닙니다. 지난 수 년간 직접 실험하고 풀이한 내용, 그 동안의 면접관으로서의 오랜 경험을 정리하여 직접 집필한 책입니다. 동일한 '코딩 인터뷰'를 주제로 했다는 점을 제외하면 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》과는 완전히 다른 책이며, 한글로 된 더 좋은 책을 만들기 위해 최선을 다한 책입니다. 몇 페이지만 열어봐도 완전히 다른 책임은 금방 알아차릴 수 있을텐데, 단순히 포맷이 유사하다는 이유로 저자와 출판사의 지난 수 년간의 노력을 헛되이 하는 이런 근거 없는 댓글은 매우 안타깝습니다.
 
 ## 판매처
 ![책](/images/2020/book-cover.jpg)  
