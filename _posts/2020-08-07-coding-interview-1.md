@@ -14,6 +14,8 @@ tags: ["Coding Interview"]
 
 **이 글의 내용은 [《파이썬 알고리즘 인터뷰》](/algorithm-interview) 책에 수록된 내용을 기반으로 작성하였습니다.**
 
+<a href="/algorithm-interview"><img src="/images/2020/book-cover.jpg" width="30%"></a>
+
 **&lt;목차&gt;**
 <!-- TOC -->
 
