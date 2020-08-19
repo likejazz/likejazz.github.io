@@ -111,6 +111,8 @@ tags: ["Book", "Coding Interview"]
 
 ## SNS
 《파이썬 알고리즘 인터뷰》를 소개한 SNS 글을 소개합니다.
+<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fhunkims%2Fvideos%2F10158675814954521%2F&show_text=1&width=560" width="560" height="556" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>
+
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fzzsza%2Fposts%2F2706265252808533&width=500" width="500" height="636" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
 
 <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fkanghun.ahn%2Fposts%2F3541612815906406&width=500" width="500" height="670" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
