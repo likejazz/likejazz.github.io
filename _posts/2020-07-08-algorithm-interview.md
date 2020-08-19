@@ -141,7 +141,7 @@ tags: ["Book", "Coding Interview"]
 
 <img src="https://user-images.githubusercontent.com/1250095/90315196-75832f80-df54-11ea-828a-0c114c156a99.png" width="70%">
 
-- 깃헙 소개: <https://github.com/jiukeem/python_algorithm/tree/master/01_leetcode>
+- 깃헙 소개: <https://github.com/jiukeem/python_algorithm/tree/master/02_leetcode>
 
 코드 뿐만 아니라 주석에도 꼼꼼하게 학습 노트를 기입해두셨네요. 정말 알차게 책을 보면서 열심히 공부하고 계시네요. 책을 보면서 공부하는 다른 분들도 이 곳의 코드와 주석을 참고하면 많은 도움이 될 것 같습니다. 적극 추천합니다!
 
