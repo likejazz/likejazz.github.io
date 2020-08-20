@@ -1,13 +1,14 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/04/29 16:39:00
+last-modified: 2020/08/20 20:06:01
 ---
 
 <!-- TOC -->
 
-- [기본 명령](#기본-명령)
-    - [예전 실행 했던 사항](#예전-실행-했던-사항)
+- [기본](#기본)
+    - [Dockerfile](#dockerfile)
+    - [명령](#명령)
     - [Apache Hello World](#apache-hello-world)
     - [스크립트](#스크립트)
     - [Push Docker Image to ECR](#push-docker-image-to-ecr)
@@ -18,57 +19,28 @@ last-modified: 2020/04/29 16:39:00
 
 <!-- /TOC -->
 
-# 기본 명령
+# 기본
+## Dockerfile
 ```docker
-# Dockerfile
-FROM hashicorp/http-echo:latest
+FROM hayd/ubuntu-deno:1.3.0
+MAINTAINER skpark1224@hyundai.com
+
+WORKDIR /www
+CMD deno run --allow-net --allow-read hello.ts
 ```
 
-이미지 빌드 및 프로세스, 생성된 이미지 조회
+## 명령
 ```console
-$ docker build . -t http-echo-image
-$ docker ps -a && docker images -a
-```
+# Stop & Remove
+docker stop aas-www-container
+docker rm aas-www-container
 
-중단하면서 컨테이너 삭제까지 병행
+# Build
+docker build -t aas-www-image .
 
-```console
-$ docker rm http-echo-ps
-```
-
-5678 포트를 오픈하고, `halo` 메시지를 출력하도록 실행. 실행이 끝나면 삭제.
-
-```console
-$ docker run -p 5678:5678 \
-    --rm \
-    --name http-echo-ps \
-    http-echo-image -text halo
-```
-
-우분투 콘솔에 접속할때. 마지막 `/bin/bash`는 생략가능하다.
-
-```console
-$ docker run --rm -it \
-    --name ubuntu-latest-ps \
-    ubuntu-latest /bin/bash
-```
-
-## 예전 실행 했던 사항
-2개의 볼륨을 마운트하고 종료시 자동으로 삭제되도록 foreground로 구동했다. 백그라운드는 `-it`를 제외하고 `-d`로 구동한다. `CMD`는 구동 마지막에 실행된다.
-
-```console
-$ docker run --rm -it \
--v /Users/kaonpark/workspace/github.daumkakao.com/NLP/simpson:/simpson/simpson \
--v /Users/kaonpark/workspace/github.daumkakao.com/NLP/simpson-data:/simpson/simpson/data \
--p 5000:5000 \
---name simpson-ngine idock.daumkakao.io/kaon_park/simpson
-```
-
-최신 docker 이미지를 다른 포트에 중복 구동
-```console
-$ sudo docker run -d -v ~/data:/simpson/simpson/data \
--p 5001:5000 \
-abc.xxx.io/kaon_park/simpson
+# Run
+docker run -d --name aas-www-container -p 80:80 -v /home/gcp-user/www:/www aas-www-image
+docker logs -f aas-www-container
 ```
 
 ## Apache Hello World
