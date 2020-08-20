@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/08/20 19:25:21
+last-modified: 2020/08/21 02:48:25
 ---
 
 <!-- TOC -->
@@ -14,6 +14,7 @@ last-modified: 2020/08/20 19:25:21
     - [Container Optimized OS](#container-optimized-os)
 - [설정](#설정)
     - [디스크 마운트](#디스크-마운트)
+    - [네트워크](#네트워크)
 - [운영](#운영)
 - [MLOps](#mlops)
     - [Anaconda](#anaconda)
@@ -104,6 +105,9 @@ $ sudo mount /dev/sdb /ml-experiments
 $ sudo chmod a+w /ml-experiments
 $ df -h
 ```
+
+## 네트워크
+VPN network - Firewall 에서 설정. 태그를 지정하면 해당 태그에만 룰이 적용되도록 설정 가능. network logging도 가능하다.
 
 # 운영
 ```
