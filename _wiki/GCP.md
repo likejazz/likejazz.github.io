@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/08/21 02:48:25
+last-modified: 2020/08/21 17:29:09
 ---
 
 <!-- TOC -->
@@ -29,7 +29,7 @@ last-modified: 2020/08/21 02:48:25
 # SSH 접속
 gcloud를 이용하는 방법은 너무 불편하여 ssh로 바로 접속이 가능하도록 셋팅했다.
 
-`cat ~/.ssh/id_rsa_gcp.pub`를 Metadata > SSH Keys에 등록했다. 해당 프로젝트 모든 서버에서 ssh 접속 가능. network interface details에서 내 IP에 대해 all allow 처리로 편리하게 사용한다.
+`cat ~/.ssh/id_rsa_gcp.pub`를 Metadata > SSH Keys에 등록했다. 해당 프로젝트 모든 서버에서 ssh 접속 가능. 접속 관련은 아래 네트워크 섹션 참고.
 
 # 설치
 ## Ubuntu
@@ -95,7 +95,7 @@ alias ll='ls -al'
 ```
 
 ## 디스크 마운트
-SSD Persistent Disk는 이미 마운트 되어 있다. 아래는 LocalSSD의 경우인데, 이 instance는 stop이 안되기 때문에 비용 절감을 할 수 없다.
+SSD Persistent Disk는 이미 마운트 되어 있다. 아래는 LocalSSD의 경우인데, 가장 빠르지만 이 instance는 stop이 안되기 때문에 비용 절감을 할 수 없다.
 
 ```console
 $ lsblk
@@ -107,7 +107,7 @@ $ df -h
 ```
 
 ## 네트워크
-VPN network - Firewall 에서 설정. 태그를 지정하면 해당 태그에만 룰이 적용되도록 설정 가능. network logging도 가능하다.
+VPC networks - Firewall에서 내 IP에 대해 allow all 처리로 편하게 이용. 태그를 지정하면 해당 태그에만 룰이 적용되도록 설정 가능. network logging도 가능하다.
 
 # 운영
 ```

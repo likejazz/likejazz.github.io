@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/08/20 20:06:01
+last-modified: 2020/08/22 01:55:27
 ---
 
 <!-- TOC -->
@@ -39,7 +39,7 @@ docker rm aas-www-container
 docker build -t aas-www-image .
 
 # Run
-docker run -d --name aas-www-container -p 80:80 -v /home/gcp-user/www:/www aas-www-image
+docker run -d --name aas-www-container -p 80:8123 -v /home/gcp-user/www:/www aas-www-image
 docker logs -f aas-www-container
 ```
 
