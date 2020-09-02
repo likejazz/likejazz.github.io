@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: JetBrains
-last-modified: 2020/08/29 21:58:57
+last-modified: 2020/09/01 00:05:29
 ---
 
 <!-- TOC -->
@@ -21,12 +21,14 @@ last-modified: 2020/08/29 21:58:57
 1. 실시간 에러 체크
 1. 강력한 모듈 브라우징  
 라이브러리의 in/out이 기억나지 않을때 모듈 코드를 따라가서 어떻게 처리되는지 확인할 수 있음. ctags가 더 이상 필요 없음.
-1. CTRL+OPTION+CURSOR  
-특정 변수 또는 함수의 사용 현황을 쉽게 브라우징 가능.
 1. 즉시 실행  
 C++을 비롯해 바로 실행이 쉽지 않은 언어에서도 즉시 실행 가능한 화살표 지원. 실행 할 경우 Run에 저장되며 그 다음 부터는 CTRL+R로 바로 가능. Docker도 지원.
 1. 다양한 편집 기능  
-multi-cursor를 비롯해 왠만한 에디터 이상의 편집 기능 지원. COMMAND+SHIFT+CURSOR 줄단위 이동 자주 사용. OPTION+CURSOR 블럭 지정 또한 강력함.
+    - multi-cursor를 비롯해 왠만한 에디터 이상의 편집 기능 지원.
+    - COMMAND+SHIFT+CURSOR 줄단위 이동 자주 사용. 
+    - CTRL+OPTION+CURSOR 특정 변수 또는 함수의 사용 현황을 쉽게 브라우징 가능.
+    - OPTION+CURSOR 블럭 지정 또한 강력함.
+    - 심지어 recursive call까지 표현해주는 디테일.
 1. Toolbox  
 언어에 따른 도구 선택. 프로젝트 단위로 선택 또한 가능. 자동 업데이트.
 1. 빠른 대응  

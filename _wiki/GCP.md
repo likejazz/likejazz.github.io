@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/08/21 17:29:09
+last-modified: 2020/09/02 16:59:39
 ---
 
 <!-- TOC -->
@@ -20,9 +20,6 @@ last-modified: 2020/08/21 17:29:09
     - [Anaconda](#anaconda)
 - [Google Cloud Storage](#google-cloud-storage)
     - [CLI](#cli)
-- [BigQuery](#bigquery)
-    - [권한](#권한)
-    - [Jupyter Notebook](#jupyter-notebook)
 
 <!-- /TOC -->
 
@@ -87,6 +84,8 @@ cuDF가 0.7이라서(최신은 0.14) 기능 제약이 많다. conda로 업데이
 `yum`, `apt` 모두 지원하지 않고 `toolbox`를 실행해서 설치[^fn-toolbox] 여러가지 유용한 도구 제공
 
 [^fn-toolbox]: <https://cloud.google.com/container-optimized-os/docs/how-to/toolbox>
+
+k8s에서도 이 OS를 활용한다고.
 
 # 설정
 ```
@@ -159,7 +158,7 @@ $ conda install -c rapidsai -c nvidia -c conda-forge -c defaults rapids=0.14 pyt
 ```
 
 # Google Cloud Storage
-Cloud Storage에 올려두고 로컬에 파일이 없을 경우 다운로드 하도록 구성.
+Cloud Storage에 올려두고 로컬에 파일이 없을 경우 다운로드. BigQuery를 이용하면 다운로드 필요 없이 원할때 생성하는 형태로 활용 가능.
 ```python
 import os
 from google.cloud import storage
@@ -178,7 +177,7 @@ if not os.path.exists(PATH + '/' + FILE):
 ```
 
 ## CLI
-hive에서 gcs까지 과정
+hive에서 쿼리 조회 결과, hdfs에 저장. 이후 로컬에 가져와서 맥북을 경유하여 gcs에 업로드 하는 과정 정리
 ```console
 # 원격 서버
 $ ssh xxx@10.12.109.xxx
@@ -187,7 +186,8 @@ $ ssh xxx@10.12.109.xxx
 $ hive -e "INSERT OVERWRITE DIRECTORY 'output6.csv'
 ROW FORMAT DELIMITED 
 FIELDS TERMINATED BY ',' 
-select * from ignxxx.aas_6 limit 1000"
+select * from ignxxx.aas_6 limit 10000000"
+# 위에 1천만건 5.3G
  
 # CSV 결과 조회
 $ hdfs dfs -ls output6.csv
@@ -196,48 +196,10 @@ $ hdfs dfs -ls output6.csv
 $ hdfs dfs -get output6.csv
 
 # Append header(Linux only)
-$ sed -i '1i HEADER' aas_6.csv
+$ sed -i '1i HEADER' aas_6.csv  # 헤더 파일은 hive 웹에서 export로 미리 확보하고 있어야 함
 
 # 맥북에서 streaming으로 GCS 업로드(5.3G 약 5분 소요, 로컬 디스크 공간 필요 없음)
 $ scp xxx@10.12.109.xxx:aas_6.csv /dev/stdout | gsutil cp - gs://stark-xxx/aas_6.csv
 ```
 
 원래 회사 유선망으로 100MB/s가 나오는데, 50MB/s 정도였고 remote server에서 가져오는 동안 멈춰있는 것으로 보인다.
-
-# BigQuery
-bigquery에서 create native table from gcs로 schema는 auto detect. `Header rows to skip:`은 1. 컬럼이 string으로 잡히면 에러가 거의 안나는데, 이번에는 float으로 잡혀서 문자열에 대해 모두 에러 발생. invalid columns가 많을 경우 `Number of errors allowed:`를 충분히 늘려주면 도움이 된다. (1000 이상) bigquery dataset은 위치를 default로 한다. seoul(asia-northeast3)로 강제 지정했더니 gcs에서 import시 `Cannot read and write in different locations: source: asia, destination: asia-northeast3` 오류 발생. raw file은 gsutil을 이용해 gcs로 업로드 하는데, 사내 유선망은 100MB/s가 나와서 5.3G도 어렵지 않게 업로드 완료.
-
-## 권한
-BigQuery 쿼리 결과를 로컬 pandas로 내려서 분석 시도. Data Studio는 사용법도 다르고 무엇보다 data source connection 오류가 있어서 데이터를 부르지도 못했다. 로컬 분석은 가이드[^fn-guide]를 참고했다.
-
-[^fn-guide]: <https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas#pip> 
-```console
-# Linux
-$ pip install --upgrade google-cloud-bigquery[bqstorage,pandas]
-# OSX
-$ pip install --upgrade google-cloud-bigquery
-# AttributeError: module 'grpc.experimental.aio' has no attribute 'Call' 오류로 인해
-$ pip install --upgrade grpcio
-```
-conda는 여전히 설치되지 않음. 인증 문제가 있는데 vm 내에서 `$ gcloud auth application-default login`로 직접 처리.
-
-```python
->>> %load_ext google.cloud.bigquery
->>> %%bigquery df --use_bqstorage_api
-select * from ds.1m where vin = 'KMTHA81BBxxx'
->>> type(df)
-pandas.core.frame.DataFrame
-```
-쿼리 결과가 dataframe에 맵핑된다. invalid value 때문에 모든 컬럼이 STRING이 되었다.
-
-## Jupyter Notebook
-```python
->>> %%bigquery df --use_bqstorage_api
-select temperature, count(temperature) from ds.10m 
-group by temperature having 
-temperature != '-40.0' and
-temperature != '\\N'
->>> df = df.sort_values(by='temperature')
->>> df.plot.bar(x='temperature', y='f0_', figsize=(20,10))
-```
-<img src="https://user-images.githubusercontent.com/1250095/89176000-c3e31680-d5c3-11ea-9d73-9a47ba9aefc5.jpg" width="80%">
