@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/02 16:59:39
+last-modified: 2020/09/03 22:09:42
 ---
 
 <!-- TOC -->
@@ -13,7 +13,6 @@ last-modified: 2020/09/02 16:59:39
     - [Deep Learning VM](#deep-learning-vm)
     - [Container Optimized OS](#container-optimized-os)
 - [설정](#설정)
-    - [디스크 마운트](#디스크-마운트)
     - [네트워크](#네트워크)
 - [운영](#운영)
 - [MLOps](#mlops)
@@ -88,22 +87,21 @@ cuDF가 0.7이라서(최신은 0.14) 기능 제약이 많다. conda로 업데이
 k8s에서도 이 OS를 활용한다고.
 
 # 설정
+alias, 시간, 로케일 설정
 ```
 $ vi ~/.bash_aliases
 alias ll='ls -al'
+
+# Set up a clean UTF-8 environment
+sudo bash -c 'echo "LANG=en_US.utf-8
+LC_ALL=en_US.utf-8" > /etc/environment'
+ 
+# Set the Timezone to KST
+sudo rm /etc/localtime
+sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 ```
 
-## 디스크 마운트
-SSD Persistent Disk는 이미 마운트 되어 있다. 아래는 LocalSSD의 경우인데, 가장 빠르지만 이 instance는 stop이 안되기 때문에 비용 절감을 할 수 없다.
-
-```console
-$ lsblk
-$ sudo mkfs.ext4 -F /dev/sdb
-$ sudo mkdir -p /ml-experiments
-$ sudo mount /dev/sdb /ml-experiments
-$ sudo chmod a+w /ml-experiments
-$ df -h
-```
+디스크의 경우 LocalSSD가 가장 빠르지만 별도로 마운트 해야 할뿐 아니라 stop이 안되기 때문에 비용 절감을 할 수도 없다.
 
 ## 네트워크
 VPC networks - Firewall에서 내 IP에 대해 allow all 처리로 편하게 이용. 태그를 지정하면 해당 태그에만 룰이 적용되도록 설정 가능. network logging도 가능하다.
