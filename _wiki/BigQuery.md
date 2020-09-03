@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: BigQuery
-last-modified: 2020/09/03 22:14:34
+last-modified: 2020/09/04 03:14:14
 ---
 
 <!-- TOC -->
@@ -9,6 +9,7 @@ last-modified: 2020/09/03 22:14:34
 - [권한](#권한)
 - [DataFrame](#dataframe)
 - [Jupyter Notebook](#jupyter-notebook)
+- [Python](#python)
 
 <!-- /TOC -->
 
@@ -69,3 +70,60 @@ temperature != '\\N'
 <img src="https://user-images.githubusercontent.com/1250095/89176000-c3e31680-d5c3-11ea-9d73-9a47ba9aefc5.jpg" width="80%">
 
 data manipulation 과정(column type 변경, sorting) 정리 필요
+
+## Python
+코드에서 BigQuery 호출 코드
+
+```python
+import google.auth
+from google.cloud import bigquery
+from google.cloud import bigquery_storage_v1beta1
+
+
+# Explicitly create a credentials object. This allows you to use the same
+# credentials for both the BigQuery and BigQuery Storage clients, avoiding
+# unnecessary API calls to fetch duplicate authentication tokens.
+def bigquery_auth(project_id: str = 'edith-xxx') -> None:
+    logging.info('[AUTH] Create a credentials.')
+    credentials, _ = google.auth.default(
+        scopes=["https://www.googleapis.com/auth/cloud-platform"]
+    )
+
+    # Make clients.
+    bqclient = bigquery.Client(
+        credentials=credentials,
+        project=project_id,
+    )
+    bqstorageclient = bigquery_storage_v1beta1.BigQueryStorageClient(
+        credentials=credentials
+    )
+    logging.info('[AUTH] Done.')
+
+    globals()['bqclient'] = bqclient
+    globals()['bqstorageclient'] = bqstorageclient
+
+
+def bigquery_results(query_string: str, idx='N/A') -> pd.core.frame.DataFrame:
+    # Download query results.
+    logging.info(f'[SQL] #{idx} BigQuery runs.')
+    dataframe = (
+        globals()['bqclient'].query(query_string)
+            .result()
+            .to_dataframe(bqstorage_client=globals()['bqstorageclient'])
+    )
+    return dataframe
+
+bigquery_auth()
+df = bigquery_results("""
+SELECT
+  vin,
+  COUNT(DISTINCT triplength) AS triplengths,
+  COUNT(*) AS datas
+FROM
+  xxxds.xxxs_0831
+GROUP BY
+  vin
+HAVING
+  COUNT(*) BETWEEN 300 AND 7200
+""", 'VIN')
+```

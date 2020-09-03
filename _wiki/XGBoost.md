@@ -1,16 +1,23 @@
 ---
 layout: wiki 
 title: XGBoost
-last-modified: 2019/04/16
+last-modified: 2020/09/04 07:39:04
 ---
 
 <!-- TOC -->
 
+- [Python](#python)
 - [XGBoost Parameters](#xgboost-parameters)
     - [파라미터 설명](#파라미터-설명)
     - [Tune the Number of Decision Trees in XGBoost](#tune-the-number-of-decision-trees-in-xgboost)
 
 <!-- /TOC -->
+
+# Python
+학습 에러시 상단에 다음 설정을 추가한다.
+```python
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
+```
 
 # XGBoost Parameters
 
