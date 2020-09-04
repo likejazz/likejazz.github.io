@@ -1,29 +1,24 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/05 01:38:47
+last-modified: 2020/09/05 03:40:39
 ---
 
 <!-- TOC -->
 
-- [SSH 접속](#ssh-접속)
 - [설치](#설치)
     - [Ubuntu](#ubuntu)
     - [Deep Learning Image](#deep-learning-image)
     - [Deep Learning VM](#deep-learning-vm)
     - [Container Optimized OS](#container-optimized-os)
 - [설정](#설정)
+    - [SSH 접속](#ssh-접속)
+    - [서버 설정](#서버-설정)
     - [네트워크](#네트워크)
 - [운영](#운영)
-- [Conda](#conda)
-- [CLI](#cli)
+    - [인증](#인증)
 
 <!-- /TOC -->
-
-# SSH 접속
-gcloud를 이용하는 방법은 너무 불편하여 ssh로 바로 접속이 가능하도록 셋팅했다.
-
-`cat ~/.ssh/id_rsa_gcp.pub`를 Metadata > SSH Keys에 등록했다. 해당 프로젝트 모든 서버에서 ssh 접속 가능. 접속 관련은 아래 네트워크 섹션 참고.
 
 # 설치
 ## Ubuntu
@@ -85,6 +80,11 @@ cuDF가 0.7이라서(최신은 0.14) 기능 제약이 많다. conda로 업데이
 k8s에서도 이 OS를 활용한다고.
 
 # 설정
+
+## SSH 접속
+gcloud를 이용하는 방법은 너무 불편하여 ssh로 바로 접속이 가능하도록 셋팅. `cat ~/.ssh/id_rsa_gcp.pub`를 Metadata > SSH Keys에 등록했다. 해당 프로젝트내 모든 서버에서 ssh 접속 가능. 접속 관련은 아래 네트워크 섹션 참고.
+
+## 서버 설정
 alias, 시간, 로케일 설정
 ```
 $ vi ~/.bash_aliases
@@ -114,43 +114,7 @@ $ gcloud compute instances start stark-seoul --zone=asia-northeast3-c --project=
 $ gcloud compute instances stop stark-seoul --zone=asia-northeast3-c --project=xxx  # 중지
 ```
 
-# Conda
-conda가 설치된 상태에서 추가 설치 및 업그레이드가 필요하다. 특히 RAPIDS는 conda로만 설치된다. C++14 및 CUDA 제약 사항으로 인해[^fn-conda] 그런데, `$ conda update --all --verbose` 조차 제대로 실행 안됨. 채널에서 정보를 가져오는데 상당한 제약 사항이 있다. 다음과 같이 수정 필요.
-
-```console
-$ conda config --show-sources
-==> /home/gcp-user/.condarc <==
-channel_priority: flexible
-channels:
-  - conda-forge
-  - defaults
-```
-
-채널 설정을 `flexbile`로 두는게 핵심이다. 이 사소한 설정으로 인해 `Solving environment:`가 hang up되어 이후 과정이 진행 안됨. 대부분의 문서에서,
-
-```console
-$ conda config --set channel_priority strict
-```
-를 가이드 하지만 실제로는,
-```console
-$ conda config --set channel_priority flexible
-```
-에서 동작했다. 추가 확인이 필요하다. 
-
-느리고, 설정에 sensitive한 설치로 conda 설치에 대한 신뢰가 많이 떨어져 있다. 다행히 Deep Learning VM으로 이미 RAPIDS가 설치된 이미지로 부팅할 수 있다.
-
-[^fn-conda]: <https://medium.com/rapids-ai/rapids-0-7-release-drops-pip-packages-47fc966e9472>
-
-conda 버전을 낮추면 된다는 얘기가 있어 따라해봤으나 여전히 안된다. 특히 4.6.x에서는 아예 killed 되어 버렸다. 여전히 RAPIDS conda 설치는 실패.
-
-```console
-$ conda install conda=4.6.14
-$ wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe
-$ ./conda-4.7.5-linux-64.exe install -p /opt/conda conda=4.7.5
-$ conda install -c rapidsai -c nvidia -c conda-forge -c defaults rapids=0.14 python=3.7 cudatoolkit=10.1
-```
-
-# CLI
+## 인증
 인증
 ```
 $ gcloud auth list
