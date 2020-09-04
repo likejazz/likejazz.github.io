@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/03 22:09:42
+last-modified: 2020/09/05 01:38:47
 ---
 
 <!-- TOC -->
@@ -15,10 +15,8 @@ last-modified: 2020/09/03 22:09:42
 - [설정](#설정)
     - [네트워크](#네트워크)
 - [운영](#운영)
-- [MLOps](#mlops)
-    - [Anaconda](#anaconda)
-- [Google Cloud Storage](#google-cloud-storage)
-    - [CLI](#cli)
+- [Conda](#conda)
+- [CLI](#cli)
 
 <!-- /TOC -->
 
@@ -116,10 +114,7 @@ $ gcloud compute instances start stark-seoul --zone=asia-northeast3-c --project=
 $ gcloud compute instances stop stark-seoul --zone=asia-northeast3-c --project=xxx  # 중지
 ```
 
-# MLOps
-ML Engine: [Serving scikit-learn, XGBoost tutorial](https://cloud.google.com/blog/products/gcp/serving-real-time-scikit-learn-and-xgboost-predictions)
-
-## Anaconda
+# Conda
 conda가 설치된 상태에서 추가 설치 및 업그레이드가 필요하다. 특히 RAPIDS는 conda로만 설치된다. C++14 및 CUDA 제약 사항으로 인해[^fn-conda] 그런데, `$ conda update --all --verbose` 조차 제대로 실행 안됨. 채널에서 정보를 가져오는데 상당한 제약 사항이 있다. 다음과 같이 수정 필요.
 
 ```console
@@ -155,49 +150,17 @@ $ ./conda-4.7.5-linux-64.exe install -p /opt/conda conda=4.7.5
 $ conda install -c rapidsai -c nvidia -c conda-forge -c defaults rapids=0.14 python=3.7 cudatoolkit=10.1
 ```
 
-# Google Cloud Storage
-Cloud Storage에 올려두고 로컬에 파일이 없을 경우 다운로드. BigQuery를 이용하면 다운로드 필요 없이 원할때 생성하는 형태로 활용 가능.
-```python
-import os
-from google.cloud import storage
-
-BUCKET = "bucket"
-PATH = '/ml-experiments'
-FILE = 'sample.csv'
-
-client = storage.Client()
-if not os.path.exists(PATH + '/' + FILE):
-    bucket = client.get_bucket(BUCKET)
-    blob = bucket.blob(FILE)
-    blob.download_to_filename(PATH + '/' + blob.name)
-
-    print('Downloaded to {}'.format(PATH + '/' + blob.name))
+# CLI
+인증
+```
+$ gcloud auth list
 ```
 
-## CLI
-hive에서 쿼리 조회 결과, hdfs에 저장. 이후 로컬에 가져와서 맥북을 경유하여 gcs에 업로드 하는 과정 정리
-```console
-# 원격 서버
-$ ssh xxx@10.12.109.xxx
-
-# 분석 결과 CSV export
-$ hive -e "INSERT OVERWRITE DIRECTORY 'output6.csv'
-ROW FORMAT DELIMITED 
-FIELDS TERMINATED BY ',' 
-select * from ignxxx.aas_6 limit 10000000"
-# 위에 1천만건 5.3G
- 
-# CSV 결과 조회
-$ hdfs dfs -ls output6.csv
- 
-# 로컬로 가져오기
-$ hdfs dfs -get output6.csv
-
-# Append header(Linux only)
-$ sed -i '1i HEADER' aas_6.csv  # 헤더 파일은 hive 웹에서 export로 미리 확보하고 있어야 함
-
-# 맥북에서 streaming으로 GCS 업로드(5.3G 약 5분 소요, 로컬 디스크 공간 필요 없음)
-$ scp xxx@10.12.109.xxx:aas_6.csv /dev/stdout | gsutil cp - gs://stark-xxx/aas_6.csv
+```
+$ gcloud auth application-default login
 ```
 
-원래 회사 유선망으로 100MB/s가 나오는데, 50MB/s 정도였고 remote server에서 가져오는 동안 멈춰있는 것으로 보인다.
+디폴트 프로젝트 변경. 편하게 사용하기 위해 꼭 필요하다.
+```
+$ gcloud config set project XXX
+```

@@ -1,15 +1,16 @@
 ---
 layout: wiki 
 title: BigQuery
-last-modified: 2020/09/04 03:14:14
+last-modified: 2020/09/04 19:22:57
 ---
 
 <!-- TOC -->
 
-- [권한](#권한)
+- [Python 설치](#python-설치)
+- [인증](#인증)
 - [DataFrame](#dataframe)
 - [Jupyter Notebook](#jupyter-notebook)
-- [Python](#python)
+- [Python 코드](#python-코드)
 
 <!-- /TOC -->
 
@@ -20,7 +21,7 @@ Cannot read and write in different locations: source: asia, destination: asia-no
 ```
 오류 발생. raw file은 gsutil을 이용해 gcs로 업로드 하는데, 사내 유선망은 100MB/s가 나와서 5.3G도(1천만건) 어렵지 않게 업로드 완료.
 
-## 권한
+## Python 설치
 BigQuery 쿼리 결과를 로컬 pandas로 내려서 분석 시도. Data Studio는 사용법도 다르고 무엇보다 data source connection 오류가 있어서 데이터를 부르지도 못했다. 로컬 분석은 가이드[^fn-guide]를 참고했다.
 
 [^fn-guide]: <https://cloud.google.com/bigquery/docs/bigquery-storage-python-pandas#pip> 
@@ -40,12 +41,20 @@ $ cd opt/
 $ chown -R gcp-user anaconda3/
 $ pip install google-cloud-bigquery google-cloud-bigquery-storage
 ```
-conda는 여전히 설치되지 않음. 인증 문제가 있는데 vm 내에서,
+conda는 여전히 설치되지 않음. 
+
+## 인증
+인증 문제는 vm 내에서,
 
 ```
 $ gcloud auth application-default login
 ```
-로 직접 처리. CLI 기본 인증 `gcloud auth list` 결과와 다르기 때문에 주의 필요.
+로 직접 처리. CLI 기본 인증,
+
+```
+$ gcloud auth list
+``` 
+다르기 때문에 주의 필요.
 
 ## DataFrame
 ```python
@@ -71,7 +80,7 @@ temperature != '\\N'
 
 data manipulation 과정(column type 변경, sorting) 정리 필요
 
-## Python
+## Python 코드
 코드에서 BigQuery 호출 코드
 
 ```python
