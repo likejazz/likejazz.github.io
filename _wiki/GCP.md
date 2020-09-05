@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/05 03:40:39
+last-modified: 2020/09/05 04:15:13
 ---
 
 <!-- TOC -->
@@ -115,7 +115,7 @@ $ gcloud compute instances stop stark-seoul --zone=asia-northeast3-c --project=x
 ```
 
 ## 인증
-인증
+인증 차이 숙지
 ```
 $ gcloud auth list
 ```
