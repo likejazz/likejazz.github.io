@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: BigQuery
-last-modified: 2020/09/05 04:22:52
+last-modified: 2020/09/06 16:15:08
 ---
 
 <!-- TOC -->
@@ -87,58 +87,4 @@ temperature != '\\N'
 data manipulation 과정(column type 변경, sorting) 정리 필요
 
 ## Python Code
-Python에서 BigQuery 호출
-
-```python
-import google.auth
-from google.cloud import bigquery
-from google.cloud import bigquery_storage_v1beta1
-
-
-# Explicitly create a credentials object. This allows you to use the same
-# credentials for both the BigQuery and BigQuery Storage clients, avoiding
-# unnecessary API calls to fetch duplicate authentication tokens.
-def bigquery_auth(project_id: str = 'edith-xxx') -> None:
-    logging.info('[AUTH] Create a credentials.')
-    credentials, _ = google.auth.default(
-        scopes=["https://www.googleapis.com/auth/cloud-platform"]
-    )
-
-    # Make clients.
-    bqclient = bigquery.Client(
-        credentials=credentials,
-        project=project_id,
-    )
-    bqstorageclient = bigquery_storage_v1beta1.BigQueryStorageClient(
-        credentials=credentials
-    )
-    logging.info('[AUTH] Done.')
-
-    globals()['bqclient'] = bqclient
-    globals()['bqstorageclient'] = bqstorageclient
-
-
-def bigquery_results(query_string: str, idx='N/A') -> pd.core.frame.DataFrame:
-    # Download query results.
-    logging.info(f'[SQL] #{idx} BigQuery runs.')
-    dataframe = (
-        globals()['bqclient'].query(query_string)
-            .result()
-            .to_dataframe(bqstorage_client=globals()['bqstorageclient'])
-    )
-    return dataframe
-
-bigquery_auth()
-df = bigquery_results("""
-SELECT
-  vin,
-  COUNT(DISTINCT triplength) AS triplengths,
-  COUNT(*) AS datas
-FROM
-  xxxds.xxxs_0831
-GROUP BY
-  vin
-HAVING
-  COUNT(*) BETWEEN 300 AND 7200
-""", 'VIN')
-```
+[Python에서 BigQuery 호출 코드](https://gist.github.com/likejazz/01e76b10364a47bf9c4aa67c8ab49b33)
