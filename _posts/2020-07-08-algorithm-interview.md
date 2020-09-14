@@ -131,7 +131,10 @@ tags: ["Book", "Coding Interview"]
 요즘은 독자분들이 인터넷 서점에는 리뷰를 잘 올리지 않는 것 같습니다. 개인적으로 안타깝게 생각하며, 그러다 보니 몇 안되는 댓글로 인해 잘못된 정보를 접할 수 있어 예스24에 올라온 댓글에 대해 이 자리를 통해 답변을 드립니다. 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》을 짜깁기 한 책이 아닙니다. 지난 수 년간 직접 실험하고 풀이한 내용, 그 동안의 면접관으로서의 오랜 경험을 정리하여 직접 집필한 책입니다. 동일한 '코딩 인터뷰'를 주제로 했다는 점을 제외하면 《파이썬 알고리즘 인터뷰》는 《코딩 인터뷰 완전 분석》과는 완전히 다른 책이며, 한글로 된 더 좋은 책을 만들기 위해 최선을 다한 책입니다. 몇 페이지만 열어봐도 완전히 다른 책임은 금방 알아차릴 수 있을텐데, 단순히 포맷이 유사하다는 이유로 저자와 출판사의 지난 수 년간의 노력을 헛되이 하는 이런 근거 없는 댓글은 매우 안타깝습니다.
 
 ## YouTube
-다음 동영상은 네이버 클로바 리더이신 김성훈 교수님과 인터뷰한 내용입니다.
+저자의 책 소개 영상입니다.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fNyGHpSWhTA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+다음 영상은 네이버 클로바 리더이신 김성훈 교수님과 인터뷰한 내용입니다.
 <iframe width="600" height="338" src="https://www.youtube.com/embed/51CmqUdLGe4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 이외에도 《파이썬 알고리즘 인터뷰》에서 제공하는 문제는 [Chris AI Holic 유튜브 채널](https://www.youtube.com/user/ChrissSong)을 운영하고 있는 송호연님의 유튜브를 통해 풀이를 영상으로 보실 수 있습니다.
