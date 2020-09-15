@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: AI Platform
-last-modified: 2020/09/06 23:25:28
+last-modified: 2020/09/15 21:57:54
 ---
 
 <!-- TOC -->
@@ -10,6 +10,7 @@ last-modified: 2020/09/06 23:25:28
     - [Local Predict](#local-predict)
 - [서버](#서버)
     - [Conda](#conda)
+    - [Notebook](#notebook)
 
 <!-- /TOC -->
 
@@ -73,3 +74,21 @@ $ wget https://repo.anaconda.com/pkgs/misc/conda-execs/conda-4.7.5-linux-64.exe
 $ ./conda-4.7.5-linux-64.exe install -p /opt/conda conda=4.7.5
 $ conda install -c rapidsai -c nvidia -c conda-forge -c defaults rapids=0.14 python=3.7 cudatoolkit=10.1
 ```
+
+## Notebook
+노트북을 설치한 인스턴스를 생성해준다. 아직 Seoul은 없음. 인스턴스를 생성하고 JupyterLab을 직접 설치하는 것과 뭐가 다르냐고 할 수 있지만 구글 인증을 포함한 많은 부분을 미리 처리해두어 매우 편리하다. 
+
+- Python 2 and 3 지정
+- 비용 최소를 위해 1 CPU 별도 지정
+- asia-northeast1-b (Tokyo)
+
+<img src="https://user-images.githubusercontent.com/1250095/93212937-38ea6400-f79e-11ea-971f-3febfc7d9f7d.png" width="100%">
+
+`%%bigquery` 매직 키워드 바로 사용 가능. 처음에 storage warning이 발생해서 콘솔에서 `$ pip install google-cloud-bigquery-storage` 커널 재시작만 한 번 해줌.
+```
+%%bigquery df
+select temp, count(temp) from aas
+group by temp
+order by temp asc
+```
+노트북은 public 접속 가능하나 구글 인증으로 확인이 되어야 접속 가능하다.
