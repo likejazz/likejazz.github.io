@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/08/22 01:55:27
+last-modified: 2020/09/17 04:59:50
 ---
 
 <!-- TOC -->
@@ -12,8 +12,9 @@ last-modified: 2020/08/22 01:55:27
     - [Apache Hello World](#apache-hello-world)
     - [스크립트](#스크립트)
     - [Push Docker Image to ECR](#push-docker-image-to-ecr)
-    - [Keep Docker Containers Running](#keep-docker-containers-running)
+    - [Push the Docker image to Container Registry](#push-the-docker-image-to-container-registry)
 - [CMD vs. ENTRYPOINT](#cmd-vs-entrypoint)
+    - [Keep Docker Containers Running](#keep-docker-containers-running)
 - [Books](#books)
     - [도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문 <sub>2018, 2019</sub>](#도커쿠버네티스를-활용한-컨테이너-개발-실전-입문-2018-2019)
 
@@ -29,6 +30,20 @@ WORKDIR /www
 CMD deno run --allow-net --allow-read hello.ts
 ```
 
+Go는 빌드 후에 바이너리만 별도로 담을 수 있기 때문에[^fn-go] multi-stage builds를 사용하면 k8s를 위한 최적의 언어가 아닌가 싶다.
+
+[^fn-go]: <https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app>
+
+```docker
+FROM golang:1.8-alpine
+ADD . /go/src/hello-app
+RUN go install hello-app
+
+FROM alpine:latest
+COPY --from=0 /go/bin/hello-app .
+ENV PORT 8080
+CMD ["./hello-app"]
+```
 ## 명령
 ```console
 # Stop & Remove
@@ -83,13 +98,26 @@ echo "${AWS_OTP}" | docker login --username AWS --password-stdin ${ECR_REGISTRY}
 docker tag edith/edith-xxxx:latest ${ECR_REGISTRY}:"${VERSION}"
 docker push ${ECR_REGISTRY}:"${VERSION}"
 ```
-## Keep Docker Containers Running
+
+## Push the Docker image to Container Registry
+```bash
+$ gcloud auth configure-docker
+$ docker push gcr.io/edith-xxx/hello-app:v1
 ```
-FROM amazonlinux:latest
- 
-# other commands
- 
-CMD tail -f /dev/null
+GCP는 docker login 필요 없이 gcloud 인증으로 바로 진행된다.
+
+k8s 조회(먼저 인증)
+```bash
+$ gcloud container clusters get-credentials hello-cluster --zone asia-northeast3-b --project edith-xxx
+$ kubectl get service
+```
+
+ClusterIP (default)로 expose하면 당연히 외부에서는 접근할 수 없다. 같은 네트워크 대역에서도 접속이 안된다. cluster 내에서만 접속 가능. 외부는 LoadBalancer로 설정. 이 경우 인증 없이 외부에 오픈되므로 주의.
+```bash
+$ kubectl get pods
+$ kubectl exec -it [POD-NAME] -- sh
+$ apk add --no-cache curl
+$ curl [CLUSTER-IP]
 ```
 
 # CMD vs. ENTRYPOINT
@@ -135,6 +163,13 @@ RUN sed -i "s/80/$CONTAINER_PORT/g" /etc/apache2/sites-available/000-default.con
 
 # 개발시에는 VOLUME 설정을 하고 실서비스는 파일을 복사한다.
 COPY ./demo/index.php /var/www/html/
+```
+
+## Keep Docker Containers Running
+```
+FROM amazonlinux:latest
+...
+CMD tail -f /dev/null
 ```
 
 # Books

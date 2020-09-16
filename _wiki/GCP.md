@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/05 04:15:13
+last-modified: 2020/09/17 03:32:05
 ---
 
 <!-- TOC -->
@@ -15,6 +15,7 @@ last-modified: 2020/09/05 04:15:13
     - [SSH 접속](#ssh-접속)
     - [서버 설정](#서버-설정)
     - [네트워크](#네트워크)
+    - [CLI](#cli)
 - [운영](#운영)
     - [인증](#인증)
 
@@ -103,6 +104,22 @@ sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 ## 네트워크
 VPC networks - Firewall에서 내 IP에 대해 allow all 처리로 편하게 이용. 태그를 지정하면 해당 태그에만 룰이 적용되도록 설정 가능. network logging도 가능하다.
+
+## CLI
+gcloud cli 설정 조회
+```console
+$ gcloud config list
+[compute]
+region = asia-northeast3
+zone = asia-northeast3-a
+[core]
+account = xxx@email.com
+disable_usage_reporting = False
+project = edith-xxx
+
+Your active configuration is: [default]
+```
+default project도 지정. 매 번 cli에서 project id를 입력하지 않아도 된다. 이외 `$ export PROJECT_ID=xxx` 방법도 있음.
 
 # 운영
 ```
