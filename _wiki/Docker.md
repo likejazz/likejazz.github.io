@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/09/18 02:31:35
+last-modified: 2020/09/18 22:22:37
 ---
 
 <!-- TOC -->
@@ -13,7 +13,6 @@ last-modified: 2020/09/18 02:31:35
     - [스크립트](#스크립트)
     - [Push Docker Image to ECR](#push-docker-image-to-ecr)
     - [Push the Docker image to Container Registry](#push-the-docker-image-to-container-registry)
-        - [Kubernetes](#kubernetes)
 - [CMD vs. ENTRYPOINT](#cmd-vs-entrypoint)
     - [Keep Docker Containers Running](#keep-docker-containers-running)
 - [Books](#books)
@@ -31,7 +30,7 @@ WORKDIR /www
 CMD deno run --allow-net --allow-read hello.ts
 ```
 
-Go는 빌드 후에 바이너리만 별도로 담을 수 있기 때문에[^fn-go] multi-stage builds를 사용하면 k8s를 위한 최적의 언어가 아닌가 싶다.
+Go는 빌드 후에 바이너리만 별도로 담을 수 있기 때문에[^fn-go] multi-stage builds를 사용하면 docker를 위한 최적의 언어 같다.
 
 [^fn-go]: <https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app>
 
@@ -106,37 +105,6 @@ $ gcloud auth configure-docker
 $ docker push gcr.io/edith-xxx/hello-app:v1
 ```
 GCP는 docker login 필요 없이 gcloud 인증으로 바로 진행된다.
-
-### Kubernetes
-k8s 조회(먼저 인증)
-```bash
-$ gcloud container clusters get-credentials hello-cluster --zone asia-northeast3-b --project edith-xxx
-Fetching cluster endpoint and auth data.
-kubeconfig entry generated for hello-cluster.
-$ kubectl get service
-```
-
-ClusterIP (default)로 expose하면 당연히 외부에서는 접근할 수 없다. 같은 네트워크 대역에서도 접속이 안된다. cluster 내에서만 접속 가능. 외부는 LoadBalancer로 설정. 이 경우 인증 없이 외부에 오픈되므로 주의.
-```bash
-$ kubectl get pods
-$ kubectl exec -it [POD-NAME] -- sh
-$ apk add --no-cache curl
-$ curl [CLUSTER-IP]
-```
-LoadBalancer는 GCP의 기능을 이용하는데, 아마 GKE 지원 기능으로 보인다.
-```bash
-$ gcloud compute forwarding-rules list
-```
-로 Load Balancing 조회 가능. k8s cluster를 삭제하면 함께 삭제된다.
-
-적용은,
-```bash
-$ kubectl apply -f redis-leader-deployment.yaml
-$ kubectl apply -f redis-leader-service.yaml
-```
-이렇게 kubectl로 Console 사용하지 않고(터미널이 아닌 GKE 콘솔 의미) yaml 적용으로 바로 pod/service 적용 가능하다. 예전 DKOS v3도 이런식으로 yaml 적용으로 했던 기억.
-
-기본 VM 3대에 pod가 골고루 배치. 이 부분도 DKOS 동일. `kubectl scale` 하면 pod가 늘어난다. 물론 VM을 함께 늘려줘야 의미가 있을듯.
 
 # CMD vs. ENTRYPOINT
 항상 헷갈린다. 주로 `CMD`로 처리했으며, `docker run` 이후에 실행된다.
