@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/17 03:32:05
+last-modified: 2020/09/20 02:10:10
 ---
 
 <!-- TOC -->
@@ -111,7 +111,7 @@ gcloud cli 설정 조회
 $ gcloud config list
 [compute]
 region = asia-northeast3
-zone = asia-northeast3-a
+zone = asia-northeast3-b
 [core]
 account = xxx@email.com
 disable_usage_reporting = False
@@ -120,6 +120,8 @@ project = edith-xxx
 Your active configuration is: [default]
 ```
 default project도 지정. 매 번 cli에서 project id를 입력하지 않아도 된다. 이외 `$ export PROJECT_ID=xxx` 방법도 있음.
+
+로컬 콘솔 외에도 Cloud Shell을 실행하는 방법이 있다. 모든 도구가 설치되어 있으며, 환경 차이 없이 가상 서버 터미널을 브라우저에서 표준 방식으로 사용할 수 있어 편리하다.
 
 # 운영
 ```
@@ -143,5 +145,5 @@ $ gcloud auth application-default login
 
 디폴트 프로젝트 변경. 편하게 사용하기 위해 꼭 필요하다.
 ```
-$ gcloud config set project XXX
+$ gcloud config set project edith-xx
 ```
