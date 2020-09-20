@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/20 02:10:10
+last-modified: 2020/09/20 13:17:31
 ---
 
 <!-- TOC -->
@@ -16,6 +16,7 @@ last-modified: 2020/09/20 02:10:10
     - [서버 설정](#서버-설정)
     - [네트워크](#네트워크)
     - [CLI](#cli)
+        - [환경 설정](#환경-설정)
 - [운영](#운영)
     - [인증](#인증)
 
@@ -45,7 +46,7 @@ $ sudo apt install gcc cmake
 
 T4의 생성 limit이 처음에 1로 되어 있는데, all quotas에서 요청을 하면 5분 이내에 바로 처리해준다. 반영되는데는 최대 15분 소요. 처음 접속할때 CUDA 최초 설치 필요. anaconda는 이미 설치되어 있다. nvtop 설치[^fn-nvtop] apk에는 없어서 소스 컴파일 설치했다.
 
-```
+```console
 $ sudo apt install cmake libncurses5-dev libncursesw5-dev
 $ git clone https://github.com/Syllo/nvtop.git
 $ mkdir -p nvtop/build && cd nvtop/build
@@ -74,11 +75,9 @@ cuDF가 0.7이라서(최신은 0.14) 기능 제약이 많다. conda로 업데이
 ## Container Optimized OS
 추가 디스크 공간이 `/mnt/stateful_partition/home`로 할당되어 있는데 `/home`과 동일하다. `$ readlink . -f`에서는 각각의 디렉토리 명이 표시된다.
 
-`yum`, `apt` 모두 지원하지 않고 `toolbox`를 실행해서 설치[^fn-toolbox] 여러가지 유용한 도구 제공
+`yum`, `apt` 모두 지원하지 않고 `toolbox`를 실행해서 설치[^fn-toolbox] 여러가지 유용한 도구 제공. k8s에서도 이 OS(약칭 cos)를 활용한다.
 
 [^fn-toolbox]: <https://cloud.google.com/container-optimized-os/docs/how-to/toolbox>
-
-k8s에서도 이 OS를 활용한다고.
 
 # 설정
 
@@ -106,7 +105,8 @@ sudo ln -s /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 VPC networks - Firewall에서 내 IP에 대해 allow all 처리로 편하게 이용. 태그를 지정하면 해당 태그에만 룰이 적용되도록 설정 가능. network logging도 가능하다.
 
 ## CLI
-gcloud cli 설정 조회
+### 환경 설정
+설정 조회
 ```console
 $ gcloud config list
 [compute]
@@ -119,18 +119,22 @@ project = edith-xxx
 
 Your active configuration is: [default]
 ```
-default project도 지정. 매 번 cli에서 project id를 입력하지 않아도 된다. 이외 `$ export PROJECT_ID=xxx` 방법도 있음.
+
+```bash
+$ gcloud config set project edith-xx
+```
+이처럼 default project 지정. 매 번 cli에서 project id를 입력하지 않아도 된다. 이외 `$ export PROJECT_ID=xxx` 방법도 있다.
 
 로컬 콘솔 외에도 Cloud Shell을 실행하는 방법이 있다. 모든 도구가 설치되어 있으며, 환경 차이 없이 가상 서버 터미널을 브라우저에서 표준 방식으로 사용할 수 있어 편리하다.
 
 # 운영
 ```
 # 조회
-$ gcloud compute instances list --project=xxx
+$ gcloud compute instances list
 
 # 시작/중지
-$ gcloud compute instances start stark-seoul --zone=asia-northeast3-c --project=xxx  # 시작
-$ gcloud compute instances stop stark-seoul --zone=asia-northeast3-c --project=xxx  # 중지
+$ gcloud compute instances start stark-seoul  # 시작
+$ gcloud compute instances stop stark-seoul  # 중지
 ```
 
 ## 인증
@@ -141,9 +145,4 @@ $ gcloud auth list
 
 ```
 $ gcloud auth application-default login
-```
-
-디폴트 프로젝트 변경. 편하게 사용하기 위해 꼭 필요하다.
-```
-$ gcloud config set project edith-xx
 ```
