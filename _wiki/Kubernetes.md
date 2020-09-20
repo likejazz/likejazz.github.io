@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Kubernetes
-last-modified: 2020/09/20 04:31:21
+last-modified: 2020/09/20 14:07:41
 ---
 
 <!-- TOC -->
@@ -113,7 +113,7 @@ redis-leader / redis-follower 구조로 read가 많을때 효율적. PHP에서 g
 - Deploying WordPress on GKE with Persistent Disks and Cloud SQL  
 코드 전혀 없이 공식 이미지로 설치 배포 과정을 보여줌. Cloud SQL MySQL 생성. PV 사용을 보여준다. 그런데 사이트 접속이 상당히 늦다. static file 조차도 느린걸 보면 네트워크 문제로 보이는데, 원인 파악은 하지 못함. 위에 redis/php 예제는 엄청 빠른데 왜 느린지 의문.
 - Deploying Memcached on Google Kubernetes Engine  
-이건 helm 사용하는 부분에서 명령이 동작하지 않아서 시도하다가 중간에 그만둠. helm을 사용하면 복잡한 yaml에서 해방될 수 있다고 하나 익숙하지 않음.
+이건 helm 사용하는 부분에서 명령이 동작하지 않아서 시도하다가 중간에 그만둠. 가이드에서 helm 버전이 2.x으로 옛날 버전이다. helm을 사용하면 복잡한 yaml에서 해방될 수 있다고 하나 아직 익숙하지 않다.
 - Running Django on Google Kubernetes Engine  
 Cloud SQL에서 PostgreSQL를 사용하고, Cloud SQL Proxy를 이용해 로컬에서도 테스트가 가능하도록 한다. 최종 서비스는 Django로 구성해 gunicorn으로 서비스 하고 static 파일은 별도로 GCS에 public으로 서비스하도록 구성한다. ADD NODE POOL도 함께 실험해봤는데, 문제 없이 잘 된다. 그런데 `kubectl apply -f polls.yaml`은 `Does not have minimum availability` 오류 발생. CloudSQL 인증을 해야 실행된다. 오류가 마치 리소스 부족인것 처럼 명확하지 않아 원인을 찾는데 시간을 많이 소모함.
 ```bash
