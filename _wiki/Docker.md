@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/09/18 22:22:37
+last-modified: 2020/09/24 20:56:05
 ---
 
 <!-- TOC -->
@@ -161,8 +161,15 @@ CMD tail -f /dev/null
 # Books
 ## 도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문 <sub>2018, 2019</sub>
 - 도커 컨테이너 배포
-- 스웜을 이용한 실전 애플리케이션 개발
-- 쿠버네티스 입문/클러스터 구축
+- ~~스웜을 이용한 실전 애플리케이션 개발~~
+    - 필요 없음
+- 쿠버네티스 입문/클러스터 구축  
+    - GKE에서 진행
+- 쿠버네티스 실전
+    - kubectl, helm등 다양한 활용 방법 소개, rolling update 전략, service mesh Istio 언급.
 - 컨테이너 운영
+    - log 관리, GCP의 stackdriver logging 소개(현재는 Cloud Logging)
 - 가벼운 도커 이미지 만들기
-(k8s 추가 학습 필요)
+    - scratch, busybox, alpine 까지 소개한다.
+
+중간중간 컬럼을 통해 저자의 생각을 읽을 수 있어서 좋다.

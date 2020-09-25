@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Kubernetes
-last-modified: 2020/09/20 14:07:41
+last-modified: 2020/09/24 18:12:54
 ---
 
 <!-- TOC -->
@@ -12,6 +12,7 @@ last-modified: 2020/09/20 14:07:41
 - [기타 명령](#기타-명령)
     - [상태 변경 조회](#상태-변경-조회)
 - [Tutorial](#tutorial)
+- [Istio on GKE](#istio-on-gke)
 
 <!-- /TOC -->
 
@@ -124,4 +125,23 @@ $ kubectl create secret generic cloudsql \
 삭제할때는,
 ```bash
 $ kubectl delete secret cloudsql
+```
+
+## Istio on GKE
+> A service mesh, like the open source project Istio, is a way to control how different parts of an application share data with one another.
+
+Tutorial 참고[^fn-istio] 여타 설정 제외하고 가능한 default로 시도해봄.
+
+[^fn-istio]: <https://cloud.google.com/istio/docs/istio-on-gke/installing#command-line>
+
+```console
+$ gcloud beta container clusters create demo-cluster \
+    --addons=Istio --istio-config=auth=MTLS_PERMISSIVE \
+    --num-nodes=4
+```
+
+설치 여부 조회
+```console
+$ kubectl get svc -n istio-system
+$ kubectl get po -n istio-system
 ```
