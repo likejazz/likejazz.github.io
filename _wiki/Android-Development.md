@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Android Development
-last-modified: 2020/01/18 13:22:41
+last-modified: 2020/09/27 17:54:00
 ---
 
 <!-- TOC -->
@@ -21,6 +21,8 @@ last-modified: 2020/01/18 13:22:41
 - [예전 프로젝트에 대한 빌드](#예전-프로젝트에-대한-빌드)
 - [SharedPrefrences](#sharedprefrences)
 - [Gradle](#gradle)
+- [Flutter](#flutter)
+- [BlueStacks](#bluestacks)
 
 <!-- /TOC -->
 
@@ -147,3 +149,9 @@ Gradle은 wrapper 기반 실행이 recommend 이므로,
 $ gradle wrapper
 ```
 로 wrapper를 설치한다. JDK는 [Amazon Corretto 11 설치](https://aws.amazon.com/corretto/) JAVA_HOME 설정 `export JAVA_HOME=$(/usr/libexec/java_home)` 결국 `sourceCompatibility`는 `8`에서 올리지 못함.
+
+# Flutter
+원래 조금 다르지만 당분간은 여기 같이 정리한다. React Native와 경쟁 관계인 구글의 앱 native 개발 환경. 안드로이드 스튜디오에 잘 연동된다. 예전에 react native는 vscode 같은 별도 툴에서 웹 페이지 개발하듯이 했는데, flutter는 동일한 안드로이드 스튜디오에 플러그인을 잘 지원한다. 심지어 Dart 플러그인은 jetbrains에서 직접 만들었다. 반면 react native는 3rd party plugin만 몇 개 보인다.
+
+# BlueStacks
+원래 모바일 게임 emulator에 좀 더 가까우나 안드로이드 개발시 가장 가벼운 가상 환경이라 매우 편리하다. 사실 핸드폰을 매 번 연결하는 것은 적잖이 귀찮다. 반드시 BlueStacks 먼저 띄우고, 이후에 Android Studio를 구동한다. 잘 안될때가 있는데, 순서대로 띄우고 좀 기다리니 된다. flutter 할때 안됐는데, 일반 android native 프로젝트로 먼저 실행해서 배포한 후 다시 해보니 잘 된다. `adb`를 이용한 디버깅도 가능할 것 같은데, 자주 발생하는 문제이므로 명확한 문제와 해결 방법 파악이 필요.

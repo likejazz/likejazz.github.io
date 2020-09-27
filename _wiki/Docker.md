@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/09/24 20:56:05
+last-modified: 2020/09/27 17:18:59
 ---
 
 <!-- TOC -->
@@ -9,12 +9,12 @@ last-modified: 2020/09/24 20:56:05
 - [기본](#기본)
     - [Dockerfile](#dockerfile)
     - [명령](#명령)
-    - [Apache Hello World](#apache-hello-world)
     - [스크립트](#스크립트)
-    - [Push Docker Image to ECR](#push-docker-image-to-ecr)
-    - [Push the Docker image to Container Registry](#push-the-docker-image-to-container-registry)
+    - [AWS](#aws)
+    - [GCP](#gcp)
 - [CMD vs. ENTRYPOINT](#cmd-vs-entrypoint)
     - [Keep Docker Containers Running](#keep-docker-containers-running)
+- [Docker Resource Constraints](#docker-resource-constraints)
 - [Books](#books)
     - [도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문 <sub>2018, 2019</sub>](#도커쿠버네티스를-활용한-컨테이너-개발-실전-입문-2018-2019)
 
@@ -35,7 +35,7 @@ Go는 빌드 후에 바이너리만 별도로 담을 수 있기 때문에[^fn-go
 [^fn-go]: <https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app>
 
 ```docker
-FROM golang:1.8-alpine
+FROM golang:alpine
 ADD . /go/src/hello-app
 RUN go install hello-app
 
@@ -44,6 +44,7 @@ COPY --from=0 /go/bin/hello-app .
 ENV PORT 8080
 CMD ["./hello-app"]
 ```
+
 ## 명령
 ```console
 # Stop & Remove
@@ -58,29 +59,6 @@ docker run -d --name aas-www-container -p 80:8123 -v /home/gcp-user/www:/www aas
 docker logs -f aas-www-container
 ```
 
-## Apache Hello World
-```docker
-FROM ubuntu:18.04
-
-# Install dependencies
-RUN apt-get update && \
- apt-get -y install apache2
-
-# Install apache and write hello world message
-RUN echo 'Hello World!' > /var/www/html/index.html
-
-# Configure apache
-RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh && \
- echo 'mkdir -p /var/run/apache2' >> /root/run_apache.sh && \
- echo 'mkdir -p /var/lock/apache2' >> /root/run_apache.sh && \ 
- echo '/usr/sbin/apache2 -D FOREGROUND' >> /root/run_apache.sh && \ 
- chmod 755 /root/run_apache.sh
-
-EXPOSE 80
-
-CMD /root/run_apache.sh
-```
-
 ## 스크립트
 Gist 정리
 - [update-docker.sh](https://gist.github.com/likejazz/85c54f4c6b69e60cb7b75f806659153d)  
@@ -88,7 +66,8 @@ Gist 정리
 - [dockerize.sh](https://gist.github.com/likejazz/ba41d83fc94dbb75b982f4e37dc008b6)  
 도커 이미지를 빌드해서 배포
 
-## Push Docker Image to ECR
+## AWS
+Push Docker Image to ECR
 ```bash
 readonly VERSION=$(date '+%y.%m.%d')
 readonly ECR_REGISTRY=0996xxx.dkr.ecr.ap-northeast-2.amazonaws.com/edith/edith-xxxx
@@ -99,7 +78,8 @@ docker tag edith/edith-xxxx:latest ${ECR_REGISTRY}:"${VERSION}"
 docker push ${ECR_REGISTRY}:"${VERSION}"
 ```
 
-## Push the Docker image to Container Registry
+## GCP
+Push the Docker image to Container Registry
 ```bash
 $ gcloud auth configure-docker
 $ docker push gcr.io/edith-xxx/hello-app:v1
@@ -158,11 +138,33 @@ FROM amazonlinux:latest
 CMD tail -f /dev/null
 ```
 
+# Docker Resource Constraints
+docker는 기본적으로 자원을 제한하지 않지만 cpu/memory 리소스를 제한할 수 있다. macOS는 기본적으로 제한한 상태에서 구동된다.
+
+docker의 memory resource를 8g까지 늘려 잡고 실제로 pandas로 메모리를 점유해봐도 host 머신의 메모리 점유는 늘지 않는다. 단순히 표현을 안할뿐인지, 아니면 가상 메모리를 활용하는지(이렇게 되면 성능이 떨어질텐데) 확인 필요. 애초에 docker를 실행할때는 일정 부분 메모리를 점유한다. 8.7g 점유하고 있던 메모리가 docker 종료시 3.7g가 된다. 메모리를 얼마를 잡든 항상 그 정도는 차지하는 듯 하다. 약간이라도 메모리를 더 확보하기 위해서는 안쓸때는 docker를 종료할 필요가 있다.
+
+docker 내에서 CPULoadGenerator[^fn-cpu]로 테스트 해보니 host 메모리도 더 이상 늘지 않고 CPU는 나눠 쓴다. 꼭 같은 코어를 쓰는것도 아니다. 해당 코어가 일을 하고 있다면 다른 코어를 사용한다. 6개를 점유하고 있어도 6개가 유휴 상태가 아니라면 600% 일을 할 수 없고, host CPU가 4개만 남은 상태로 테스트 결과 490% 정도 밖에 성능을 낼 수 없었다. (다른 코어를 100%에서 80%까지 성능을 떨어트려 90% 여유분 확보) 
+
+<img width="80%" src="https://user-images.githubusercontent.com/1250095/94359426-12072880-00e2-11eb-867d-9825c554153b.png">
+
+총 합은 코어 갯수 * 100%로 동일. 즉, docker내에서는 100% 일 한다고 표시하지만 실제로는 100% 성능을 못내는 상태.
+
+[^fn-cpu]: <https://github.com/GaetanoCarlucci/CPULoadGenerator/tree/Python3/>
+
+```console
+$ ./CPULoadGenerator.py -l 1.0 -d 20 -c 0 -c 1 -c 2 -c 3
+$ yes > /dev/null &
+```
+
+이렇게 간단하게[^fn-yes] 스트레스 테스트를 할 수 있다. 맥에서는 이걸로 테스트. 내가 실험한건 docker의 부하가 host에 어떤 영향을 끼치는지 이고, ctop과 스트레스 전용 이미지를 이용해 docker 내부의 cpu 제약을 실험한 글[^fn-cpu-limit]도 참고.
+
+[^fn-yes]: <https://osxdaily.com/2012/10/02/stress-test-mac-cpu/>
+[^fn-cpu-limit]: <https://thorsten-hans.com/docker-container-cpu-limits-explained>
+
 # Books
 ## 도커/쿠버네티스를 활용한 컨테이너 개발 실전 입문 <sub>2018, 2019</sub>
 - 도커 컨테이너 배포
-- ~~스웜을 이용한 실전 애플리케이션 개발~~
-    - 필요 없음
+- ~~스웜을 이용한 실전 애플리케이션 개발~~ 필요 없음
 - 쿠버네티스 입문/클러스터 구축  
     - GKE에서 진행
 - 쿠버네티스 실전
@@ -171,5 +173,3 @@ CMD tail -f /dev/null
     - log 관리, GCP의 stackdriver logging 소개(현재는 Cloud Logging)
 - 가벼운 도커 이미지 만들기
     - scratch, busybox, alpine 까지 소개한다.
-
-중간중간 컬럼을 통해 저자의 생각을 읽을 수 있어서 좋다.
