@@ -1,14 +1,15 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/09/27 17:18:59
+last-modified: 2020/09/28 20:39:21
 ---
 
 <!-- TOC -->
 
 - [기본](#기본)
     - [Dockerfile](#dockerfile)
-    - [명령](#명령)
+        - [multi-stage builds](#multi-stage-builds)
+        - [컨테이너를 실행하는 스크립트](#컨테이너를-실행하는-스크립트)
     - [스크립트](#스크립트)
     - [AWS](#aws)
     - [GCP](#gcp)
@@ -30,6 +31,7 @@ WORKDIR /www
 CMD deno run --allow-net --allow-read hello.ts
 ```
 
+### multi-stage builds
 Go는 빌드 후에 바이너리만 별도로 담을 수 있기 때문에[^fn-go] multi-stage builds를 사용하면 docker를 위한 최적의 언어 같다.
 
 [^fn-go]: <https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/master/hello-app>
@@ -45,7 +47,9 @@ ENV PORT 8080
 CMD ["./hello-app"]
 ```
 
-## 명령
+### 컨테이너를 실행하는 스크립트
+바깥에서 docker를 실행하기 위한 명령, 컨테이너를 새롭게 빌드하고 포트 맵핑, 디렉토리 맵핑(hot reload를 위해)을 처리했다.
+
 ```console
 # Stop & Remove
 docker stop aas-www-container
