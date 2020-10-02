@@ -134,13 +134,25 @@ tags: ["Book", "Coding Interview"]
 저자의 책 소개 영상입니다.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/fNyGHpSWhTA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-다음 영상은 네이버 클로바 리더이신 김성훈 교수님과 인터뷰한 내용입니다.
+네이버 클로바 리더이신 김성훈 교수님과 인터뷰한 내용입니다.
 <iframe width="600" height="338" src="https://www.youtube.com/embed/51CmqUdLGe4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 이외에도 《파이썬 알고리즘 인터뷰》에서 제공하는 문제는 [Chris AI Holic 유튜브 채널](https://www.youtube.com/user/ChrissSong)을 운영하고 있는 송호연님의 유튜브를 통해 풀이를 영상으로 보실 수 있습니다.
 - 문제 풀이 채널: <https://bit.ly/algorithm-interview-youtube>
 
 실제로 온라인 코딩 테스트 시에 어떤 식으로 풀이하는지 영상을 통해 살펴볼 수 있습니다. 전문가는 어떻게 풀이 알고리즘을 설계하고, 어떤 식으로 문제를 풀이하고, 어떤 풀이 기법들을 사용하는지 유심히 살펴본다면 실제로 코딩 인터뷰 시에 문제를 제대로, 잘 풀이하는 데 많은 도움이 될 것입니다.
+
+아울러 몇 가지 [코딩 테스트 문제를 저자가 직접 함께 풀이하는 영상](https://likejazz.com/post/630859218303500288/유튜브에는-이미-네이버-카카오-코딩-테스트-기출-문제-풀이-영상들이-많이-있는데요)을 소개합니다.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/H5RMk2cOz88" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+> 유튜브에는 이미 네이버, 카카오 코딩 테스트 기출 문제 풀이 영상들이 많이 있는데요. 하지만 중요한 부분은 건너 뛰거나 미리 정답을 준비해서 빠르게 풀이하는 영상들이 많아서, 실제로 많은 분들에게 도움이 될 수 있도록 처음부터 차근차근 풀이하는 영상을 한 번 만들어 봤습니다.
+>
+> - 1편 영상: <https://youtu.be/8DrkNmN9TGM>  
+> - 2편 영상: <https://youtu.be/H5RMk2cOz88>
+>
+> ** 알림: 원래 훨씬 더 문제를 잘 풀이하는데 일반인을 위한 코딩 테스트 문제 풀이 컨셉에 맞게 질의 응답 형태로 각본대로 진행하였습니다. 행여나 잘못된 오해 없으시길 바랍니다. **
+>
+> 차근차근 풀다보니 영상이 길어져서 두 개로 나누었습니다. 1부에서는 문제에 대한 설명과 프로그래머스를 이용한 문제 풀이 방법, 실제 코딩 테스트시 문제가 풀리지 않을때 대처 방안 등을 설명하고 List로 문제를 풀이하였습니다. 2부에서는 1부에 이어 보다 효율적인 자료형, OrderedDict와 deque를 활용하여 문제를 풀이하는 방법을 소개하였습니다.
 
 ## 학습 노트
 《파이썬 알고리즘 인터뷰》를 보면서 정말 열심히 공부하고, 코드로 풀이하고 계신 분의 깃헙을 소개해드립니다. 
