@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/09/28 20:39:21
+last-modified: 2020/10/10 02:49:06
 ---
 
 <!-- TOC -->
@@ -10,6 +10,7 @@ last-modified: 2020/09/28 20:39:21
     - [Dockerfile](#dockerfile)
         - [multi-stage builds](#multi-stage-builds)
         - [컨테이너를 실행하는 스크립트](#컨테이너를-실행하는-스크립트)
+        - [Host Kernel 공유](#host-kernel-공유)
     - [스크립트](#스크립트)
     - [AWS](#aws)
     - [GCP](#gcp)
@@ -62,6 +63,35 @@ docker build -t aas-www-image .
 docker run -d --name aas-www-container -p 80:8123 -v /home/gcp-user/www:/www aas-www-image
 docker logs -f aas-www-container
 ```
+
+### Host Kernel 공유
+```console
+$ docker run -it ubuntu:latest
+root@97039839a4a6:/# uname -sr
+Linux 4.19.76-linuxkit
+
+$ docker run -it centos:latest
+[root@071ff5d65f0f /]# uname -sr
+Linux 4.19.76-linuxkit
+```
+어느 OS를 실행하던 커널은 동일하다. 컨테이너는 커널을 포함하지 않으며 OS 커널을 사용하면서 Kernel Space는 공유하기 때문이다. 초창기 리눅스에서만 컨테이너가 구동되었던 이유이기도 하다.
+
+따라서, 아무 OS에서든 일단 실행 파일을 빌드하면 scratch에서도 잘 실행이 된다.
+```docker
+FROM scratch
+ADD hello /
+CMD ["/hello"]
+```
+
+hello 바이너리는 다음과 같이 만들 수 있다. 그런데 c++ static 빌드라서 실행파일만 2.3MB에 달한다. (alpine은 OS 전체도 5.5MB 밖에 안된다) c인 경우 0.8MB. static 빌드가 아닌 경우 해당 OS가 아니면 실행이 안된다.
+
+```console
+$ docker run -it -v $PWD:/build ubuntu:latest
+$ apt update && apt install -y build-essential
+$ cd /build && g++ -o hello -static hello.cc
+```
+
+결국 컨테이너는 Host 커널은 함께 사용하면서 유저 프로세스를 별도로 격리하는 역할을 한다.
 
 ## 스크립트
 Gist 정리
