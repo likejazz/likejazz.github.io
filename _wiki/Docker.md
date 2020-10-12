@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/10/10 02:49:06
+last-modified: 2020/10/10 12:43:37
 ---
 
 <!-- TOC -->
@@ -12,8 +12,10 @@ last-modified: 2020/10/10 02:49:06
         - [컨테이너를 실행하는 스크립트](#컨테이너를-실행하는-스크립트)
         - [Host Kernel 공유](#host-kernel-공유)
     - [스크립트](#스크립트)
+        - [컨테이너 현재 상태 저장](#컨테이너-현재-상태-저장)
     - [AWS](#aws)
     - [GCP](#gcp)
+    - [Alpine](#alpine)
 - [CMD vs. ENTRYPOINT](#cmd-vs-entrypoint)
     - [Keep Docker Containers Running](#keep-docker-containers-running)
 - [Docker Resource Constraints](#docker-resource-constraints)
@@ -100,6 +102,11 @@ Gist 정리
 - [dockerize.sh](https://gist.github.com/likejazz/ba41d83fc94dbb75b982f4e37dc008b6)  
 도커 이미지를 빌드해서 배포
 
+### 컨테이너 현재 상태 저장
+```console
+$ docker commit [CONTAINER_ID] ubuntu:skpark
+```
+
 ## AWS
 Push Docker Image to ECR
 ```bash
@@ -119,6 +126,12 @@ $ gcloud auth configure-docker
 $ docker push gcr.io/edith-xxx/hello-app:v1
 ```
 GCP는 docker login 필요 없이 gcloud 인증으로 바로 진행된다.
+
+## Alpine
+docker를 위한 최적의 OS. 팩키지 매니지까지 제공하여 용량이 작으면서도 유용하다.
+```console
+$ apk add htop
+```
 
 # CMD vs. ENTRYPOINT
 항상 헷갈린다. 주로 `CMD`로 처리했으며, `docker run` 이후에 실행된다.
