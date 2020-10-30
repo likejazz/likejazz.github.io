@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Santander Product Recommendation
-last-modified: 2020/08/05 18:16:17
+last-modified: 2020/10/30 15:48:55
 ---
 
 <!-- TOC -->
@@ -171,3 +171,8 @@ progress bar가 default로 나오는게 아름답다. 학습은 가장 오래 �
     ```python
     weights = np.exp(1/counts - 1)
     ```
+
+링크: 또 다른 실험[^fn-kaggle], Slideshare[^fn-slide]
+
+[^fn-kaggle]: <https://yseon99.tistory.com/category/Kaggle%20%EB%8C%80%ED%9A%8C/3.%20Santander%20Product%20Recommendation>
+[^fn-slide]: <https://www.slideshare.net/HyunJinJung6/3-santander-72072254>

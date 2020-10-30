@@ -1,12 +1,13 @@
 ---
 layout: wiki 
 title: Markov Decision Process
-last-modified: 2020/06/25 16:07:20
+last-modified: 2020/10/31 01:25:22
 ---
 
 <!-- TOC -->
 
 - [정의](#정의)
+- [MP, MRP, MDP](#mp-mrp-mdp)
 - [MDP vs FSM](#mdp-vs-fsm)
 - [Reinforcement Learning](#reinforcement-learning)
 
@@ -42,6 +43,14 @@ $$r(s, a, s^{\prime})$$는 상태 $$s$$에서 행동 $$a$$를 선택해 상태 $
 
 벨만 방정식  
 현재 상태의 가치함수와 다음 상태 가치함수의 관계식
+
+# MP, MRP, MDP
+『바닥부터 배우는 강화학습, 2020』
+<img src="https://user-images.githubusercontent.com/1250095/97730319-0f4f8700-1b17-11eb-9cba-a3c2859cab70.png" width="60%">
+<img src="https://user-images.githubusercontent.com/1250095/97730298-0959a600-1b17-11eb-9ce5-cc9ed20e817f.png" width="60%">
+<img src="https://user-images.githubusercontent.com/1250095/97730312-0e1e5a00-1b17-11eb-962b-73506b1bcb06.png" width="60%">
+에이전트가 포함된 MDP가 되었다. $$a_0$$의 확률을 생략한 이유는 100%이기 때문.
+<img src="https://user-images.githubusercontent.com/1250095/97730316-0eb6f080-1b17-11eb-82bb-6b5aa697d739.png" width="60%">
 
 # MDP vs FSM
 Whilst a Markov chain is a finite state machine, it is distinguished by its transitions being stochastic, i.e. random, and described by probabilities. [^fn-so]
