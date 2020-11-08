@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: BigQuery
-last-modified: 2020/09/06 16:15:08
+last-modified: 2020/11/08 20:55:43
 ---
 
 <!-- TOC -->
@@ -9,11 +9,13 @@ last-modified: 2020/09/06 16:15:08
 - [테이블 생성](#테이블-생성)
 - [설치](#설치)
     - [Python 설치](#python-설치)
+- [이동](#이동)
 - [활용](#활용)
     - [인증](#인증)
     - [DataFrame 맵핑](#dataframe-맵핑)
     - [Jupyter Notebook](#jupyter-notebook)
     - [Python Code](#python-code)
+    - [성능](#성능)
 
 <!-- /TOC -->
 
@@ -48,6 +50,9 @@ $ pip install google-cloud-bigquery google-cloud-bigquery-storage
 ```
 conda는 여전히 설치되지 않음. 
 
+# 이동
+multi-region에서 US와 EU간 테이블 조인이 되지 않는다. 동일 위치로 이동해야 하는데, dataset 이동에는 Transfer API를 활성화 해야 한다. 이후 copy dataset을 하면 Transfers에 추가되고 비동기로 진행된다. 2G 테이블 이동에 약 1분 이상 소요됐다.
+
 # 활용
 ## 인증
 인증 문제는 GCE 내에서,
@@ -65,7 +70,7 @@ $ gcloud auth list
 ## DataFrame 맵핑
 ```python
 >>> %load_ext google.cloud.bigquery
->>> %%bigquery df --use_bqstorage_api
+>>> %%bigquery df
 select * from ds.1m where vin = 'KMTHA81BBxxx'
 >>> type(df)
 pandas.core.frame.DataFrame
@@ -74,7 +79,7 @@ pandas.core.frame.DataFrame
 
 ## Jupyter Notebook
 ```python
->>> %%bigquery df --use_bqstorage_api
+>>> %%bigquery df
 select temperature, count(temperature) from ds.10m 
 group by temperature having 
 temperature != '-40.0' and
@@ -88,3 +93,6 @@ data manipulation 과정(column type 변경, sorting) 정리 필요
 
 ## Python Code
 [Python에서 BigQuery 호출 코드](https://gist.github.com/likejazz/01e76b10364a47bf9c4aa67c8ab49b33)
+
+## 성능
+BigQuery는 columnar-based이기 때문에 컬럼을 최소화 할수록 성능이 개선된다. 일반적인 DB와 마찬가지로 `SELECT *` 보다 `SELECT id1, id2`가 훨씬 더 성능이 좋다.
