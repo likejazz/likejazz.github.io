@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/09/20 13:17:31
+last-modified: 2020/11/12 22:29:51
 ---
 
 <!-- TOC -->
@@ -78,6 +78,15 @@ cuDF가 0.7이라서(최신은 0.14) 기능 제약이 많다. conda로 업데이
 `yum`, `apt` 모두 지원하지 않고 `toolbox`를 실행해서 설치[^fn-toolbox] 여러가지 유용한 도구 제공. k8s에서도 이 OS(약칭 cos)를 활용한다.
 
 [^fn-toolbox]: <https://cloud.google.com/container-optimized-os/docs/how-to/toolbox>
+
+```console
+# Inside the toolbox shell
+USER@cos-dev ~ $ toolbox
+root@cos-dev:~# apt-get update && apt-get install -y htop psmisc
+root@cos-dev:~# htop
+root@cos-dev:~# pstree -p
+root@cos-dev:~# exit
+```
 
 # 설정
 

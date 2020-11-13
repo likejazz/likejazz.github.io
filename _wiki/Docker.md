@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Docker
-last-modified: 2020/10/10 12:43:37
+last-modified: 2020/11/13 11:20:39
 ---
 
 <!-- TOC -->
@@ -15,6 +15,7 @@ last-modified: 2020/10/10 12:43:37
         - [컨테이너 현재 상태 저장](#컨테이너-현재-상태-저장)
     - [AWS](#aws)
     - [GCP](#gcp)
+        - [Accessing private Google Container Registry from docker](#accessing-private-google-container-registry-from-docker)
     - [Alpine](#alpine)
 - [CMD vs. ENTRYPOINT](#cmd-vs-entrypoint)
     - [Keep Docker Containers Running](#keep-docker-containers-running)
@@ -126,6 +127,32 @@ $ gcloud auth configure-docker
 $ docker push gcr.io/edith-xxx/hello-app:v1
 ```
 GCP는 docker login 필요 없이 gcloud 인증으로 바로 진행된다.
+
+### Accessing private Google Container Registry from docker
+docker-credential-gcr가 이미 설치되어 있기 때문에 다음과 같이 설정만 해주면 해당 프로젝트에서는 바로 접근 가능하다.
+```
+$ docker-credential-gcr configure-docker
+```
+
+COS에서는 다음과 같이 `runme.sh`를 만들어 GCR에서 바로 가져올 수 있다.
+```bash
+#!/bin/bash
+
+# Stop & Remove
+docker stop oauth2-container
+docker rm oauth2-container
+
+# Pull
+docker pull asia.gcr.io/xxx/xxx:latest
+
+# Run
+docker run -d \
+  --name oauth2-container \
+  -p 5143:5000 \
+  -e PYTHONUNBUFFERED=1 \
+  asia.gcr.io/xxx/xxx:latest
+docker logs -f oauth2-container
+```
 
 ## Alpine
 docker를 위한 최적의 OS. 팩키지 매니지까지 제공하여 용량이 작으면서도 유용하다.
