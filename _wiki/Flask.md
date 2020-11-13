@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Flask
-last-modified: 2020/11/12 22:18:46
+last-modified: 2020/11/13 15:31:58
 ---
 
 <!-- TOC -->
@@ -61,7 +61,7 @@ COPY . /app
 ENTRYPOINT AUTHLIB_INSECURE_TRANSPORT=1 FLASK_DEBUG=1 flask run --host='0.0.0.0'
 ```
 
-runme.sh
+로컬에서 실행할때 다음과 같이 runme.sh를 작성하여 매 번 빌드하는 형태로 활용.
 ```bash
 #!/bin/bash
 
