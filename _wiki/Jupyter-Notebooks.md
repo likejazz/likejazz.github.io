@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Jupyter Notebooks
-last-modified: 2019/07/15
+last-modified: 2020/11/15 00:21:39
 ---
 
 ## Deep Learning
@@ -72,6 +72,7 @@ last-modified: 2019/07/15
 - [prob-with-permutations.py](https://github.com/likejazz/jupyter-notebooks/blob/master/data-science/prob-with-permutations.py) Probabilities with Duplicate Permutations.
 - [euclidean-v-cosine.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/euclidean-v-cosine.ipynb) Euclidean Distance vs. Cosine Similarity
 - [calc-entropy.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/calc-entropy.ipynb) Entropy graph when one probability is high.
+- [bigquery-pandas.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/bigquery-pandas.ipynb)
 
 ### C++
 - [circular-queue.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/circular-queue.ipynb)
