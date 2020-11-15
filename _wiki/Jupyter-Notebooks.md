@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Jupyter Notebooks
-last-modified: 2020/11/15 00:21:39
+last-modified: 2020/11/15 12:41:21
 ---
 
 ## Deep Learning
@@ -14,6 +14,7 @@ last-modified: 2020/11/15 00:21:39
 - [softmax.py](https://github.com/likejazz/jupyter-notebooks/blob/master/deep-learning/softmax.py) Softmax, Cross-Entropy Loss
 - [sin-graph-prediction.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/deep-learning/sin-graph-prediction.ipynb)
 - [time-series-prediction-rnn.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/deep-learning/time-series-prediction-rnn.ipynb)
+- [time-series-lstm-pytorch.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/deep-learning/time-series-lstm-pytorch.ipynb)
 - [pytorch-grad.py](https://github.com/likejazz/jupyter-notebooks/blob/master/deep-learning/pytorch-grad.py) Gradients calculation using PyTorch.
 - [keras-intermediate-debugging.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/deep-learning/keras-intermediate-debugging.ipynb) Intermediate Layer Debugging in Keras.
     - [keras-shape-inspect.py](https://github.com/likejazz/jupyter-notebooks/blob/master/deep-learning/keras-shape-inspect.py) Validate Merge, Concatenate methods in Keras.
@@ -73,6 +74,4 @@ last-modified: 2020/11/15 00:21:39
 - [euclidean-v-cosine.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/euclidean-v-cosine.ipynb) Euclidean Distance vs. Cosine Similarity
 - [calc-entropy.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/calc-entropy.ipynb) Entropy graph when one probability is high.
 - [bigquery-pandas.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/bigquery-pandas.ipynb)
-
-### C++
-- [circular-queue.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/circular-queue.ipynb)
+- [circular-queue.ipynb](https://nbviewer.jupyter.org/github/likejazz/jupyter-notebooks/blob/master/data-science/circular-queue.ipynb) C++ Implementation.
