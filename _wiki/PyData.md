@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: PyData
-last-modified: 2020/10/02 15:49:34
+last-modified: 2020/11/18 20:11:25
 ---
 
 <!-- TOC -->
@@ -9,6 +9,7 @@ last-modified: 2020/10/02 15:49:34
 - [Pandas](#pandas)
     - [제약](#제약)
 - [Matplotlib](#matplotlib)
+- [Seaborn](#seaborn)
 
 <!-- /TOC -->
 
@@ -70,3 +71,12 @@ plt.show()
 범위를 조정하고 레이블을 부여하는건 subplot만 가능하다.
 
 <img src="https://user-images.githubusercontent.com/1250095/84562068-6c2aea80-ad8c-11ea-93bc-be1dbcd728a8.png" width="60%">
+
+# Seaborn
+regplot(), lmplot(), jointplot()등 단순 차트 외에 regression model과 결합된 플롯이 매우 강력하다.
+
+```
+>>> sns.jointplot(x="EngDispl", y="FE", data=cars10, kind="reg")
+```
+
+<img src="https://user-images.githubusercontent.com/1250095/99523276-309ae900-29da-11eb-82f2-2eafb1d27491.png" width="70%">
