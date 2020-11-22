@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: TensorRT
-last-modified: 2019/09/20
+last-modified: 2020/11/22 14:45:50
 ---
 
 <!-- TOC -->
@@ -36,7 +36,7 @@ TensorFlow v1.7 and above integrates with TensorRT 3.0.4.
 - [Real-Time Natural Language Understanding with BERT Using TensorRT](https://devblogs.nvidia.com/nlu-with-tensorrt-bert/)
     - [TensorRT/demo/BERT](https://github.com/NVIDIA/TensorRT/tree/release/5.1/demo/BERT) BERT example using TensorRT C++ API
     - [DeepLearningExamples/FasterTransformer](https://github.com/NVIDIA/DeepLearningExamples/tree/master/FasterTransformer) NVIDIA Korea는 이 버전으로 움직인다고.
-- [ADDING A CUSTOM CUDA C++ OPERATIONS IN TENSORFLOW FOR BOOSTING BERT INFERENCE](https://on-demand-gtc.gputechconf.com/gtcnew/sessionview.php?sessionName=skr9108-adding+a+custom+cuda+c%2b%2b+operations+in+tensorflow+for+boosting+bert+inference) 이민석 과장님이 NVIDIA 2019에서 발표한 BERT 최적화 자료
+- [ADDING A CUSTOM CUDA C++ OPERATIONS IN TENSORFLOW FOR BOOSTING BERT INFERENCE](https://on-demand-gtc.gputechconf.com/gtcnew/sessionview.php?sessionName=skr9108-adding+a+custom+cuda+c%2b%2b+operations+in+tensorflow+for+boosting+bert+inference) 이민석 과장님이 NVIDIA 2019에서 발표한 BERT 최적화 자료. 당시 현장에서 가장 인상적인 발표였다.
 
 # Rapids
 - [rapidsai/notebooks-contrib](https://github.com/rapidsai/notebooks-contrib/tree/master/getting_started_notebooks/intro_tutorials)

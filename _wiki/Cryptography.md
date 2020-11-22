@@ -1,12 +1,13 @@
 ---
 layout: wiki 
-title: RSA
-last-modified: 2019/06/23
+title: Cryptography
+last-modified: 2020/11/22 14:43:24
 ---
 
 <!-- TOC -->
 
 - [개요](#개요)
+    - [Base64](#base64)
     - [오래된 암호 알고리즘](#오래된-암호-알고리즘)
 - [카카오 신입 공채 문제: RSA](#카카오-신입-공채-문제-rsa)
     - [풀이 예제](#풀이-예제)
@@ -50,6 +51,18 @@ print (p_z, p_h, p_u)
 (90, 107, 107)
 (350L, 373L, 373L)
 (90L, 107L, 107L)
+```
+
+## Base64
+6비트 단위로 인코딩. 4비트가 패딩인 경우 6비트 패딩 2개 추가, 2비트가 패딩인 경우 6비트 패딩 1개만 추가. `=`가 패딩이다. (p91, 『스토리로 이해하는 암호화 알고리즘』, 2017)
+
+```console
+$ echo -n 'Man' | openssl base64
+TWFu
+$ echo -n 'M' | openssl base64
+TQ==
+$ echo -n 'Ma' | openssl base64
+TWE=
 ```
 
 ## 오래된 암호 알고리즘
