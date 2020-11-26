@@ -1,15 +1,20 @@
 ---
 layout: wiki 
 title: Project Management
-last-modified: 2020/01/02
+last-modified: 2020/11/26 20:34:01
 ---
 
 <!-- TOC -->
 
+- [외주 업체 개발](#외주-업체-개발)
 - [Books](#books)
     - [Rapid Development <sub>1996, 2003</sub>](#rapid-development-1996-2003)
 
 <!-- /TOC -->
+
+# 외주 업체 개발
+<img width="80%" src="https://user-images.githubusercontent.com/1250095/100345850-49cd1680-3026-11eb-8f0a-9f78dbe3f922.png">
+(p309, 『테슬라 모터스』, 2017, 2020)
 
 # Books
 ## Rapid Development <sub>1996, 2003</sub>
