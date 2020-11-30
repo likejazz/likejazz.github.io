@@ -1,10 +1,12 @@
 ---
 layout: wiki 
 title: 2018 Book Reports
-last-modified: 2019/09/04
+last-modified: 2020/11/30 20:48:41
 ---
 
 작년에 이어 2018년에도 읽은 책들에 대한 독서 후기를 정리한다.
+
+76권
 
 <!-- TOC -->
 
