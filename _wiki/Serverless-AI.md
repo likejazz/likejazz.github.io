@@ -1,20 +1,37 @@
 ---
 layout: wiki 
-title: AI Platform
-last-modified: 2020/09/15 21:57:54
+title: Serverless AI
+last-modified: 2020/12/02 09:40:47
 ---
 
 <!-- TOC -->
 
-- [가이드](#가이드)
+- [AWS Personalize](#aws-personalize)
+- [GCP Recommendations AI](#gcp-recommendations-ai)
+- [GCP AI Platform](#gcp-ai-platform)
     - [Local Predict](#local-predict)
-- [서버](#서버)
+- [GCP GCE](#gcp-gce)
     - [Conda](#conda)
     - [Notebook](#notebook)
 
 <!-- /TOC -->
 
-# 가이드
+# AWS Personalize
+
+[가이드](https://docs.aws.amazon.com/personalize/latest/dg/gs-prerequisites.html)에 따라 진행
+
+IAM 생성 권한이 없어서 Dataset 생성에서 더 이상 진행되지 않음.
+
+MovieLens 예제는 rating 컬럼을 제거하는데, 그렇다면 Get Recommendations에서 무작위로 보여주는게 아닌가?
+
+나 같으면 10% 정도를 A/B 테스트 용도로 할당하고 피드백을 받아 1/10 보다 CTR이 높은 경우 대체하는 방식으로 구현할 것 같다. 여기서도 SDK 또는 JS 라이브러리로 사용자 이벤트를 추적하는 것 같다.
+
+# GCP Recommendations AI
+
+GCP의 경우도 거의 유사하다. 모델 생성 이후에는 JavaScript pixel을 심어서 피드백을 받아 A/B 테스트를 진행한다. 이를 통해 CTR 등을 측정한다.
+
+# GCP AI Platform
+
 ml-engine에서 이름이 바꼈다. [공식 가이드 문서](https://cloud.google.com/ai-platform/prediction/docs/getting-started-scikit-xgboost)가 가장 정확. 예전 블로그는 outdated.
 
 us-central1만 지원해서 모델을 이쪽으로 업로드 하도록 별도 생성. input-type이 json인데, 특이한 형태로 받고 있어서 `gcloud ai-platform predict --help` 도움말로 확인 필요. new line으로 입력값을 구분한다. 바로 모델을 업로드 하니 잘 안되는데, `local predict` 기능이 있어서 여기서 먼저 잘 되는지 확인할 수 있다. 매우 편리. 실제로 로컬 모듈을 활용하기 때문에, tf도 설치되어 있어야 한다.
@@ -37,8 +54,9 @@ AI-Platform에서는 입력값을 다음과 같이 한다.
 ```json
 {"instances":[[46042,276,32.5,28.5,22.5,22.5,10,1,1,1]]}
 ```
-# 서버
-GCE에 관한 내용이지만, ML과 관련이 있어서 여기에 정리
+
+# GCP GCE
+GCE 설치에 관한 내용이지만, ML과 관련이 있어서 여기에 정리
 ## Conda
 conda가 설치된 상태에서 추가 설치 및 업그레이드가 필요하다. 특히 RAPIDS는 conda로만 설치된다. C++14 및 CUDA 제약 사항으로 인해[^fn-conda] 그런데, `$ conda update --all --verbose` 조차 제대로 실행 안됨. 채널에서 정보를 가져오는데 상당한 제약 사항이 있다. 다음과 같이 수정 필요.
 
