@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Kubernetes
-last-modified: 2020/09/24 18:12:54
+last-modified: 2020/12/03 22:48:20
 ---
 
 <!-- TOC -->
@@ -24,8 +24,8 @@ K8s + GKE 과정 정리
 편리하게 사용하기 위해 미리 설정을 해두면 이후에 매 번 입력할 필요가 없다. 사실 이 부분은 k8s 설정이 아니라 GCP 전체 설정.
 
 ```bash
-$ gcloud config set project edith-xx
-$ gcloud config set compute/zone asia-northeast3-b
+$ gcloud config set project PROJECT
+$ gcloud config set compute/zone asia-northeast3-c
 ```
 
 조회는 `$ gcloud config list`

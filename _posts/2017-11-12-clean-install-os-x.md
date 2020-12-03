@@ -9,6 +9,7 @@ tags: Productivity
 </div>
 
 <small>
+*2020년 12월 3일 빅서 업데이트*  
 *2020년 6월 23일 사용 프로그램 정리*  
 *2020년 1월 1일 사용 프로그램 정리*  
 *2019년 5월 23일 사용 프로그램 정리*  
@@ -37,19 +38,15 @@ tags: Productivity
 
 <!-- /TOC -->
 
-<img src="https://user-images.githubusercontent.com/1250095/71638614-f7656780-2ca7-11ea-85ce-00c1b7c42369.jpg">
+<img src="https://user-images.githubusercontent.com/1250095/101013610-e6a02e80-35a7-11eb-8765-c2d7da794fe2.png" width="45%" style="float: left; margin-right: 5px"><img src="https://user-images.githubusercontent.com/1250095/71638614-f7656780-2ca7-11ea-85ce-00c1b7c42369.jpg" width="45%">[^fn-screen1]
 
-<img src="https://user-images.githubusercontent.com/1250095/58238292-f4a1ac00-7d81-11e9-9762-6cd8b44b6461.jpeg" width="49%" align="left" style="margin-right: 10px"><img src="/images/2017/touchbar.jpg" width="49%">  
+<img src="https://user-images.githubusercontent.com/1250095/58238292-f4a1ac00-7d81-11e9-9762-6cd8b44b6461.jpeg" width="45%" style="float: left; margin-right: 5px"><img src="/images/2017/touchbar.jpg" width="45%">[^fn-screen2]
 
-<img src="https://c2.staticflickr.com/8/7333/27218763503_715ebb8a06_b.jpg" width="49%" align="left" style="margin-right: 10px"><img src="https://farm8.staticflickr.com/7673/17228888583_65c885c6d5.jpg" width="49%">  
+<img src="https://c2.staticflickr.com/8/7333/27218763503_715ebb8a06_b.jpg" width="45%" style="float: left; margin-right: 5px"><img src="https://farm8.staticflickr.com/7673/17228888583_65c885c6d5.jpg" width="45%">[^fn-screen3]
 
-<small>
-*2020년 1월 맥북 프로 터치바*   
-*2019년 5월 맥북 프로 터치바<sub>중앙 좌</sub>*   
-*2017년 1월 맥북 프로 터치바<sub>중앙 우</sub>*  
-*2016년 6월<sub>하단 좌</sub>*  
-*2015년<sub>하단 우</sub>*
-</small>
+[^fn-screen1]: 2020년 12월 빅서(Big Sur), 2020년 1월 맥북 프로 터치바  
+[^fn-screen2]: 2019년 5월 맥북 프로 터치바, 2017년 1월 맥북 프로 터치바  
+[^fn-screen3]: 2016년 6월, 2015년
 
 ## 기본 설정
 - 키보드 감도는 가장 짧게 조정한다.
@@ -57,8 +54,8 @@ tags: Productivity
 - 알림 센터(Notification Center)는 사용하지 않는다. 대시보드도 마찬가지. iOS에만 있어야 할 기능을 억지로 macOS에 배치한 느낌이다.
 - 메뉴바 설정에서 배터리 % 표시, 날짜 표시로 변경했다.
 - Night Shift를 사용하며, 스케줄은 10:00 PM to 7:00 AM으로 설정했다.
-- 터치바 인터페이스는 거의 쓰지 않는다. 나비 키보드와 함께 신형 맥북의 새로운 기능은 모두 실패작이라 생각한다.
-- **Bartender 3(유료)** 메뉴바를 정리하는 매우 유용한 앱이다.
+- 터치바 인터페이스는 거의 쓰지 않는다. 나비 키보드와 함께 신형 맥북의 새로운 기능은 모두 실패작이라 생각한다. 맥북 키보드위에 한성 GK888B 키보드를 얹어서 사용한다.
+- **Bartender 3(유료)** 메뉴바를 정리하는 매우 유용한 앱이다. 빅서가 등장하면서 메이저 업데이트를 했고, 추가 비용을 들여 업그레이드 했다.
 
 ## 인터넷
 - 메인 브라우저는 **Safari**를 사용한다. 크롬보다 훨씬 더 부드럽게 동작한다.
@@ -69,15 +66,15 @@ tags: Productivity
 ## 생산성
 - 번역 도구로 **Google Translate**를 이용한다. 최근에는 **[카카오 번역기](https://translate.kakao.com/)**를 주로 이용하며, 카톡 친구로 등록하면 훨씬 더 편리하게 이용할 수 있다.
 - 버전 관리를 위해 앱은 가능한 앱스토어에서 설치한다. 예전에는 cask를 사용했지만 지금은 앱스토어와 호환성을 위해 직접 설치하고 **mas**로 확인한다.
-- **네이버 캘린더**를 사용하고 있다. 음력 기능 등 한국적인 기능들이 많아서 구글에 비해 편리하다. 최근에는 업무 공유 용도로 사내 캘린더를 사용한다. 다행히 CalDAV를 지원해서 iCal에 연동해서 사용한다.
+- 캘린더 서비스는 업무 용도가 대부분이라 사내 캘린더를 사용한다. Exchange Server로 구현되어 있다.
 - **Things(유료)** 2009년에 정품을 구매하여 여전히 사용 중이다. 버전 업데이트를 하면서 추가 비용을 받았는데 기꺼이 구매했다. 아마 맥과 아이폰을 포기하지 못하는 결정적인 이유를 한 가지 대라면 Things를 사용할 수 있기 때문이라고 답할 것 같다.
-- **Microsoft To-Do** Things와 병행해서 사용하고 있다. 안드로이드에서 Things가 되지 않기 때문에 어쩔 수 없는 선택이기도 하다. 최근에 폰을 아이폰에서 안드로이드로 변경했고, 더 이상 Things를 사용할 수 없어 매우 불편했는데, To-Do가 빈자리를 채워주고 있다. 물론 메인은 여전히 Things다.
+- **Microsoft To-Do** Things와 병행해서 사용하고 있다. 안드로이드에서 Things가 되지 않기 때문에 어쩔 수 없는 선택이기도 하다. 최근에 폰을 아이폰에서 안드로이드로 변경했고, 더 이상 Things를 사용할 수 없어 불편했는데, To-Do가 빈자리를 채워주고 있다. 물론 메인은 여전히 Things다.
 - **Rectangle** Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 유료보다 더 낫다.
 - **AppCleaner** Uninstaller가 없는 맥에서는 삭제해도 뭔가 찜찜할때가 많다. 이 앱으로 불필요한 설정까지 찾아서 삭제한다.
 - 토렌트 앱은 최근 **Folx**로 변경했다. 윈도우 시절부터 uTorrent를 사용해오다 최근에는 토렌트 자체를 거의 사용하지 않게 됐지만 갈아탔다. 유료 버전은 QoS 기능을 제공하지만 무료로도 충분하여 무료 버전을 사용하고 있다.
 - **VMware Fusion(유료)** 비싼 가격으로 Virtual Box로 이동하려 했으나 기존 이미지 파일을 복구하려면 방법이 없다. 윈도우를 다시 설치할 엄두가 나지 않아 어쩔 수 없이 계속 사용하고 있다. 이미 이미지 파일 크기가 59.5G이며, 현재 11.0.3 버전을 사용하고 있다. 최근에는 거의 사용하지 않아서 이 정도면 삭제해도 될 것 같다는 생각이 든다.
   - **Parallels(유료)** 회사 업무용으로 패러럴즈를 택해서 지급 중이라 사용 중이다. 좀 더 편리한 기능이 돋보이지만 VMWare와 비교해 성능상에 큰 차이는 없는 것 같다. Coherence는 매우 유용하게 활용하고 있다.
-- ~~**Daum Equation Editor** 더 이상 업데이트는 되지 않고 있지만 LaTex 수식을 편집할때 이만한게 없다. 여전히 잘 사용 중이다.~~
+- 수식은 **Mathpix Snip**에 스크린 캡처를 이용해서 LaTeX를 찾아낸다.
 
 ## 드라이브
 - **Dropbox** 경쟁 서비스가 많지만 여전히 최고의 클라우드 서비스다. 
@@ -88,7 +85,7 @@ tags: Productivity
 
 ## 문서
 - 이 문서를 호스팅하는 공간은 **GitHub Pages**다. 수년간 최고의 지식 저장소로 활용하고 있으며, **MathJax**를 이용한 수식 지원도 좋다. 깃헙 위키의 경우 수식을 입력할 수 있는 방법이 마땅찮아 모두 깃헙 페이지로 이관했다.
-- ~~**Microsoft Office(유료)**는 맥에서도 최고의 업무용 도구다.~~
+- **Microsoft Office(유료)**는 맥에서도 최고의 업무용 도구다.
 - 오랫동안 **Evernote**를 사용해왔다. 그 동안의 기록들은 이제 히스토리 아카이빙의 역할을 하고 있다. 구글 드라이브 또한 비슷한 용도로 활용중이다.
   - 아이패드에서는 **Flexcil(유료)**을 활용하고 있다.
 - 프리젠테이션을 위해 KeyNote 부터 Deckset등 여러 앱을 오갔지만 결국 마지막 종착역은 다시 **Microsoft Office 365**의 웹 기반 **PowerPoint**를 사용하고 있다. 웹에서 사용할때는 무료다.
@@ -176,7 +173,9 @@ mas "Xee³", id: 639764244
 - **JetBrains IDE(유료)** [All Products Pack 연간 라이센스를 사용](http://likejazz.com/post/133725850005/jetbrains-all-products-pack)하고 있다. IntelliJ 뿐만 아니라 [CLion](http://likejazz.com/post/118649049333/clion-1-0), PyCharm, PhpStorm, AppCode, GoLand등을 사용하는 [가장 즐겨쓰는 최고의 IDE](http://likejazz.com/post/112670720955/jetbrains-ide)다.
   - **JetBrains ToolBox** 제트브레인의 IDE를 통합 관리할 수 있는 메뉴바 앱이다. `Update all tools automatically`로 설정하고 사용한다.
   - IntelliJ의 테마는 Darcula를 사용한다. `Editor > General > Appearance`에서 **Show whitespaces**와 **Show method separators**는 활성화 한다.
-  - IntelliJ의 **Identifier under caret** 기능을 유용하게 사용하는 편이라 기본 Darcula에서 이 색상만 Background를 `FFFF00`로 지정, `Identifier under caret (write)`는 `FFFFE0`로 지정하고 눈에 띄게 사용하다.
+  - IntelliJ의 **Identifier under caret** 기능을 유용하게 사용하는 편이라 기본 Darcula에서 이 색상만 눈에 띄게 지정하고 사용한다.
+    - Background를 `FFFF00`로 지정
+    - `Identifier under caret (write)`는 `FFFFE0`로 지정
 - **Visual Studio Code**는 위키를 편집하거나 코드 리뷰 용도로 사용하는 메인 편집기다. 아래 Extensions를 함께 사용한다.
   - **JetBrains IDE Keymap** 모든 단축키는 혼동되지 않도록 JetBrains IDE를 기준으로 한다.
   - 마크다운을 깃헙 위키 스타일로 미리 보기 위한 **Markdown Preview Enhanced**.

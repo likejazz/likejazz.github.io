@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/11/12 22:29:51
+last-modified: 2020/12/03 22:16:48
 ---
 
 <!-- TOC -->
@@ -91,7 +91,13 @@ root@cos-dev:~# exit
 # 설정
 
 ## SSH 접속
-gcloud를 이용하는 방법은 너무 불편하여 ssh로 바로 접속이 가능하도록 셋팅. `cat ~/.ssh/id_rsa_gcp.pub`를 Metadata > SSH Keys에 등록했다. 해당 프로젝트내 모든 서버에서 ssh 접속 가능. 접속 관련은 아래 네트워크 섹션 참고.
+gcloud를 이용하는 방법은 너무 불편하여 ssh로 바로 접속이 가능하도록 셋팅. `cat ~/.ssh/id_rsa_gcp.pub`를 Metadata > SSH Keys에 등록했다. 해당 프로젝트내 모든 서버에 ssh 접속 가능하다. 정석대로는 gcloud를 이용해 ssh 접속이 가능하다.
+
+```
+$ gcloud beta compute ssh gcp-user@"NAME" --zone "asia-northeast3-c"
+```
+
+마찬가지로 Metadata > SSH Keys에 자동으로 등록하면서 접속이 진행된다. 사용자 계정은 gcp-user로 로그인된다. 모두 sudo 권한을 갖고 있기 때문에 사실상 계정명은 큰 의미가 없다.
 
 ## 서버 설정
 alias, 시간, 로케일 설정
