@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Cloud Run
-last-modified: 2020/12/03 23:37:20
+last-modified: 2020/12/04 02:19:06
 ---
 
 <!-- TOC -->
@@ -34,7 +34,7 @@ $ gcloud builds submit --tag asia.gcr.io/PROJECT_ID/helloworld
 
 # Container Registry
 
-이후 자동으로 Container Registry에 업로드된다. 빌드 & 배포를 한 번에 처리한다. Cloud Build가 진행되기 전 소스코드는 tgz로 압축되어 GCS에 등록된다. Container Registry에 있는 이미지는 GCE, GKE, Cloud Run에 각각 편리하게 선택하여 배포 가능하다. GKE는 직접 K8s 기본 클러스터까지 생성해준다.
+이후 자동으로 Container Registry에 업로드된다. 빌드 & 배포를 한 번에 처리한다. Cloud Build가 진행되기 전 소스코드는 tgz로 압축되어 GCS에 등록된다. Container Registry에 있는 이미지는 GCE, GKE, Cloud Run에 각각 편리하게 선택하여 배포 가능하다. GCE는 모든 포트가 맵핑되어 있으며, GKE는 직접 K8s 기본 클러스터까지 생성해준다.
 
 # Cloud Run
 
