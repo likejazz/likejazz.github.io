@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Kubernetes
-last-modified: 2020/12/03 22:48:20
+last-modified: 2020/12/05 13:32:44
 ---
 
 <!-- TOC -->
@@ -15,8 +15,6 @@ last-modified: 2020/12/03 22:48:20
 - [Istio on GKE](#istio-on-gke)
 
 <!-- /TOC -->
-
-AWS는 EKS가 생기긴 했지만 ECS가 Fargate를 지원하는등 묘하게 K8s와 껄끄러운 관계. GCP는 당연히 ECS 조차도 없이 바로 GKE 지원.
 
 K8s + GKE 과정 정리
 
