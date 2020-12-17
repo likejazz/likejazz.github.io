@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: BigQuery
-last-modified: 2020/11/15 02:17:15
+last-modified: 2020/12/17 21:07:10
 ---
 
 <!-- TOC -->
@@ -11,6 +11,7 @@ last-modified: 2020/11/15 02:17:15
     - [테이블 이동](#테이블-이동)
 - [연동](#연동)
     - [Python 설치](#python-설치)
+    - [데이터 연동](#데이터-연동)
 - [활용](#활용)
     - [인증](#인증)
     - [DataFrame 맵핑](#dataframe-맵핑)
@@ -58,6 +59,11 @@ $ chown -R gcp-user anaconda3/
 $ pip install google-cloud-bigquery google-cloud-bigquery-storage
 ```
 conda는 여전히 설치되지 않음. 
+
+## 데이터 연동
+<img src="https://user-images.githubusercontent.com/1250095/102486006-be3a2900-40ab-11eb-9dcf-dad8eadb6813.jpg" width="50%">
+
+(구글 빅쿼리 완벽 가이드, 2020)
 
 # 활용
 ## 인증
@@ -120,7 +126,7 @@ WHERE
 # BigQuery ML
 <img width="80%" src="https://user-images.githubusercontent.com/1250095/99152817-7e1c0b00-26e7-11eb-901a-25e301f8a48d.png">
 
-『빅쿼리』
+(구글 빅쿼리 완벽 가이드, 2020)
 
 ## 피어슨 상관 계수
 자전거 수와 평균 대여 시간의 피어슨 상관 계수 확인
@@ -138,7 +144,7 @@ ON
 
 > 피어슨 상관 계수는 선형 의존성이 있으면 1.0의 절대값 을 가지며, 선형적으로 독립적이면 0.0을 가진다. 따라서 -0.0039이라는 결과는 bikes_count와 duration 컬럼 사이의 관계가 서로 독립적임을 뜻한다.
 
-p427, 『빅쿼리』
+(p427, 구글 빅쿼리 완벽 가이드, 2020)
 
 ## 모델
 `dayofweek`, `hourofday`를 입력값으로 하는 머신러닝 모델 생성  
