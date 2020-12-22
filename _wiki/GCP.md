@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last-modified: 2020/12/04 02:14:53
+last-modified: 2020/12/22 16:14:39
 ---
 
 <!-- TOC -->
@@ -10,6 +10,7 @@ last-modified: 2020/12/04 02:14:53
     - [Ubuntu](#ubuntu)
     - [Deep Learning Image](#deep-learning-image)
     - [Deep Learning VM](#deep-learning-vm)
+    - [AI Platform](#ai-platform)
     - [Container Optimized OS](#container-optimized-os)
 - [설정](#설정)
     - [SSH 접속](#ssh-접속)
@@ -41,10 +42,13 @@ conda update -n base -c defaults conda
 $ sudo apt install gcc cmake
 ```
 
-## Deep Learning Image
-`Deep Learning Image: PyTorch 1.4.0 and fastai m51` 설치
+개인적으로 ubuntu를 가장 선호하지만 GCP는 debian을 미는 것 같다.
 
-T4의 생성 limit이 처음에 1로 되어 있는데, all quotas에서 요청을 하면 5분 이내에 바로 처리해준다. 반영되는데는 최대 15분 소요. 처음 접속할때 CUDA 최초 설치 필요. anaconda는 이미 설치되어 있다. nvtop 설치[^fn-nvtop] apk에는 없어서 소스 컴파일 설치했다.
+## Deep Learning Image
+`Deep Learning Image: PyTorch 1.4.0 and fastai m51` 설치  
+(이제 PyTorch 1.6.0도 지원한다)
+
+T4의 생성 limit이 처음에 1로 되어 있는데, all quotas에서 요청을 하면 5분 이내에 바로 처리해준다. 반영되는데는 최대 15분 소요. 처음 접속할때 CUDA 최초 설치 필요. anaconda는 이미 설치되어 있다. htop과 유사한 nvtop 설치[^fn-nvtop] apk에는 없어서 소스 컴파일 설치했다.
 
 ```console
 $ sudo apt install cmake libncurses5-dev libncursesw5-dev
@@ -60,17 +64,25 @@ $ sudo make install
 XGBoost, CatBoost는 GPU 버전이 바로 설치되지만, LightGBM는 별도 옵션으로 설치(소스 컴파일됨)해야 한다. pytorch는 지난 3월에 릴리즈된 1.4.0이 이미 설치되어 있다. cuDF를 설치하고 싶었으나 conda로만 설치가 가능하고, 설치 진행이 안되서 실패.
 
 ## Deep Learning VM
+Solution provided by Google Click to Deploy  
+여긴 Seoul도 지원하고 Enable access to JupyterLab via URL instead of SSH. (Beta) 도 Beta이긴 하지만 지원한다. 사실상 이걸 쓰면 AI Platform을 사용하지 않아도 되는거 아닌지?
+
 RAPIDS XGBoost를 experimental 버전으로 바로 지원한다. conda 설치에 시달릴 필요가 없다. 특히 cuDF를 바로 사용할 수 있어 이 이미지를 택했다. PyCharm에서 Remote Python으로 Python Console로 실험. Jupyter 보다 더 편하다. 다만 큰 데이터는 오래 걸리므로 `Show Variables`는 turn off.
 
 PyTorch 설치:
 ```console
 $ conda install pytorch torchvision cudatoolkit=10.0 -c pytorch
 ```
-CUDA 10.0이라서 PyTorch는 1.4.0 버전이 설치된다. pip 설치는 CUDA 버전이 맞지 않다며 실행되지 않음.
+CUDA 10.0이라서 PyTorch는 1.4.0 버전이 설치된다. pip 설치는 CUDA 버전이 맞지 않다며 실행되지 않음(이제 CUDA 11과 PyTorch 1.6도 있다)
 
 python 3.7.3이 설치되어 있으니 `$ conda update -all` 진행. 그러나 cuDF를 사용하려면 numba가 0.48.0이어야 한다. 주의. `$ conda install -c numba numba=0.48.0`로 아래 버전 지정 설치. (어느새 pytorch는 1.3.1로 내려가 있다. 그러나 conda로 cudatoolkit=10.0 하면 1.4.1이 다시 설치된다.)
 
 cuDF가 0.7이라서(최신은 0.14) 기능 제약이 많다. conda로 업데이트를 시도하면 당연히 잘 안된다.
+
+## AI Platform
+여기는 AI Platform에서 따로 인스턴스를 생성할 수 있다. 주피터 노트북까지 함께 설치되는 형태이며, Kaggle, PyTorch등 Deep Learning VM 처럼 다양한 팩키지를 이미 지원한다. PyTorch는 1.6.0이 최신 버전. BigQuery 연동도 되어 있다. 아쉽게도 Seoul이 아직 없어서 Tokyo로 설정
+
+<img src="https://user-images.githubusercontent.com/1250095/102859486-4f741b80-446f-11eb-828f-e9aea6e0a96a.png" width="80%">
 
 ## Container Optimized OS
 추가 디스크 공간이 `/mnt/stateful_partition/home`로 할당되어 있는데 `/home`과 동일하다. `$ readlink . -f`에서는 각각의 디렉토리 명이 표시된다.
