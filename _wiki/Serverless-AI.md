@@ -1,12 +1,13 @@
 ---
 layout: wiki 
 title: Serverless AI
-last-modified: 2020/12/02 09:40:47
+last-modified: 2020/12/29 07:19:05
 ---
 
 <!-- TOC -->
 
 - [AWS Personalize](#aws-personalize)
+- [AWS SageMaker](#aws-sagemaker)
 - [GCP Recommendations AI](#gcp-recommendations-ai)
 - [GCP AI Platform](#gcp-ai-platform)
     - [Local Predict](#local-predict)
@@ -22,9 +23,14 @@ last-modified: 2020/12/02 09:40:47
 
 IAM 생성 권한이 없어서 Dataset 생성에서 더 이상 진행되지 않음.
 
-MovieLens 예제는 rating 컬럼을 제거하는데, 그렇다면 Get Recommendations에서 무작위로 보여주는게 아닌가?
+MovieLens 예제는 rating 컬럼을 제거하는데, 그렇다면 Get Recommendations에서 무작위로 보여주는게 아닌가?  
+원래 MovieLens 데이터는 rating, user, item 정보 모두 포함되어 있음
 
 나 같으면 10% 정도를 A/B 테스트 용도로 할당하고 피드백을 받아 1/10 보다 CTR이 높은 경우 대체하는 방식으로 구현할 것 같다. 여기서도 SDK 또는 JS 라이브러리로 사용자 이벤트를 추적하는 것 같다.
+
+# AWS SageMaker
+학습 부터 배포 까지 전체 데이터 플로우를 관리한다. 심지어 IDE 까지 제공  
+모델 경량화 서빙을 위한 SageMaker Neo
 
 # GCP Recommendations AI
 
