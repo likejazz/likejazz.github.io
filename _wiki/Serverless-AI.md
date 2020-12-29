@@ -1,14 +1,14 @@
 ---
 layout: wiki 
 title: Serverless AI
-last-modified: 2020/12/29 07:19:05
+last-modified: 2020/12/29 13:45:26
 ---
 
 <!-- TOC -->
 
 - [AWS Personalize](#aws-personalize)
-- [AWS SageMaker](#aws-sagemaker)
 - [GCP Recommendations AI](#gcp-recommendations-ai)
+- [AWS SageMaker](#aws-sagemaker)
 - [GCP AI Platform](#gcp-ai-platform)
     - [Local Predict](#local-predict)
 - [GCP GCE](#gcp-gce)
@@ -18,7 +18,6 @@ last-modified: 2020/12/29 07:19:05
 <!-- /TOC -->
 
 # AWS Personalize
-
 [가이드](https://docs.aws.amazon.com/personalize/latest/dg/gs-prerequisites.html)에 따라 진행
 
 IAM 생성 권한이 없어서 Dataset 생성에서 더 이상 진행되지 않음.
@@ -28,13 +27,12 @@ MovieLens 예제는 rating 컬럼을 제거하는데, 그렇다면 Get Recommend
 
 나 같으면 10% 정도를 A/B 테스트 용도로 할당하고 피드백을 받아 1/10 보다 CTR이 높은 경우 대체하는 방식으로 구현할 것 같다. 여기서도 SDK 또는 JS 라이브러리로 사용자 이벤트를 추적하는 것 같다.
 
+# GCP Recommendations AI
+GCP의 경우도 거의 유사하다. 모델 생성 이후에는 JavaScript pixel을 심어서 피드백을 받아 A/B 테스트를 진행한다. 이를 통해 CTR 등을 측정한다.
+
 # AWS SageMaker
 학습 부터 배포 까지 전체 데이터 플로우를 관리한다. 심지어 IDE 까지 제공  
 모델 경량화 서빙을 위한 SageMaker Neo
-
-# GCP Recommendations AI
-
-GCP의 경우도 거의 유사하다. 모델 생성 이후에는 JavaScript pixel을 심어서 피드백을 받아 A/B 테스트를 진행한다. 이를 통해 CTR 등을 측정한다.
 
 # GCP AI Platform
 
@@ -100,7 +98,7 @@ $ conda install -c rapidsai -c nvidia -c conda-forge -c defaults rapids=0.14 pyt
 ```
 
 ## Notebook
-노트북을 설치한 인스턴스를 생성해준다. 아직 Seoul은 없음. 인스턴스를 생성하고 JupyterLab을 직접 설치하는 것과 뭐가 다르냐고 할 수 있지만 구글 인증을 포함한 많은 부분을 미리 처리해두어 매우 편리하다. 
+노트북을 설치한 인스턴스를 생성해준다. 아직 Seoul은 없음. 인스턴스를 생성하고 JupyterLab을 직접 설치하는 것과 뭐가 다르냐고 할 수 있지만 구글 인증을 포함한 많은 부분이 이미 처리되어 있어 매우 편리하다. 
 
 - Python 2 and 3 지정
 - 비용 최소를 위해 1 CPU 별도 지정
