@@ -1,15 +1,24 @@
 ---
 layout: wiki 
 title: Recommender System
-last-modified: 2021/01/02 15:03:32
+last-modified: 2021/01/09 16:04:05
 ---
 
 <!-- TOC -->
 
+- [Libraries](#libraries)
 - [Books](#books)
     - [Python을 이용한 개인화 추천시스템 <sup>2020</sup>](#python을-이용한-개인화-추천시스템-2020)
 
 <!-- /TOC -->
+
+# Libraries
+- `surprise`: 다양한 CF, MF 알고리즘 지원. 학습용으로 좋다.
+- `implicit`: GPU를 지원하여 Production-level로 활용할만한 수준이다. movielens-1M[^fn-ml1m]에서 CPU 대비 T4 1개로 15배 더 학습이 빨랐다.
+
+[^fn-ml1m]: <https://medium.com/analytics-vidhya/implementation-of-a-movies-recommender-from-implicit-feedback-6a810de173ac>
+
+기타: GCP의 AI Platform &gt; Notebooks로 Tokyo region으로 VM을 생성했는데 해당 지역에 GPU 리소스가 고갈되어 Singapore에 새롭게 생성했다.
 
 # Books
 ## Python을 이용한 개인화 추천시스템 <sup>2020</sup>
