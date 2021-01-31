@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Quotes
-last-modified: 2021/01/22 10:07:24
+last-modified: 2021/01/28 17:51:46
 ---
 
 <!-- TOC -->
@@ -15,7 +15,7 @@ last-modified: 2021/01/22 10:07:24
 <!-- /TOC -->
 
 # 수학의 쓸모
-- p98. 파라미터
+
 - p274. 모든 모형은 틀리다
 
 # 신호와 소음

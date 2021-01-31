@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Cloud Run
-last-modified: 2020/12/04 20:19:43
+last-modified: 2021/01/31 14:03:13
 ---
 
 <!-- TOC -->
@@ -22,7 +22,7 @@ last-modified: 2020/12/04 20:19:43
 # Cloud Build
 그러나, 가이드에서는 로컬에서 docker를 build 하지 않고 다음과 같이 Cloud Build에 등록한다.
 ```
-$ gcloud builds submit --tag asia.gcr.io/PROJECT_ID/helloworld
+$ gcloud builds submit --tag gcr.io/PROJECT_ID/helloworld
 ```
 
 전송된 Dockerfile을 Kaniko로 빌드한다. `--tag` 지정으로 `docker build`가 수행된다. Cloud Build will run a remote `docker build -t $TAG .`[^fn-help]
@@ -48,7 +48,7 @@ $ gcloud config set run/platform managed
 ```
 `--platform managed` 설정이 Cloud Run(fully managed)으로 실행하는 설정이다.
 ```
-$ gcloud run deploy --image asia.gcr.io/PROJECT_ID/helloworld
+$ gcloud run deploy --image gcr.io/PROJECT_ID/helloworld
 ```
 80으로 접속할 수 있고 별도 dns까지 제공한다.  
 <https://helloflask-qdg4vdmju1-du.a.run.app/> 이런 형태
@@ -63,24 +63,28 @@ $ curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" SERVICE_UR
 
 ## `/bin/sh` 에러
 
-`flask`를 실행하면 `/bin/sh`을 찾을 수 없다는 에러가 발생한다. 내부에서 쉘 스크립트를 구동하는 모든 작업이 실행되지 않는듯 하다. 그래서 다음과 같이 `python`으로 직접 실행하도록 구성했다.
+예전에는 `flask`를 실행하면 `/bin/sh`을 찾을 수 없다는 에러가 발생했는데 내부에서 쉘 스크립트를 구동하는 모든 작업이 실행되지 않는듯 했다. 지금은 문제 없다.
 
 ```dockerfile
-FROM python:3.9-buster
-RUN apt-get update -y
-RUN apt-get install -y python-pip python-dev build-essential
+FROM python:3.9-slim
 
-COPY . /app
-WORKDIR /app
-
+# We copy just the requirements.txt first to leverage Docker cache
+COPY ./requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["python"]
-CMD ["app.py"]
+WORKDIR /app
+
+# We copy whole directory for easy maintenance.
+COPY . /app
+
+ENV AUTHLIB_INSECURE_TRANSPORT=1
+ENV FLASK_DEBUG=1
+
+CMD flask run --host='0.0.0.0' --port=$PORT
 ```
 
 [^fn-workaround]: <https://stackoverflow.com/a/64084917>
 
 ## Custom Domain
 
-Route53에서 발급한 도메인을 활용해 verify domain 인증을 거친 후 CNAME으로 연동 가능하다. 다만 아직 Seoul은 지원하지 않고, Tokyo로 배포하여 연동했는데 속도가 2배 늦다. flask hello world가 Seoul은 0.3s, Tokyo는 0.6s가 소요된다.
+Cloud Domains 또는 AWS Route53에서 발급한 도메인을 활용해 verify domain 인증을 거친 후 CNAME으로 연동 가능하다. 다만 아직 Seoul은 지원하지 않고, Tokyo로 배포하여 연동했는데 속도가 2배 늦다. flask hello world가 Seoul은 0.3s, Tokyo는 0.6s가 소요된다.
