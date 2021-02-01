@@ -5,4 +5,5 @@ nohup.out
 .idea
 .ipynb_checkpoints
 .jekyll-metadata
+_wiki/Quotes.md
 Gemfile.lock
