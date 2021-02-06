@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Cloud Run
-last-modified: 2021/01/31 14:03:13
+last-modified: 2021/02/06 15:32:51
 ---
 
 <!-- TOC -->
@@ -84,6 +84,14 @@ CMD flask run --host='0.0.0.0' --port=$PORT
 ```
 
 [^fn-workaround]: <https://stackoverflow.com/a/64084917>
+
+Flask를 그대로 실행해도 실행은 되지만 일정 시간이 지난 후,
+```
+Error: Server Error
+The server encountered an error and could not complete your request.
+Please try again in 30 seconds.
+```
+이런 오류가 발생했다. 아마도 리소스 부족으로 인한 오류로 보이는데 로그를 뒤져도 특별한게 없고 원인은 찾지 못했다.
 
 ## Custom Domain
 
