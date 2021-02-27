@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Cloud Run
-last-modified: 2021/02/26 13:58:31
+last-modified: 2021/02/27 19:21:29
 ---
 
 <!-- TOC -->
@@ -22,7 +22,8 @@ last-modified: 2021/02/26 13:58:31
 [^fn-guide]: <https://cloud.google.com/run/docs/quickstarts/build-and-deploy>
 
 # Cloud Build
-그러나, 가이드에서는 로컬에서 docker를 build 하지 않고 다음과 같이 Cloud Build에 등록하고 배포한다.
+그러나, 가이드에서는 로컬에서 docker를 build 하지 않고 다음과 같이 Cloud Build에 등록하고 배포한다. 이 경우 GCS에 올리고 빌드 서버에서 빌드한 후에 Container Registry에 자동으로 올려준다. 이렇게 하지 않을 경우 직접 빌드해서 `docker push`로 직접 올려야 한다.
+
 ```console
 # 개인 계정으로 로그인
 $ gcloud auth login
@@ -71,13 +72,16 @@ $ curl -H "Authorization: Bearer $(gcloud auth print-identity-token)" SERVICE_UR
 예전에는 `flask`를 실행하면 `/bin/sh`을 찾을 수 없다는 에러가 발생했는데 내부에서 쉘 스크립트를 구동하는 모든 작업이 실행되지 않는듯 했다. 지금은 문제 없다.
 
 ```dockerfile
-FROM python:3.9-slim
+FROM python:3.9-alpine
 
 # We copy just the requirements.txt first to leverage Docker cache
-COPY ./requirements.txt requirements.txt
-RUN pip install -r requirements.txt
+COPY ./requirements.txt /app/requirements.txt
+
+RUN apk add --update netcat-openbsd && rm -rf /var/cache/apk/*
 
 WORKDIR /app
+
+RUN pip3 install -r requirements.txt
 
 # We copy whole directory for easy maintenance.
 COPY . /app
@@ -85,7 +89,7 @@ COPY . /app
 ENV AUTHLIB_INSECURE_TRANSPORT=1
 ENV FLASK_DEBUG=1
 
-CMD flask run --host='0.0.0.0' --port=$PORT
+CMD /usr/local/bin/flask run --host='0.0.0.0' --port=$PORT
 ```
 
 [^fn-workaround]: <https://stackoverflow.com/a/64084917>

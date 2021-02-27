@@ -1,11 +1,12 @@
 ---
 layout: wiki 
 title: NLP 실험
-last-modified: 2019/04/16
+last-modified: 2021/02/27 17:59:32
 ---
 
 <!-- TOC -->
 
+- [Pororo](#pororo)
 - [실험](#실험)
     - [MNIST](#mnist)
     - [IMDB Sentimental Analysis](#imdb-sentimental-analysis)
@@ -14,7 +15,40 @@ last-modified: 2019/04/16
     - [Siamese-LSTM](#siamese-lstm)
 
 <!-- /TOC -->
+# Pororo
+kakaobrain/pororo에서 MRC 태스크는 최신 데비안 계열에서는 동작하지 않는다. 좀 더 구체적으로는 python-mecab-ko 패키지의 오류로 MRC 태스크[^fn-mrc]를 실행할 수 없었다.
+
+[^fn-mrc]: <https://github.com/kakaobrain/pororo/blob/master/examples/reading_comprehension.ipynb>
+
+```python
+import pororo
+from pororo import Pororo
+
+mrc = Pororo(task="mrc", lang="ko")
+```
+
+```
+Traceback (most recent call last):
+  File "/home/gcp-user/.local/lib/python3.8/site-packages/pororo/tasks/machine_reading_comprehension.py", line 61, in load
+    import mecab
+ModuleNotFoundError: No module named 'mecab'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/gcp-user/.local/lib/python3.8/site-packages/pororo/pororo.py", line 203, in __new__
+    task_module = SUPPORTED_TASKS[task](
+  File "/home/gcp-user/.local/lib/python3.8/site-packages/pororo/tasks/machine_reading_comprehension.py", line 63, in load
+    raise error.__class__(
+ModuleNotFoundError: Please install python-mecab-ko with: `pip install python-mecab-ko`
+```
+
+설치 시도했으나 python-mecab-ko 설치에 실패한다. `libiconv.so`가 최신 버전에서 통합된 영향을 받는 것으로 보이나 정확한 원인은 알 수 없다. mecab 패키지도 문의에 응답이 없고 더 이상 유지보수 되지 않고 있다.
+
 # 실험
+2019년에 진행했던 다양한 NLP 실험
+
 ## MNIST
 PyTorch를 이용한 MNIST 실험 결과 [1](https://github.com/yunjey/pytorch-tutorial/tree/master/tutorials/02-intermediate)
 

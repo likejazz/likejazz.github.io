@@ -1,11 +1,12 @@
 ---
 layout: wiki 
 title: Python
-last-modified: 2020/07/08 15:47:25
+last-modified: 2021/02/27 18:29:44
 ---
 
 <!-- TOC -->
 
+- [Python Docker Image Size](#python-docker-image-size)
 - [Pythonic way](#pythonic-way)
     - [Array](#array)
 - [Books](#books)
@@ -13,6 +14,15 @@ last-modified: 2020/07/08 15:47:25
 - [Links](#links)
 
 <!-- /TOC -->
+
+# Python Docker Image Size
+```
+python              3.9-alpine          c89f09476494        4 days ago           44.7MB
+python              3.9-slim            ce689abb4f0d        4 days ago           118MB
+python              3.9                 254d4a8a8f31        4 days ago           885MB
+```
+
+alpine은 사이즈가 가장 작을뿐더러 slim과 달리 `apk`로 패키지를 설치할 수 있어서 매우 유용하다.
 
 # Pythonic way
 아래 내용들은 『파이썬 코딩의 기술 <sub>2015, 2016</sub>』에 나오는 내용들이다.  
