@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Cloud Run
-last-modified: 2021/02/27 19:21:29
+last-modified: 2021/02/27 19:37:10
 ---
 
 <!-- TOC -->
@@ -22,7 +22,7 @@ last-modified: 2021/02/27 19:21:29
 [^fn-guide]: <https://cloud.google.com/run/docs/quickstarts/build-and-deploy>
 
 # Cloud Build
-그러나, 가이드에서는 로컬에서 docker를 build 하지 않고 다음과 같이 Cloud Build에 등록하고 배포한다. 이 경우 GCS에 올리고 빌드 서버에서 빌드한 후에 Container Registry에 자동으로 올려준다. 이렇게 하지 않을 경우 직접 빌드해서 `docker push`로 직접 올려야 한다.
+그러나, 가이드에서는 로컬에서 docker를 build 하지 않고 다음과 같이 Cloud Build에 등록하고 배포한다. 이 경우 소스코드가 tgz로 압축되어 GCS에 올라가고 빌드 서버에서 빌드된 후에 Container Registry에 자동으로 올라간다. 이렇게 하지 않을 경우 직접 빌드해서 `docker push`로 직접 올려야 한다.
 
 ```console
 # 개인 계정으로 로그인
@@ -32,9 +32,8 @@ $ gcloud auth login
 $ gcloud config set run/platform managed
 $ gcloud config set run/region asia-northeast3
 
-# 빌드
+# 빌드 & 배포
 $ gcloud builds submit --tag gcr.io/PROJECT_ID/helloworld
-# 배포
 $ gcloud run deploy --image gcr.io/PROJECT_ID/helloworld
 ```
 
@@ -49,7 +48,7 @@ $ gcloud run deploy --image gcr.io/PROJECT_ID/helloworld
 
 # Container Registry
 
-이후 자동으로 Container Registry에 업로드된다. 빌드 & 배포를 한 번에 처리한다. Cloud Build가 진행되기 전 소스코드는 tgz로 압축되어 GCS에 등록된다. Container Registry에 있는 이미지는 GCE, GKE, Cloud Run에 각각 편리하게 선택하여 배포 가능하다. GCE는 모든 포트가 맵핑되어 있으며(맥에서는 some reasons로 docker에서 불가[^fn-some]), GKE는 직접 K8s 기본 클러스터까지 생성해준다.
+Container Registry에 있는 이미지는 GCE, GKE, Cloud Run에 각각 편리하게 선택하여 배포 가능하다. GCE는 모든 포트가 맵핑되어 있으며(맥에서는 some reasons로 docker에서 불가[^fn-some]), GKE는 직접 K8s 기본 클러스터까지 생성해준다.
 
 [^fn-some]: <https://stackoverflow.com/questions/49323225/expose-all-ports-for-a-docker-image/49323975#comment114361345_49323975>
 
