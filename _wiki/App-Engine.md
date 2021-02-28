@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: App Engine
-last-modified: 2021/02/28 02:00:43
+last-modified: 2021/02/28 15:00:19
 ---
 
 <!-- TOC -->
@@ -60,35 +60,22 @@ gcp-user@on-prem-checker:~$ ./runme-cloud-run.sh
          time_total:  0.067664
          time_total:  0.067795
          time_total:  0.064981
-         time_total:  0.064872
-         time_total:  0.064756
-         time_total:  0.066597
-         time_total:  0.064560
-         time_total:  0.065861
-         time_total:  0.065972
-         time_total:  0.065924
 gcp-user@on-prem-checker:~$ ./runme-app-engine.sh
          time_total:  0.061835
          time_total:  0.060745
          time_total:  0.060560
-         time_total:  0.061038
-         time_total:  0.062100
-         time_total:  0.061689
-         time_total:  0.061502
-         time_total:  0.063017
-         time_total:  0.060906
-         time_total:  0.062314
 gcp-user@on-prem-checker:~$ ./runme-app-engine-http.sh
          time_total:  0.005134
          time_total:  0.005090
          time_total:  0.004924
-         time_total:  0.005029
-         time_total:  0.005247
-         time_total:  0.004771
-         time_total:  0.005688
-         time_total:  0.004817
-         time_total:  0.005994
-         time_total:  0.006245
+gcp-user@on-prem-checker:~$ ./runme-app-engine-custom-domain.sh
+         time_total:  0.332833
+         time_total:  0.478309
+         time_total:  0.475403
+gcp-user@on-prem-checker:~$ ./runme-app-engine-standard.sh
+         time_total:  0.032790
+         time_total:  0.008085
+         time_total:  0.009904
 ```
 
 속도 측정에 사용한 `curltime`은 다음과 같다.
@@ -107,6 +94,12 @@ curl -w @- -o /dev/null -s "$@" <<'EOF'
 EOF
 ```
 
+flexible에 비해 standard는 cold start가 있는거 같다. 전체적인 속도도 늦고 특히 중간중간 튀는 애들이 많아서 훨씬 더 불안정한 모습을 보인다. 아무래도 standard는 독립 인스턴스가 아니라 같이 쓰는 환경이다 보니 그런것으로 보인다.
+
 ## 기타
 
 아직 asia-northeast3에서 custom domain을 지원하지 않는 Cloud Run과 달리 App Engine의 Settings에서 Custom domains를 잘 지원한다.
+
+그러나 custom domains는 GCE에서 호출시 매우 늦다. 이 문제는 Cloud Run도 동일하게 발생하는듯 하다.[^fn-high-latency] internal microservices 용도라면 *.r.appspot.com 도메인을 이용해 직접 처리되도록 한다.
+
+[^fn-high-latency]: <https://cloud.google.com/run/docs/issues#latency-domains>
