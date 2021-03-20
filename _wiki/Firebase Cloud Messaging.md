@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Firebase Cloud Messaging
-last-modified: 2021/03/13 01:02:59
+last-modified: 2021/03/19 13:06:43
 ---
 
 <!-- TOC -->
@@ -9,6 +9,7 @@ last-modified: 2021/03/13 01:02:59
 - [개요](#개요)
 - [방법](#방법)
     - [Access Token 발급 받는 법](#access-token-발급-받는-법)
+    - [Python SDK](#python-sdk)
 
 <!-- /TOC -->
 
@@ -37,3 +38,8 @@ $ curl -i -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \
 기존 방식은 Server Key로 가능하나 DEPRECATED 되면서 새로이 OAuth2가 적용됐다. SDK로 동작하기 때문에 REST로는 어렵지만 [구글 플레이그라운드](https://developers.google.com/oauthplayground/)에서 `email, https://www.googleapis.com/auth/firebase.messaging`을 입력하여 발급 받을 수 있다.[^fn-curl]
 
 [^fn-curl]: <https://blog.mestwin.net/send-your-test-fcm-push-notification-quickly-with-curl/>
+
+## Python SDK
+샘플[^fn-ex]을 참고해 발송할 수 있고, 잘 동작한다. 굳이 `messaging.Notification`이 아니더라도 단순히 data를 전달하는 것도 가능하다. 이 경우 원격에서 업데이트 하는 효과를 줄 수 있을 것 같다. (야구 스코어 등) 다만 notification도 메시지ID만 출력할 뿐 얼마나 발송했고, 성공 여부는 알려주지 않는다.
+
+[^fn-ex]: <https://firebase.google.com/docs/cloud-messaging/send-message#send-messages-to-topics>

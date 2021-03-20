@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: C++
-last-modified: 2020/01/02
+last-modified: 2021/03/21 04:50:58
 ---
 
 <!-- TOC -->
@@ -28,6 +28,7 @@ last-modified: 2020/01/02
 - [SFINAE](#sfinae)
 - [include 기본 경로](#include-기본-경로)
 - [Memory Allocation](#memory-allocation)
+- [링크](#링크)
 - [Books](#books)
     - [모던 C++로 배우는 함수형 프로그래밍 <sub>2017, 2018</sub>](#모던-c로-배우는-함수형-프로그래밍-2017-2018)
 
@@ -217,6 +218,9 @@ $ echo "" | g++ -xc - -v -E
 - `malloc` allocates a block of memory.
   - `mmap`: In this respect an anonymous mapping is similar to malloc, and is used in some malloc implementations for certain allocations. 엔진에서는 이걸로 메모리를 할당한다.
 - `calloc`, same as malloc. Only difference is that it initializes the bytes to zero.
+
+# 링크
+[C++](https://dev.likejazz.com/post/187029899561/httpsgithubcomluncliffcoreguidelines-c-에서)
 
 # Books
 ## 모던 C++로 배우는 함수형 프로그래밍 <sub>2017, 2018</sub>
