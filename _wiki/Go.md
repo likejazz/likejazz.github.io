@@ -1,11 +1,12 @@
 ---
 layout: wiki 
 title: Go
-last-modified: 2019/05/11
+last-modified: 2021/03/23 14:42:04
 ---
 
 <!-- TOC -->
 
+- [가이드](#가이드)
 - [동시성](#동시성)
     - [Goroutine](#goroutine)
 - [빌드 및 실행](#빌드-및-실행)
@@ -21,6 +22,22 @@ last-modified: 2019/05/11
     - [EasyJSON](#easyjson)
 
 <!-- /TOC -->
+
+# 가이드
+Go 1.13 이후로 모듈구조가 디폴트로 채택되면서 가이드[^fn-guide]가 많이 변경됐다.  
+
+[^fn-guide]: <https://golang.org/doc/code>
+
+`go install`은 `$GOPATH/bin`에 설치된다. `go build`는 해당 디렉토리에 빌드된다. 예전에는 시스템에 `$GOPATH`를 잡고 했는데 이제 `go env`로 확인 가능하다. 변경시 `go env -w` 기능도 2019년에 추가됨. 시스템 환경설정은 필요 없다.
+
+기본 프로그램도 모듈이기 때문에,
+```
+$ go mod init hyundai.com/hello
+```
+형태로 셋업한다.
+
+리모트 모듈을 import 했을때는 `go mod tidy`로 자동 설치.
+
 
 # 동시성
 ## Goroutine
