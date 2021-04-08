@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Keras
-last-modified: 2019/04/16
+last-modified: 2021/04/08 21:13:07
 ---
 
 <!-- TOC -->
@@ -10,6 +10,7 @@ last-modified: 2019/04/16
 - [Optimizer](#optimizer)
 - [Tokenizer](#tokenizer)
     - [keras.backend.ndim](#kerasbackendndim)
+- [속도](#속도)
 
 <!-- /TOC -->
 
@@ -57,3 +58,14 @@ corpus_tokenized = tokenizer.texts_to_sequences(corpus)
 
 ## keras.backend.ndim
 Returns the **number of axes** in a Tensor, as an Integer.
+
+# 속도
+Simple MNIST convnet[^fn-conv]
+
+| 시스템 | Processing Unit | Speed |
+| ----- | --------------- | ----- |
+| 맥북 | CPU(2.6 GHz 6-Core Intel Core i7) | 15s/it |
+| GCP | CPU(2x Intel(R) Xeon(R) CPU @ 2.20GHz) | 32s/it |
+| GCP | GPU(Tesla T4) | 2s/it |
+
+[^fn-conv]: <https://keras.io/examples/vision/mnist_convnet/>
