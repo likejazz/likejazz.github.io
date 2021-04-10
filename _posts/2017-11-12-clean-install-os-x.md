@@ -117,57 +117,101 @@ tags: Productivity
   - 플러그인은 `plugins=(git history python fasd history-substring-search docker)`를 사용한다.
 - **Homebrew** 이제 brew 없는 맥 콘솔은 상상할 수 없다. 각종 도구와 컴파일러등 모든 개발 관련 도구는 brew를 통해 설치한다.
 <img width="70%" src="https://user-images.githubusercontent.com/1250095/32696328-ea701530-c7b8-11e7-9501-149a4ce0dd86.png">  
-  - `Brewfile`은 아래와 같다.  
+  - `Brewfile`(`brew bundle dump`로 생성)은 아래와 같다.  
 ```
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
+tap "homebrew/services"
 tap "wallix/awless"
-brew "python"
+brew "python@3.9"
+brew "glib"
+brew "nettle"
+brew "gnutls"
+brew "emacs"
 brew "cask"
 brew "clisp"
 brew "cmake"
+brew "ctop"
 brew "deno"
+brew "exa"
 brew "fasd"
 brew "fzf"
+brew "gd"
+brew "gdk-pixbuf"
+brew "gdrive"
+brew "gh"
 brew "git"
-brew "git-lfs"
 brew "glances"
 brew "gnu-tar"
 brew "go"
+brew "gobject-introspection"
 brew "gradle"
+brew "jasper"
+brew "netpbm"
+brew "gts"
+brew "harfbuzz"
+brew "pango"
+brew "librsvg"
 brew "graphviz"
+brew "grpcurl"
+brew "helm"
 brew "htop"
 brew "httpie"
 brew "hub"
-brew "jq"
+brew "libheif"
 brew "libomp"
-brew "pango"
-brew "librsvg"
+brew "imagemagick"
+brew "jq"
 brew "m-cli"
 brew "make"
 brew "mas"
 brew "maven"
+brew "meson"
+brew "nasm"
+brew "nload"
 brew "nmap"
 brew "node"
 brew "pandoc"
+brew "protobuf"
+brew "protoc-gen-go"
 brew "pyenv"
+brew "quickjs"
+brew "r"
+brew "rbenv"
+brew "rust"
 brew "speedtest-cli"
 brew "telnet"
+brew "terraform"
 brew "the_silver_searcher"
 brew "tldr"
+brew "tmux"
 brew "tree"
+brew "typescript"
 brew "watch"
 brew "wget"
-brew "wallix/awless/awless", link: false
+brew "youtube-dl"
+brew "wallix/awless/awless"
 cask "anaconda"
+cask "font-jetbrains-mono"
+mas "com.adriangranados.wifiexplorerlite", id: 1408727408
+mas "com.pixelmatorteam.pixelmator.x", id: 1289583905
 mas "Evernote", id: 406056744
 mas "Hancom Office HWP 2014 VP Viewer", id: 416746898
 mas "KakaoTalk", id: 869223134
+mas "Keynote", id: 409183694
+mas "Messenger", id: 1480068668
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
 mas "Mirror HD", id: 413878049
-mas "Pixelmator Pro", id: 1289583905
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Polyglot", id: 1471801525
 mas "Things", id: 904280696
-mas "WiFi Explorer Lite", id: 1408727408
+mas "Unicorn HTTPS", id: 1475628500
+mas "Wake Up Time", id: 495945638
 mas "Xcode", id: 497799835
 mas "Xee³", id: 639764244
 ```
