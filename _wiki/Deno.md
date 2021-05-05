@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Deno
-last-modified: 2021/05/04 12:37:47
+last-modified: 2021/05/06 08:08:03
 ---
 
 <!-- TOC -->
@@ -29,6 +29,6 @@ Standard Library도 Go의 영향을 많이 받았다. 2년여간 오픈소스로
 
 ## node
 - `node`: js 실행
-- `ts-node`: `npm install -g ts-node`로 설치. `tsc`가 변환 후 `node`로 실행. 원래 `tsc`는 js 변환 역할만 수행.
+- `ts-node`: `npm install -g ts-node`로 설치. `tsc`가 변환 후 `node`로 실행. 원래 `tsc`는 js 변환 역할만 수행. TypeScript는 brew로 설치했더니 npm으로 설치한 ts-node와 충돌이 발생한다.
 
 별개로 노드 모듈 중 하나인 `gnomon` 매우 좋다. global로 설치하여 유용하게 활용 중이다.
