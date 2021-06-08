@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: OAuth 2.0
-last-modified: 2021/03/14 22:18:39
+last_modified_at: 2021/06/08 13:03:45
 ---
 
 OAuth 2.0은 1.0과 호환성이 없으며 2012년 10월에 RFC 게시되었다.  

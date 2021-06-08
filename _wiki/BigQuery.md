@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: BigQuery
-last-modified: 2020/12/17 21:07:10
+last_modified_at: 2021/06/08 13:03:45
 ---
 
 <!-- TOC -->

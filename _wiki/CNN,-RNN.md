@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: CNN, RNN
-last-modified: 2019/09/04
+last_modified_at: 2021/06/08 13:03:45
 ---
 
 <!-- TOC -->

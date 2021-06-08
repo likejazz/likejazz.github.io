@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: Activation, Cost Functions
-last-modified: 2020/06/06 16:23:33
+last_modified_at: 2021/06/08 13:03:45
 ---
 
 <!-- TOC -->

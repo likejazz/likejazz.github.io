@@ -1,6 +1,6 @@
 
 <small style="font-size: 0.6em">
-    {% assign wikis = site.wiki | sort: 'last-modified' | reverse %}
+    {% assign wikis = site.wiki | sort: 'last_modified_at' | reverse %}
     {% for w in wikis %}
         <a href="{{ w.url }}">{{ w.title }}</a>
         {% if forloop.last == false %}
