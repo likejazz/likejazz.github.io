@@ -48,12 +48,16 @@ scikit-learn은 기본적인 시각화를 지원한다. 아래는 [타이타닉 
 [^fn-error]: <https://github.com/parrt/dtreeviz/pull/36/commits/24721abf135f40a1eee81ac02c8b68be86e6f3c7>
 
 ```
+$ conda create --name dtreeviz python=3.7
+$ conda activate dtreeviz
+$ pip install dtreeviz
+
 $ brew uninstall graphviz
 $ brew reinstall pango librsvg --build-from-source
 $ brew reinstall cairo --build-from-source
 $ brew install graphviz --build-from-source
 ```
-It may takes up to 10 mins.
+It may takes up to 10 mins. conda 환경 또한 완전히 새롭게 만들어주지 않으면 기존 환경에서는 자꾸만 segmentation fault가 발생했다.
 
 ### Random Forest
 Decision Tree와 달리 배깅을 통한 Random Forest는 각각의 피처를 통한 시각화가 쉽지 않다. 부스팅도 마찬가지이며, 이 경우 feature importance로 해석을 시도한다. scikit-learn의 경우 feature importance 표현에 [bias를 가지므로 주의](https://explained.ai/rf-importance/index.html)가 필요하다. [rfpimp 프로젝트](https://github.com/parrt/random-forest-importances)는 신뢰성 높은 결과를 보여주며, 최근(Jul 2019) scikit-learn은 [permutation importance 구현](https://github.com/scikit-learn/scikit-learn/pull/13146)을 머지했다.
