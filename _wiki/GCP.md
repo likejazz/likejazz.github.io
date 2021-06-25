@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: GCP
-last_modified_at: 2021/06/08 13:03:45
+last_modified_at: 2021/06/25 22:02:18
 ---
 
 <!-- TOC -->
@@ -18,6 +18,7 @@ last_modified_at: 2021/06/08 13:03:45
     - [네트워크](#네트워크)
     - [CLI](#cli)
         - [환경 설정](#환경-설정)
+    - [Cloud Domains](#cloud-domains)
 - [운영](#운영)
     - [인증](#인증)
 
@@ -155,6 +156,11 @@ $ gcloud config set project edith-xx
 이처럼 default project 지정. 매 번 cli에서 project id를 입력하지 않아도 된다. 이외 `$ export PROJECT_ID=xxx` 방법도 있다.
 
 로컬 콘솔 외에도 Cloud Shell을 실행하는 방법이 있다. 모든 도구가 설치되어 있으며, 환경 차이 없이 가상 서버 터미널을 브라우저에서 표준 방식으로 사용할 수 있어 편리하다.
+
+## Cloud Domains
+Google Cloud Domains(Beta)는 프로젝트 기반이고 도메인을 다른 프로젝트로 이동 불가[^fn-gdomains] export 하게 되면 더 이상 관리 안되며 [Google Domains](https://domains.google.com/registrar)에서만 확인 가능. 여기는 계정 기반으로 프로젝트도 없는 별도 서비스다. 우리나라에서는 지원 안된다고 나오지만 My domains에서 확인 가능. 여기서 exported 도메인을 찾아 완전히 삭제할 수 있다.
+
+[^fn-gdomains]: <https://stackoverflow.com/a/65962034/3513266>
 
 # 운영
 ```
