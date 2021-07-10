@@ -1,7 +1,7 @@
 ---
 layout: wiki 
 title: PyData
-last_modified_at: 2021/06/08 13:03:45
+last_modified_at: 2021/06/30 22:21:06
 ---
 
 <!-- TOC -->
@@ -14,6 +14,11 @@ last_modified_at: 2021/06/08 13:03:45
 <!-- /TOC -->
 
 # Pandas
+DataFrame 메모리 점유 확인
+```python
+df.info(memory_usage='deep')
+```
+
 『누구나 파이썬 통계분석』 ch4 성적 데이터 이용  
 Scatter plot form dataframe with index on x-axis[^fn-df]
 ```python
