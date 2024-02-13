@@ -1,0 +1,12 @@
+<div style="background-color:whitesmoke; padding-bottom: 4px; padding-left: 4px; padding-right: 4px; border-radius: 6px;">
+<h1>Recent Wikis</h1>
+{% assign wikis = site.wiki | sort: 'last_modified_at' | reverse %}
+{% for w in wikis | limit: 45 %}
+  {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+  <a href="{{ w.url }}">{{ w.title }}</a>
+  <span class="post-meta" style="font-size: 0.5em">{{ w.last_modified_at | date: date_format }}</span>
+  {% if forloop.last == false %}
+    &nbsp;·&nbsp; 
+  {% endif %}
+{% endfor %}
+</div>

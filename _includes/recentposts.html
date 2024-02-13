@@ -1,0 +1,12 @@
+<div style="background-color:whitesmoke; padding-bottom: 4px; padding-left: 4px; padding-right: 4px; border-radius: 6px;">
+<h1>Recent Posts</h1>
+{% assign posts = site.posts | sort: 'last_modified_at' | reverse %}
+{% for post in posts | limit: 7 %}
+  {% assign date_format = site.minima.date_format | default: "%b %Y" %}
+  <div>
+    <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    <span class="post-meta" style="font-size: 0.5em">{{ post.date | date: date_format }}</span>
+    <span style="font-size: 0.5em; color: darkred;">{% for tag in post.tags %}#{{ tag }}&nbsp;&nbsp;{% endfor %}</span>
+  </div>
+{% endfor %}
+</div>
