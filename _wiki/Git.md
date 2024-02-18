@@ -2,7 +2,7 @@
 layout: wiki 
 title: Git
 tags: ["Software Engineering"]
-last_modified_at: 2024/02/14 00:48:10
+last_modified_at: 2024/02/14 00:49:55
 ---
 
 - [Download a specific tag with git](#download-a-specific-tag-with-git)
@@ -79,6 +79,7 @@ git config user.email "likejazz@gmail.com"
 # git branch -m main
 git add .
 git commit -m "Initialized."
-git remote add origin https://github.com/onlybooks/java-algorithm-interview.git
-git push --force -u origin main
+git remote add origin https://github.com/likejazz/likejazz.github.io.git
+# git push --force -u origin main
+git push --force -u origin master
 ```

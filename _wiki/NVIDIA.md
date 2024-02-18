@@ -2,7 +2,7 @@
 layout: wiki 
 title: NVIDIA
 tags: ["MLOps & HPC"]
-last_modified_at: 2023/12/31 21:00:33
+last_modified_at: 2024/02/18 20:30:04
 ---
 
 - [NVIDIA Data Center GPUs](#nvidia-data-center-gpus)
@@ -26,9 +26,11 @@ last_modified_at: 2023/12/31 21:00:33
 | HDMI | 10Gb/s | 1.25GB/s |
 | HDMI 4K | 18Gb/s | 2.25GB/s |
 | M1 Macbook Pro 1TB SSD | | 7.4GB/s read |
-| M1 Memory | | 400GB/s |
+| M1 Pro Memory | | 200GB/s |
+| M1 Max Memory | | 400GB/s |
 | NVLink(A100) | | 600GB/s |
-| HBM(A100) | | 1.5TB/s |
+| HBM(A100 40G) | | 1.5TB/s |
+| HBM(A100 80G) | | 1.9TB/s |
 
 ## SuperPOD
 Compute Nodes: 40ea DGX A100 system(8x A100)
