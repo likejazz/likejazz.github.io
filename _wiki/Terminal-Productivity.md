@@ -2,7 +2,7 @@
 layout: wiki 
 title: Terminal Productivity
 tags: ["Software Engineering"]
-last_modified_at: 2024/01/28 03:24:47
+last_modified_at: 2024/02/19 12:41:50
 ---
 
 <!-- TOC -->
@@ -22,6 +22,7 @@ last_modified_at: 2024/01/28 03:24:47
 - [tar with excludes](#tar-with-excludes)
 - [setup KST timezone](#setup-kst-timezone)
 - [asciinema](#asciinema)
+- [Mount disk](#mount-disk)
 
 <!-- /TOC -->
 
@@ -191,3 +192,13 @@ It will automatically set `/etc/localtime`.
 - [gifcast](https://dstein64.github.io/gifcast/)를 이용해 animated gif로 변환. agg와 달리 한글 문제도 없으며 가장 깔끔하게 변환된다.
 
 또 다른 옵션으로 [termtosvg](https://github.com/nbedos/termtosvg)도 있다. 바로 svg로 저장되므로 편리하지만 한글 출력시 약간씩 좌우로 흔들리는 버그가 있다.
+
+# Mount disk
+```
+$ lsblk
+# 파일시스템 포맷이므로 주의
+$ sudo mkfs.xfs /dev/nvmexxx
+$ sudo mkdir /models
+$ sudo chown hyperai /models
+$ sudo mount /dev/nvmexxx /models
+```
