@@ -1,60 +1,23 @@
 ---
 layout: wiki 
-title: Terminal Productivity
-tags: ["Software Engineering"]
-last_modified_at: 2024/02/19 12:41:50
+title: CLI Productivity
+tags: ["Productivity"]
+last_modified_at: 2024/02/23 14:09:41
 ---
 
 <!-- TOC -->
 
-- [ssh without password](#ssh-without-password)
-- [rsync](#rsync)
-- [What's the version of my OS?](#whats-the-version-of-my-os)
 - [모듈](#모듈)
-- [lsof](#lsof)
-- [dig `+trace`](#dig-trace)
 - [diff와 patch](#diff와-patch)
-- [Port Forwarding](#port-forwarding)
-  - [ssh 접속 via proxy](#ssh-접속-via-proxy)
-- [nload](#nload)
 - [Typora parser](#typora-parser)
 - [bundle exec jekyll serve](#bundle-exec-jekyll-serve)
 - [tar with excludes](#tar-with-excludes)
 - [setup KST timezone](#setup-kst-timezone)
 - [asciinema](#asciinema)
 - [Mount disk](#mount-disk)
+- [htop](#htop)
 
 <!-- /TOC -->
-
-# ssh without password
-```
-$ ssh-copy-id -i ~/.ssh/id_rsa.pub -p 300XX xxx-user@10.12.XX.XX
-```
-
-# rsync
-
-두 디렉토리 동기화
-
-```
-$ rsync -avzh \
-	--dry-run \
-	--progress \
-	~/Documents/BACKUPZ/2020/ ./2020/
-```
-
-앞에가 src, 뒤가 dest 이며, `dry-run` 실행 구문이다. `--progress`는 `412 files to consider` 표시. 
-
-# What's the version of my OS?
-**Linux**[^fn-linux]
-
-[^fn-linux]: <https://whatsmyos.com>
-
-- 리눅스 정보 `$ cat /etc/*-release`
-- 커널 버전 `$ cat /proc/version`
-  - `uname -a`
-- CPU 정보 `$ lscpu`
-- `lsb_release -a` or `cat /etc/issue*`
-- `hostnamectl`
 
 # 모듈
 모듈은 요청 시 커널에 로드할 수 있는 프로그램으로 커널을 재컴파일하거나 재부팅할 필요가 없다(p52, 모던 리눅스 교과서, 2023).
@@ -63,18 +26,6 @@ $ find /lib/modules/$(uname -r) -type f -name '*.ko*'
 ```
 커널이 실제로 로드한 모듈 `$ lsmod`  
 모듈 종속성 목록 조회 `$ modprobe --show-depends async_memcpy`
-
-# lsof
-lsof는 list open files의 약자  
-`$ sudo lsof -i TCP:1-1024`  
-프로세스 정보는 `$ sudo lsof -p 2775`
-
-# dig `+trace`
-```console
-$ dig +trace likejazz.com
-```
-
-`+trace`는 DNS 질의 과정을 root dns 부터 모두 표시해준다.
 
 # diff와 patch
 다음과 같이 변경 사항을 생성한다.
@@ -98,35 +49,6 @@ $ patch -p0 < a.patch
 ```
 
 `a-original/a.py`에 패치가 적용된다.
-
-# Port Forwarding
-```
-$ ssh -N -L 7860:10.17.120.XX:7860 airlab-xxx@10.12.54.XX -p 30001
-```
-
-`localhost:7860`으로 접속하면 10.12.54.XX:30001의 ssh를 통해 10.17.120.XX:7860으로 연결된다.
-
-## ssh 접속 via proxy
-
-```
-$ cat ~/.ssh/config
-Host sshuser-vpn
-  Hostname 10.17.119.XX
-  Port 2222
-  User sshuser
-  IdentityFile /Users/HXXXXXXX/.ssh/id_rsa_rapids_docker
-  ProxyCommand ssh -W 10.17.119.XX:2222 airlab-xxx@10.12.54.XX -p 30001
-
-$ ssh sshuser-vpn
-```
-
-10.12.54.XX를 통해서 10.17.119.XX:2222로 ssh 접속한다.
-
-
-# nload
-네트워크 모니터링 `$ sudo apt install nload`
-
-Device는 eth를 택하도록 화살표로 선택하고 `F2` 옵션에서 Unit for traffic numbers: Human Readable (Byte)에서 `TAB`으로 선택, `F5`로 저장
 
 # Typora parser
 <https://github.com/PegasisForever/typora-parser>
@@ -202,3 +124,8 @@ $ sudo mkdir /models
 $ sudo chown hyperai /models
 $ sudo mount /dev/nvmexxx /models
 ```
+
+# htop
+top을 대체하는 최고의 프로젝트
+- `Shift+H` Turn off userland threads
+- `F2` Setup에서 설정 변경. Available meters에서 추가 및 이동 가능. `F10`으로 `~/.config/htop/htoprc`에 저장한다.

@@ -2,10 +2,11 @@
 layout: wiki 
 title: Text Generation
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/12 12:14:30
+last_modified_at: 2024/02/23 18:29:52
 ---
 
 - [model.generate()](#modelgenerate)
+  - [Orion-14B-Chat-RAG](#orion-14b-chat-rag)
 - [Temperature](#temperature)
 - [Subword Tokenization](#subword-tokenization)
 - [pipeline](#pipeline)
@@ -35,8 +36,7 @@ print(tokenizer.decode(outputs['sequences'][0]))
 ```
 `max_length`: input prompt + `max_new_tokens`
 
----
-Orion-14B-Chat-RAG 실험:
+## Orion-14B-Chat-RAG
 ```python
 # $ CUDA_VISIBLE_DEVICES=2 python
 import torch
@@ -55,7 +55,7 @@ print(model.chat(tokenizer, messages, streaming=False))
 ```
 
 # Temperature
-<img src="https://github.com/likejazz/likejazz.github.io/assets/1250095/ff0816fb-a643-4960-a392-d71853870302" width="70%">
+<img src="/images/2024/293453630-ff0816fb-a643-4960-a392-d71853870302.png" width="70%">
 [^fn-cohere]
 
 [^fn-cohere]: <https://docs.cohere.com/docs/temperature>

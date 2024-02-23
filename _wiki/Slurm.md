@@ -1,8 +1,8 @@
 ---
 layout: wiki 
-title: HPC
+title: Slurm
 tags: ["MLOps & HPC"]
-last_modified_at: 2023/08/14 00:41:50
+last_modified_at: 2024/02/23 13:29:58
 ---
 
 - [DeepOps](#deepops)

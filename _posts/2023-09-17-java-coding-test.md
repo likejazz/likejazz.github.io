@@ -2,7 +2,7 @@
 layout: post
 title: ! '자바 코딩 테스트 책 출간 안내'
 tags: ["Books"]
-last_modified_at: 2023/09/17 00:00:00
+last_modified_at: 2024/02/23 18:23:11
 ---
 
 <div class="message">
@@ -49,11 +49,11 @@ last_modified_at: 2023/09/17 00:00:00
 
 # 마인드맵
 
-<img src="https://github.com/likejazz/likejazz.github.io/assets/1250095/f327049a-0090-460b-b438-d0bbcf7154a0" width="100%">
+<img src="/images/2024/268509054-f327049a-0090-460b-b438-d0bbcf7154a0.png" width="100%">
 
 # 판매처
 
-<img src="https://github.com/likejazz/likejazz.github.io/assets/1250095/5c784539-0641-419d-9612-44194e7cc80c" width="50%">
+<img src="/images/2024/268509048-5c784539-0641-419d-9612-44194e7cc80c.png" width="50%">
 
 《자바 알고리즘 인터뷰 with 코틀린》은 다음 판매처에서 구매하실 수 있습니다.
 - [교보문고](https://product.kyobobook.co.kr/detail/S000209071463)

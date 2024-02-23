@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/12 16:26:04
+last_modified_at: 2024/02/23 14:15:51
 ---
 
 <!-- TOC -->
@@ -57,6 +57,19 @@ $ curl -X POST http://localhost:11434/api/generate \
     "prompt": "write a function about fibonacci sequence in rust",
     "stream": false
 }'
+```
+
+42dot LLM Modelfile
+```
+FROM /home/sshuser/.ollama/models/blobs/sha256:xxxx
+TEMPLATE """{{ .System }}
+<human>: {{ .Prompt }}
+<bot>:
+"""
+SYSTEM """호기심 많은 인간 (human)과 인공지능 봇 (AI bot)의 대화입니다. \n봇의 이름은 42dot LLM이고 포티투닷 (42dot)에서 개발했습니다. \n봇은 인간의 질문에 대해 친절하게 유용하고 상세한 답변을 제공합니다.
+"""
+PARAMETER stop "<human>:"
+PARAMETER stop "<bot>:"
 ```
 
 # llama-cpp-python

@@ -2,7 +2,7 @@
 layout: wiki 
 title: Transformer
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/12 12:14:39
+last_modified_at: 2024/02/23 18:31:45
 ---
 
 <!-- TOC -->
@@ -28,17 +28,17 @@ Karpathy의 [minGPT를 여러 방법으로 실험](https://github.com/likejazz/m
 
 ## Multi-Head Attention
 아래는 T=6 ~ 11, C=20, nh=4, hs=5
-<img src="https://github.com/likejazz/likejazz.github.io/assets/1250095/1d0a584d-a0c4-4439-9cf2-9978e5c7452b" width="100%">
+<img src="/images/2024/289134422-1d0a584d-a0c4-4439-9cf2-9978e5c7452b.png" width="100%">
 
 embedding을 3배수로 확장할 때 `[:,:20]`은 Q weights, `[:,20:40]`은 K weights, `[:,40:]`은 V weights로 가정할 수 있다. 결과 또한 동일하며 Q,K,V가 차례대로 나눠 갖고 `nh(num of heads), T(context length) x T` 필드를 펼쳐서 어텐션 맵을 형성한다. 
 
-<img src="https://user-images.githubusercontent.com/1250095/179693648-6abf41b7-1623-4484-9216-449a4e27f1b0.png" width="50%">
+<img src="/images/2024/179693648-6abf41b7-1623-4484-9216-449a4e27f1b0.png" width="50%">
 
 GPT는 masked multi-head attention(causal masking, 그림 어텐션맵 예제)이므로 첫 번째 토큰은 첫 번째에만 어텐션을 줄 수 있고, 마지막 토큰은 전체 토큰에 어텐션을 줄 수 있다. 즉 `[1, 0]`은 logit of how important "1" is to "0".
 
 이 맵은 `nh` 만큼 쪼갠 부분 임베딩 V에 어텐션을 주는 효과가 있으며 `nh, T, hs`로 나온 결과는 연결하여 원래값인 `T x C(embedding dimensionality)`로 만든다. 마지막으로 projection layer를 통과하고 이후에는 MLP forward를 진행한다. causal masking이므로 이전 token에 대한 logit은 모두 동일하며 캐싱할 수 있다. 만약 causal masking이 아니라면 뒤에 토큰에 따라 이전 값이 달라질 수 있다.
 
-<img src="https://github.com/likejazz/likejazz.github.io/assets/1250095/2e7fedc5-eaf4-4fa4-a4cc-ee8098874ac2" width="60%">[^fn-2]
+<img src="/images/2024/278333751-2e7fedc5-eaf4-4fa4-a4cc-ee8098874ac2.png" width="60%">[^fn-2]
 
 [^fn-2]: <https://en.wikipedia.org/wiki/Generative_pre-trained_transformer>
 
@@ -92,7 +92,7 @@ x = self.transformer.drop(tok_emb + (pos_enc if self.pos_type == 'pos_enc' else 
 position embedding 쪽이 loss가 훨씬 더 빨리, 작게 떨어진다. 사실상 positional encoding은 사용할 필요가 없다. 하지만 position 정보 없이는 학습되지 않으며, 당연히 token embeddings 없이도 학습되지 않는다.
 
 # Llama Architecture
-<img src="https://github.com/likejazz/likejazz.github.io/assets/1250095/410d5787-ddee-44c9-a3d6-78792e759d43" width="50%">
+<img src="/images/2024/301922294-410d5787-ddee-44c9-a3d6-78792e759d43.png" width="50%">
 
 # Transformer 응용 모델
 ## Pathways

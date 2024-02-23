@@ -2,7 +2,7 @@
 layout: wiki 
 title: NVIDIA
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/02/18 20:30:04
+last_modified_at: 2024/02/23 18:28:23
 ---
 
 - [NVIDIA Data Center GPUs](#nvidia-data-center-gpus)
@@ -15,9 +15,9 @@ last_modified_at: 2024/02/18 20:30:04
 
 # NVIDIA Data Center GPUs
 
-<img src="https://github.com/likejazz/likejazz.github.io/assets/1250095/bf1ac3b7-1c4c-4ee5-8036-44c3e73f13c7" width="100%">
+<img src="/images/2024/293452912-bf1ac3b7-1c4c-4ee5-8036-44c3e73f13c7.png" width="100%">
 
-<img src="https://user-images.githubusercontent.com/1250095/172214054-ff7f106d-23ad-4ad2-a782-d53be3af2a4d.png" width="80%">
+<img src="/images/2024/172214054-ff7f106d-23ad-4ad2-a782-d53be3af2a4d.png" width="80%">
 
 | Name | bits/s | Bytes/s |
 | ------ | ----- | ------ |
@@ -35,7 +35,7 @@ last_modified_at: 2024/02/18 20:30:04
 ## SuperPOD
 Compute Nodes: 40ea DGX A100 system(8x A100)
 
-<img width="80%" src="https://user-images.githubusercontent.com/1250095/163540882-1069b3b7-4aa1-4c81-b572-65cbd7d4e033.png">
+<img width="80%" src="/images/2024/163540882-1069b3b7-4aa1-4c81-b572-65cbd7d4e033.png">
 
 A100 80GB부터는 VRAM이 80GB. V100까지는 16/32GB까지만 제공되어 insufficient memory error가 잦았다.
 
