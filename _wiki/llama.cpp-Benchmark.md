@@ -1,8 +1,8 @@
 ---
 layout: wiki 
-title: Inference Benchmark
+title: llama.cpp Benchmark
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/14 00:46:37
+last_modified_at: 2024/02/25 19:58:50
 ---
 
 <!-- TOC -->
@@ -161,7 +161,7 @@ llama.cpp Q4_0 800M, +0.2166 ppl @ LLaMA-v1-7B
 | ----- | ------- | --- | --- | ---- | ---- | ------ | ------ | ------ | ---- | ---- |
 |42dot 1.3B | perplexity | 13.2410 | 13.2588 | 13.2526 | 13.2784 | 13.3141 | 13.3523 | 13.4439 | 13.7319 | 13.9454 |
 |42dot 1.3B | file size | 5.4G | 2.6G | 1.5G | 1.2G | 983M | 960M | 847M | 880M | 800M |
-|42dot 1.3B | tokens/s | N/A | 70 | 90 | 78 | 94 | 98 | 96 | 120 | 120 |
+|llama 7B | tokens/s | N/A | 70 | 90 | 78 | 94 | 98 | 96 | 120 | 120 |
 
 <img src="/images/2024/tokens-ppl-matplotlib.png" width="60%">[^fn-colab]
 

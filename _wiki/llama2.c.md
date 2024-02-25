@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama2.c
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/25 02:20:05
+last_modified_at: 2024/02/26 00:20:19
 ---
 
 <!-- TOC -->
@@ -12,6 +12,7 @@ last_modified_at: 2024/02/25 02:20:05
 - [OpenMP](#openmp)
 - [실행 속도 정리](#실행-속도-정리)
 - [clang](#clang)
+- [convert.py](#convertpy)
 
 <!-- /TOC -->
 
@@ -26,36 +27,16 @@ Lily was happy that she made her teddy bear feel better. She went to the doctor 
 achieved tok/s: 112.314709
 ```
 DGX Station A100:  
-achieved tok/s: 72.649573  
+`achieved tok/s: 72.649573`  
 128개 코어 중 하나만 사용하며 M1에 비해 늦다.
 
 # Quantization
-DGX:
-```
-$ OMP_NUM_THREADS=1 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10
-Once upon a time I drove home, down high
-achieved tok/s: 0.787195
-
-$ OMP_NUM_THREADS=128 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10
-Once upon a time I worked in a call center
-achieved tok/s: 13.657056
-```
-quantized는 multithreads로 실행할 때 일반 모델(`achieved tok/s: 4.534005`)에 비해 3x ↑
+quantized model은 DGX에서 multithreads로 실행할 때 일반 모델에 비해 3x ↑
 
 # OpenMP
-DGX에서는 `$ make runomp`로 openmp를 사용해 멀티쓰레딩으로 실행가능하다.
+`$ make runomp`로 DGX에서 openmp로 128코어를 모두 사용할 수 있다.
 
 <img src="/images/2024/runc-multithreads.png" width="70%">
-
-```
-$ OMP_NUM_THREADS=1 ./run llama2_7b.bin -i "Once upon a time" -n 10
-Once upon a time the gods fought each other for
-achieved tok/s: 0.675068
-
-$ OMP_NUM_THREADS=128 ./run llama2_7b.bin -i "Once upon a time" -n 10
-Once upon a time there lived in a small house
-achieved tok/s: 4.534005
-```
 
 M1:
 ```shell
@@ -64,34 +45,49 @@ M1:
 # CC = clang  # Makefile
 # make runomp
 #   clang -Ofast -fopenmp -march=native runq.c -lm -o runq
-$ ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10
+$ OMP_NUM_THREADS=10 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10
 ```
 
 # 실행 속도 정리
 
-llama2-7b, DGX: gcc 11.4.0, M1: clang 17.0.6  
+llama2-7b FP32(25G) / Q8(6.7G), DGX: gcc 11.4.0, M1: clang 17.0.6  
 `$ ./run llama2_7b.bin -i "Once upon a time" -n 10`
 
-| machine | build        | run                 | quantized | tokens/s  |
-| ------  | ------------ | ------------------- | --------- | --------- |
-| DGX     | make         |                     |           | 0.163970  |
-|         | make runfast |                     |           | 0.479004  |
-|         | make runomp  | OMP_NUM_THREADS=1   |           | 0.675068  |
-|         | make runomp  | OMP_NUM_THREADS=64  |           | 4.782147  |
-|         | make runomp  | OMP_NUM_THREADS=128 |           | 4.668050  |
-|         | make         |                     | o         | 0.763294  |
-|         | make runfast |                     | o         | 0.741229  |
-|         | make runomp  | OMP_NUM_THREADS=1   | o         | 0.787195  |
-|         | make runomp  | OMP_NUM_THREADS=64  | o         | 14.446228 |
-|         | make runomp  | OMP_NUM_THREADS=128 | o         | 13.975155 |
-| M1      | make         |                     |           | 0.017468  |
-|         | make runfast |                     |           | 0.017962  |
-|         | make runomp  | OMP_NUM_THREADS=1   |           | 0.018126  |
-|         | make runomp  | OMP_NUM_THREADS=10  |           | 0.044429  |
-|         | make         |                     | o         | 2.241594  |
-|         | make runfast |                     | o         | 2.380323  |
-|         | make runomp  | OMP_NUM_THREADS=1   | o         | 2.357873  |
-|         | make runomp  | OMP_NUM_THREADS=10  | o         | 8.620690  |
+| machine  | build        | run                 | quantized | tokens/s  |
+| ------   | ------------ | ------------------- | --------- | --------- |
+| DGX      | make         |                     |           | 0.163970  |
+|          | make runfast |                     |           | 0.479004  |
+|          | make runomp  | OMP_NUM_THREADS=1   |           | 0.675068  |
+|          | make runomp  | OMP_NUM_THREADS=64  |           | 4.782147  |
+|          | make runomp  | OMP_NUM_THREADS=128 |           | 4.668050  |
+|          | make         |                     | o         | 0.763294  |
+|          | make runfast |                     | o         | 0.741229  |
+|          | make runomp  | OMP_NUM_THREADS=1   | o         | 0.787195  |
+|          | make runomp  | OMP_NUM_THREADS=64  | o         | 14.446228 |
+|          | make runomp  | OMP_NUM_THREADS=128 | o         | 13.975155 |
+| M1 / 16G | make         |                     |           | 0.017468  |
+|          | make runfast |                     |           | 0.017962  |
+|          | make runomp  | OMP_NUM_THREADS=1   |           | 0.018126  |
+|          | make runomp  | OMP_NUM_THREADS=10  |           | 0.044429  |
+|          | make         |                     | o         | 2.241594  |
+|          | make runfast |                     | o         | 2.380323  |
+|          | make runomp  | OMP_NUM_THREADS=1   | o         | 2.357873  |
+|          | make runomp  | OMP_NUM_THREADS=10  | o         | 8.620690  |
+
+M1에서 매우 느린 이유는 모델이 메모리에 전부 올라가지 않아서로 추정되는데 Llama 2와 일치하는 더 작은 모델을 구할 수가 없다. Karpathy가 미리 빌드한 별도의 작은 모델로 속도만 따로 측정:  
+`$ ./run stories110M.bin -i "Once upon a time" -n 10`  
+
+| machine  | build        | run                 | quantized | tokens/s   |
+| ------   | ------------ | ------------------- | --------- | ---------- |
+| DGX      | make         |                     |           | 10.089686  |
+|          | make runfast |                     |           | 28.938907  |
+|          | make runomp  | OMP_NUM_THREADS=1   |           | 38.961039  |
+|          | make runomp  | OMP_NUM_THREADS=64  |           | 204.545455 |
+|          | make runomp  | OMP_NUM_THREADS=128 |           | 145.161290 |
+| M1 / 16G | make         |                     |           | 11.335013  |
+|          | make runfast |                     |           | 90.909091  |
+|          | make runomp  | OMP_NUM_THREADS=1   |           | 90.909091  |
+|          | make runomp  | OMP_NUM_THREADS=10  |           | 118.421053 |
 
 # clang
 ```
@@ -107,3 +103,23 @@ Target: arm64-apple-darwin23.3.0
 Thread model: posix
 InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 ```
+
+# convert.py
+
+hf 모델은 convert가 되지 않는다.
+```shell
+$ python export.py llama2_7b_hf.bin --version 0 --hf /Users/xxx/workspace/llama-2/Llama-2-7b-hf
+[1]    88371 killed     python export.py llama2_7b_hf.bin --version 0 --hf
+/opt/homebrew/anaconda3/envs/python310/lib/python3.10/multiprocessing/resource_tracker.py:224: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+```
+
+또한 `--version 1`로 변환시 실행이 되지 않는다.
+```shell
+$ ./run llama2_7b_hf.bin -i "Once upon a time" -n 10
+[1]    93242 segmentation fault  ./run llama2_7b_hf.bin -i "Once upon a time" -n 10
+```
+
+스크립트[^fn-conv]를 이용해 pth로 변환하고 `--version 0`으로 진행가능.
+
+[^fn-conv]: <https://gist.github.com/ahoho/57f5c3dcdce4be522ca13dfb96cc1eb8>
