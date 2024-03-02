@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama2.c
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/26 00:20:19
+last_modified_at: 2024/03/03 03:22:26
 ---
 
 <!-- TOC -->
@@ -21,9 +21,7 @@ M1 Pro:
 ```
 $ ./run stories15M.bin
 Once upon a time, there was a little girl named Lily. She loved to play with her toys, especially her teddy bear. One day, Lily's teddy bear's paw got hurt while playing outside.
-Lily's mom took her to see the doctor. The doctor was very nice and he gave Lily a lollipop. The doctor said, "Lily, you need to give this to your teddy bear to make him feel better."
-Lily went home and gave her teddy bear the lollipop. Her mom said, "Oh no, you lost your teddy bear. We can go back to the doctor and get him fixed."
-Lily was happy that she made her teddy bear feel better. She went to the doctor and he fixed her teddy bear's paw. Lily was very careful and always made sure her teddy bear was okay. The end.
+...
 achieved tok/s: 112.314709
 ```
 DGX Station A100:  
@@ -32,6 +30,45 @@ DGX Station A100:
 
 # Quantization
 quantized model은 DGX에서 multithreads로 실행할 때 일반 모델에 비해 3x ↑
+
+`matmul()` 함수를 비교하면 다음과 같다.
+```c
+// run.c
+void matmul(float* xout, float* x, float* w, int n, int d) {
+    // W (d,n) @ x (n,) -> xout (d,)
+    for (i = 0; i < d; i++) {
+        float val = 0.0f;
+        for (int j = 0; j < n; j++) {
+            val += w[i * n + j] * x[j];
+        }
+        xout[i] = val;
+    }
+}
+
+// runq.c
+void matmul(float* xout, QuantizedTensor *x, QuantizedTensor *w, int n, int d) {
+    // W (d,n) @ x (n,) -> xout (d,)
+    for (i = 0; i < d; i++) {
+        float val = 0.0f;
+        int32_t ival = 0;
+        int in = i * n;
+        for (int j = 0; j <= n - GS; j += GS) {
+            for (int k = 0; k < GS; k++) {
+                ival += ((int32_t) x->q[j + k]) * ((int32_t) w->q[in + j + k]);
+            }
+            val += ((float) ival) * w->s[(in + j) / GS] * x->s[j / GS];
+            ival = 0;
+        }
+        xout[i] = val;
+    }
+}
+```
+run.c는 float 곱셈 결과를 모두 더하는 naive 구현이고, runq.c는 `GS` 크기(여기서는 `group_size=64`)만큼 점프하면서 int8을 int32로 변환한 곱셈 결과에 scale을 곱한 값을 더해나간다. runq.c의 연산이 더 많지만 naive float 곱셈보다 임베딩 값인 `x`도 quantized value인 int32 곱셈이 더 빠르다. 
+
+DGX 실행 결과:  
+`$ OMP_NUM_THREADS=16 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10 -t 0.0`
+- float 연산: 9.336100 tokens/s
+- int32 연산: 11.658031 tokens/s
 
 # OpenMP
 `$ make runomp`로 DGX에서 openmp로 128코어를 모두 사용할 수 있다.
@@ -45,13 +82,13 @@ M1:
 # CC = clang  # Makefile
 # make runomp
 #   clang -Ofast -fopenmp -march=native runq.c -lm -o runq
-$ OMP_NUM_THREADS=10 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10
+$ OMP_NUM_THREADS=10 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10 -t 0.0
 ```
 
 # 실행 속도 정리
 
 llama2-7b FP32(25G) / Q8(6.7G), DGX: gcc 11.4.0, M1: clang 17.0.6  
-`$ ./run llama2_7b.bin -i "Once upon a time" -n 10`
+`$ ./run llama2_7b.bin -i "Once upon a time" -n 10 -t 0.0`
 
 | machine  | build        | run                 | quantized | tokens/s  |
 | ------   | ------------ | ------------------- | --------- | --------- |
@@ -74,8 +111,8 @@ llama2-7b FP32(25G) / Q8(6.7G), DGX: gcc 11.4.0, M1: clang 17.0.6
 |          | make runomp  | OMP_NUM_THREADS=1   | o         | 2.357873  |
 |          | make runomp  | OMP_NUM_THREADS=10  | o         | 8.620690  |
 
-M1에서 매우 느린 이유는 모델이 메모리에 전부 올라가지 않아서로 추정되는데 Llama 2와 일치하는 더 작은 모델을 구할 수가 없다. Karpathy가 미리 빌드한 별도의 작은 모델로 속도만 따로 측정:  
-`$ ./run stories110M.bin -i "Once upon a time" -n 10`  
+M1에서 매우 느린 이유는 모델이 메모리에 전부 올라가지 않아서로 추정된다. Llama 2와 일치하는 더 작은 모델을 구할 수가 없다. Karpathy가 미리 빌드한 별도의 작은 모델로 속도만 따로 측정:  
+`$ ./run stories110M.bin -i "Once upon a time" -n 10 -t 0.0`  
 
 | machine  | build        | run                 | quantized | tokens/s   |
 | ------   | ------------ | ------------------- | --------- | ---------- |
@@ -120,6 +157,6 @@ $ ./run llama2_7b_hf.bin -i "Once upon a time" -n 10
 [1]    93242 segmentation fault  ./run llama2_7b_hf.bin -i "Once upon a time" -n 10
 ```
 
-스크립트[^fn-conv]를 이용해 pth로 변환하고 `--version 0`으로 진행가능.
+스크립트[^fn-conv]를 이용해 pth로 변환하고 `--version 0`으로 진행. quantized는 2로 진행했다.
 
 [^fn-conv]: <https://gist.github.com/ahoho/57f5c3dcdce4be522ca13dfb96cc1eb8>
