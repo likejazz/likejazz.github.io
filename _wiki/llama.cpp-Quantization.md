@@ -1,48 +1,27 @@
 ---
 layout: wiki 
-title: llama.cpp Benchmark
+title: llama.cpp Quantization
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/25 19:58:50
+last_modified_at: 2024/03/02 11:09:59
 ---
 
 <!-- TOC -->
 
 - [Quantization Types](#quantization-types)
 - [속도 측정](#속도-측정)
+  - [ollama](#ollama)
+  - [transformers](#transformers)
 - [품질 측정](#품질-측정)
 
 <!-- /TOC -->
 
 # Quantization Types
-```
-Allowed quantization types:
-   2  or  Q4_0   :  3.50G, +0.2499 ppl @ 7B - small, very high quality loss - legacy, prefer using Q3_K_M
-   3  or  Q4_1   :  3.90G, +0.1846 ppl @ 7B - small, substantial quality loss - legacy, prefer using Q3_K_L
-   8  or  Q5_0   :  4.30G, +0.0796 ppl @ 7B - medium, balanced quality - legacy, prefer using Q4_K_M
-   9  or  Q5_1   :  4.70G, +0.0415 ppl @ 7B - medium, low quality loss - legacy, prefer using Q5_K_M
-  10  or  Q2_K   :  2.67G, +0.8698 ppl @ 7B - smallest, extreme quality loss - not recommended
-  12  or  Q3_K   : alias for Q3_K_M
-  11  or  Q3_K_S :  2.75G, +0.5505 ppl @ 7B - very small, very high quality loss
-  12  or  Q3_K_M :  3.06G, +0.2437 ppl @ 7B - very small, very high quality loss
-  13  or  Q3_K_L :  3.35G, +0.1803 ppl @ 7B - small, substantial quality loss
-  15  or  Q4_K   : alias for Q4_K_M
-  14  or  Q4_K_S :  3.56G, +0.1149 ppl @ 7B - small, significant quality loss
-  15  or  Q4_K_M :  3.80G, +0.0535 ppl @ 7B - medium, balanced quality - *recommended*
-  17  or  Q5_K   : alias for Q5_K_M
-  16  or  Q5_K_S :  4.33G, +0.0353 ppl @ 7B - large, low quality loss - *recommended*
-  17  or  Q5_K_M :  4.45G, +0.0142 ppl @ 7B - large, very low quality loss - *recommended*
-  18  or  Q6_K   :  5.15G, +0.0044 ppl @ 7B - very large, extremely low quality loss
-   7  or  Q8_0   :  6.70G, +0.0004 ppl @ 7B - very large, extremely low quality loss - not recommended
-   1  or  F16    : 13.00G              @ 7B - extremely large, virtually no quality loss - not recommended
-   0  or  F32    : 26.00G              @ 7B - absolutely huge, lossless - not recommended
-```
-
 `Q4_K_M`, `Q5_K_S` and `Q5_K_M` are considered "recommended"[^fn-quant].
 
 [^fn-quant]: <https://github.com/ggerganov/llama.cpp/discussions/2094#discussioncomment-6351796>
 
 # 속도 측정
-- codallama:70b, ollama, A100: 24 tokens/s
+- codellama:70b, ollama, A100: 24 tokens/s
 
 ollama에서 server overloaded 오류 발생 이슈가 있다.
 ```
@@ -55,17 +34,20 @@ ollama에서 server overloaded 오류 발생 이슈가 있다.
 - mistral, ollama, A100: 112 tokens/s
 
 Llama 2 7B:
-- llama2:7b-chat-fp16, ollama, A100: 70 tokens/s
-- llama2:7b-chat-q8_0, ollama, A100: 90 tokens/s
-- llama2:7b-chat-q6_K, ollama, A100: 78 tokens/s
-- llama2:7b-chat-q5_K_M, ollama, A100: 94 tokens/s
-- **llama2:7b-chat-q5_K_S, ollama, A100: 98 tokens/s**
-- llama2:7b-chat-q4_K_M, ollama, A100: 96 tokens/s
-- llama2:7b-chat-q4_1, ollama, A100: 120 tokens/s
-- llama2:7b-chat-q4_0(default), ollama, A100: 120 tokens/s
+## ollama
+- llama2:7b-chat-fp16, ollama, A100: 71 tokens/s
+- llama2:7b-chat-q8_0, ollama, A100: 105 tokens/s
+- llama2:7b-chat-q6_K, ollama, A100: 97 tokens/s
+- llama2:7b-chat-q5_K_M, ollama, A100: 108 tokens/s
+- **llama2:7b-chat-q5_K_S, ollama, A100: 110 tokens/s**
+- llama2:7b-chat-q4_K_M, ollama, A100: 113 tokens/s
+- llama2:7b-chat-q4_1, ollama, A100: 131 tokens/s
+- llama2:7b-chat-q4_0(default), ollama, A100: 129 tokens/s
 
-Transformers:
-- Llama-2-7b-chat-hf, hf/float32(same w/ bf16,fp16), A100: 41 tokens/s
+## transformers
+- Llama-2-7b-chat-hf, float32, A100: 42 tokens/s
+- Llama-2-7b-chat-hf, float16, A100: 38 tokens/s
+- Llama-2-7b-chat-hf, bfloat16, A100: 40 tokens/s
 
 # 품질 측정
 ```
@@ -161,8 +143,8 @@ llama.cpp Q4_0 800M, +0.2166 ppl @ LLaMA-v1-7B
 | ----- | ------- | --- | --- | ---- | ---- | ------ | ------ | ------ | ---- | ---- |
 |42dot 1.3B | perplexity | 13.2410 | 13.2588 | 13.2526 | 13.2784 | 13.3141 | 13.3523 | 13.4439 | 13.7319 | 13.9454 |
 |42dot 1.3B | file size | 5.4G | 2.6G | 1.5G | 1.2G | 983M | 960M | 847M | 880M | 800M |
-|llama 7B | tokens/s | N/A | 70 | 90 | 78 | 94 | 98 | 96 | 120 | 120 |
+|42dot 1.3B | tokens/s | 125 | 168 | 177 | 177 | 180 | 182 | 185 | 192 | 189 |
 
-<img src="/images/2024/tokens-ppl-matplotlib.png" width="60%">[^fn-colab]
+<img src="/images/2024/tokens-ppl-42dot-matplotlib.png" width="60%">[^fn-colab]
 
 [^fn-colab]: <https://colab.research.google.com/drive/1mkcBq3PQxbxzOQR9E_AsMTWYOVzhR-7a?usp=sharing>

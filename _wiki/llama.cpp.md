@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/24 17:57:04
+last_modified_at: 2024/02/27 13:07:50
 ---
 
 <!-- TOC -->
@@ -10,6 +10,7 @@ last_modified_at: 2024/02/24 17:57:04
 - [cuBLAS 빌드](#cublas-빌드)
 - [실행](#실행)
 - [ollama](#ollama)
+  - [42dot LLM Modelfile](#42dot-llm-modelfile)
 - [llama-cpp-python](#llama-cpp-python)
 
 <!-- /TOC -->
@@ -59,7 +60,10 @@ $ curl -X POST http://localhost:11434/api/generate \
 }'
 ```
 
-42dot LLM Modelfile
+## 42dot LLM Modelfile
+다음과 같이 1번째 줄을 바꿔서 생성했다.  
+`$ sed -i '1s|.*|FROM /models/42dot_LLM-SFT-1.3B-gguf/ggml-model-Q4_0.gguf|' Modelfile && ollama create 42dot:1.3b-q4_0 -f Modelfile`
+
 ```
 FROM /home/sshuser/.ollama/models/blobs/sha256:xxxx
 TEMPLATE """{\{ .System }\}
