@@ -2,12 +2,14 @@
 layout: wiki 
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/27 13:07:50
+last_modified_at: 2024/03/03 18:49:53
 ---
 
 <!-- TOC -->
 
-- [cuBLAS 빌드](#cublas-빌드)
+- [빌드](#빌드)
+  - [macOS](#macos)
+  - [cuBLAS](#cublas)
 - [실행](#실행)
 - [ollama](#ollama)
   - [42dot LLM Modelfile](#42dot-llm-modelfile)
@@ -15,7 +17,15 @@ last_modified_at: 2024/02/27 13:07:50
 
 <!-- /TOC -->
 
-# cuBLAS 빌드
+# 빌드
+## macOS
+```shell
+$ CC=/opt/homebrew/opt/llvm/bin/clang \
+CXX=/opt/homebrew/opt/llvm/bin/clang++ \
+make
+```
+
+## cuBLAS
 `$ make LLAMA_CUBLAS=1`
 
 # 실행

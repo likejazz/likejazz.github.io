@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama2.c
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/03/03 03:22:26
+last_modified_at: 2024/03/03 22:44:43
 ---
 
 <!-- TOC -->
@@ -11,6 +11,9 @@ last_modified_at: 2024/03/03 03:22:26
 - [Quantization](#quantization)
 - [OpenMP](#openmp)
 - [실행 속도 정리](#실행-속도-정리)
+  - [llama2-7b.bin](#llama2-7bbin)
+  - [stories110M.bin](#stories110mbin)
+  - [CUDA](#cuda)
 - [clang](#clang)
 - [convert.py](#convertpy)
 
@@ -18,9 +21,9 @@ last_modified_at: 2024/03/03 03:22:26
 
 # 실행
 M1 Pro:
-```
-$ ./run stories15M.bin
-Once upon a time, there was a little girl named Lily. She loved to play with her toys, especially her teddy bear. One day, Lily's teddy bear's paw got hurt while playing outside.
+```shell
+$ ./run stories15M.bin -t 0
+Once upon a time, there was a little girl named Lily.
 ...
 achieved tok/s: 112.314709
 ```
@@ -63,12 +66,14 @@ void matmul(float* xout, QuantizedTensor *x, QuantizedTensor *w, int n, int d) {
     }
 }
 ```
-run.c는 float 곱셈 결과를 모두 더하는 naive 구현이고, runq.c는 `GS` 크기(여기서는 `group_size=64`)만큼 점프하면서 int8을 int32로 변환한 곱셈 결과에 scale을 곱한 값을 더해나간다. runq.c의 연산이 더 많지만 naive float 곱셈보다 임베딩 값인 `x`도 quantized value인 int32 곱셈이 더 빠르다. 
+run.c는 float 곱셈 결과를 모두 더하는 naive 구현이고, runq.c는 `GS` 크기(여기서는 `group_size=64`)만큼 점프하면서 int8을 int32로 변환한 곱셈 결과에 scale을 곱한 값을 더해나간다. runq.c의 연산이 더 많지만 naive float 곱셈보다 임베딩 값인 `x`도 quantized value인 int32 곱셈이 더 빠르다. 그러나, PyTorch doesn’t allow INT8 matrix multiplication by default.
 
 DGX 실행 결과:  
-`$ OMP_NUM_THREADS=16 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10 -t 0.0`
-- float 연산: 9.336100 tokens/s
-- int32 연산: 11.658031 tokens/s
+```shell
+$ OMP_NUM_THREADS=16 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10 -t 0.0
+```
+- `float` 연산: 9.336100 tokens/s
+- `int32` 연산: 11.658031 tokens/s
 
 # OpenMP
 `$ make runomp`로 DGX에서 openmp로 128코어를 모두 사용할 수 있다.
@@ -86,9 +91,11 @@ $ OMP_NUM_THREADS=10 ./runq llama2_7b_q80.bin -i "Once upon a time" -n 10 -t 0.0
 ```
 
 # 실행 속도 정리
-
+## llama2-7b.bin
 llama2-7b FP32(25G) / Q8(6.7G), DGX: gcc 11.4.0, M1: clang 17.0.6  
-`$ ./run llama2_7b.bin -i "Once upon a time" -n 10 -t 0.0`
+```shell
+$ ./run llama2_7b.bin -i "Once upon a time" -n 10 -t 0.0
+```
 
 | machine  | build        | run                 | quantized | tokens/s  |
 | ------   | ------------ | ------------------- | --------- | --------- |
@@ -111,23 +118,44 @@ llama2-7b FP32(25G) / Q8(6.7G), DGX: gcc 11.4.0, M1: clang 17.0.6
 |          | make runomp  | OMP_NUM_THREADS=1   | o         | 2.357873  |
 |          | make runomp  | OMP_NUM_THREADS=10  | o         | 8.620690  |
 
-M1에서 매우 느린 이유는 모델이 메모리에 전부 올라가지 않아서로 추정된다. Llama 2와 일치하는 더 작은 모델을 구할 수가 없다. Karpathy가 미리 빌드한 별도의 작은 모델로 속도만 따로 측정:  
-`$ ./run stories110M.bin -i "Once upon a time" -n 10 -t 0.0`  
+M1에서 매우 느린 이유는 모델이 메모리에 전부 올라가지 않아서로 추정된다. Llama 2와 일치하는 더 작은 모델을 구할 수가 없다. 
 
-| machine  | build        | run                 | quantized | tokens/s   |
-| ------   | ------------ | ------------------- | --------- | ---------- |
-| DGX      | make         |                     |           | 10.089686  |
-|          | make runfast |                     |           | 28.938907  |
-|          | make runomp  | OMP_NUM_THREADS=1   |           | 38.961039  |
-|          | make runomp  | OMP_NUM_THREADS=64  |           | 204.545455 |
-|          | make runomp  | OMP_NUM_THREADS=128 |           | 145.161290 |
-| M1 / 16G | make         |                     |           | 11.335013  |
-|          | make runfast |                     |           | 90.909091  |
-|          | make runomp  | OMP_NUM_THREADS=1   |           | 90.909091  |
-|          | make runomp  | OMP_NUM_THREADS=10  |           | 118.421053 |
+## stories110M.bin
+Karpathy가 미리 빌드한 별도의 작은 모델로 속도만 따로 측정:  
+```shell
+$ ./run stories110M.bin -i "Once upon a time" -n 10 -t 0.0
+```
+
+| machine  | build        | run                 | tokens/s   |
+| ------   | ------------ | ------------------- | ---------- |
+| DGX      | make         |                     | 10.089686  |
+|          | make runfast |                     | 28.938907  |
+|          | make runomp  | OMP_NUM_THREADS=1   | 38.961039  |
+|          | make runomp  | OMP_NUM_THREADS=64  | 204.545455 |
+|          | make runomp  | OMP_NUM_THREADS=128 | 145.161290 |
+| M1 / 16G | make         |                     | 11.335013  |
+|          | make runfast |                     | 90.909091  |
+|          | make runomp  | OMP_NUM_THREADS=1   | 90.909091  |
+|          | make runomp  | OMP_NUM_THREADS=10  | 118.421053 |
+
+## CUDA
+```shell
+$ ./runcuda stories110M.bin -i "Once upon a time" -n 128 -t 0
+```
+
+| machine  | build        | run                 | tokens/s   |
+| ------   | ------------ | ------------------- | ---------- |
+| DGX      | make runomp  | OMP_NUM_THREADS=1   | 32.160041  |
+|          | make runomp  | OMP_NUM_THREADS=64  | 200.949367 |
+|          | make runomp  | OMP_NUM_THREADS=128 | 145.642202 |
+| CUDA[^fn-ankan]     | `nvcc llama2.cu -o runcu` |                     | 522.205207 |
+| CUDA[^fn-cuda]     | make runcuda |                     | 774.390244 |
+
+[^fn-ankan]: <https://github.com/ankan-ban/llama2.cu>
+[^fn-cuda]: <https://github.com/rogerallen/llama2.cu>
 
 # clang
-```
+```shell
 $ clang --version
 Homebrew clang version 17.0.6
 Target: arm64-apple-darwin23.3.0
