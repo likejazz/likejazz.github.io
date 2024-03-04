@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama2.c
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/03/03 22:44:43
+last_modified_at: 2024/03/04 09:07:21
 ---
 
 <!-- TOC -->
@@ -32,7 +32,7 @@ DGX Station A100:
 128개 코어 중 하나만 사용하며 M1에 비해 늦다.
 
 # Quantization
-quantized model은 DGX에서 multithreads로 실행할 때 일반 모델에 비해 3x ↑
+quantized model은 DGX에서 multithreads로 실행할 때 3x ↑
 
 `matmul()` 함수를 비교하면 다음과 같다.
 ```c
@@ -66,7 +66,7 @@ void matmul(float* xout, QuantizedTensor *x, QuantizedTensor *w, int n, int d) {
     }
 }
 ```
-run.c는 float 곱셈 결과를 모두 더하는 naive 구현이고, runq.c는 `GS` 크기(여기서는 `group_size=64`)만큼 점프하면서 int8을 int32로 변환한 곱셈 결과에 scale을 곱한 값을 더해나간다. runq.c의 연산이 더 많지만 naive float 곱셈보다 임베딩 값인 `x`도 quantized value인 int32 곱셈이 더 빠르다. 그러나, PyTorch doesn’t allow INT8 matrix multiplication by default.
+run.c는 float 곱셈 결과를 모두 더하는 naive 구현이고, runq.c는 `GS` 크기(여기서는 `group_size=64`)만큼 점프하면서 int8을 int32로 변환한 곱셈 결과에 scale을 곱한 값을 더해나간다. runq.c의 연산이 더 많지만 naive float 곱셈보다 임베딩 값인 `x`도 quantized value인 int32 곱셈이 더 빠르다. 참고로 PyTorch doesn’t allow INT8 matrix multiplication by default.
 
 DGX 실행 결과:  
 ```shell
@@ -149,12 +149,13 @@ $ ./runcuda stories110M.bin -i "Once upon a time" -n 128 -t 0
 |          | make runomp  | OMP_NUM_THREADS=64  | 200.949367 |
 |          | make runomp  | OMP_NUM_THREADS=128 | 145.642202 |
 | CUDA[^fn-ankan]     | `nvcc llama2.cu -o runcu` |                     | 522.205207 |
-| CUDA[^fn-cuda]     | make runcuda |                     | 774.390244 |
+| CUDA[^fn-cuda] / cuBLAS  | make runcuda |             | 774.390244 |
 
 [^fn-ankan]: <https://github.com/ankan-ban/llama2.cu>
 [^fn-cuda]: <https://github.com/rogerallen/llama2.cu>
 
 # clang
+M1의 clang 설정
 ```shell
 $ clang --version
 Homebrew clang version 17.0.6
@@ -171,7 +172,7 @@ InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault
 
 # convert.py
 
-hf 모델은 convert가 되지 않는다.
+hf 모델은 convert가 되지 않았다.
 ```shell
 $ python export.py llama2_7b_hf.bin --version 0 --hf /Users/xxx/workspace/llama-2/Llama-2-7b-hf
 [1]    88371 killed     python export.py llama2_7b_hf.bin --version 0 --hf
