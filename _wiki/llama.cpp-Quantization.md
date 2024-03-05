@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama.cpp Quantization
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/03/02 11:09:59
+last_modified_at: 2024/03/05 13:18:37
 ---
 
 <!-- TOC -->
@@ -12,6 +12,7 @@ last_modified_at: 2024/03/02 11:09:59
   - [ollama](#ollama)
   - [transformers](#transformers)
 - [품질 측정](#품질-측정)
+- [Llama 7B ppl](#llama-7b-ppl)
 
 <!-- /TOC -->
 
@@ -148,3 +149,41 @@ llama.cpp Q4_0 800M, +0.2166 ppl @ LLaMA-v1-7B
 <img src="/images/2024/tokens-ppl-42dot-matplotlib.png" width="60%">[^fn-colab]
 
 [^fn-colab]: <https://colab.research.google.com/drive/1mkcBq3PQxbxzOQR9E_AsMTWYOVzhR-7a?usp=sharing>
+
+# Llama 7B ppl
+
+| Type | size | ppl |
+| ---- | ---- | --- |
+| Llama 7B F32      |    25.10 GiB | 7.4924  |
+| Llama 7B F16      |    12.55 GiB | 7.4924  |
+| Llama 7B Q8_0     |    6.67 GiB  | 7.4933  |
+| Llama 7B Q6_K     |    5.15 GiB  | 7.4950  |
+| Llama 7B Q5_1     |    4.72 GiB  | 7.5084  |
+| Llama 7B Q5_K_M   |    4.45 GiB  | 7.5099  |
+| Llama 7B Q5_K_S   |    4.33 GiB  | 7.5180  |
+| Llama 7B Q4_1     |    3.95 GiB  | 7.5913  |
+| Llama 7B Q4_K_M   |    3.80 GiB  | 7.5692  |
+| Llama 7B Q4_K_S   |    3.59 GiB  | 7.6066  |
+| Llama 7B Q4_0     |    3.57 GiB  | 7.6261  |
+| Llama 7B IQ4_NL   |    3.56 GiB  | 7.5392  |
+| Llama 7B IQ4_XS   |    3.37 GiB  | 7.5231  |
+| Llama 7B Q3_K_L   |    3.35 GiB  | 7.6491  |
+| Llama 7B Q3_K_M   |    3.07 GiB  | 7.6854  |
+| Llama 7B IQ3_M    |    2.90 GiB  | 7.7695  |
+| Llama 7B IQ3_S    |    2.75 GiB  | 7.7904  |
+| Llama 7B Q3_K_S   |    2.75 GiB  | 8.0321  |
+| Llama 7B IQ3_XS   |    2.60 GiB  | 7.8787  |
+| Llama 7B IQ3_XXS  |    2.41 GiB  | 8.2039  |
+| Llama 7B Q2_K_M   |    2.36 GiB  | 8.6501  |
+| Llama 7B IQ2_M    |    2.20 GiB  | 8.6002  |
+| Llama 7B Q2_K_S   |    2.16 GiB  | 9.1756  |
+| Llama 7B IQ2_S    |    2.05 GiB  | 9.1459  |
+| Llama 7B IQ2_XS   |    1.89 GiB  | 9.7873  |
+| Llama 7B IQ2_XXS  |    1.73 GiB  | 11.0326 |
+| Llama 7B IQ1_S    |    1.42 GiB  | 28.7926 |
+
+[^fn-ppl]
+
+[^fn-ppl]: <https://arca.live/b/alpaca/100250412>
+
+<img src="/images/2024/llama-7b-ppl.png" width="90%">

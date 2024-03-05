@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama2.c
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/03/04 09:07:21
+last_modified_at: 2024/03/06 03:26:22
 ---
 
 <!-- TOC -->
@@ -14,7 +14,7 @@ last_modified_at: 2024/03/04 09:07:21
   - [llama2-7b.bin](#llama2-7bbin)
   - [stories110M.bin](#stories110mbin)
   - [CUDA](#cuda)
-- [clang](#clang)
+- [M1에서 clang 빌드](#m1에서-clang-빌드)
 - [convert.py](#convertpy)
 
 <!-- /TOC -->
@@ -149,13 +149,16 @@ $ ./runcuda stories110M.bin -i "Once upon a time" -n 128 -t 0
 |          | make runomp  | OMP_NUM_THREADS=64  | 200.949367 |
 |          | make runomp  | OMP_NUM_THREADS=128 | 145.642202 |
 | CUDA[^fn-ankan]     | `nvcc llama2.cu -o runcu` |                     | 522.205207 |
+| CUDA[^fn-cuda] / naive   | make runcuda |             | 604.761905 |
 | CUDA[^fn-cuda] / cuBLAS  | make runcuda |             | 774.390244 |
 
 [^fn-ankan]: <https://github.com/ankan-ban/llama2.cu>
 [^fn-cuda]: <https://github.com/rogerallen/llama2.cu>
 
-# clang
-M1의 clang 설정
+naive 구현에서 `sum`을 float이 아닌 half로 `output[index]`에 할당하면 cuBLAS와 거의 근사할 정도로 빠르다. half는 CUDA에서 지원하는 fp16이다. 당연히 float과 결과가 약간 다르다. 128토큰에서 마지막 4~5토큰 정도가 다르게 생성됐다.
+
+# M1에서 clang 빌드
+
 ```shell
 $ clang --version
 Homebrew clang version 17.0.6
