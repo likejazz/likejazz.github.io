@@ -84,7 +84,7 @@ last_modified_at: 2024/03/11 09:21:56
 - Wi-Fi의 신호 세기를 파악하는데 **Wi-Fi Explorer Lite**가 유용하다. `$ mas install 1408727408`
 
 ## 생산성
-- 번역 도구로 **DeepL**를 주로 이용한다.
+- 번역 도구로 **DeepL**를 이용한다.
 - 버전 관리를 위해 앱은 가능한 앱스토어에서 설치한다. 앱스토어에서 직접 설치하고 **mas**에서 관리한다. `$ brew install mas`
 - **Things(유료)** 2009년부터 정품을 구매하여 여전히 사용 중이다. 버전 업데이트를 하면서 추가 비용을 받았는데 기꺼이 구매했다. 맥과 아이폰을 포기하지 못하는 한 가지 이유를 대라면 Things를 사용할 수 있기 때문이라고 답할 것 같다. `$ mas install 904280696`
 - **Rectangle** Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다.
@@ -99,7 +99,7 @@ last_modified_at: 2024/03/11 09:21:56
 ## 드라이브
 - 문서를 빠르게 이기종 간 공유할 때 **Dropbox**를 사용한다. 하지만 앱은 설치하지 않았다.
 - **iCloud Drive**도 사용한다. 무엇보다 최신 앱들이 iCloud Drive 저장 기능을 제공한다. 하지만 문서 저장 용도와 Find My Mac을 제외한 다른 iCloud 기능은 사용하지 않는다.
-- 사진 자료가 무료 용량을 초과하여 **Google One**을 이용한다. 덤으로 VPN도 사용할 수 있다.
+- 사진 자료가 무료 용량을 초과하여 **Google One**을 유료구독한다. 덤으로 VPN도 사용할 수 있다.
 
 ## 문서
 - 오랫동안 **Google Drive**에 문서를 만들어왔다. 십 수년간의 기록이 남아 있고 어디서든 확인하고 편집할 수 있는 점은 큰 장점이다. 협업에 유용하기 때문에 공동 작업이 필요한 경우 반드시 사용한다.
@@ -167,10 +167,10 @@ xcode-select version 2395.
   - Markdown으로 발표자료를 작성하는 **Marp for VS Code**
 - 간단한 메모장 용도로는 여전히 **[Sublime Text 4](http://likejazz.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다.
 - 개발/테스트/서비스로 이어지는 설정과 설치는 항상 고민거리다. **Docker**는 모든 고민을 말끔하게 해결해줬다. 게다가 M1에서도 잘 지원하기 때문에 **[Docker Desktop](https://dev.likejazz.com/post/173377603746/docker-for-mac)**은 필수다.
-- 가끔 스니펫은 **[GitHub Gist](https://gist.github.com/likejazz)**에 보관한다.
+- 가끔 스니펫은 **[GitHub Gist](https://gist.github.com/likejazz)**에 보관한다. 비공개도 URL이 노출되면 안되기 때문에 별도로 관리한다. 
 
 ## 자료
-개인 자료의 경우 사진과 비디오는 **Google Photos**를 활용하고 그외 블로그와 기타 이미지 호스팅 용도로 **GitHub**의 Issues를 활용한다. 비디오 중 공개적인건 **YouTube**에, 음악은 **YouTube** 스트리밍을 이용하고, 문서는 **Dropbox**와 **iCloud Drive**에 적절히 나눠 저장하고, 오피스 문서는 **OneDrive**에, 정리가 필요한 문서는 **GitHub** 위키에 마크다운으로 작성한다. 공개적인 코드는 공개 **GitHub**에, 회사 업무용은 사내 **GitLab**에 둔다.
+개인 자료의 경우 사진과 비디오는 **Google Photos**를 활용한다. 비디오 중 공개적인건 **YouTube**에, 음악은 **멜론(유료)** 스트리밍을 이용하고, 문서는 **Dropbox**와 **iCloud Drive**에 적절히 나눠 저장하고, 정리가 필요한 문서는 **GitHub** 위키에 마크다운으로 작성한다. 공개적인 코드는 공개 **GitHub**에, 회사 업무용은 사내 **GitLab**에 둔다.
 
 맥북 SSD 크기가 제한적이라 외장 SDD, SanDisk Extreme Portable SSD를 사용하고 있다. 방진, 방수에 500MB/s 속도를 지원하고 APFS (Encrypted) 포맷을 사용하여 최초 Attach시 항상 비밀번호를 입력(저장 가능)해야 파일을 열 수 있다. 250G가 69,000원. 물론 외장 HDD가 용량이 더 크고, 가격도 저렴하고 동일하게 APFS도 지원 하지만 소음과 진동이 있고, 충격에 약해 휴대용으로는 적절치 않다. 2023년 9월 삼성 SSD 1TB를 129,000원에 추가 구매.
 
@@ -189,7 +189,6 @@ xcode-select version 2395.
 
 ### 필수 앱
 - **[Things, Bear](/iphone-again/)**
-- ~~**Calendar**: 구글 계정 추가(메일, 캘린더 연동)~~
 - Microsoft Authenticator(GitHub), Google Authenticator(구글 2-factor), Okta Verify
 
 아이폰은 이제 생활과 관련한 앱이 대부분이다 보니 설치앱을 모두 나열하면 개인의 사생활을 모두 엿보는 듯한 느낌이 든다.
