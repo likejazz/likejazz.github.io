@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2023/11/30 22:52:57
+last_modified_at: 2024/03/11 09:21:56
 ---
 
 <div class="message">
@@ -99,14 +99,16 @@ last_modified_at: 2023/11/30 22:52:57
 ## 드라이브
 - 문서를 빠르게 이기종 간 공유할 때 **Dropbox**를 사용한다. 하지만 앱은 설치하지 않았다.
 - **iCloud Drive**도 사용한다. 무엇보다 최신 앱들이 iCloud Drive 저장 기능을 제공한다. 하지만 문서 저장 용도와 Find My Mac을 제외한 다른 iCloud 기능은 사용하지 않는다.
+- 사진 자료가 무료 용량을 초과하여 **Google One**을 이용한다. 덤으로 VPN도 사용할 수 있다.
 
 ## 문서
-- 오랫동안 **Google Drive**에 문서를 만들었다. 무엇보다 그동안의 기록이 남아 있고 어디서든 확인하고 편집할 수 있는 점은 큰 장점이다. 협업에 유용하기 때문에 공동 작업이 필요한 경우 반드시 사용한다.
-- 개인 문서는 **Bear(유료)**에 지속적으로 정리한다. 아이폰, 아이패드 모두 사용하며 동기화를 위해 연간 구독을 이용 중이다. 아이폰을 반드시 사용해야 하는 두 가지 이유를 대라면 Things와 Bear 때문이다. `$ mas install 1091189122`
+- 오랫동안 **Google Drive**에 문서를 만들어왔다. 십 수년간의 기록이 남아 있고 어디서든 확인하고 편집할 수 있는 점은 큰 장점이다. 협업에 유용하기 때문에 공동 작업이 필요한 경우 반드시 사용한다.
+- 개인 문서는 **Bear(유료)**에 지속적으로 정리한다. 아이폰, 아이패드 모두 사용하며 동기화를 위해 연간 구독을 이용 중이다. 아이폰을 반드시 사용해야 하는 두 가지 이유를 대라면 Things와 Bear 때문이다. Bear는 필수 메모 용도로 사용하고, 오래된 메모나 Archives는 GitHub으로 관리한다. `$ mas install 1091189122`
 - 문서의 작성과 보관은 **GitHub Pages**를 이용한다. 지식 저장소로 활용하고 있으며, **MathJax**를 이용한 수식 지원도 좋다. 위키도 좋지만 수식 때문에 페이지를 별도로 사용한다.
   - 개인 문서와 집필 초고 등은 GitHub의 Private Repo를 이용한다. 유료였으나 무료가 됐다.
-  - 프리젠테이션을 위해 **Marp for VS Code**를 가끔 이용한다.
-- **Microsoft Office(유료)**를 이용한다.
+  - 집필시에는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
+  - 프리젠테이션을 위해 **Marp for VS Code**를 이용한다.
+- **Microsoft Office(유료)**에서 Excel을 주로 이용하고 집필시 Word를 가끔 이용한다.
 - 간혹 아래아한글 파일을 읽을 일이 있다. **한컴오피스 한글 2014 VP 뷰어** 설치 `$ mas install 416746898`
 - 모든 원고는 마크다운으로 초고를 작성하는데, VSCode를 주로 이용하지만 편리한 WYSIWIG을 위해 **Typora(유료)**와 병행한다.
 - pdf, epub 같은 전자책은 **Yomu(유료)**를 이용한다. 유료 결제시 iCloud 동기화가 가능하다.
@@ -183,13 +185,14 @@ xcode-select version 2395.
 - 패스워드 관리를 Chrome으로 설정. 설정 > Passwords > Passwords Options > Chrome으로 지정.
 - 설정 > iMessage, FaceTime 해제. 애플 기기에서만 사용 가능한 기능이므로 모두 해제. 로그인만 하면 활성화 되므로 iPad에서 로그인하지 않도록 주의한다.
 - 외부에서 아이패드는 **Logitech Combo Touch** 키보드를 사용한다. 펜슬은 거의 사용하지 않는다.
+- Files에서 **Working Copy(유료)**를 활성화하고 **iA Writer(유료)**에서 마크다운을 편집한다. 노트북 보다 더 집중하기 좋은 최고의 마크다운 편집 환경이다. 작성한 문서는 Working Copy를 이용해 GitHub으로 관리한다.
 
 ### 필수 앱
 - **[Things, Bear](/iphone-again/)**
-- **Calendar**: 구글 계정 추가(메일, 캘린더 연동)
+- ~~**Calendar**: 구글 계정 추가(메일, 캘린더 연동)~~
 - Microsoft Authenticator(GitHub), Google Authenticator(구글 2-factor), Okta Verify
 
-아이폰은 이제 생활과 관련한 앱이 대부분이다 보니 설치앱을 모두 나열하면 개인의 사생활을 모두 엿보는 듯한 느낌마저 든다.
+아이폰은 이제 생활과 관련한 앱이 대부분이다 보니 설치앱을 모두 나열하면 개인의 사생활을 모두 엿보는 듯한 느낌이 든다.
 
 ### 안되는 것
 - 클린 인스톨을 지향하다 보니 카톡 예전 대화는 복구 x
