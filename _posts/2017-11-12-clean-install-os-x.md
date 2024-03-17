@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/03/12 18:31:08
+last_modified_at: 2024/03/17 22:08:28
 ---
 
 <div class="message">
@@ -97,7 +97,7 @@ last_modified_at: 2024/03/12 18:31:08
 - 주소록(전화번호)은 네이버 주소록에 백업한 다음에 Contacts를 iCloud로 모든 기기에 동기화한다.
 
 ## 드라이브
-- 문서를 빠르게 이기종 간 공유할 때 **Dropbox**를 사용한다. 하지만 앱은 설치하지 않았다.
+- 문서를 공유하고 간단하게 백업할 때 **Dropbox**를 사용한다.
 - **iCloud Drive**도 사용한다. 무엇보다 최신 앱들이 iCloud Drive 저장 기능을 제공한다. 하지만 문서 저장 용도와 Find My Mac을 제외한 다른 iCloud 기능은 사용하지 않는다.
 - 사진 자료가 무료 용량을 초과하여 **Google One(유료)**을 구독한다. 덤으로 VPN도 사용할 수 있다.
 
@@ -105,7 +105,7 @@ last_modified_at: 2024/03/12 18:31:08
 - 오랫동안 **Google Drive**에 문서를 만들어왔다. 십 수년간의 기록이 남아 있고 어디서든 확인하고 편집할 수 있는 점은 큰 장점이다. 협업에 유용하기 때문에 공동 작업이 필요한 경우 반드시 사용한다.
 - 개인 문서는 **Bear(유료)**에 지속적으로 정리한다. 아이폰, 아이패드 모두 사용하며 동기화를 위해 연간 구독을 이용 중이다. 아이폰을 반드시 사용해야 하는 두 가지 이유를 대라면 Things와 Bear 때문이다. 필수 메모 용도로 사용하며 20~30개 내외로 관리한다. `$ mas install 1091189122`
 - 문서의 작성과 보관은 **GitHub Pages**를 이용한다. 지식 저장소로 활용하고 있으며, **MathJax**를 이용한 수식 지원도 좋다. 위키도 좋지만 수식 때문에 페이지를 별도로 사용한다.
-  - 개인 문서와 집필 초고 등은 GitHub의 Private Repo를 이용한다. 유료였으나 무료가 됐다.
+  - 개인 문서와 집필 초고 등은 GitHub의 Private Repository를 이용한다.
   - 집필시에는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
   - 프리젠테이션을 위해 **Marp for VS Code**를 이용한다.
 - **Microsoft Office(유료)**에서 Excel을 주로 이용하고 집필시 Word를 가끔 이용한다.
