@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/03/26 10:59:03
+last_modified_at: 2024/03/27 10:17:43
 ---
 
 <div class="message">
@@ -70,35 +70,36 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
                                      Spotlight > Show Finder search window 해제
 ```
   - Modifier Keys에서는 키보드 타입이 맞는지 확인 필요
-- 메인 브라우저는 [**Chrome**](https://www.google.com/chrome/)을 사용한다. 보조 브라우저로 **Firefox**도 함께 사용한다.
-- 키보드는 MX Mechanical Mini for Mac, MX Anywhere 3 for Mac을 사용하고 [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다.
-- 터미널은 [**iTerm2**](https://iterm2.com/downloads.html)를 사용한다.
+- 각종 도구와 컴파일러 등 모든 개발 관련 도구는 [**Homebrew**](https://github.com/Homebrew/brew/releases)를 통해 설치한다. pkg로 설치하고 `eval "$(/opt/homebrew/bin/brew shellenv)"`를 나중에 oh my zsh 설치 후 `.zshrc`에 두어 링크를 건다.
+  - 버전 관리를 위해 앱은 가능한 앱스토어에서 설치한다. **mas**가 이를 CLI에서 관리해준다. `$ brew install mas`
+- 터미널은 [**iTerm2**](https://iterm2.com/downloads.html)를 사용한다. `$ brew install iterm2`
   - [**Oh My Zsh**](https://ohmyz.sh/)를 설치했다.
-- 각종 도구와 컴파일러 등 모든 개발 관련 도구는 [**Homebrew**](https://github.com/Homebrew/brew/releases)를 통해 설치한다. pkg로 설치하고 `eval "$(/opt/homebrew/bin/brew shellenv)"`를 `.zshrc`에 두어 링크를 건다.
-- 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다.
-- 버전 관리를 위해 앱은 가능한 앱스토어에서 설치한다. **mas**가 이를 CLI에서 관리해준다. `$ brew install mas`
+  - Preferences > Profiles > Colors에서 Blue/Normal의 색상이 눈이 아프므로 조정한다.
+- 메인 브라우저는 [**Chrome**](https://www.google.com/chrome/)을 사용한다. `$ brew install google-chrome` 보조 브라우저로 **Firefox**도 함께 사용한다. `$ brew install firefox`
+- 키보드는 MX Mechanical Mini for Mac, MX Anywhere 3 for Mac을 사용하고 [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options-plus`
+- 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다. `$ brew install sublime-text`
 - 비밀번호 관리에 **Bitwarden**을 사용한다. `$ mas install 1352778147`
 - **카카오톡** 설명이 필요 없는 국민 메신저 `$ mas install 869223134`
-- [**Visual Studio Code**](https://code.visualstudio.com/download)는 위키를 편집하거나 발표 자료를 작성하고, 코드 리뷰 용도로도 사용하는 메인 편집기다. Settings Sync를 하면(GitHub 계정) 모든 설정과 Extensions를 설치해준다.
+- [**Visual Studio Code**](https://code.visualstudio.com/download)는 위키를 편집하거나 발표 자료를 작성하고, 코드 리뷰 용도로도 사용하는 메인 편집기다. Settings Sync를 하면(GitHub 계정) 모든 설정과 Extensions를 설치해준다. `$ brew install visual-studio-code`
   - 편리한 이용을 위해 [Shell Command](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)를 설치한다.
   - 위키의 최근 수정 날짜를 갱신하는 **Auto Time Stamp**.
   - JetBrains Tools와 Keymaps를 맞추기 위한 **JetBrains IDE Keymap**.
   - Markdown TOC를 비롯한 여러 편리한 기능 **Markdown All in One(Yu Zhang)**
   - Markdown으로 발표자료를 작성하는 **Marp for VS Code**
-- [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 1/3, 1/2 순으로 Rotate되는 기능이 좋다.
-- 모든 프로그램 실행은 **LaunchBar(유료)**를 이용한다.
+- [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 1/3, 1/2 순으로 Rotate되는 기능이 좋다. `$ brew install rectangle`
+- 모든 프로그램 실행은 **LaunchBar(유료)**를 이용한다. `$ brew install launchbar`
 
 ## 인터넷
-- 관심 있는 링크는 **Raindrop.io**에 저장한다.
+- 관심 있는 링크는 **Raindrop.io**에 저장한다. `$ brew install raindropio`
 - Wi-Fi의 신호 세기를 파악하는데 **Wi-Fi Explorer Lite**가 유용하다. `$ mas install 1408727408`
-- 별도의 안티 바이러스 프로그램을 사용하지 않는 대신 **Little Snitch(유료)**를 사용한다. 기본 옵션인 Silent Mode로 해서 모두 허용해주고 필요시 차단하는 형태로 관리하고 있다.
+- 별도의 안티 바이러스 프로그램을 사용하지 않는 대신 **Little Snitch(유료)**를 사용한다. 기본 옵션인 Silent Mode로 해서 모두 허용해주고 필요시 차단하는 형태로 관리하고 있다. `$ brew install little-snitch`
 
 ## 생산성
 - 집과 사무실에서는 클램쉘 모드로 사용한다. 외부에서 아이패드는 사용해도 노트북을 굳이 사용하는 경우는 거의 없다.
-- **Things(유료)** 2009년부터 정품을 구매하여 여전히 사용 중이다. 버전 업데이트를 하면서 추가 비용을 받았는데 기꺼이 구매했다. 맥과 아이폰을 포기하지 못하는 한 가지 이유를 대라면 Things를 사용할 수 있기 때문이라고 답할 것 같다. `$ mas install 904280696`
-- [**Bartender(유료)**](https://www.macbartender.com/) 메뉴바를 정리하는 매우 유용한 앱이다. 메이저 버전업이 있을 때마다 꾸준히 추가 구매했다.
-- 번역 도구로 [**DeepL**](https://www.deepl.com/en/macos-app/)를 이용한다.
-- **AppCleaner** Uninstaller가 없는 맥에서는 삭제하는게 찝찝할때가 많다. 이 앱으로 설정까지 찾아서 삭제한다. `$ brew install --cask appcleaner`
+- **Things(유료)** 2009년부터 정품을 구매하여 여전히 사용 중이다. 버전 업데이트를 하면서 추가 비용을 받았는데 기꺼이 구매했다. 맥과 아이폰을 포기하지 못하는 한 가지 이유를 대라면 Things를 사용할 수 있기 때문이라고 답할 것 같다. Quick Entry 설정은 `⌥⌘N` `$ mas install 904280696`
+- [**Bartender(유료)**](https://www.macbartender.com/) 메뉴바를 정리하는 매우 유용한 앱이다. 메이저 버전업이 있을 때마다 꾸준히 추가 구매했다. `$ brew install bartender`
+- 번역 도구로 [**DeepL**](https://www.deepl.com/en/macos-app/)를 이용한다. `$ brew install deepl`
+- **AppCleaner** Uninstaller가 없는 맥에서는 삭제하는게 찝찝할때가 많다. 이 앱으로 설정까지 찾아서 삭제한다. `$ brew install appcleaner`
 - 토렌트 앱은 최근 **Folx**로 변경했다. 윈도우 시절부터 uTorrent를 사용해오다 최근에는 토렌트 자체를 거의 사용하지 않는다. 유료 버전은 QoS 기능을 제공하지만 무료로도 충분하다.
 - **Mathpix Snip**에 스크린 캡처를 이용해서 수식의 LaTeX를 찾아낸다.
 - 프리젠테이션을 할 때 **Screen Cursor**가 유용하다. `$ mas install 1577211880`
@@ -116,16 +117,17 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
   - 개인 문서와 집필 초고 등은 GitHub의 Private Repository를 이용한다.
   - 집필시에는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
   - 프리젠테이션을 위해 **Marp for VS Code**를 이용한다.
-- **Microsoft Office(유료)**에서 Excel을 주로 이용하고 집필시 Word를 가끔 이용한다.
+- **Microsoft Office(유료)**에서 Excel을 주로 이용하고 집필시 Word를 가끔 이용한다. `$ mas install 462058435`
 - 간혹 아래아한글 파일을 읽을 일이 있다. **한컴오피스 한글 2014 VP 뷰어** 설치 `$ mas install 416746898`
-- 모든 원고는 마크다운으로 초고를 작성하는데, VSCode를 주로 이용하지만 편리한 WYSIWIG을 위해 [**Typora(유료)**](https://typora.io/)와 병행한다.
+- 모든 원고는 마크다운으로 초고를 작성하는데, VSCode를 주로 이용하지만 편리한 WYSIWIG을 위해 [**Typora(유료)**](https://typora.io/)와 병행한다. `$ brew install typora`
 - pdf, epub 같은 전자책은 **Yomu(유료)**를 이용한다. 유료 결제시 iCloud 동기화가 가능하다. `$ mas install 562211012`
+- 사내 지식 관리 도구로 **Notion**을 사용한다. `$ brew install notion`
 
 ## 커뮤니케이션
 - **Slack** 업무용 커뮤니케이션 도구 `$ mas install 803453959`
 
 ## 멀티미디어
-- Xee<sup>3</sup>가 더 이상 업데이트가 되지 않아 **Pixea**를 발견해서 사용 중 `$ mas install 1507782672`
+- Xee<sup>3</sup>가 더 이상 업데이트가 되지 않아 **Pixea**를 발견해서 사용 중이다. `$ mas install 1507782672`
 - **Pixelmator Pro(유료)**를 이미지 편집 용도로 사용한다. 아주 전문적인 기능이 필요한게 아니기 때문에 이 정도로 충분하다. `$ mas install 1289583905`
 - **IINA** 중국 개발자가 만든 동영상 플레이어. 오픈소스로 진행되고 업데이트가 빨라 웬만한 국산 동영상 플레이어보다 좋다.
 
@@ -137,7 +139,7 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 $ brew install the_silver_searcher fzf
 ``` 
   - 플러그인은 `plugins=(git fzf)`를 사용한다. `fzf` 플러그인의 경우 `CTRL-R`을 포함한 키 바인딩을 제공한다.
-- Node modules 중에 CLI 용도로 괜찮은게 있다. 대표적으로 time을 대체하는 **gnomon**이 있다.  
+- Node modules(`$ brew install node`) 중에 CLI 용도로 괜찮은게 있다. 대표적으로 time을 대체하는 **gnomon**이 있다.  
 ```
 $ npm install -g gnomon
 ```
@@ -153,9 +155,9 @@ $ xcode-select --install
 $ xcode-select --version
 xcode-select version 2395.
 ```
-- git 관리는 CLI로 대부분 가능하나 diff 등은 습관적으로 **GitHub Desktop**을 사용한다.
+- git 관리는 CLI로 대부분 가능하나 diff 등은 습관적으로 **GitHub Desktop**을 사용한다. `$ brew install github`
 - **JetBrains IDE(유료)** [All Products Pack 연간 라이센스를 사용](http://likejazz.com/post/133725850005/jetbrains-all-products-pack)하고 있다. IntelliJ 뿐만 아니라 [CLion](http://likejazz.com/post/118649049333/clion-1-0), PyCharm, PhpStorm, AppCode, GoLand등을 사용하는 [가장 즐겨쓰는 최고의 IDE](http://likejazz.com/post/112670720955/jetbrains-ide)다. 설정은 [JetBrains](/wiki/JetBrains/) 참고. 최근에는 JetBrains Gateway가 원격 개발에 매우 편리하다.
-  - **JetBrains ToolBox** IDE를 통합 관리할 수 있는 필수 메뉴바 앱이다.
+  - **JetBrains ToolBox** IDE를 통합 관리할 수 있는 필수 메뉴바 앱이다. `$ brew install jetbrains-toolbox`
 - 개발/테스트/서비스로 이어지는 설정과 설치는 항상 고민거리다. **Docker**는 모든 고민을 말끔하게 해결해줬다. 게다가 M1에서도 잘 지원하기 때문에 **[Docker Desktop](https://dev.likejazz.com/post/173377603746/docker-for-mac)**은 필수다.
 - 가끔 스니펫은 **[GitHub Gist](https://gist.github.com/likejazz)**에 보관한다. 비공개도 URL이 노출되면 안되기 때문에 별도로 관리한다. 
 
