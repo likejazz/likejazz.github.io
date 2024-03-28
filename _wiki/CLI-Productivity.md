@@ -2,7 +2,7 @@
 layout: wiki 
 title: CLI Productivity
 tags: ["Productivity"]
-last_modified_at: 2024/02/23 14:09:41
+last_modified_at: 2024/03/28 22:46:33
 ---
 
 <!-- TOC -->
@@ -79,18 +79,19 @@ macOS 기본 ruby에 system libraries를 설치할 수 없기 때문인데 Ventu
 
 ```console
 # rvm 설치
-$ curl -sSL https://raw.githubusercontent.com/rvm/rvm/master/binscripts/rvm-installer | bash -s stable
+$ curl -sSL https://get.rvm.io | bash -s stable
 $ rvm install "ruby-3.1.2"
 $ brew install openssl@1.1
 
 # https://stackoverflow.com/a/31516586
 $ bundle config build.eventmachine --with-cppflags=-I$(brew --prefix openssl@1.1)/include
 
+# likejazz.github.io
 # https://stackoverflow.com/a/70916831
 $ bundle add webrick
 
 # runme.sh
-$ bundle exec jekyll serve
+$ bundle exec jekyll serve --host 0.0.0.0
 ```
 
 # tar with excludes

@@ -2,7 +2,7 @@
 layout: wiki 
 title: Jetson
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/03/27 19:16:45
+last_modified_at: 2024/03/28 15:20:30
 ---
 
 <!-- TOC -->
@@ -10,6 +10,8 @@ last_modified_at: 2024/03/27 19:16:45
 - [설정](#설정)
 - [도구](#도구)
   - [Transformers](#transformers)
+  - [SSH](#ssh)
+- [LLM 성능](#llm-성능)
 - [기타](#기타)
 
 <!-- /TOC -->
@@ -84,15 +86,13 @@ from threading import Thread
 
 from rich import print
 
-model_name='/dnotitia/gemma-2b-it'
+model_name='/gemma-2b-it'
 model = AutoModelForCausalLM.from_pretrained(model_name, device_map='cuda')
 
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 streamer = TextIteratorStreamer(tokenizer)
 
-query = 'Can I get a recipe for French Onion soup?'
-
-prompt = [{'role': 'user', 'content': query}]
+prompt = [{'role': 'user', 'content': 'Can I get a recipe for French Onion soup?'}]
 inputs = tokenizer.apply_chat_template(
     prompt,
     add_generation_prompt=True,
@@ -102,7 +102,7 @@ inputs = tokenizer.apply_chat_template(
 Thread(target=lambda: model.generate(inputs, max_new_tokens=256, streamer=streamer)).start()
 
 print('=' * 60)
-print(f'[bold magenta]Prompt:[/bold magenta] [white]{query}[/white]')
+print(prompt)
 print('-' * 60)
 for text in streamer:
     print(text, end='', flush=True)
@@ -113,6 +113,26 @@ print('=' * 60)
 
 [^fn-2]: <https://www.jetson-ai-lab.com/tutorial_api-examples.html>
 
+## SSH
+외부 접속이 가능하도록 SSH 설정을 진행한다.
+```shell
+$ sudo apt install openssh-server
+```
+
+# LLM 성능
+
+<img src="/images/2024/jetson-3.jpg" width="45%" style="float: left; margin-right: 5px">
+<img src="/images/2024/jetson-4.jpg" width="45%">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="clear: both">
+
+<img src="/images/2024/jetson-5.jpg" width="45%" style="float: left; margin-right: 5px">
+<img src="/images/2024/jetson-1.jpg" width="45%">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="clear: both">
+
+<img src="/images/2024/jetson-2.jpg" width="45%">
+
 # 기타
-- [NVIDIA Jetson Generative AI Lab Tutorial](https://www.jetson-ai-lab.com/tutorial-intro.html) 공식 가이드가 업데이트 되지 않고 이 곳에 별도로 정리
+- [NVIDIA Jetson Generative AI Lab Tutorial](https://www.jetson-ai-lab.com/tutorial-intro.html) 공식 가이드가 업데이트 되지 않고 이 곳에 별도 정리
 - [Benchmarks](https://www.jetson-ai-lab.com/benchmarks.html)

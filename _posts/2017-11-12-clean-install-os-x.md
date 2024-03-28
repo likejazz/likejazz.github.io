@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/03/27 10:17:43
+last_modified_at: 2024/03/27 23:16:08
 ---
 
 <div class="message">
@@ -147,6 +147,7 @@ $ npm install -g gnomon
 ```
 $ go install github.com/wallix/awless@latest
 ```
+- 파이썬 버전 관리를 위해 **Anaconda**를 설치한다. `$ brew install anaconda` 이후 초기화 설정을 하고 사용한다. `$ /opt/homebrew/anaconda3/bin/conda init zsh`
 
 ## 개발 도구
 - **Xcode**를 사용하진 않지만 LLVM을 비롯한 각종 개발 도구를 최신 버전으로 업데이트 하기 위해 Command Line Tools for Xcode를 설치한다.  
