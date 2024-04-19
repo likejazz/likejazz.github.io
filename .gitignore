@@ -8,3 +8,4 @@ nohup.out
 Gemfile.lock
 vendor/
 .bundle/
+r.html
