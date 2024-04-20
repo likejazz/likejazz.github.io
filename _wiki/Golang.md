@@ -2,7 +2,7 @@
 layout: wiki 
 title: Golang
 tags:  ["Languages & Framework"]
-last_modified_at: 2024/04/16 15:47:46
+last_modified_at: 2024/04/19 19:00:00
 ---
 
 <!-- TOC -->
@@ -40,6 +40,10 @@ $ go mod init hyundai.com/hello
 리모트 모듈을 import 했을때는 `go mod tidy`로 자동 설치.
 
 ## go generate
+```go
+//go:generate go run gen.go arg1 arg2
+```
+
 
 # 빌드 및 실행
 ## dep
