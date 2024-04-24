@@ -2,12 +2,13 @@
 layout: wiki 
 title: LLM
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/19 08:33:35
+last_modified_at: 2024/04/22 13:54:40
 ---
 
 <!-- TOC -->
 
 - [비교](#비교)
+- [NVIDIA Jetson LLM 성능](#nvidia-jetson-llm-성능)
 
 <!-- /TOC -->
 
@@ -23,3 +24,15 @@ last_modified_at: 2024/04/19 08:33:35
 | LLaMA 3 8B, 70B | 15T | 128K | 1.3M | 2024년 4월 |
 
 [^fn-1]: [Vocab은 다름](https://blog.gopenai.com/llama-1-and-llama-2-have-different-vocabularies-d82c5d22cca4)
+
+# NVIDIA Jetson LLM 성능
+
+<img src="/images/2024/jetson-3.jpg" width="70%">
+
+<img src="/images/2024/jetson-4.jpg" width="70%">
+
+<img src="/images/2024/jetson-5.jpg" width="70%">
+
+<img src="/images/2024/jetson-1.jpg" width="70%">
+
+<img src="/images/2024/jetson-2.jpg" width="70%">

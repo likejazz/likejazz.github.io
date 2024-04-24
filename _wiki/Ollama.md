@@ -2,7 +2,7 @@
 layout: wiki 
 title: Ollama
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/09 10:15:32
+last_modified_at: 2024/04/23 19:25:41
 ---
 
 <!-- TOC -->
@@ -10,6 +10,7 @@ last_modified_at: 2024/04/09 10:15:32
 - [설치](#설치)
 - [실행](#실행)
   - [42dot LLM Modelfile](#42dot-llm-modelfile)
+- [바인딩](#바인딩)
 
 <!-- /TOC -->
 
@@ -51,3 +52,9 @@ PARAMETER stop "<human>:"
 PARAMETER stop "<bot>:"
 ```
 중간에 `\`는 제거
+
+# 바인딩
+
+- `CMakeLists.txt` 맨 하단에 `add_subdirectory(../ext_server ext_server) # ollama`를 추가하여 ext_server가 같이 빌드되도록 처리
+- 모델 로딩 에러가 발생할 때 throw 하도록 패치
+- Go 바이너리에 링킹을 위한 static build `libllama.a`
