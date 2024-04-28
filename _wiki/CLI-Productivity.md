@@ -2,7 +2,7 @@
 layout: wiki 
 title: CLI Productivity
 tags: ["Productivity"]
-last_modified_at: 2024/04/08 09:48:43
+last_modified_at: 2024/04/24 10:21:44
 ---
 
 <!-- TOC -->
@@ -17,6 +17,7 @@ last_modified_at: 2024/04/08 09:48:43
 - [Mount disk](#mount-disk)
   - [lvm 확장](#lvm-확장)
 - [htop](#htop)
+- [`set -ex`](#set--ex)
 
 <!-- /TOC -->
 
@@ -160,3 +161,6 @@ $ sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
 top을 대체하는 최고의 프로젝트
 - `Shift+H` Turn off userland threads
 - `F2` Setup에서 설정 변경. Available meters에서 추가 및 이동 가능. `F10`으로 `~/.config/htop/htoprc`에 저장한다.
+
+# `set -ex`
+bash 스크립트에서 `set -ex`는 e 옵션은 에러 발생시 바로 실행 종료, x 옵션은 모든 실행 명령 출력으로 디버깅을 돕는다.

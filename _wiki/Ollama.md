@@ -2,14 +2,14 @@
 layout: wiki 
 title: Ollama
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/23 19:25:41
+last_modified_at: 2024/04/28 21:30:38
 ---
 
 <!-- TOC -->
 
 - [설치](#설치)
 - [실행](#실행)
-  - [42dot LLM Modelfile](#42dot-llm-modelfile)
+	- [42dot LLM Modelfile](#42dot-llm-modelfile)
 - [바인딩](#바인딩)
 
 <!-- /TOC -->
@@ -19,7 +19,7 @@ last_modified_at: 2024/04/23 19:25:41
 $ sudo curl -L https://ollama.com/download/ollama-linux-amd64 -o /usr/bin/ollama
 $ sudo chmod +x /usr/bin/ollama
 ```
-[릴리즈](https://github.com/ollama/ollama/releases)에서 AMD64 최신 버전으로 경로 변경
+[릴리즈](https://github.com/ollama/ollama/releases)에서 amd64 최신 버전으로 경로 변경
 
 # 실행
 `--verbose`로 토큰 속도를 볼 수 있다.
@@ -57,4 +57,31 @@ PARAMETER stop "<bot>:"
 
 - `CMakeLists.txt` 맨 하단에 `add_subdirectory(../ext_server ext_server) # ollama`를 추가하여 ext_server가 같이 빌드되도록 처리
 - 모델 로딩 에러가 발생할 때 throw 하도록 패치
-- Go 바이너리에 링킹을 위한 static build `libllama.a`
+- Go 바이너리에 링킹을 위한 `libllama.a` static build. create시 quantization을 위해서만 사용된다.
+
+```
+# /xxx/ollama/llm/build/linux/x86_64/cuda_v12/bin
+$ ls -al
+total 581856
+drwxr-xr-x  2 root root      4096 Apr 24 09:44 .
+drwxr-xr-x 10 root root      4096 Apr 24 09:44 ..
+-rw-r--r--  1 root root 109760416 Apr 24 09:44 libcublas.so.12
+-rw-r--r--  1 root root 441131728 Apr 24 09:44 libcublasLt.so.12
+-rw-r--r--  1 root root    707904 Apr 24 09:44 libcudart.so.12
+-rwxr-xr-x  1 root root  44200752 Apr 24 09:44 ollama_llama_server
+$ ldd ollama_llama_server
+	linux-vdso.so.1 (0x00007fffa0d62000)
+	libcudart.so.12 => /usr/local/cuda/lib64/libcudart.so.12 (0x00007f91dce00000)
+	libcublas.so.12 => /usr/local/cuda/lib64/libcublas.so.12 (0x00007f91d6200000)
+	libcuda.so.1 => /usr/lib/x86_64-linux-gnu/libcuda.so.1 (0x00007f91d4685000)
+	libstdc++.so.6 => /usr/lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007f91d4459000)
+	libm.so.6 => /usr/lib/x86_64-linux-gnu/libm.so.6 (0x00007f91dd1b6000)
+	libgcc_s.so.1 => /usr/lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007f91dd194000)
+	libc.so.6 => /usr/lib/x86_64-linux-gnu/libc.so.6 (0x00007f91d4230000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f91dfd24000)
+	libdl.so.2 => /usr/lib/x86_64-linux-gnu/libdl.so.2 (0x00007f91dd18f000)
+	libpthread.so.0 => /usr/lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f91dd18a000)
+	librt.so.1 => /usr/lib/x86_64-linux-gnu/librt.so.1 (0x00007f91dd185000)
+	libcublasLt.so.12 => /usr/local/cuda/lib64/libcublasLt.so.12 (0x00007f91b6200000)
+```
+- C++ 빌드로 ollama_llama_server를 만드는 구조
