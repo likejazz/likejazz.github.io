@@ -2,15 +2,17 @@
 layout: wiki 
 title: Ollama
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/28 21:30:38
+last_modified_at: 2024/04/29 17:09:12
 ---
 
 <!-- TOC -->
 
 - [설치](#설치)
 - [실행](#실행)
-	- [42dot LLM Modelfile](#42dot-llm-modelfile)
+  - [42dot LLM Modelfile](#42dot-llm-modelfile)
 - [바인딩](#바인딩)
+  - [ext\_server](#ext_server)
+- [개발](#개발)
 
 <!-- /TOC -->
 
@@ -85,3 +87,56 @@ $ ldd ollama_llama_server
 	libcublasLt.so.12 => /usr/local/cuda/lib64/libcublasLt.so.12 (0x00007f91b6200000)
 ```
 - C++ 빌드로 ollama_llama_server를 만드는 구조
+
+## ext_server
+Starting llama.cpp server:
+```shell
+$ /var/folders/_z/xxx/T/ollamaxxx/runners/metal/ollama_llama_server \
+--model /Users/sangpark/.ollama/models/blobs/sha256-xxx \
+--ctx-size 2048 \
+--batch-size 512 \
+--embedding \
+--log-format json \
+--n-gpu-layers 19 \
+--verbose \
+--port 52709
+```
+
+Http server listening(llama.cpp):
+```shell
+$ curl --request POST \
+    --url http://localhost:52709/completion \
+    --header "Content-Type: application/json" \
+    --data '{
+        "cache_prompt": true,
+        "prompt": "<start_of_turn>user\nhi hello<end_of_turn>\n<start_of_turn>model\n",
+        "n_predict": 64,
+        "stop":["<start_of_turn>","<end_of_turn>"],
+        "stream": true
+    }'
+```
+
+Ollama serve:
+```shell
+$ curl http://localhost:11434/api/generate -d '{
+  "model": "gemma:2b",
+  "prompt": "Why is the sky blue?"
+}'
+
+$ curl http://localhost:11434/api/chat -d '{
+  "model": "gemma:2b",
+  "messages": [
+    {
+      "role": "user",
+      "content": "why is the sky blue?"
+    }
+  ]
+}'
+```
+
+# 개발
+```
+$ XXX_SKIP_GENERATE=1 ./runme.sh && OLLAMA_KEEP_ALIVE=1m OLLAMA_DEBUG=1 ./ollama-darwin serve
+```
+
+`OLLAMA_KEEP_ALIVE`에 모델 메모리 유지 시간을 설정한다. 이후 타이머가 동작해 `unload()` 실행.

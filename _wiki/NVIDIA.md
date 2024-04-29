@@ -2,7 +2,7 @@
 layout: wiki 
 title: NVIDIA
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/04/22 16:43:36
+last_modified_at: 2024/04/29 09:55:08
 ---
 
 - [NVIDIA Data Center GPUs](#nvidia-data-center-gpus)
@@ -42,8 +42,6 @@ last_modified_at: 2024/04/22 16:43:36
 <img src="/images/2024/Screenshot 2024-04-22 at 2.12.26 PM.png" width="45%">
 
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="clear: both">
-
-Perform a single operation on a ‘vector’ (or array) of 16 FP64, 32 FP32, 32(?) INT32. [INT32는 16 아닌지 질의함](https://open.substack.com/pub/thechipletter/p/demystifying-gpu-compute-architectures?r=3pulg0&utm_campaign=comment-list-share-cta&utm_medium=web&comments=true&commentId=54513779).
 
 ## SuperPOD
 Compute Nodes: 40ea DGX A100 system(8x A100)
