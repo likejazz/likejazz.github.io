@@ -2,7 +2,7 @@
 layout: wiki 
 title: Network Productivity
 tags: ["Productivity"]
-last_modified_at: 2024/02/23 14:09:03
+last_modified_at: 2024/05/01 18:42:42
 ---
 
 <!-- TOC -->
@@ -13,6 +13,7 @@ last_modified_at: 2024/02/23 14:09:03
 - [Port Forwarding](#port-forwarding)
   - [ssh 접속 via proxy](#ssh-접속-via-proxy)
 - [nload](#nload)
+- [Reverse Proxy](#reverse-proxy)
 
 <!-- /TOC -->
 
@@ -67,3 +68,34 @@ $ ssh sshuser-vpn
 네트워크 모니터링 `$ sudo apt install nload`
 
 Device는 eth를 택하도록 화살표로 선택하고 `F2` 옵션에서 Unit for traffic numbers: Human Readable (Byte)에서 `TAB`으로 선택, `F5`로 저장
+
+# Reverse Proxy
+[A Reverse Proxy](https://github.com/fatedier/frp) to help you expose a local server behind a NAT.
+
+frps:
+```
+# frps.toml
+bindPort = 7000
+
+$ ./frps -c frps.toml
+```
+
+frpc:
+```
+# frpc.toml
+serverAddr = "x.x.x.x"
+serverPort = 7000
+
+[[proxies]]
+name = "ssh"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 22
+remotePort = 2222
+
+$ ./frpc -c frpc.toml
+```
+
+```shell
+$ ssh -p 2222 xxx@x.x.x.x
+```
