@@ -2,7 +2,7 @@
 layout: wiki 
 title: Ollama
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/29 17:09:12
+last_modified_at: 2024/04/30 21:53:30
 ---
 
 <!-- TOC -->
@@ -13,6 +13,7 @@ last_modified_at: 2024/04/29 17:09:12
 - [바인딩](#바인딩)
   - [ext\_server](#ext_server)
 - [개발](#개발)
+  - [ChatGPT](#chatgpt)
 
 <!-- /TOC -->
 
@@ -140,3 +141,14 @@ $ XXX_SKIP_GENERATE=1 ./runme.sh && OLLAMA_KEEP_ALIVE=1m OLLAMA_DEBUG=1 ./ollama
 ```
 
 `OLLAMA_KEEP_ALIVE`에 모델 메모리 유지 시간을 설정한다. 이후 타이머가 동작해 `unload()` 실행.
+
+## ChatGPT
+```
+$ curl http://localhost:11434/v1/chat/completions -i \
+  -H "Content-Type: application/json" \
+  -d '{
+     "model": "gemma:2b",
+     "stream": true,
+     "messages": [{"role": "user", "content": "우리나라 대통령이 누구야?"}]
+   }'
+```
