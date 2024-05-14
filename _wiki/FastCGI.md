@@ -2,13 +2,14 @@
 layout: wiki 
 title: FastCGI
 tags: ["Network Programming"]
-last_modified_at: 2023/07/19 14:33:08
+last_modified_at: 2024/05/04 12:21:50
 ---
 
 <!-- TOC -->
 
 - [CGI](#cgi)
 - [WSGI](#wsgi)
+  - [ASGI](#asgi)
   - [Gunicorn](#gunicorn)
   - [FastCGI](#fastcgi)
     - [How to connect to PHP-FPM directly](#how-to-connect-to-php-fpm-directly)
@@ -29,11 +30,12 @@ a fast and simple interface between web servers and application servers. It is s
 
 [^fn-wsgi]: <https://stackoverflow.com/a/29949739>
 
-In 2019, WSGI was superseded by ASGI (Asynchronous Server Gateway Interface), used by frameworks like FastAPI on servers like Uvicorn, which is much faster.
-
 SCGI is a language-neutral means of connecting a front-end web server and a web application. WSGI is a Python-specific interface standard for web applications.
 
 WSGI 구현으로 uWSGI와 Gunicorn이 있다.
+
+## ASGI
+In 2019, WSGI was superseded by ASGI (Asynchronous Server Gateway Interface), used by frameworks like FastAPI on servers like Uvicorn, which is much faster.
 
 ## Gunicorn
 AWS의 ELB를 사용하고 flask로 개발, gunicorn으로 바로 연동할 수 있다. static files를 서빙하지 않는다면 nginx를 굳이 사용하지 않아도 된다. WSGI PEP 3333을 보면 Python programmatic API definition이며, flask는 이미 대응하고 있다.

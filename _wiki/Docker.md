@@ -2,7 +2,7 @@
 layout: wiki 
 title: Docker
 tags:  ["Infrastructure"]
-last_modified_at: 2024/04/13 11:58:34
+last_modified_at: 2024/05/07 20:20:34
 ---
 
 <!-- TOC -->
@@ -27,6 +27,7 @@ last_modified_at: 2024/04/13 11:58:34
 - [Docker Attach](#docker-attach)
 - [Dockerfile](#dockerfile)
 - [Docker without root](#docker-without-root)
+- [Change apt repo to kakao due to a hash error](#change-apt-repo-to-kakao-due-to-a-hash-error)
 
 <!-- /TOC -->
 
@@ -288,4 +289,10 @@ Timezone 설정, 기본 패키지 설치, nvtop, pip, ssh 접속까지 설정한
 ```shell
 $ sudo usermod -a -G docker $USER
 $ sudo chmod 666 /var/run/docker.sock
+```
+
+# Change apt repo to kakao due to a hash error
+```dockerfile
+# Change apt repo to kakao due to a hash error.
+RUN sed -i "s/archive.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list
 ```

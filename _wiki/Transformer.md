@@ -2,7 +2,7 @@
 layout: wiki 
 title: Transformer
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/23 18:31:45
+last_modified_at: 2024/05/13 11:24:47
 ---
 
 <!-- TOC -->
@@ -13,7 +13,6 @@ last_modified_at: 2024/02/23 18:31:45
   - [loss 계산](#loss-계산)
   - [LayerNorm](#layernorm)
   - [Positional Encoding](#positional-encoding)
-- [Llama Architecture](#llama-architecture)
 - [Transformer 응용 모델](#transformer-응용-모델)
   - [Pathways](#pathways)
   - [Feed Forward Layer](#feed-forward-layer)
@@ -41,18 +40,6 @@ GPT는 masked multi-head attention(causal masking, 그림 어텐션맵 예제)�
 <img src="/images/2024/278333751-2e7fedc5-eaf4-4fa4-a4cc-ee8098874ac2.png" width="60%">[^fn-2]
 
 [^fn-2]: <https://en.wikipedia.org/wiki/Generative_pre-trained_transformer>
-
-원래 그림은 Block 중간에서 LayerNorm 뒤에 residual connection이 연결된 것으로 표현되어 있으나 실제로 OpenAI의 gpt-2 구현 코드를 보면 LayerNorm 이전 값으로 연결되어 있다. 또한 Positional Encoding을 Embedding으로 수정. Block 맨 처음에는 Q, K, V를 만들기 위해 3 * embedding 만큼 확장한다. weights 값을 확인하니 주로 다음과 같다.
-
-- 임베딩은 주로 -0.08 ~ 0.12
-- Block에서 LayerNorm 통과 -3.7 ~ 3.6
-- c_proj = -0.0608 ~ 0.0632
-- ln_1 = 0.9763 ~ 1.0290
-- ln_2 = 0.9816 ~ 1.0418
-- mlp_c_fc = -0.1025 ~ 0.1214
-- Block 마지막 값 -1.5 ~ 1.5
-
-minGPT의 매우 단순한 sort 예제의 weight이므로 좀 더 구체적으로 실험할 필요는 있다.
 
 ### Scaled Dot-Product
 Scaled Dot-Product attention from Transformer  
@@ -90,9 +77,6 @@ x = self.transformer.drop(tok_emb + (pos_enc if self.pos_type == 'pos_enc' else 
 ```
 
 position embedding 쪽이 loss가 훨씬 더 빨리, 작게 떨어진다. 사실상 positional encoding은 사용할 필요가 없다. 하지만 position 정보 없이는 학습되지 않으며, 당연히 token embeddings 없이도 학습되지 않는다.
-
-# Llama Architecture
-<img src="/images/2024/301922294-410d5787-ddee-44c9-a3d6-78792e759d43.png" width="50%">
 
 # Transformer 응용 모델
 ## Pathways

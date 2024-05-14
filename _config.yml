@@ -4,7 +4,7 @@ permalink:           "/:title/"
 
 # Setup
 title:               The Missing Papers
-tagline:             Sang-Kil Park
+tagline:             Sang Park
 url:                 http://docs.likejazz.com
 baseurl:             ""
 
@@ -21,7 +21,7 @@ collections:
 
 # About/contact
 author:
-  name:              Sang-Kil Park
+  name:              Sang Park
   url:               http://likejazz.com/
   email:             likejazz@gmail.com
 
