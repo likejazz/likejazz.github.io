@@ -2,11 +2,12 @@
 layout: wiki 
 title: gguf
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/03/29 21:41:35
+last_modified_at: 2024/05/27 09:20:03
 ---
 
 - [HuggingFace](#huggingface)
 - [gguf Tensors](#gguf-tensors)
+- [참고](#참고)
 
 
 # HuggingFace
@@ -68,3 +69,6 @@ Tensors:
 
 - 대부분의 명칭이 다르므로 주의
 - hf에서는 `[vocab size, embedding length]`인데, gguf는 `[embedding length, vocab size]`로 되어 있음. 이외에 weight도 row, column이 반대이므로 주의
+
+# 참고
+https://github.com/ggerganov/ggml/blob/master/docs/gguf.md

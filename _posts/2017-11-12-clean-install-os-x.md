@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/03/27 23:16:08
+last_modified_at: 2024/06/07 11:23:07
 ---
 
 <div class="message">
@@ -115,7 +115,7 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - 개인 문서는 **Bear(유료)**에 지속적으로 정리한다. 아이폰, 아이패드 모두 사용하며 동기화를 위해 연간 구독을 이용 중이다. 아이폰을 반드시 사용해야 하는 두 가지 이유를 대라면 Things와 Bear 때문이다. 필수 메모 용도로 사용하며 20~30개 내외로 관리한다. `$ mas install 1091189122`
 - 문서의 작성과 보관은 **GitHub Pages**를 이용한다. 지식 저장소로 활용하고 있으며, **MathJax**를 이용한 수식 지원도 좋다. 위키도 좋지만 수식 때문에 페이지를 별도로 사용한다.
   - 개인 문서와 집필 초고 등은 GitHub의 Private Repository를 이용한다.
-  - 집필시에는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
+  - 집필한 원고는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
   - 프리젠테이션을 위해 **Marp for VS Code**를 이용한다.
 - **Microsoft Office(유료)**에서 Excel을 주로 이용하고 집필시 Word를 가끔 이용한다. `$ mas install 462058435`
 - 간혹 아래아한글 파일을 읽을 일이 있다. **한컴오피스 한글 2014 VP 뷰어** 설치 `$ mas install 416746898`
@@ -159,7 +159,7 @@ xcode-select version 2395.
 - git 관리는 CLI로 대부분 가능하나 diff 등은 습관적으로 **GitHub Desktop**을 사용한다. `$ brew install github`
 - **JetBrains IDE(유료)** [All Products Pack 연간 라이센스를 사용](http://likejazz.com/post/133725850005/jetbrains-all-products-pack)하고 있다. IntelliJ 뿐만 아니라 [CLion](http://likejazz.com/post/118649049333/clion-1-0), PyCharm, PhpStorm, AppCode, GoLand등을 사용하는 [가장 즐겨쓰는 최고의 IDE](http://likejazz.com/post/112670720955/jetbrains-ide)다. 설정은 [JetBrains](/wiki/JetBrains/) 참고. 최근에는 JetBrains Gateway가 원격 개발에 매우 편리하다.
   - **JetBrains ToolBox** IDE를 통합 관리할 수 있는 필수 메뉴바 앱이다. `$ brew install jetbrains-toolbox`
-- 개발/테스트/서비스로 이어지는 설정과 설치는 항상 고민거리다. **Docker**는 모든 고민을 말끔하게 해결해줬다. 게다가 M1에서도 잘 지원하기 때문에 **[Docker Desktop](https://dev.likejazz.com/post/173377603746/docker-for-mac)**은 필수다.
+- 개발/테스트/서비스로 이어지는 설정과 설치는 항상 고민거리다. **Docker**는 모든 고민을 말끔하게 해결해줬다. 게다가 M1에서도 잘 지원하기 때문에 **Docker Desktop**은 필수다.
 - 가끔 스니펫은 **[GitHub Gist](https://gist.github.com/likejazz)**에 보관한다. 비공개도 URL이 노출되면 안되기 때문에 별도로 관리한다. 
 
 ## 자료
@@ -168,7 +168,7 @@ xcode-select version 2395.
 맥북 SSD 크기가 제한적이라 외장 SDD, SanDisk Extreme Portable SSD를 사용하고 있다. 방진, 방수에 500MB/s 속도를 지원하고 APFS (Encrypted) 포맷을 사용하여 최초 Attach시 항상 비밀번호를 입력(저장 가능)해야 파일을 열 수 있다. 250G가 69,000원. 물론 외장 HDD가 용량이 더 크고, 가격도 저렴하고 동일하게 APFS도 지원 하지만 소음과 진동이 있고, 충격에 약해 휴대용으로는 적절치 않다. 2023년 9월 삼성 SSD 1TB를 129,000원에 추가 구매.
 
 ## 기타
-대부분의 개인 자료는 클라우드에 두다 보니 맥북을 새로 구매하거나 클린 인스톨을 진행해도 별도로 백업이나 복원할게 없다. 동영상처럼 용량이 매우 큰 일부 자료나 여러 가지 아카이빙을 제외하면 더 이상 로컬에는 데이터를 보관하지 않는다. 로컬에 데이터를 백업해 둬도 한 번도 열어보지 않거나 결국은 손실되곤 한다.
+대부분의 개인 자료는 클라우드에 두다 보니 맥북을 새로 구매하거나 클린 인스톨을 진행해도 별도로 백업이나 복원할게 없다. 동영상처럼 용량이 매우 큰 일부 자료나 여러 가지 아카이빙을 제외하면 더 이상 로컬에는 데이터를 보관하지 않는다. 회사 문서나 개인 자료만 별도로 시간순 월 단위로 관리하는데, 이 또한 한 번도 열어보지 않거나 결국은 손실되곤 한다.
 
 ## iOS
 ### 기본 설정
@@ -182,7 +182,8 @@ xcode-select version 2395.
 
 ### 필수 앱
 - **[Things, Bear](/iphone-again/)**
-- Microsoft Authenticator(GitHub, Microsoft 365), Google Authenticator(구글 2-factor)
+- Microsoft Authenticator(GitHub, Microsoft 365, AWS, LinkedIn)
+  - Google Authenticator(구글 2-factor)
 
 아이폰은 이제 생활과 관련한 앱이 대부분이다 보니 설치앱을 모두 나열하면 사생활을 모두 엿보는 듯한 느낌이 든다.
 

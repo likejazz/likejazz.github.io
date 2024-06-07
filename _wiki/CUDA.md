@@ -2,28 +2,20 @@
 layout: wiki 
 title: CUDA
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/04/22 14:43:55
+last_modified_at: 2024/05/30 14:16:44
 ---
 
-- [CUDA](#cuda)
+- [설치](#설치)
+  - [CUDA Toolkit](#cuda-toolkit)
   - [Driver Update](#driver-update)
-  - [CUDA Driver Update](#cuda-driver-update)
   - [nvidia-container(Docker) 설치](#nvidia-containerdocker-설치)
   - [트러블슈팅](#트러블슈팅)
-  - [Dockerfile](#dockerfile)
+- [Dockerfile](#dockerfile)
 - [BLAS](#blas)
 
-# CUDA
-## Driver Update
-```bash
-$ sudo ubuntu-drivers list --gpgpu
-$ sudo ubuntu-drivers install --gpgpu nvidia:550-server
-$ sudo reboot
-```
+# 설치
 
-재부팅 후 `nvidia-smi`가 또 안되는 오류가 발생하여 [가이드](https://forums.developer.nvidia.com/t/nvidia-smi-has-failed-because-it-couldnt-communicate-with-the-nvidia-driver-make-sure-that-the-latest-nvidia-driver-is-installed-and-running/197141/6)에 따라 기존 드라이버 모두 언인스톨 후 cuda만 실행했다.
-
-## CUDA Driver Update
+## CUDA Toolkit
 CUDA Toolkit 12.4 (Apr 2024)  
 <https://developer.nvidia.com/cuda-toolkit-archive> runfile(local) 방식이 가장 간단
 
@@ -34,7 +26,7 @@ $ chmod +x cuda_12.4.1_550.54.15_linux.run
 $ sudo ./cuda_12.4.1_550.54.15_linux.run
 ```
 
-CUDA Installer가 drvier까지 같이 설치해주는 것으로 보이는데 확인 필요
+CUDA Toolkit은 드라이버와 개발툴을 모두 설치해준다. (clean 상태에서 다시 점검 필요)
 
 언인스톨은 다음과 같다.
 
@@ -49,8 +41,18 @@ $ sudo modprobe -r nvidia-drm
 
 $ sudo reboot
 ```
+
+## Driver Update
+```bash
+$ sudo ubuntu-drivers list --gpgpu
+$ sudo ubuntu-drivers install --gpgpu nvidia:550-server
+$ sudo reboot
+```
+
+재부팅 후 `nvidia-smi`가 또 안되는 오류가 발생하여 [가이드](https://forums.developer.nvidia.com/t/nvidia-smi-has-failed-because-it-couldnt-communicate-with-the-nvidia-driver-make-sure-that-the-latest-nvidia-driver-is-installed-and-running/197141/6)에 따라 기존 드라이버 모두 언인스톨 후 cuda만 실행했다. (이 step을 제외하고 CUDA Toolkit만 실행하면 되는지 확인 필요)
+
 ## nvidia-container(Docker) 설치
-apt에서 hash 에러가 발생하므로 apt 주소 변경:
+Docker내에서 apt 실행시 hash 에러가 발생하므로 apt 주소 다음과 같이 변경:
 ```bash
 $ sudo vi /etc/apt/sources.list
 :%s/kr.archive.ubuntu.com/mirror.kakao.com/
@@ -71,7 +73,7 @@ NVML: Driver/library version mismatch
 
 [^fn-mismatch]: <https://stackoverflow.com/a/45319156/3513266>
 
-## Dockerfile
+# Dockerfile
 CUDA 기반 Dockerfile:
 ```docker
 FROM nvcr.io/nvidia/cuda:12.4.0-devel-ubuntu22.04

@@ -2,13 +2,14 @@
 layout: wiki
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/13 11:56:39
+last_modified_at: 2024/05/29 12:50:15
 ---
 
 <!-- TOC -->
 
 - [빌드](#빌드)
 - [실행](#실행)
+  - [n-gpu-layers](#n-gpu-layers)
   - [llama-cpp-python](#llama-cpp-python)
 - [바인딩 빌드](#바인딩-빌드)
 
@@ -66,6 +67,19 @@ $ CUDA_VISIBLE_DEVICES=2 ./server -m /models/ggml-model-f32.gguf \
 
 웹 페이지에서 Show Probabilities를 주면 확률 분포를 볼 수 있다.
 
+## n-gpu-layers
+메모리에 올라갈 사이즈가 맞지 않으면 core dumped가 발생한다.
+```
+$ ./ollama_llama_server --model /root/.ollama/models/blobs/sha256-xxxx --ctx-size 2048 --batch-size 512 --embedding --log-disable --n-gpu-layers 50 --verbose --parallel 1 --port 44871
+...
+ggml_backend_cuda_buffer_type_alloc_buffer: allocating 22953.12 MiB on device 0: cudaMalloc failed: out of memory
+llama_model_load: error loading model: unable to allocate backend buffer
+llama_load_model_from_file: exception loading model
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  unable to allocate backend buffer
+Aborted (core dumped)
+```
+
 ## llama-cpp-python
 
 ```python
@@ -89,7 +103,7 @@ output = llm(
 
 `logits_all=True`로 읽어들여야 `logprobs`를 출력할 수 있다.
 
-벤치마크 [GPU Comparison: Jetson Orin, RTX 4080 SUPER](https://colab.research.google.com/drive/1u4arxjEDymdBHS3lAvkKxDi6PR9JG3gK)
+벤치마크 [GPU Comparison: Jetson Orin, RTX 4080 SUPER](https://datalore.jetbrains.com/)
 
 # 바인딩 빌드
 

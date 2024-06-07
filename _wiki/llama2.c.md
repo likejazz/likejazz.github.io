@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama2.c
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/03/06 03:26:22
+last_modified_at: 2024/06/03 13:20:59
 ---
 
 <!-- TOC -->
@@ -156,6 +156,8 @@ $ ./runcuda stories110M.bin -i "Once upon a time" -n 128 -t 0
 [^fn-cuda]: <https://github.com/rogerallen/llama2.cu>
 
 naive 구현에서 `sum`을 float이 아닌 half로 `output[index]`에 할당하면 cuBLAS와 거의 근사할 정도로 빠르다. half는 CUDA에서 지원하는 fp16이다. 당연히 float과 결과가 약간 다르다. 128토큰에서 마지막 4~5토큰 정도가 다르게 생성됐다.
+
+make runomp는 CPU로 실행됐을 것이며 naive 구현은 자료형을 half로 바꾼 정도의 차이만 있었을 것이다. (*Jun 2024*)
 
 # M1에서 clang 빌드
 

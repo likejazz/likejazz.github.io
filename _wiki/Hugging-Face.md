@@ -2,7 +2,7 @@
 layout: wiki 
 title: Hugging Face
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/12 12:13:09
+last_modified_at: 2024/06/06 11:27:44
 ---
 
 - [load\_model](#load_model)
@@ -10,6 +10,7 @@ last_modified_at: 2024/02/12 12:13:09
   - [Accelerate CLI](#accelerate-cli)
 - [Llama + Flash Attention](#llama--flash-attention)
   - [SDPA 속도](#sdpa-속도)
+  - [SDPA 속도 비교](#sdpa-속도-비교)
   - [BetterTransformer](#bettertransformer)
   - [scaled\_dot\_product\_attention()](#scaled_dot_product_attention)
 - [Text Generation Inference](#text-generation-inference)
@@ -203,6 +204,19 @@ SDPA currently has 3 kernels implemented by a kernel picker[^fn-1].
 | sdpa | o | 76(+69) | 2.14s(0.0310s/token) | 11%↑ |
 
 A100에서 실험 시 원래 생성 결과가 동일해야 하나 prompt tokens 크기가 작을 때 completion tokens 크기에 약간의 차이가 보였다. 그러나 품질은 정상.
+
+## SDPA 속도 비교
+4080 SUPER에서 naive와 [속도 비교](https://letsdatascience.com/flash-attention-unveiled-the-future-of-faster-smarter-ai-models/)
+```python
+bz = 1  # Batch size
+seq_len = 10  # Sequence length
+dims = 64  # Dimensions
+n_heads = 16  # Number of heads
+
+# Standard attention took 0.0743 seconds for 10 trials
+# Flash attention took 0.0017 seconds for 10 trialstook 0.0017 seconds for 10 trials
+```
+이처럼 차이가 많이 나지만 전체 문장 생성에서 prefill latency의 비중이 크지 않기 때문에 추론시 전체 속도에 큰 영향을 끼치지 못한다. 대신 학습시 속도 개선 효과는 매우 클 것이다.
 
 ## BetterTransformer
 ```python

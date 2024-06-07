@@ -2,7 +2,7 @@
 layout: wiki 
 title: Docker
 tags:  ["Infrastructure"]
-last_modified_at: 2024/05/07 20:20:34
+last_modified_at: 2024/05/27 17:20:08
 ---
 
 <!-- TOC -->
@@ -261,9 +261,11 @@ $ docker run --gpus all [container]
 `nvidia-smi`는 docker 이미지 외부 프로세스이므로 enroot에서는 소유자가 nobody로 표시되며, docker에서는 root로 표시된다.
 
 ## Install Docker with NVIDIA support
-snap으로 설치했더니 libnvidia-ml.so를 찾을 수 없다며 `docker --gpus all`이 구동되지 않는다.
+snap으로 설치했더니 libnvidia-ml.so를 찾을 수 없다며 `docker --gpus all`이 구동되지 않는다. 이후에도 snap 설치는 계속 실패하고 있다.
 
-[nvidia-docker 설치 가이드](https://gist.github.com/Merwanski/dd2c928d5190d4e0a3f3b9b5766d7049#file-install_docker_with_nvidia-sh). Jetson에서는 JetPack으로 설치된다.
+[nvidia-docker 설치 가이드](https://gist.github.com/Merwanski/dd2c928d5190d4e0a3f3b9b5766d7049#file-install_docker_with_nvidia-sh). (Jetson에서는 이 가이드 필요 없이 JetPack으로 설치된다.)
+
+이 가이드는 먼저 get.docker.com으로 apt를 설치하고 이후 nvidia-docker2를 설치하는 방식이다. 별 다른 문제 없이 잘 설치된다. 나중에 aws 인증 오류가 발생한다면 `$ docker logout public.ecr.aws`
 
 ```
 $ docker run --rm --gpus all ubuntu nvidia-smi
