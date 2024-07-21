@@ -1,0 +1,11 @@
+_site
+.sass-cache
+nohup.out
+.DS_Store
+.idea
+.ipynb_checkpoints
+.jekyll-metadata
+Gemfile.lock
+vendor/
+.bundle/
+r.html

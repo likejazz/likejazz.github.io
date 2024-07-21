@@ -1,0 +1,24 @@
+// Layout
+//
+// Styles for managing the structural hierarchy of the site.
+
+.container {
+  max-width: 50rem;
+  padding-left:  1.5rem;
+  padding-right: 1.5rem;
+  margin-left:  auto;
+  margin-right: auto;
+}
+
+footer {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.listings {
+  font-size: 0.8em;
+
+  h1 {
+    font-size: 1.6em;
+  }
+}
