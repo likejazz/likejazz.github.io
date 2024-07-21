@@ -1,6 +1,5 @@
 _site
 .sass-cache
-nohup.out
 .DS_Store
 .idea
 .ipynb_checkpoints
@@ -8,4 +7,7 @@ nohup.out
 Gemfile.lock
 vendor/
 .bundle/
+
+# Not Published
 r.html
+_posts/2024-07-22-tenstorrent.md
