@@ -2,13 +2,15 @@
 layout: wiki
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/07/07 02:13:11
+last_modified_at: 2024/07/23 02:56:07
 ---
 
 <!-- TOC -->
 
 - [빌드](#빌드)
+  - [disable AVX, CUDA](#disable-avx-cuda)
 - [실행](#실행)
+  - [CPU 실행](#cpu-실행)
 - [구조](#구조)
 - [바인딩](#바인딩)
   - [llama-cpp-python](#llama-cpp-python)
@@ -31,7 +33,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 ```
 
-```
+```shell
 $ cmake -B bld && \
   cd bld && \
   make -j llama-cli llama-simple llama-server
@@ -39,7 +41,7 @@ $ cmake -B bld && \
 gmonon으로 측정 결과 M2 MacBook Air에서 full build는 33s 소요
 
 cuBLAS:  
-```
+```shell
 $ cmake -B bld -DGGML_CUDA=ON && \
   cd bld && \
   make -j
@@ -56,6 +58,16 @@ $ cmake .. -DLLAMA_CUDA=on -DLLAMA_CUDA_F16=1 -DCMAKE_CUDA_ARCHITECTURES=87
 $ cmake --build . --config Release --parallel 8
 ```
 
+## disable AVX, CUDA
+```shell
+$ cmake .. -DGGML_CUDA=off -DGGML_AVX=off -DGGML_AVX2=off -DGGML_F16C=off -DGGML_FMA=off
+$ make -j llama-server
+```
+or
+```shell
+$ cmake -B bld -DGGML_CUDA=off -DGGML_AVX=off -DGGML_AVX2=off -DGGML_F16C=off -DGGML_FMA=off
+$ cmake --build bld --config Release -j -t llama-server
+```
 # 실행
 
 ```shell
@@ -75,6 +87,10 @@ $ ./llama-server -m /models/ggml-model-f32.gguf \
 ```
 
 웹 페이지에서 Show Probabilities를 주면 확률 분포를 볼 수 있다.
+
+## CPU 실행
+1. `--gpu-layers` 옵션을 주지 않고 실행해 모든 레이어가 CPU에 있는데도 llama-server는 GPU 메모리를 점유하며 심지어 Prefill Latency는 GPU에서 계산을 진행한다.
+1. AVX를 끄도록 옵션을 부여하고 빌드했음에도 llama-server 실행시에는 항상 AVX=1로 표시된다. 그리고 옵션에 따른 속도차이가 없다.
 
 # 구조
 [ggml-graph 코드 #7](https://github.com/likejazz/links) `bld`에서 `make ggml-graph`로 맥에서 빌드:
