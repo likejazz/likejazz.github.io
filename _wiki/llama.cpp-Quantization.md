@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama.cpp Quantization
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/13 11:59:19
+last_modified_at: 2024/07/31 14:02:31
 ---
 
 <!-- TOC -->
@@ -38,8 +38,8 @@ Llama 2 7B:
 - llama2:7b-chat-fp16, ollama, A100: 71 tokens/s
 - llama2:7b-chat-q8_0, ollama, A100: 105 tokens/s
 - llama2:7b-chat-q6_K, ollama, A100: 97 tokens/s
-- llama2:7b-chat-q5_K_M, ollama, A100: 108 tokens/s
-- **llama2:7b-chat-q5_K_S, ollama, A100: 110 tokens/s**
+- **llama2:7b-chat-q5_K_M, ollama, A100: 108 tokens/s**
+- llama2:7b-chat-q5_K_S, ollama, A100: 110 tokens/s
 - llama2:7b-chat-q4_K_M, ollama, A100: 113 tokens/s
 - llama2:7b-chat-q4_1, ollama, A100: 131 tokens/s
 - llama2:7b-chat-q4_0(default), ollama, A100: 129 tokens/s
