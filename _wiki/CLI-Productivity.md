@@ -2,7 +2,7 @@
 layout: wiki 
 title: CLI Productivity
 tags: ["Productivity"]
-last_modified_at: 2024/06/24 00:45:29
+last_modified_at: 2024/08/05 21:13:01
 ---
 
 <!-- TOC -->
@@ -17,6 +17,7 @@ last_modified_at: 2024/06/24 00:45:29
   - [lvm 확장](#lvm-확장)
 - [htop](#htop)
 - [`set -eux`](#set--eux)
+- [맥의 한글 파일이 리눅스에서 escaped sequences로 보이는 경우](#맥의-한글-파일이-리눅스에서-escaped-sequences로-보이는-경우)
 
 <!-- /TOC -->
 
@@ -143,3 +144,9 @@ top을 대체하는 최고의 프로젝트
 - `set -e`: 에러 발생시 실행 종료
 - `set -u`: 초기화되지 않은 변수를 참조하면 에러를 발생시키고 실행 중단 
 - `set -x`: 모든 실행 명령 출력
+
+# 맥의 한글 파일이 리눅스에서 escaped sequences로 보이는 경우
+```shell
+$ export LC_ALL=ko_KR.UTF-8
+$ ls -al
+```

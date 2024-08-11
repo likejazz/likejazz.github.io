@@ -2,7 +2,7 @@
 layout: wiki 
 title: LLM
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/07/30 23:12:06
+last_modified_at: 2024/08/07 10:10:37
 ---
 
 <!-- TOC -->
@@ -22,7 +22,7 @@ last_modified_at: 2024/07/30 23:12:06
 | Mistral 7B | 8T | 32K | 8K | Around 200K | 2023년 9월 |
 | Gemma 2B, 7B | 2T, 6T | 256K | 8K | | 2024년 2월 |
 | Llama 3 8B, 70B | 15T | 128K | 8K | 8B - 1.3M | 2024년 4월 |
-| Qwen2 0.5B, 1.5B, 7B, 72B |  | 152K | 131K |  | 2024년 6월 |
+| Qwen2 0.5B, 1.5B, 7B, 72B | 7T (7B)  | 152K | 131K |  | 2024년 6월 |
 | Gemma 2 9B, 27B | 8T, 13T | 256K | 8K | | 2024년 6월 |
 | Mistral NeMo 12B | | 128K | 128K | | 2024년 7월 |
 | Llama 3.1 8B, 70B, 405B | 15T+ | 128K | 128K | 8B - 1.46M | 2024년 7월 |
