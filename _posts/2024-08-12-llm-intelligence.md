@@ -2,11 +2,11 @@
 layout: post
 title: ! 'Think about mid-sized LLM intelligence'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/08/12 13:56:54
+last_modified_at: 2024/08/12 14:21:13
 ---
 
 <div class="message">
-Evaluate various mid-sized (7B ~ 10B) model based on Llama or something similiar architecure, and Add explanation to result by my sight. [todo]
+Evaluate various mid-sized (7B ~ 10B) models based on Llama or similiar architecures, and add explanations to the results.
 </div>
 
 <small>
