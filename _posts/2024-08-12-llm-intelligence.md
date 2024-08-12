@@ -2,7 +2,7 @@
 layout: post
 title: ! 'Think about mid-sized LLM intelligence'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/08/12 14:21:13
+last_modified_at: 2024/08/12 14:47:58
 ---
 
 <div class="message">
@@ -80,8 +80,8 @@ I've evaluated several open LLMs around 7B ~ 10B (mid-sized LLMs), and the resul
 | mistralai/Mistral-7B-v0.3 | 62.33 | 36.49 | 
 | upstage/SOLAR-10.7B-v1.0 | 64.20 | 39.04 | 
 | yanolja/EEVE-Korean-10.8B-v1.0 | 63.25 | 42.68 |
-| KISTI-KONI/KONI-Llama3-8B-20240630 | 62.68 | 0 |
-| KISTI-KONI/KONI-Llama3-8B-Merged-20240724 | 65.55 | 0 |
+| KISTI-KONI/KONI-Llama3-8B-20240630 | 62.68 | 0 (unknown) |
+| KISTI-KONI/KONI-Llama3-8B-Merged-20240724 | 65.55 | 0 (unknown) |
 | beomi/Llama-3-KoEn-8B | 52.44 | 40.66 |
 | beomi/Llama-3-Open-Ko-8B | 56.29 | 40.50 |
 | LGAI-EXAONE/EXAONE-3.0-7.8B-Instruct (instruct) | 64.12 | 44.65 |
