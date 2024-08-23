@@ -2,7 +2,7 @@
 layout: post
 title: ! '자바 코딩 테스트 책 출간 안내'
 tags: ["Books"]
-last_modified_at: 2024/02/23 18:23:11
+last_modified_at: 2023/09/17 18:23:11
 ---
 
 <div class="message">

@@ -2,7 +2,7 @@
 layout: post
 title: CNN을 이용한 한국어 문장 분류
 tags: ["NLP"]
-last_modified_at: 2024/05/13 23:58:46
+last_modified_at: 2016/12/16 23:58:46
 ---
 
 <div class="message">
