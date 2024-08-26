@@ -9,9 +9,13 @@ title: Home
     <div class="content">
       <div class="listings">
         <div>
-          <h1>ARCHIVES</h1>
-          {% assign posts = site.posts | sort: 'last_modified_at' | reverse %}
-          {% for post in posts limit: 200 %}
+          <h2>ARCHIVES</h2>
+          {% assign years = site.posts
+          | group_by_exp: "post", "post.date | date: '%Y'"
+          %}
+          {% for year in years %}
+          <h3>{{ year.name }}</h3>
+          {% for post in year.items %}
           {% assign date_format = site.minima.date_format | default: "%b %Y" %}
           <div style="background-color: rgba(0, 72, 255, 0.05); border-radius: 5px; margin: 6px; padding: 8px">
             <div>
@@ -26,6 +30,7 @@ title: Home
               </span>
             </div>
           </div>
+          {% endfor %}
           {% endfor %}
         </div>
       </div>
