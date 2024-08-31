@@ -8,5 +8,11 @@ Gemfile.lock
 vendor/
 .bundle/
 
-# Not Published
+### CONFIDENTIAL - START
 r.html
+private-deploy.sh
+_wiki/ChatBaker.md
+_wiki/Continued-Learning.md
+_wiki/lm-eval.md
+_wiki/Private-Links.md
+### CONFIDENTIAL - END

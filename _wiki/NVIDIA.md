@@ -2,7 +2,7 @@
 layout: wiki 
 title: NVIDIA
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/07/30 00:46:35
+last_modified_at: 2024/08/28 14:36:41
 ---
 
 - [NVIDIA Data Center GPUs](#nvidia-data-center-gpus)
@@ -23,6 +23,8 @@ last_modified_at: 2024/07/30 00:46:35
 | HDMI | 10Gb/s | 1.25GB/s |
 | HDMI 4K | 18Gb/s | 2.25GB/s |
 | M1 Macbook Pro 1TB SSD | | 7.4GB/s read |
+| M2 Air 1TB SSD | | 2.8GB/s read |
+| M2 Air Memory | | 100GB/s |
 | M1 Pro Memory | | 200GB/s |
 | M1 Max Memory | | 400GB/s |
 | NVLink(A100) | | 600GB/s |
