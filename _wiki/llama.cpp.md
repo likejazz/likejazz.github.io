@@ -2,7 +2,7 @@
 layout: wiki
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/07/23 02:56:07
+last_modified_at: 2024/09/01 13:15:22
 ---
 
 <!-- TOC -->
@@ -93,7 +93,7 @@ $ ./llama-server -m /models/ggml-model-f32.gguf \
 1. AVX를 끄도록 옵션을 부여하고 빌드했음에도 llama-server 실행시에는 항상 AVX=1로 표시된다. 그리고 옵션에 따른 속도차이가 없다.
 
 # 구조
-[ggml-graph 코드 #7](https://github.com/likejazz/links) `bld`에서 `make ggml-graph`로 맥에서 빌드:
+#1-7 ggml-graph 코드 - `bld`에서 `make ggml-graph`로 맥에서 빌드:
 ```
 $ make ggml-graph
 [ 12%] Generate assembly for embedded Metal library
@@ -164,7 +164,7 @@ output = llm(
 
 `logits_all=True`로 읽어들여야 `logprobs`를 출력할 수 있다.
 
-벤치마크 [GPU Comparison: Jetson Orin, RTX 4080 SUPER #5](https://github.com/likejazz/links)
+벤치마크 #2-1 GPU Comparison: Jetson Orin, RTX 4080 SUPER
 
 ## Go 바인딩
 

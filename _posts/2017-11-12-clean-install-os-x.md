@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/06/07 11:23:07
+last_modified_at: 2024/09/01 13:06:36
 ---
 
 <div class="message">
@@ -20,8 +20,6 @@ last_modified_at: 2024/06/07 11:23:07
 *2015년 5월 19일 1차 개정*  *2014년 10월 23일 초안 작성*  
 </small>
 
-<!-- TOC -->
-
 - [필수 설정 \& 도구](#필수-설정--도구)
 - [인터넷](#인터넷)
 - [생산성](#생산성)
@@ -37,8 +35,6 @@ last_modified_at: 2024/06/07 11:23:07
   - [기본 설정](#기본-설정)
   - [필수 앱](#필수-앱)
   - [안되는 것](#안되는-것)
-
-<!-- /TOC -->
 
 <img src="https://farm8.staticflickr.com/7673/17228888583_65c885c6d5.jpg" width="30%" style="float: left; margin-right: 5px">
 <img src="https://c2.staticflickr.com/8/7333/27218763503_715ebb8a06_b.jpg" width="30%" style="float: left; margin-right: 5px">
@@ -82,10 +78,11 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - **카카오톡** 설명이 필요 없는 국민 메신저 `$ mas install 869223134`
 - [**Visual Studio Code**](https://code.visualstudio.com/download)는 위키를 편집하거나 발표 자료를 작성하고, 코드 리뷰 용도로도 사용하는 메인 편집기다. Settings Sync를 하면(GitHub 계정) 모든 설정과 Extensions를 설치해준다. `$ brew install visual-studio-code`
   - 편리한 이용을 위해 [Shell Command](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)를 설치한다.
-  - 위키의 최근 수정 날짜를 갱신하는 **Auto Time Stamp**.
-  - JetBrains Tools와 Keymaps를 맞추기 위한 **JetBrains IDE Keymap**.
-  - Markdown TOC를 비롯한 여러 편리한 기능 **Markdown All in One(Yu Zhang)**
-  - Markdown으로 발표자료를 작성하는 **Marp for VS Code**
+  - 위키의 최근 수정 날짜를 갱신하는 **[Auto Time Stamp](https://marketplace.visualstudio.com/items?itemName=lpubsppop01.vscode-auto-timestamp)**.
+  - JetBrains Tools와 Keymaps를 맞추기 위한 **[JetBrains IDE Keymap](https://marketplace.visualstudio.com/items?itemName=isudox.vscode-jetbrains-keybindings)**.
+  - Markdown TOC를 비롯한 여러 편리한 기능 **[Markdown All in One(Yu Zhang)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)**
+  - Markdown으로 발표자료를 작성하는 **[Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)**
+  - 문서의 길이 비율 표시 **[scroll percentage](https://marketplace.visualstudio.com/items?itemName=IdanRudich.scroll-percentage)** 긴 문서를 편집할 때 유용하다.
 - [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 1/3, 1/2 순으로 Rotate되는 기능이 좋다. `$ brew install rectangle`
 - 모든 프로그램 실행은 **LaunchBar(유료)**를 이용한다. `$ brew install launchbar`
 
@@ -111,9 +108,9 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - 사진 자료가 무료 용량을 초과하여 **Google One(유료)**을 구독한다. 덤으로 VPN도 사용할 수 있다.
 
 ## 문서
-- 오랫동안 **Google Drive**에 문서를 만들어왔다. 십 수년간의 기록이 남아 있고 어디서든 확인하고 편집할 수 있는 점은 큰 장점이다. 협업에 유용하기 때문에 공동 작업이 필요한 경우 반드시 사용한다.
+- 오랫동안 **Google Drive**에 문서를 만들어왔다. 십 수년간의 기록이 남아 있고 어디서든 확인하고 편집할 수 있는 점이 장점이다. 협업에 유용하기 때문에 공동 작업이 필요한 경우 반드시 사용한다.
 - 개인 문서는 **Bear(유료)**에 지속적으로 정리한다. 아이폰, 아이패드 모두 사용하며 동기화를 위해 연간 구독을 이용 중이다. 아이폰을 반드시 사용해야 하는 두 가지 이유를 대라면 Things와 Bear 때문이다. 필수 메모 용도로 사용하며 20~30개 내외로 관리한다. `$ mas install 1091189122`
-- 문서의 작성과 보관은 **GitHub Pages**를 이용한다. 지식 저장소로 활용하고 있으며, **MathJax**를 이용한 수식 지원도 좋다. 위키도 좋지만 수식 때문에 페이지를 별도로 사용한다.
+- 문서의 작성과 보관은 **GitHub Pages**를 이용한다. 지식 저장소로 활용하고 있으며, **MathJax**를 이용한 수식 지원도 좋다. 위키도 좋지만 수식을 지원하지 않기 때문에 페이지를 별도로 사용한다.
   - 개인 문서와 집필 초고 등은 GitHub의 Private Repository를 이용한다.
   - 집필한 원고는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
   - 프리젠테이션을 위해 **Marp for VS Code**를 이용한다.
@@ -121,7 +118,6 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - 간혹 아래아한글 파일을 읽을 일이 있다. **한컴오피스 한글 2014 VP 뷰어** 설치 `$ mas install 416746898`
 - 모든 원고는 마크다운으로 초고를 작성하는데, VSCode를 주로 이용하지만 편리한 WYSIWIG을 위해 [**Typora(유료)**](https://typora.io/)와 병행한다. `$ brew install typora`
 - pdf, epub 같은 전자책은 **Yomu(유료)**를 이용한다. 유료 결제시 iCloud 동기화가 가능하다. `$ mas install 562211012`
-- 사내 지식 관리 도구로 **Notion**을 사용한다. `$ brew install notion`
 
 ## 커뮤니케이션
 - **Slack** 업무용 커뮤니케이션 도구 `$ mas install 803453959`
@@ -177,15 +173,15 @@ xcode-select version 2395.
   - iCloud > Access iCloud Data on the Web 설정도 해제. 보안을 위해 웹에서 액세스하지 않도록 설정한다.
 - 패스워드 관리를 Chrome으로 설정. 설정 > Passwords > Passwords Options > Chrome으로 지정.
 - 설정 > iMessage, FaceTime 해제. 애플 기기에서만 사용 가능한 기능이므로 모두 해제. 로그인만 하면 활성화 되므로 iPad에서 로그인하지 않도록 주의한다.
-- 외부에서 아이패드는 **Logitech Combo Touch** 키보드를 사용한다. 펜슬은 거의 사용하지 않는다.
-- Files에서 **Working Copy(유료)**를 활성화하고 **iA Writer(유료)**에서 마크다운을 편집한다. 노트북 보다 더 집중하기 좋은 최고의 마크다운 편집 환경이다. 작성한 문서는 Working Copy를 이용해 GitHub으로 관리한다.
+- 외부에서 아이패드는 **Logitech Combo Touch** 키보드를 사용한다. 펜슬은 사용하지 않는다.
+- Files에서 iCloud를 이용해 **iA Writer(유료)**에서 마크다운을 편집한다. 노트북 보다 더 집중하기 좋다. iCloud를 통해 자동으로 동기화 된다.
 
 ### 필수 앱
 - **[Things, Bear](/iphone-again/)**
 - Microsoft Authenticator(GitHub, Microsoft 365, AWS, LinkedIn)
   - Google Authenticator(구글 2-factor)
 
-아이폰은 이제 생활과 관련한 앱이 대부분이다 보니 설치앱을 모두 나열하면 사생활을 모두 엿보는 듯한 느낌이 든다.
+아이폰은 이제 생활과 관련한 앱이 대부분이다 보니 설치앱을 모두 나열하면 사생활을 엿보는 듯한 느낌이 든다.
 
 ### 안되는 것
 - 클린 인스톨을 지향하다 보니 카톡 예전 대화는 복구하지 못했다.

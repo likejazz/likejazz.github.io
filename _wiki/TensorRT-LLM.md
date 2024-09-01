@@ -2,7 +2,7 @@
 layout: wiki 
 title: TensorRT-LLM
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/04/13 11:59:29
+last_modified_at: 2024/09/01 13:15:32
 ---
 
 - [TensorRT-LLM](#tensorrt-llm)
@@ -26,7 +26,7 @@ make -C docker release_build
 ```
 
 ## Dockerfile
-[설치 스크립트](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docker/Dockerfile.multi)를 제공하므로 참고하여 docker에서 빌드해본다. 기존에 [#1 사용하던 dockerfile](https://github.com/likejazz/links) 참고.
+[설치 스크립트](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docker/Dockerfile.multi)를 제공하므로 참고하여 docker에서 빌드해본다.
 ```bash
 #!/bin/bash
 

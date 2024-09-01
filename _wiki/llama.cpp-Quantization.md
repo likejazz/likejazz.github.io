@@ -2,7 +2,7 @@
 layout: wiki 
 title: llama.cpp Quantization
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/07/31 14:02:31
+last_modified_at: 2024/09/01 13:16:39
 ---
 
 <!-- TOC -->
@@ -137,7 +137,7 @@ llama.cpp Q4_0 800M, +0.2166 ppl @ LLaMA-v1-7B
 ' I'         316   1.53%(19.116830825805664)
 ```
 
-[#2 측정 스크립트](https://github.com/likejazz/links)
+#1-2. 모델 성능/속도 측정 스크립트
 
 | Model | Measure | F32 | F16 | Q8_0 | Q6_K | Q5_K_M | Q5_K_S | Q4_K_M | Q4_1 | Q4_0 |
 | ----- | ------- | --- | --- | ---- | ---- | ------ | ------ | ------ | ---- | ---- |

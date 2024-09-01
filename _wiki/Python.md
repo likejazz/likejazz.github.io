@@ -2,7 +2,7 @@
 layout: wiki 
 title: Python
 tags:  ["Languages & Framework"]
-last_modified_at: 2023/12/14 21:46:04
+last_modified_at: 2024/09/01 12:59:11
 ---
 
 <!-- TOC -->
@@ -14,7 +14,6 @@ last_modified_at: 2023/12/14 21:46:04
 - [setup.py install](#setuppy-install)
 - [Books](#books)
   - [고성능 파이썬 2013, 2016](#고성능-파이썬-2013-2016)
-- [Links](#links)
 
 <!-- /TOC -->
 
@@ -135,8 +134,3 @@ JIT vs. AOT:
 미리 컴파일 하는 방식 <sup>ahead of time</sup>으로 Cython, 적절한 때에 컴파일 하는 방식 <sup>just in time</sup>으로 Numba, PyPy가 있따. GCC, Clang등은 당연히 AOT 방식.
 
 이 책은 multiprocessing 모듈에 대해 많은 부분을 할애하고 있다.
-
-# Links
-Extending with C++
-- [Extending with C++](http://dev.likejazz.com/post/174904974036/extending-with-c): 빌드 실패 사례
-- [Python, Extending with C](http://dev.likejazz.com/post/40095584513/python-extending-with-c): 단순 구현
