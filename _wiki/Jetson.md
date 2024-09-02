@@ -2,7 +2,7 @@
 layout: wiki 
 title: Jetson
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/09/01 13:16:30
+last_modified_at: 2024/09/02 16:24:01
 ---
 
 <!-- TOC -->
@@ -79,7 +79,7 @@ nvidia-docker를 default로 하기 위해 다음 설정:
 $ sudo systemctl restart docker
 ```
 
-처음에는 l4t-pytorch로 docker 환경을 구성했다. 공식 NGC에 최신 버전이 없고 직원 개인 페이지에서 관리되고 있다. L4T는 Linux for Tegra이며 이를 이용해 #1-3. Dockerfile for L4T PyTorch (ssh version) 설정
+처음에는 l4t-pytorch로 docker 환경을 구성했다. 공식 NGC에 최신 버전이 없고 직원 개인 페이지에서 관리되고 있다. L4T는 Linux for Tegra이며 이를 이용해 [#1-3. Dockerfile for L4T PyTorch (ssh version)](/wiki/Private-Links) 설정
 
 이후에 dusty-nv가 제공하는 [jetson-container](https://github.com/dusty-nv/jetson-containers) 활용. [System Setup](https://github.com/dusty-nv/jetson-containers/blob/master/docs/setup.md)부터 참고. 디스크 용량이 64G에 불과한 문제가 있다. [3가지 확장 방식](https://developer.nvidia.com/embedded/learn/jetson-agx-orin-devkit-user-guide/developer_kit_layout.html)을 지원한다.
 1. **NVMe SSD card** 가장 빠름. SK Hynix 1TB 이상
@@ -278,7 +278,7 @@ go build .
 ollama에서 한글 처리에 문제가 있어 보인다. 간혹 출력 결과에 알 수 없는 줄바꿈이 포함되며, 한글 입력 또한 완전히 삭제되지 않고 일부 문자가 남아 있다. llama.cpp는 괜찮은데 ollama에서만 문제가 발생한다. 이는 CLI 문제로 보인다.
 
 # 성능
-#2-1. GPU comparison: Jetson Orin, RTX 4080 SUPER
+[#2-1. GPU comparison: Jetson Orin, RTX 4080 SUPER](/wiki/Private-Links)
 
 # Flash Jetson Linux
 Host PC로 반드시 리눅스가 필요하다. 22.04는 Jetson 6.0 DP만 설치 가능하다. 그 이하 버전은 20.04가 필요하며, 6.0은 여전히 프리뷰 버전이다. [sdkmanager를 이용](https://developer.ridgerun.com/wiki/index.php/NVIDIA_Jetson_Orin/JetPack_5.0.2/Getting_Started/Wizard_Flashing#Step_1:_Set_Board_in_Recovery_Mode)해 모든게 자동으로 진행되지만 USB Read error가 발생. Jetson을 재시작하고 recovery mode 버튼 누른 후 reset 버튼으로 다시 복구 모드에 들어가서 `$ lsusb` 상태가 `Bus 005 Device 003: ID 0955:7023 NVIDIA Corp. APX`인 것을 확인하고 다시 진행하니 해결됐다. 가이드에는 전원을 끈 상태에서 하라고 했는데, 전원이 켜져 있어야 했다.

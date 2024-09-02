@@ -2,7 +2,7 @@
 layout: wiki 
 title: Docker
 tags:  ["Infrastructure"]
-last_modified_at: 2024/09/01 13:15:52
+last_modified_at: 2024/09/02 16:22:36
 ---
 
 - [기본](#기본)
@@ -279,7 +279,7 @@ $ docker attach e4413eeff75e
 
 # Dockerfile
 
-#1-3. Dockerfile for L4T PyTorch (ssh version)
+[#1-3. Dockerfile for L4T PyTorch (ssh version)](/wiki/Private-Links)
 
 Timezone 설정, 기본 패키지 설치, nvtop, pip, ssh 접속까지 설정한 Dockerfile Template. 컨테이너 내부에는 데몬을 실행해두어도 모든 프로세스가 종료된 상태로 패키징 되기 때문에 ssh 데몬은 runme시 접속해서 직접 실행하는 형태로 구현했다.
 

@@ -2,7 +2,7 @@
 layout: wiki
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/09/01 13:15:22
+last_modified_at: 2024/09/02 16:24:14
 ---
 
 <!-- TOC -->
@@ -164,7 +164,7 @@ output = llm(
 
 `logits_all=True`로 읽어들여야 `logprobs`를 출력할 수 있다.
 
-벤치마크 #2-1 GPU Comparison: Jetson Orin, RTX 4080 SUPER
+벤치마크 [#2-1 GPU Comparison: Jetson Orin, RTX 4080 SUPER](/wiki/Private-Links)
 
 ## Go 바인딩
 
