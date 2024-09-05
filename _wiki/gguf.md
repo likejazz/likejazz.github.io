@@ -2,12 +2,28 @@
 layout: wiki 
 title: gguf
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/07/22 00:34:45
+last_modified_at: 2024/09/05 13:15:41
 ---
 
+- [gguf quantization 기법](#gguf-quantization-기법)
 - [HuggingFace](#huggingface)
 - [gguf Tensors](#gguf-tensors)
 
+
+# gguf quantization 기법
+<img src="/images/2024/gguf-1.png" width="50%">
+super block과 내부에 sub block으로 구분. 여기서 scaling factor s와 alpha a 추출.
+
+<img src="/images/2024/gguf-2.png" width="50%">
+sub block의 quantization은 scaling factor s를 곱한다.
+
+<img src="/images/2024/gguf-3.png" width="50%">
+block-wise quantization은 s_sub를 quantize하기 위해 super block의 scaling factor, 즉 s_super를 사용한다.
+
+<img src="/images/2024/gguf-4.png" width="50%">
+일반적으로 super block은 sub block의 scaling factor보다 더 높은 precision을 갖는다.
+
+jay alammar와 visualize llm 책을 쓰고 있는 [substack](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization)에서 참고함
 
 # HuggingFace
 42dot 1.3B 모델의 경우 [hf에서 구조를 확인](https://huggingface.co/42dot/42dot_LLM-SFT-1.3B?show_tensors=true)할 수 있다.
