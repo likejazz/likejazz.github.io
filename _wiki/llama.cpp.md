@@ -2,7 +2,7 @@
 layout: wiki
 title: llama.cpp
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/09/02 16:24:14
+last_modified_at: 2024/09/10 15:05:12
 ---
 
 <!-- TOC -->
@@ -36,7 +36,7 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 ```shell
 $ cmake -B bld && \
   cd bld && \
-  make -j llama-cli llama-simple llama-server
+  make -j llama-cli llama-server
 ```
 gmonon으로 측정 결과 M2 MacBook Air에서 full build는 33s 소요
 
@@ -44,7 +44,7 @@ cuBLAS:
 ```shell
 $ cmake -B bld -DGGML_CUDA=ON && \
   cd bld && \
-  make -j
+  make -j llama-cli llama-server
 ```
 그 전에 `$ apt install ccache`로 컴파일러 캐시 설치 가능. gnomon으로 측정 결과 sgemm.cpp 빌드에 168s, 전체 172s 소요.
 
@@ -93,7 +93,7 @@ $ ./llama-server -m /models/ggml-model-f32.gguf \
 1. AVX를 끄도록 옵션을 부여하고 빌드했음에도 llama-server 실행시에는 항상 AVX=1로 표시된다. 그리고 옵션에 따른 속도차이가 없다.
 
 # 구조
-#1-7 ggml-graph 코드 - `bld`에서 `make ggml-graph`로 맥에서 빌드:
+(비공개) [#1-7 ggml-graph](/wiki/Private-Links) 코드 - `bld`에서 `make ggml-graph`로 맥에서 빌드:
 ```
 $ make ggml-graph
 [ 12%] Generate assembly for embedded Metal library
@@ -164,7 +164,7 @@ output = llm(
 
 `logits_all=True`로 읽어들여야 `logprobs`를 출력할 수 있다.
 
-벤치마크 [#2-1 GPU Comparison: Jetson Orin, RTX 4080 SUPER](/wiki/Private-Links)
+(비공개) 벤치마크 [#2-2 GPU Comparison: Jetson Orin, RTX 4080 SUPER](/wiki/Private-Links)
 
 ## Go 바인딩
 
