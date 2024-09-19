@@ -12,10 +12,12 @@ vendor/
 r.html
 private-deploy.sh
 _wiki/ChatBaker.md
-_wiki/Continued-Learning.md
 _wiki/lm-eval.md
 _wiki/Private-Links.md
 _wiki/Trainer.md
+_wiki/LLaMA-Factory.md
+_wiki/CPT.md
 _wiki/CPT-성능-향상-기법.md
+_wiki/mergekit.md
 _posts/2024-07-22-hyperaccel.md
 ### CONFIDENTIAL - END

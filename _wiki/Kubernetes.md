@@ -2,9 +2,13 @@
 layout: wiki 
 title: Kubernetes
 tags:  ["Infrastructure"]
-last_modified_at: 2024/07/09 15:16:31
+last_modified_at: 2024/09/17 23:43:12
 ---
 
+- [kubectl](#kubectl)
+  - [파일 복사](#파일-복사)
+  - [use-context](#use-context)
+  - [Assign Pods to Nodes using Node Affinity](#assign-pods-to-nodes-using-node-affinity)
 - [GKE](#gke)
   - [인증](#인증)
   - [Deployments](#deployments)
@@ -17,7 +21,40 @@ last_modified_at: 2024/07/09 15:16:31
 - [Helm](#helm)
   - [nginx](#nginx)
   - [Elasticsearch](#elasticsearch)
-- [kubectl](#kubectl)
+
+# kubectl
+kubectl 설치:
+```
+# Linux
+$ snap install kubectl --classic
+# Mac
+$ brew install kubectl
+```
+
+(비공개) #1-10 `~/.kube/config` 설정  
+
+## 파일 복사
+```bash
+$ kubectl cp dirname sangpark-ceph-0:/home/xx/data/
+```
+
+## use-context
+현재 로컬에서 사용 중인 컨텍스트 정보 조회:
+```
+$ kubectl config use-context local
+```
+설정시 `~/.kube/config` 정보가 변경된다.
+
+조회:
+```
+$ kubectl config get-contexts
+```
+
+## Assign Pods to Nodes using Node Affinity
+label 설정으로 간단하게 제한할 수 있다.
+```bash
+$ kubectl label nodes dgx01 project=semi-parametric --overwrite
+```
 
 # GKE
 ## 인증
@@ -248,43 +285,3 @@ localhost:5601로 Kibana 접속이 가능하다. 차트 배포 자체는 로컬�
 ```console
 $ kubectl exec elasticsearch-master-0 -c elasticsearch -n elastic-system -- curl http://localhost:9200
 ```
-
-# kubectl
-```
-# Linux
-$ snap install kubectl --classic
-# Mac
-$ brew install kubectl
-```
-
-`~/.kube/config`에 설정하여 접속 가능
-```yaml
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: ...
-    server: https://192.168.xx.xx:6443
-  name: kubernetes
-contexts:
-- context:
-    cluster: kubernetes
-    namespace: name
-    user: kubernetes-admin
-  name: kubernetes-admin@kubernetes
-current-context: kubernetes-admin@kubernetes
-kind: Config
-preferences: {}
-users:
-- name: kubernetes-admin
-  user:
-    client-certificate-data: ...
-    client-key-data: ...
-```
-
-이후에 xx.yaml을 이용해 pod 배포하며 시작
-
-`$ kubectl appy -f xx.yaml`
-
-삭제:
-
-`$ kubectl delete pod xx`
