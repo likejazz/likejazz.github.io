@@ -2,7 +2,7 @@
 layout: wiki
 title: vLLM
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/09/18 22:47:07
+last_modified_at: 2024/09/22 13:45:48
 ---
 
 - [설치](#설치)
@@ -12,7 +12,7 @@ last_modified_at: 2024/09/18 22:47:07
   - [응용](#응용)
 
 # 설치
-기존에는 직접 설치한게 아니라 (비공개) [lm-eval](/wiki/lm-eval)에서 자동으로 실행했다.
+기존에는 직접 설치한게 아니라 [(비공개) lm-eval](/wiki/lm-eval)에서 자동으로 실행했다.
 
 `pip install vllm`
 
