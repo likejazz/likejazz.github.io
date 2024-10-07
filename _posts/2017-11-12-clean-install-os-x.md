@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/09/06 19:35:56
+last_modified_at: 2024/09/26 17:10:42
 ---
 
 <div class="message">
@@ -58,11 +58,11 @@ last_modified_at: 2024/09/06 19:35:56
 
 ## 필수 설정 & 도구
 - 언어 설정은 영어를 기본으로 사용한다. 오랫동안 영어로 사용해와서 한글보다 더 익숙하다.
-- `Caps Lock` 키가 한/영 변환 디폴트다. 그러나 새끼 손가락이 너무 아파서 기존처럼 `⌘ + 스페이스`로 변경했다.
+- `Caps Lock` 키가 한/영 변환 디폴트다. 이외에 기존처럼 `⌘ + 스페이스`도 함께 사용한다.
 ```
 Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input source 변경
                                      Modifier Keys > Caps Lock key 변경
-                                     Spotlight > Show Spotlight search 해제
+                                     Spotlight > Show Spotlight search ⌥⌘Space 설정
                                      Spotlight > Show Finder search window 해제
 ```
   - Modifier Keys에서는 키보드 타입이 맞는지 확인 필요
@@ -74,7 +74,7 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - 메인 브라우저는 [**Chrome**](https://www.google.com/chrome/)을 사용한다. `$ brew install google-chrome` 보조 브라우저로 **Firefox**도 함께 사용한다. `$ brew install firefox`
 - 키보드는 MX Mechanical Mini for Mac, MX Anywhere 3 for Mac을 사용하고 [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options-plus`
 - 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다. `$ brew install sublime-text`
-- 비밀번호 관리에 **Bitwarden**을 사용한다. `$ mas install 1352778147`
+- 비밀번호 관리는 온라인의 경우 Chrome에 탑재되어 있는 Google Password Manager를 이용하고, 오프라인은 Bear에 그냥 메모로 기입한다. 이외 WiFi 정보가 애플의 Password Manager에, 일부 사이트가 Firefox의 Passwords에 저장되어 있다.
 - **카카오톡** 설명이 필요 없는 국민 메신저 `$ mas install 869223134`
 - [**Visual Studio Code**](https://code.visualstudio.com/download)는 위키를 편집하거나 발표 자료를 작성하고, 코드 리뷰 용도로도 사용하는 메인 편집기다. Settings Sync를 하면(GitHub 계정) 모든 설정과 Extensions를 설치해준다. `$ brew install visual-studio-code`
   - 편리한 이용을 위해 [Shell Command](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)를 설치한다.
@@ -84,12 +84,14 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
   - Markdown으로 발표자료를 작성하는 **[Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)**
   - 문서의 길이 비율 표시 **[scroll percentage](https://marketplace.visualstudio.com/items?itemName=IdanRudich.scroll-percentage)** 긴 문서를 편집할 때 유용하다.
 - [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 1/3, 1/2 순으로 Rotate되는 기능이 좋다. `$ brew install rectangle`
-- 모든 프로그램 실행은 **LaunchBar(유료)**를 이용한다. `$ brew install launchbar`
+- 런처는 기본 탑재된 Spotlight Search를 이용한다.
+- Notification Center는 전혀 이용하지 않는다. 일부러 모든 Widget을 삭제했다.
 
 ## 인터넷
 - 관심 있는 링크는 **Raindrop.io**에 저장한다. `$ brew install raindropio`
 - Wi-Fi의 신호 세기를 파악하는데 **Wi-Fi Explorer Lite**가 유용하다. `$ mas install 1408727408`
 - 별도의 안티 바이러스 프로그램을 사용하지 않는 대신 **Little Snitch(유료)**를 사용한다. 기본 옵션인 Silent Mode로 해서 모두 허용해주고 필요시 차단하는 형태로 관리하고 있다. `$ brew install little-snitch`
+  - OS 버전업이 되면 네트워크가 안될 때가 있는데, Quit로 종료 처리 후 AppCleaner에서 삭제하고 휴지통을 비운 후 재시작하면 된다.
 
 ## 생산성
 - 집과 사무실에서는 클램쉘 모드로 사용한다. 외부에서 아이패드는 사용해도 노트북을 굳이 사용하는 경우는 거의 없다.
