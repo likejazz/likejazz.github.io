@@ -2,7 +2,7 @@
 layout: post
 title: ! 'Tenstorrent Grayskull 리뷰'
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/07/23 11:44:51
+last_modified_at: 2024/10/08 11:13:31
 ---
 
 <div class="message">
@@ -19,6 +19,8 @@ Tenstorrent에서 나온 Grayskull 카드의 구현 방식을 살펴본다.
 - [결론](#결론)
 
 # 개요
+
+<img src="https://lh3.googleusercontent.com/pw/AP1GczNVluoPRKP6lx36d_-vAbNye1wyWATjvYoWQYW-2EcpvjGB7rT-D3iaNWKEkGAK7WwKey9jQCIrecw4p0zwtzGS0VGAuquG-VGLod5CSJZYcKYfkMexeo0gax8Xmu9-CPx8KG44uX1zQGnZakgp1XButw=w1840-h1380-s-no-gm?authuser=0" width="80%">
 
 tt-buda, tt-metalium 2개의 sw를 제공하는데, tt-buda는 기존 허깅페이스 모델을 돌릴 수 있게 하며, tt-metalium은 완전히 처음부터 작성하는 패키지다. 
 
