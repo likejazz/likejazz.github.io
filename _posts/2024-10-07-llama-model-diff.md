@@ -2,7 +2,7 @@
 layout: post
 title: ! 'Llama 3 vs 3.1 모델 비교'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/10/08 01:52:48
+last_modified_at: 2024/10/09 01:38:00
 ---
 
 <div class="message">
@@ -60,7 +60,7 @@ model.norm.weight	[3 584]
 lm_head.weight	[152 064, 3 584]	
 ```
 
-Vocab Size뿐만 아니라 아키텍처의 사이즈도 많이 다르며, Qwen2의 경우 MLP 레이어에 bias도 갖고 있다.
+Vocab Size뿐만 아니라 아키텍처의 사이즈도 많이 다르며, Qwen2의 경우 QKV에 bias도 별도로 갖고 있다.
 
 ## 라마 3.2 1B까지 차이
 
