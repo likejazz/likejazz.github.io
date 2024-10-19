@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: llama.cpp Quantization
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/09/02 16:22:12
+tags: ["llama.cpp"]
+last_modified_at: 2024/10/20 02:24:15
 ---
 
 <!-- TOC -->

@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: llama3.np
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/05/19 01:39:16
+tags: ["llama.cpp"]
+last_modified_at: 2024/10/20 02:25:01
 ---
 
 - [속도](#속도)

@@ -2,7 +2,7 @@
 layout: wiki 
 title: NVIDIA
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/08/28 14:36:41
+last_modified_at: 2024/10/14 15:47:40
 ---
 
 - [NVIDIA Data Center GPUs](#nvidia-data-center-gpus)
@@ -13,8 +13,6 @@ last_modified_at: 2024/08/28 14:36:41
 # NVIDIA Data Center GPUs
 
 <img src="/images/2024/293452912-bf1ac3b7-1c4c-4ee5-8036-44c3e73f13c7.png" width="100%">
-
-<img src="/images/2024/172214054-ff7f106d-23ad-4ad2-a782-d53be3af2a4d.png" width="80%">
 
 | Name | bits/s | Bytes/s |
 | ------ | ----- | ------ |
@@ -30,7 +28,7 @@ last_modified_at: 2024/08/28 14:36:41
 | NVLink(A100) | | 600GB/s |
 | HBM(A100 40G) | | 1.5TB/s |
 | HBM(A100 80G) | | 1.9TB/s |
-| HBM(H100 80G) | | 3.35TB/s |
+| HBM(H100 SXM 80G) | | 3.35TB/s |
 
 ## V100, A100, H100
 <img src="/images/2024/Screenshot 2024-04-22 at 2.04.22 PM.png" width="70%"> 

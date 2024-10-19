@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: llama2.c
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/06/03 13:20:59
+tags: ["llama.cpp"]
+last_modified_at: 2024/10/20 02:24:47
 ---
 
 <!-- TOC -->

@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: llama3.cuda
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/06/02 10:11:17
+tags: ["llama.cpp"]
+last_modified_at: 2024/10/20 02:24:54
 ---
 
 - [logits](#logits)

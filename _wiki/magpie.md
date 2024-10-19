@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: magpie
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/08/23 14:45:23
+tags: ["Continued Pretraining"]
+last_modified_at: 2024/10/20 02:34:32
 ---
 
 - [원리](#원리)

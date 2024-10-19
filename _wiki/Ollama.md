@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: Ollama
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/06/29 11:06:56
+tags: ["llama.cpp"]
+last_modified_at: 2024/10/20 02:24:30
 ---
 
 <!-- TOC -->
