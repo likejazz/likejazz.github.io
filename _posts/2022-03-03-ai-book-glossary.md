@@ -2,7 +2,7 @@
 layout: post
 title: 비전공자도 이해할 수 있는 AI 지식 용어집
 tags: ["Books"]
-last_modified_at: 2022/03/03 00:00:00
+last_modified_at: 2024/10/24 17:51:14
 ---
 
 <div class="message">
@@ -309,13 +309,12 @@ MIT의 대학원생 시절 이진법을 이용해 모든 정보를 전달할 수
 말 그대로 차갑게 시작한다는 의미로, 새로 올라온 영상은 조회수도 없고 인기가 있을지 알아낼 만한 정보가 거의 없기 때문에 추천 영상에 올리기가 매우 어렵습니다. 추천 시스템의 어려운 문제이기도 합니다.
 
 # 판매처
-<img src="https://user-images.githubusercontent.com/1250095/231080660-755e7b6e-be55-43ae-925a-97131554b5a3.png" width="50%">
+<img src="/images/2024/20241018171507001040.png" width="50%">
 
 《비전공자도 이해할 수 있는 AI 지식》은 다음 판매처에서 구매하실 수 있습니다.
-- [교보문고](https://product.kyobobook.co.kr/detail/S000201428911)
-- [YES24](http://www.yes24.com/Product/Goods/118299504)
-- [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=314516624)
-- [인터파크](https://book.interpark.com/product/BookDisplay.do?_method=detail&sc.prdNo=356720313)
-- [영풍문고](https://www.ypbooks.co.kr/m_detail_view.yp?code=101230892)
+- [교보문고](https://product.kyobobook.co.kr/detail/S000214507019)
+- [YES24](https://www.yes24.com/Product/Goods/134766939)
+- [알라딘](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=349374326)
+- [영풍문고](https://www.ypbooks.co.kr/books/202410119088692838)
 
 및 전국 대형서점
