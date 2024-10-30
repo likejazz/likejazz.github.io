@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: Transformer
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/05/13 11:24:47
+tags: ["Transformer"]
+last_modified_at: 2024/10/29 18:57:20
 ---
 
 <!-- TOC -->

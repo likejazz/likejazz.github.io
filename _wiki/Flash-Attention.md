@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: Flash Attention
-tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/07/17 19:51:26
+tags: ["Transformer"]
+last_modified_at: 2024/10/29 18:50:38
 ---
 
 - [softmax](#softmax)

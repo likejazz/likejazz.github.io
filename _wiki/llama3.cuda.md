@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: llama3.cuda
-tags: ["llama.cpp"]
-last_modified_at: 2024/10/20 02:24:54
+tags: ["Transformer"]
+last_modified_at: 2024/10/29 18:57:44
 ---
 
 - [logits](#logits)

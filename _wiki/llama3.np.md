@@ -1,8 +1,8 @@
 ---
 layout: wiki 
 title: llama3.np
-tags: ["llama.cpp"]
-last_modified_at: 2024/10/20 02:25:01
+tags: ["Transformer"]
+last_modified_at: 2024/10/29 18:57:35
 ---
 
 - [속도](#속도)
