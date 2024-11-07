@@ -2,63 +2,49 @@
 layout: wiki 
 title: Text Generation
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/02/23 18:29:52
+last_modified_at: 2024/11/08 00:35:54
 ---
 
-- [model.generate()](#modelgenerate)
-  - [Orion-14B-Chat-RAG](#orion-14b-chat-rag)
-- [Temperature](#temperature)
+- [apply\_chat\_template, Streaming 예제](#apply_chat_template-streaming-예제)
 - [Subword Tokenization](#subword-tokenization)
-- [pipeline](#pipeline)
 
-# model.generate()
+# apply_chat_template, Streaming 예제
 ```python
-# $ CUDA_VISIBLE_DEVICES=2 python
-from transformers import AutoTokenizer, AutoModelForCausalLM
+m = 'meta-llama/Llama-3.1-8B-Instruct'
 
-tokenizer = AutoTokenizer.from_pretrained('.')
-model = AutoModelForCausalLM.from_pretrained('.').to(0)
-
-prompt = '<human>: 안녕? <bot>:'
-input_ids = tokenizer(prompt, return_tensors='pt').to(0).input_ids
-outputs = model.generate(
-    input_ids,
-    do_sample=True,
-    max_new_tokens=1,
-    temperature=0.5,
-    top_p=0.95,
-    top_k=20,
-    repetition_penalty=1.2,
-    return_dict_in_generate=True,
-    output_scores=True,
-)
-print(tokenizer.decode(outputs['sequences'][0]))
-```
-`max_length`: input prompt + `max_new_tokens`
-
-## Orion-14B-Chat-RAG
-```python
-# $ CUDA_VISIBLE_DEVICES=2 python
+# ---
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
-from transformers.generation.utils import GenerationConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
 
-tokenizer = AutoTokenizer.from_pretrained(
-    "/models/Orion-14B-Chat-RAG", use_fast=False, trust_remote_code=True)
-model = AutoModelForCausalLM.from_pretrained(
-    "/models/Orion-14B-Chat-RAG",
-    torch_dtype=torch.bfloat16, trust_remote_code=True).to(0)
+tokenizer = AutoTokenizer.from_pretrained(m)
+model = AutoModelForCausalLM.from_pretrained(m, device_map='auto')
+streamer = TextStreamer(tokenizer)
 
-model.generation_config = GenerationConfig.from_pretrained("/models/Orion-14B-Chat-RAG")
-messages = [{"role": "user", "content": "Hello, what is your name? "}]
-print(model.chat(tokenizer, messages, streaming=False))
+def say(prompt: str):
+    chat = [
+        {"role": "user", "content": prompt},
+    ]
+    inputs = tokenizer.apply_chat_template(chat, 
+        add_generation_prompt=True, return_dict=True, return_tensors="pt").to(0)
+    _ = model.generate(**inputs, 
+        streamer=streamer, do_sample=True, temperature=0.1, max_new_tokens=1024)
+
+
+# ---
+say('1km에 7분으로 달리면 마라톤 완주에 걸리는 시간은?')
 ```
 
-# Temperature
-<img src="/images/2024/293453630-ff0816fb-a643-4960-a392-d71853870302.png" width="70%">
-[^fn-cohere]
+`torch_dtype=torch.bfloat16`으로 모델을 로딩하면 첫 호출시 CPU로 파라미터를 전처리하는 작업이 있어 오래 걸린다.
 
-[^fn-cohere]: <https://docs.cohere.com/docs/temperature>
+파라미터 CUDA 위치 디버깅:
+```python
+>>> model.hf_device_map
+```
+
+```python
+for i in model.named_parameters():
+    print(f"{i[0]} -> {i[1].device}")
+```
 
 # Subword Tokenization
 드물게 등장하는 단어를 더 작은 단위로 나눔
@@ -70,12 +56,3 @@ print(model.chat(tokenizer, messages, streaming=False))
 WordPiece는 York과 ! 사이에 공백이 없다는 정보를 잃어버리지만 SentencePiece는 U+2581 또는 아래 1/4 블록 문자로 할당해 공백 정보를 보존한다.[^fn-142]
 
 [^fn-142]: p142, 트랜스포머를 활용한 자연어 처리
-
-# pipeline
-```python
-from transformers import pipeline
-
-pipe = pipeline(model='.', device=3, task='text-generation')
-text = '세계 최초로 달에 착륙한 우주인의 이름은 '
-pipe(text, do_sample=True, top_p=0.9, max_new_tokens=256)
-```

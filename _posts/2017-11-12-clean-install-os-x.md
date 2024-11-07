@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/09/26 17:10:42
+last_modified_at: 2024/11/04 17:32:24
 ---
 
 <div class="message">
@@ -100,7 +100,6 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - 번역 도구로 [**DeepL**](https://www.deepl.com/en/macos-app/)를 이용한다. `$ brew install deepl`
 - **AppCleaner** Uninstaller가 없는 맥에서는 삭제하는게 찝찝할때가 많다. 이 앱으로 설정까지 찾아서 삭제한다. `$ brew install appcleaner`
 - 토렌트 앱은 최근 **Folx**로 변경했다. 윈도우 시절부터 uTorrent를 사용해오다 최근에는 토렌트 자체를 거의 사용하지 않는다. 유료 버전은 QoS 기능을 제공하지만 무료로도 충분하다.
-- **Mathpix Snip**에 스크린 캡처를 이용해서 수식의 LaTeX를 찾아낸다.
 - 프리젠테이션을 할 때 **Screen Cursor**가 유용하다. `$ mas install 1577211880`
 - 주소록(전화번호)은 네이버 주소록에 백업한 다음에 Contacts를 iCloud로 모든 기기에 동기화한다.
 
@@ -183,7 +182,7 @@ xcode-select version 2395.
 - Microsoft Authenticator(GitHub, Microsoft 365, AWS, LinkedIn)
   - Google Authenticator(구글 2-factor)
 
-아이폰은 이제 생활과 관련한 앱이 대부분이다 보니 설치앱을 모두 나열하면 사생활을 엿보는 듯한 느낌이 든다.
+아이폰은 이제 생활 필수 앱이 대부분이다 보니 설치된 앱을 모두 나열하면 개인 사생활을 나열하는 느낌이다.
 
 ### 안되는 것
 - 클린 인스톨을 지향하다 보니 카톡 예전 대화는 복구하지 못했다.
