@@ -2,7 +2,7 @@
 layout: wiki 
 title: Text Generation
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/11/11 14:48:44
+last_modified_at: 2024/12/02 11:02:56
 ---
 
 - [apply\_chat\_template, Streaming 예제](#apply_chat_template-streaming-예제)
@@ -51,7 +51,7 @@ base 모델인 경우 `say()` 함수는 다르게 처리:
 def say(prompt: str):
     inputs = tokenizer(prompt, return_tensors="pt").to(0)
     _ = model.generate(**inputs, 
-        streamer=streamer, do_sample=True, temperature=0.1, max_new_tokens=128)
+        streamer=streamer, do_sample=True, temperature=0.01, repetition_penalty=1.2, max_new_tokens=128)
 ```
 # Subword Tokenization
 드물게 등장하는 단어를 더 작은 단위로 나눔
