@@ -2,7 +2,7 @@
 layout: wiki 
 title: Text Generation
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/12/02 11:02:56
+last_modified_at: 2024/12/21 15:57:14
 ---
 
 - [apply\_chat\_template, Streaming 예제](#apply_chat_template-streaming-예제)
@@ -17,7 +17,7 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, TextStreamer
 
 tokenizer = AutoTokenizer.from_pretrained(m)
-model = AutoModelForCausalLM.from_pretrained(m, device_map='auto')
+model = AutoModelForCausalLM.from_pretrained(m, device_map='cuda', trust_remote_code=True)
 streamer = TextStreamer(tokenizer)
 
 def say(prompt: str):

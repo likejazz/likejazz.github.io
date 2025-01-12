@@ -2,7 +2,7 @@
 layout: wiki 
 title: Kubernetes
 tags:  ["Infrastructure"]
-last_modified_at: 2024/10/15 11:38:19
+last_modified_at: 2024/12/12 13:43:19
 ---
 
 - [kubectl](#kubectl)
@@ -36,7 +36,7 @@ $ brew install kubectl
 
 ## 파일 복사
 ```bash
-$ kubectl cp dirname sangpark-ceph-0:/home/xx/data/
+$ kubectl cp xxx sangpark-ceph-0:/home/xx/data/
 ```
 
 ## use-context

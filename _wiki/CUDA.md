@@ -2,17 +2,39 @@
 layout: wiki 
 title: CUDA
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/06/20 17:24:29
+last_modified_at: 2025/01/12 16:37:41
 ---
 
+- [CUDA](#cuda)
 - [드라이버 설치](#드라이버-설치)
   - [Uninstall](#uninstall)
   - [CUDA Toolkit](#cuda-toolkit)
   - [nvidia-container(Docker) 설치](#nvidia-containerdocker-설치)
   - [트러블슈팅](#트러블슈팅)
   - [버전 인식](#버전-인식)
-- [Dockerfile](#dockerfile)
 - [BLAS](#blas)
+
+# CUDA
+
+| 키워드 | 함수의 호출자 | 실행 공간 |
+| ---- | ---------- | ------- |
+| `__host__` | host | host |
+| `__device__` | device | device |
+| `__global__` | host | device |
+
+**Hardware Perspective:**[^fn-cuda]  
+SM → Block / Warp → Thread  
+
+SMs manage 2048 threads (or 64 warps of threads, 32 * 64 = 2048 threads). Each warp consists of 32 threads of consecutive `threadIdx` values: thread 0-31 from the 1st warp, 32-63 for the 2nd warp, etc.
+
+[^fn-cuda]: <https://stevengong.co/notes/CUDA-Architecture>
+
+**Software Perspective:**  
+Grid → Block → Thread
+
+The maximum number of threads in the block is limited to 1024.
+
+`Kernel <<< GridDim, BlockDim >>>`
 
 # 드라이버 설치
 
@@ -102,58 +124,6 @@ docker에서는 host의 Driver / CUDA 버전을 docker가 그대로 따라간다
 
 docker에서는 host가 12.5이면 이미지는 어떤 버전을 사용하던 nvidia-smi에서는 12.5로 고정되서 보인다.  
 K8s에서는 12.2 이미지로 실행하면 nvidia-smi에서 12.2로 인식되고 12.5 이미지로 실행하면 12.5로 인식된다.  
-
-# Dockerfile
-CUDA 기반 Dockerfile:
-```docker
-FROM nvcr.io/nvidia/cuda:12.4.0-devel-ubuntu22.04
-
-# Set the Timezone to KST
-ENV TZ=Asia/Seoul
-
-# Avoid question during docker build.
-ARG DEBIAN_FRONTEND=noninteractive
-
-# Change apt repo to kakao due to a hash error.
-RUN sed -i "s/archive.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list
-
-# Install additonal packages.
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends locales locales-all tzdata && \
-    locale-gen en_US en_US.UTF-8 && update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 && \
-    locale && \
-    apt-get install -y --no-install-recommends \
-          cmake \
-          vim \
-          silversearcher-ag \
-          file \
-          screen \
-          wget \
-          git \
-          python3-dev \
-          python3-pip \
-          tree && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get clean
-
-# Default `python` runs `python3`
-RUN echo 'alias python=python3' >> ~/.bashrc
-
-# Default workdir is `/home/xxxx` on the host.
-WORKDIR /xxxx
-```
-
-llama.cpp 빌드:
-```bash
-$ cmake .. -DLLAMA_CUDA=on -DLLAMA_CUDA_F16=1 -DCMAKE_CUDA_ARCHITECTURES=89
-$ cmake --build . --config Release --parallel 8
-```
-
-huggingface-cli(HF_TOKEN 필요):
-```bash
-$ pip install -U "huggingface_hub[cli]"
-$ huggingface-cli download google/gemma-2b-it
-```
 
 # BLAS
 [cuBLAS가 가장 빠르다](https://siboehm.com/articles/22/CUDA-MMM). 슈트라센 알고리즘으로 $$O(n^{2.37188})$$으로 가능함에도 불구하고.

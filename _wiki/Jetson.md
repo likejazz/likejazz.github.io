@@ -2,7 +2,7 @@
 layout: wiki 
 title: Jetson
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/09/02 16:24:01
+last_modified_at: 2024/12/17 12:51:01
 ---
 
 <!-- TOC -->
@@ -221,7 +221,7 @@ $ docker rmi $(docker images | grep 'xxxx/transformers' | awk '{print $1":"$2}')
 기본 제공 컨테이너는 버전이 낮아 gemma 모델이 구동되지 않는다. `CUDA_ARCHITECTURE` 버전은 87이다.[^fn-4] 다음과 같이 직접 빌드:
 ```shell
 $ git checkout tags/b2581
-$ cmake .. -DLLAMA_CUDA=on -DLLAMA_CUDA_F16=1 -DCMAKE_CUDA_ARCHITECTURES=87
+$ cmake .. -DGGML_CUDA=on -DGGML_CUDA_F16=1 -DCMAKE_CUDA_ARCHITECTURES=87
 $ cmake --build . --config Release --parallel 8
 ```
 

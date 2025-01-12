@@ -2,7 +2,7 @@
 layout: wiki
 title: llama.cpp
 tags: ["llama.cpp"]
-last_modified_at: 2024/10/20 02:23:57
+last_modified_at: 2024/12/17 12:21:17
 ---
 
 <!-- TOC -->
@@ -49,12 +49,12 @@ $ cmake -B bld -DGGML_CUDA=ON && \
 그 전에 `$ apt install ccache`로 컴파일러 캐시 설치 가능. gnomon으로 측정 결과 sgemm.cpp 빌드에 168s, 전체 172s 소요.
 
 or  
-`$ make LLAMA_CUDA=1 llama-cli`  
+`$ make GGML_CUDA=1 llama-cli`  
 
 Jetson:
 
 ```shell
-$ cmake .. -DLLAMA_CUDA=on -DLLAMA_CUDA_F16=1 -DCMAKE_CUDA_ARCHITECTURES=87
+$ cmake .. -DGGML_CUDA=on -DGGML_CUDA_F16=1 -DCMAKE_CUDA_ARCHITECTURES=87
 $ cmake --build . --config Release --parallel 8
 ```
 
