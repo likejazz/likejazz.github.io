@@ -2,7 +2,7 @@
 layout: wiki 
 title: Hugging Face
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/06/06 11:27:44
+last_modified_at: 2025/01/20 14:32:57
 ---
 
 - [load\_model](#load_model)
@@ -17,6 +17,7 @@ last_modified_at: 2024/06/06 11:27:44
 - [bitsandbytes 설치](#bitsandbytes-설치)
 - [trlX + pipeline](#trlx--pipeline)
 - [`generate()` 속도 개선](#generate-속도-개선)
+- [Repo Commit](#repo-commit)
 
 # load_model
 GPU 메모리에 모델을 올리려면 CPU 메모리도 그 이상이 확보되어야 한다. 그렇지 않으면 올리다가 killed. AWS에서 g5.xlarge는 A10G 24G지만 CPU 메모리가 16G라서 모델이 올라가지 않는다. 허깅 페이스에서는 CPU, GPU 메모리를 구분하지만 CPU 메모리 지정이 정확해도 killed. 필요 조건: GPU 메모리 < CPU 메모리 g5.2xlarge 이상.
@@ -344,3 +345,6 @@ Speculative Decoding을 직접 구현했을 때는 2x 개선 효과가 있었으
 - 361 tokens, (median) 5.2763s, 0.0146s/token AWQ GEMM 4bit, 1 GPU
 - 361 tokens, (median) 4.9523s, 0.0137s/token AWQ GEMV 4bit, 1 GPU
 - 185 tokens, (median) 2.8825s, 0.0156s/token AWQ GEMV 4bit, 1 GPU, FastChat
+
+# Repo Commit
+https에서는 authorized 문제가 발생하므로 ssh로 git clone 후 push

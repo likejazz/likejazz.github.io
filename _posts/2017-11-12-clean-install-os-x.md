@@ -2,11 +2,11 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2024/11/08 01:22:24
+last_modified_at: 2025/01/20 02:31:40
 ---
 
 <div class="message">
-2006년 PowerBook G4를 시작으로 줄곧 맥을 사용해왔다. 이후 요세미티 출시(Oct 2014)와 함께 맥북을 클린 인스톨 진행했던 경험의 기록을 남겼다. 이후 macOS 신규 버전이 릴리즈 될 때마다 꾸준히 내용을 업데이트했고, 이후에도 사용해 오면서 유용한 프로그램을 계속 정리해나가고 있다.
+2006년 PowerBook G4를 시작으로 줄곧 맥을 사용해왔다. 이후 요세미티 출시(Oct 2014)와 함께 맥북을 클린 인스톨 했던 경험을 남겼다. 이후 macOS 신규 버전이 릴리즈 될 때마다 꾸준히 내용을 업데이트했고, 이후에도 꾸준히 사용해 오면서 유용한 프로그램을 계속 정리해나가고 있다.
 </div>
 
 <small id="dates" style="line-height:70%;">
@@ -36,24 +36,22 @@ last_modified_at: 2024/11/08 01:22:24
   - [필수 앱](#필수-앱)
   - [안되는 것](#안되는-것)
 
-<img src="https://farm8.staticflickr.com/7673/17228888583_65c885c6d5.jpg" width="30%" style="float: left; margin-right: 5px">
 <img src="https://c2.staticflickr.com/8/7333/27218763503_715ebb8a06_b.jpg" width="30%" style="float: left; margin-right: 5px">
-<img src="https://user-images.githubusercontent.com/1250095/58238292-f4a1ac00-7d81-11e9-9762-6cd8b44b6461.jpeg" width="30%">
+<img src="https://user-images.githubusercontent.com/1250095/58238292-f4a1ac00-7d81-11e9-9762-6cd8b44b6461.jpeg" width="30%" style="float: left; margin-right: 5px">
+<img src="/images/2017/touchbar.jpg" width="30%">
 
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="clear: both">
 
-<img src="/images/2017/touchbar.jpg" width="30%" style="float: left; margin-right: 5px">
 <img src="https://user-images.githubusercontent.com/1250095/71638614-f7656780-2ca7-11ea-85ce-00c1b7c42369.jpg" width="30%" style="float: left; margin-right: 5px">
-<img src="https://user-images.githubusercontent.com/1250095/176212469-1143be9d-a185-400e-8092-c9b91798072e.png" width="30%">
+<img src="https://user-images.githubusercontent.com/1250095/176212469-1143be9d-a185-400e-8092-c9b91798072e.png" width="30%" style="float: left; margin-right: 5px">
 
-<img src="/images/2024/IMG_4542.jpg" width="48%">
+<img src="/images/2024/IMG_4542.jpg" width="30%">
 
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="clear: both">
 
 <small>
-2015년, 2016년 6월, 2017년 1월 맥북 프로 터치바  
-2019년 5월 맥북 프로 터치바, 2020년 1월 맥북 프로 터치바, 2022년 6월 M1 맥북 프로 14인치  
-2024년 3월 M2 맥북 에어
+2016년 6월, 2017년 1월, 2019년 5월 맥북 프로 터치바  
+2020년 1월 맥북 프로 터치바, 2022년 6월 M1 맥북 프로 14인치, 2024년 3월 M2 맥북 에어
 </small>
 
 ## 필수 설정 & 도구
@@ -167,7 +165,7 @@ xcode-select version 2395.
 ## 자료
 개인 자료의 경우 사진과 비디오는 **Google Photos**를 활용한다. 비디오 중 공개적인건 **YouTube**에, 음악은 **멜론(유료)** 스트리밍을 이용하고, 문서는 **Dropbox**와 **iCloud Drive**에 적절히 나눠 저장하고, 정리가 필요한 문서는 **GitHub** 위키에 마크다운으로 작성한다. 코드는 **GitHub**을 활용한다.
 
-맥북 SSD 크기가 제한적이라 외장 SDD, SanDisk Extreme Portable SSD를 사용하고 있다. 방진, 방수에 500MB/s 속도를 지원한다. Disk Utility에서 APFS (Encrypted) 포맷으로 Attach시 비밀번호를 입력(저장 가능)해야 접근 가능하다. 250G가 69,000원. 2024년 9월 Portable SSD 2TB는 189,000원에 구매. 물론 외장 HDD가 용량이 더 크고, 가격도 저렴하지만 소음과 진동이 있고, 충격에 약해 휴대용으로는 적절치 않다. 2023년 9월 삼성 SSD 1TB를 129,000원에 구매. 삼성은 exFAT인데 인식 속도가 너무 늦다.
+맥북 SSD 크기가 제한적이라 외장 SDD, SanDisk Extreme Portable SSD를 사용하고 있다. 방진, 방수에 500MB/s 속도를 지원한다. Disk Utility에서 APFS (Encrypted) 포맷으로 Attach시 비밀번호를 입력(저장 가능)해야 접근 가능하다. 250G가 69,000원. 2024년 9월 Portable SSD 2TB는 189,000원에 구매. 물론 외장 HDD가 용량이 더 크고, 가격도 저렴하지만 소음과 진동이 있고, 충격에 약해 휴대용으로는 적절치 않다. 2023년 9월 삼성 SSD 1TB를 129,000원에 구매. 삼성은 exFAT인데 인식 속도가 너무 늦다. SanDisk도 인식이 늦는 문제가 있었는데, 다른 케이블로 해결됐다.
 
 ## 기타
 대부분의 개인 자료는 클라우드에 두다 보니 맥북을 새로 구매하거나 클린 인스톨을 진행해도 별도로 백업이나 복원할게 없다. 동영상처럼 용량이 매우 큰 일부 자료나 여러 가지 아카이빙을 제외하면 더 이상 로컬에는 데이터를 보관하지 않는다. 회사 문서나 개인 자료만 별도로 시간순 월 단위로 관리하는데, 이 또한 한 번도 열어보지 않거나 결국은 손실되곤 한다.
