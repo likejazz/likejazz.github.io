@@ -2,7 +2,7 @@
 layout: wiki
 title: API
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2025/03/04 10:52:11
+last_modified_at: 2025/03/04 10:54:40
 ---
 
 - [비교](#비교)
@@ -18,7 +18,6 @@ last_modified_at: 2025/03/04 10:52:11
 | gpt-4o-mini           | $0.6       |                 |
 | DeepSeek-V3           | $1.1       | DeepSeek        |
 | DeepSeek-V3           | $1.25      | Together AI     |
-| Claude 3 Haiku        | $1.25      |                 |
 | DeepSeek-R1           | $2.19      | DeepSeek        |
 | Llama 3.1 405B        | $3.5       | Together AI     |
 | Claude 3.5 Haiku      | $4         |                 |
