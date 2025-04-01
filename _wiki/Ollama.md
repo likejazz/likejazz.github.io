@@ -2,7 +2,7 @@
 layout: wiki 
 title: Ollama
 tags: ["llama.cpp"]
-last_modified_at: 2024/10/20 02:24:30
+last_modified_at: 2025/03/26 14:17:59
 ---
 
 <!-- TOC -->
@@ -17,6 +17,8 @@ last_modified_at: 2024/10/20 02:24:30
 - [Internals](#internals)
   - [API 호출시 동작](#api-호출시-동작)
   - [llama.cpp 서버 구동 방식](#llamacpp-서버-구동-방식)
+- [모델 생성](#모델-생성)
+  - [양자화](#양자화)
 
 <!-- /TOC -->
 
@@ -323,3 +325,19 @@ case pending := <-s.pendingReqCh:
 `s.loadFn()`을 실행하는데 `InitScheduler`에서 `sched.load()`를 사용하도록 초기화하기 때문에 결과적으로 `load()`가 실행되고 여기서 모델을 실제로 로드한다. 세션 지속 시간 또한 미리 정의한 `sessionDuration` 값으로 셋팅된다. 로딩이 끝나면 `s.finishedReqCh`로 메시지를 보내고 `processComplete()` 함수가 실행된다.
 
 `processCompleted()`에서는 타이머 이후 자동 종료되는 타이머 설정이 진행되며 이외에 강제 종료 이벤트 메시지도 전달받아 수행된다. 서버 종료는 `runner.unload()`를 통해 `runner.llama.Close()`가 호출되며 여기서 프로세스를 Kill하도록 되어 있다.
+
+# 모델 생성
+```bash
+$ OLLAMA_DEBUG=1 ./bin/ollama serve
+$ ./bin/ollama create dnotitia/dna-r1:14b-fp32 -f Modelfile
+$ ./bin/ollama create dnotitia/dna-r1:14b-fp16 -f Modelfile.fp16
+$ ./bin/ollama create dnotitia/dna-r1:14b-q8_0 -f Modelfile.q8_0
+$ ./bin/ollama create dnotitia/dna-r1:14b-q4_K_M -f Modelfile.q4_K_M
+```
+
+## 양자화
+```bash
+$ ../llama.cpp/bld/bin/llama-quantize ./dna-r1.gguf ./dna-r1-fp16.gguf F16
+$ ../llama.cpp/bld/bin/llama-quantize ./dna-r1.gguf ./dna-r1-q8_0.gguf q8_0
+$ ../llama.cpp/bld/bin/llama-quantize ./dna-r1.gguf ./dna-r1-q4_K_M.gguf q4_k_m
+```

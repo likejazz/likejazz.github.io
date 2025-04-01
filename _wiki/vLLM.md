@@ -2,20 +2,15 @@
 layout: wiki
 title: vLLM
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2024/10/08 15:33:29
+last_modified_at: 2025/03/14 19:08:05
 ---
 
-- [설치](#설치)
 - [실행](#실행)
   - [서버](#서버)
     - [curl](#curl)
   - [Code](#code)
   - [응용](#응용)
-
-# 설치
-기존에는 직접 설치한게 아니라 [(비공개) lm-eval](/wiki/lm-eval)에서 자동으로 실행했다.
-
-`pip install vllm`
+- [Multi Nodes](#multi-nodes)
 
 # 실행
 ## 서버
@@ -54,3 +49,6 @@ from vllm import LLM, SamplingParams
 llm = LLM(model='.')
 llm.generate(prompt, SamplingParams(temperature=0.0))[0].outputs
 ```
+
+# Multi Nodes
+`run_cluster.sh`를 제공하며, ray를 사용하고 docker로 구동한다. k8s내에서는 해당 docker 이미지를 배포하는 방식으로 적용이 가능할 거 같다. 스크립트에는 docker가 구동되자마자 ray를 실행하도록 되어 있다.
