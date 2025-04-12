@@ -2,7 +2,7 @@
 layout: wiki 
 title: Ollama
 tags: ["llama.cpp"]
-last_modified_at: 2025/03/26 14:17:59
+last_modified_at: 2025/04/09 01:07:56
 ---
 
 <!-- TOC -->
@@ -328,11 +328,15 @@ case pending := <-s.pendingReqCh:
 
 # 모델 생성
 ```bash
+$ cd ollama-dna-r1
 $ OLLAMA_DEBUG=1 ./bin/ollama serve
 $ ./bin/ollama create dnotitia/dna-r1:14b-fp32 -f Modelfile
 $ ./bin/ollama create dnotitia/dna-r1:14b-fp16 -f Modelfile.fp16
 $ ./bin/ollama create dnotitia/dna-r1:14b-q8_0 -f Modelfile.q8_0
 $ ./bin/ollama create dnotitia/dna-r1:14b-q4_K_M -f Modelfile.q4_K_M
+$ ./bin/ollama create dnotitia/dna-r1:14b -f Modelfile.q4_K_M
+$ ./bin/ollama create dnotitia/dna-r1 -f Modelfile.q4_K_M
+$ ./bin/ollama run dnotitia/dna-r1
 ```
 
 ## 양자화

@@ -2,7 +2,7 @@
 layout: wiki 
 title: VSCode
 tags: ["Productivity"]
-last_modified_at: 2024/02/12 12:20:20
+last_modified_at: 2025/04/08 11:56:02
 ---
 
 <!-- TOC -->
@@ -56,6 +56,7 @@ vscode.dev에도 동일하게 settings.json 수정하고, 깃헙 계정으로 `S
   - TOC를 생성해주는 익스텐션이 매우 많은데, 다들 조금씩 문제가 있다. TOC를 생성하는 용도로만 사용 중
 - JetBrains IDE Keymap: 단축키는 모두 IntelliJ 기준으로 통일
 - Marp for VS Code: 발표자료도 모두 markdown으로
+- Compare Folders(MoshFeu): 첫 번째 upstream, 두 번째 working을 두고 Compare Folders를 진행하면 왼쪽에 최신 버전을 오른쪽으로 반영할 수 있다.
 
 # 커서가 느려지는 문제
 어느날 부터 키보드 움직임이 느려졌는데, 편집 중인 파일 사이즈가 너무 커서 그런가 했는데 작은 파일에서도 마찬가지였다. `.zshrc`에 다음과 같이 설정하여 임시로 해결했다.
