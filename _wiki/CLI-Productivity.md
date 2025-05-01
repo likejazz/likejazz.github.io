@@ -2,7 +2,7 @@
 layout: wiki 
 title: CLI Productivity
 tags: ["Productivity"]
-last_modified_at: 2024/08/05 21:13:01
+last_modified_at: 2025/04/25 18:10:45
 ---
 
 <!-- TOC -->
@@ -18,6 +18,7 @@ last_modified_at: 2024/08/05 21:13:01
 - [htop](#htop)
 - [`set -eux`](#set--eux)
 - [맥의 한글 파일이 리눅스에서 escaped sequences로 보이는 경우](#맥의-한글-파일이-리눅스에서-escaped-sequences로-보이는-경우)
+- [To determine your Linux distribution](#to-determine-your-linux-distribution)
 
 <!-- /TOC -->
 
@@ -150,3 +151,8 @@ top을 대체하는 최고의 프로젝트
 $ export LC_ALL=ko_KR.UTF-8
 $ ls -al
 ```
+
+# To determine your Linux distribution
+1. `cat /etc/os-release`
+2. `lsb_release -a`
+3. `uname -r`
