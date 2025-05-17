@@ -1,0 +1,13 @@
+---
+layout: default
+---
+
+<article class="post">
+  {% include bear.html %}
+  <h1 class="post-title">{{ page.title }}</h1>
+  {% include confidential.html %}
+  {{ content }}
+  <p style="text-align: right;">
+    <small>Last Modified: {{ page.last_modified_at }}</small>
+  </p>
+</article>

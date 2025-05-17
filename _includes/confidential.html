@@ -1,0 +1,13 @@
+{% for file in site.data.FILES %}
+  {% if file.file == page.path %}
+    <p style='
+    background-color: #ffcccb; 
+    padding: 4px; 
+    border-radius: 4px;
+    text-align: center;'>
+      <strong>
+        <mark style='background-color: #ffcccb'>**CONFIDENTIAL**</mark>
+      </strong>
+    </p>
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  {% include head.html %}
+
+  <body>
+  <dt-header>
+  <div class="content l-page">
+    <a href="/" class="logo">
+      The Missing Papers
+    </a>
+    <div class="nav">
+      <a href="https://likejazz.tumblr.com/about">ABOUT</a>
+      <a href="/articles">ARTICLES</a>
+      <a href="/r">&nbsp;&nbsp;&nbsp;</a>
+    </div>
+  </div>
+  </dt-header>
+
+  <div class="container content">
+    <main>
+    <style type="text/css">
+      div.banner {
+        display: table;
+        width: 100%;
+        /* border: 1px solid black; */
+      }
+
+      div.banner img {
+        vertical-align: middle;
+        display: table-cell;
+        width: 140px;
+        padding: 4px;
+        /* border: 1px solid red; */
+      }
+      div.banner span {
+        vertical-align: middle;
+        display: table-cell;
+        padding: 2px;
+      }
+    </style>
+    <div class="banner">
+      <span><a href="/java-coding-test"><img src="/images/2024/268554749-f0a36611-8f70-44d6-b2f5-ba4fb2ff95ef.png"></a></span>
+      <span>
+        <p><a href="/java-coding-test">『자바 알고리즘 인터뷰 with 코틀린』 안내</a></p>
+        <p>
+          <small>
+            코딩 테스트와 알고리즘 인터뷰를 준비하는 개발자들을 위한 최고의 책 『<a href="/algorithm-interview/">파이썬 알고리즘 인터뷰</a>』<br><a href="/java-coding-test">자바와 코틀린 코드로 무장하고 한층 업그레이드</a>되어 돌아왔다!
+          </small>
+        </p>
+      </span>
+    </div>
+
+    {{ content }}
+
+    <div style="margin-bottom: 2rem"></div>
+
+    <script>
+      var config = {
+          startOnReady:true,
+          theme: 'base',
+          flowchart:{
+                  useMaxWidth:false,
+                  htmlLabels:true
+              }
+      };
+      mermaid.initialize(config);
+      mermaid.init(undefined, '.language-mermaid');
+      </script>
+    </main>
+  </div>
+
+  <dt-footer>
+  <div class="l-page">
+    <div class="description">
+    <a href="/" class="logo">
+      The Missing Papers
+    </a>
+    is a collection of Papers I have written.<br />
+    &copy; 2000 - <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>
+    <a href="https://likejazz.tumblr.com/about">Sang Park</a> Except where otherwise noted, content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/deed.ko">CC BY 4.0</a>.<br />
+    This site design was brought from <a href="https://distill.pub">Distill</a>.
+    </div>
+  </div>
+  </dt-footer>
+
+  </body>
+</html>
