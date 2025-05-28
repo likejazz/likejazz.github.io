@@ -2,16 +2,20 @@
 layout: wiki 
 title: VSCode
 tags: ["Productivity"]
-last_modified_at: 2025/04/08 11:56:02
+last_modified_at: 2025/05/27 19:19:41
 ---
 
 <!-- TOC -->
 
+- [Compare Folders](#compare-folders)
 - [미니맵 색상 변경](#미니맵-색상-변경)
 - [Extentions](#extentions)
 - [커서가 느려지는 문제](#커서가-느려지는-문제)
 
 <!-- /TOC -->
+
+# Compare Folders
+첫 번째가 my folder, 두 번째는 compared folder. 자동으로 순서가 선택되는 형태는 아니고 항상 위에서 아래로 선택되는 구조다. 변경은 Compare Folders 내에서 Swap Sides로 변경 가능
 
 # 미니맵 색상 변경
 노란색으로 눈에 잘 띄게 변경하고 항상 슬라이더가 표현되도록 수정한다.

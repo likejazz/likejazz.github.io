@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2025/01/20 02:31:40
+last_modified_at: 2025/05/20 21:59:26
 ---
 
 <div class="message">
@@ -138,7 +138,6 @@ $ npm install -g gnomon
 ```
 $ go install github.com/wallix/awless@latest
 ```
-- 파이썬 버전 관리를 위해 **Anaconda**를 설치한다. `$ brew install anaconda` 이후 초기화 설정을 하고 사용한다. `$ /opt/homebrew/anaconda3/bin/conda init zsh`
 - 자주 사용하는 brew CLI 패키지는 다음과 같다.
   - `ollama`: 로컬 LLM
   - `llm`: OpenAI, Claude등 호출
@@ -148,6 +147,8 @@ $ go install github.com/wallix/awless@latest
   - `pwgen`: 패스워드 자동 생성기
   - `kubernetes-cli`: kubectl
   - `firebase-cli`: HTML 호스팅 배포
+  - `uv`: 파이썬 버전 관리
+  - `pipx`: 파이썬 실행 패키지 별도 관리
 
 ## 개발 도구
 - **Xcode**를 사용하진 않지만 LLVM을 비롯한 각종 개발 도구를 최신 버전으로 업데이트 하기 위해 Command Line Tools for Xcode를 설치한다.  

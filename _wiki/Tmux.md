@@ -2,7 +2,7 @@
 layout: wiki 
 title: Tmux
 tags: ["Productivity"]
-last_modified_at: 2025/05/01 15:54:28
+last_modified_at: 2025/05/20 12:14:53
 ---
 
 - [세션](#세션)
@@ -17,6 +17,7 @@ last_modified_at: 2025/05/01 15:54:28
 - `CTRL + B`, `1`: 해당 세션 번호 선택으로 세션 이동 
 - `CTRL + D`: 해당 세션 종료. screen과 동일하다.
 - `CTRL + B`, `D`: 세션을 열어둔 채 tmux에서 빠져나옴. screen에서 `CTRL + A`, `D`와 동일하다.
+- `CTRL + B + "`: Split current pane horizontally.
 
 # 화면
 
