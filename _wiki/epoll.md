@@ -2,17 +2,16 @@
 layout: wiki 
 title: epoll
 tags:  ["Network Programming"]
-last_modified_at: 2021/06/08 13:03:45
+last_modified_at: 2025/06/08 19:29:30
 ---
 
 <!-- TOC -->
 
 - [개요](#개요)
 - [epoll](#epoll)
-    - [빌드 방법](#빌드-방법)
-        - [빌드 환경](#빌드-환경)
-        - [submodule 추가 방법](#submodule-추가-방법)
-- [링크](#링크)
+  - [빌드 방법](#빌드-방법)
+    - [빌드 환경](#빌드-환경)
+    - [submodule 추가 방법](#submodule-추가-방법)
 
 <!-- /TOC -->
 
@@ -74,8 +73,3 @@ Operating System: Ubuntu 16.04.7 LTS
 ```console
 $ git submodule add <remote_url> <destination_folder>
 ```
-
-# 링크
-[epoll](https://dev.likejazz.com/post/650260566015885312/epoll)  
-
-링크에서 C++ std::thread Event Loop with Message Queue and Timer는 epoll은 아니고 std::thread를 이용해서 Event Loop를 흉내내고 MQ와 Timer를 구현했다.

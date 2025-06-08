@@ -2,25 +2,23 @@
 layout: wiki 
 title: MySQL
 tags:  ["Software Engineering"]
-last_modified_at: 2021/06/08 13:03:45
+last_modified_at: 2025/06/08 19:30:21
 ---
 
 <!-- TOC -->
 
 - [설치](#설치)
-    - [한글 문제](#한글-문제)
-    - [MariaDB 최신 버전 설치](#mariadb-최신-버전-설치)
-    - [로깅](#로깅)
-    - [테이블 생성](#테이블-생성)
-    - [사용자 및 권한 추가](#사용자-및-권한-추가)
+  - [한글 문제](#한글-문제)
+  - [MariaDB 최신 버전 설치](#mariadb-최신-버전-설치)
+  - [로깅](#로깅)
+  - [테이블 생성](#테이블-생성)
+  - [사용자 및 권한 추가](#사용자-및-권한-추가)
 - [운영](#운영)
-    - [로그 전환](#로그-전환)
-    - [재시작](#재시작)
+  - [로그 전환](#로그-전환)
+  - [재시작](#재시작)
 - [Lost connection to MariaDB when adding full text index](#lost-connection-to-mariadb-when-adding-full-text-index)
 
 <!-- /TOC -->
-
-예전에 정리한 [한글과 가변 컬럼](http://dev.likejazz.com/post/151958773876/mysql-%ED%95%9C%EA%B8%80-%EA%B0%80%EB%B3%80-%EC%BB%AC%EB%9F%BC) 관련 블로그 포스팅을 참고한다.
 
 # 설치
 ## 한글 문제

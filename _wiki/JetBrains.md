@@ -2,7 +2,7 @@
 layout: wiki 
 title: JetBrains
 tags: ["Productivity"]
-last_modified_at: 2025/01/12 03:06:37
+last_modified_at: 2025/06/08 19:25:15
 ---
 
 <!-- TOC -->
@@ -19,7 +19,7 @@ last_modified_at: 2025/01/12 03:06:37
 
 [^fn-date]: Oct 2021
 
-JetBrains의 IDE를 사용해오면서 어떤 장단점이 있는지 정리해본다. 2014년 [IntelliJ IDEA 정품 구매](https://likejazz.com/post/103532169020/intellij-idea-%EC%A0%95%ED%92%88-%EA%B5%AC%EB%A7%A4), 2015년 [CLions 1.0 릴리즈](https://likejazz.com/post/118649049333/clion-1-0) 이후 정품 구매로 시작해 지금까지 계속 매년 정기 구독 중이다. [정기 구독 모델은 2015년 11월에 시행](https://likejazz.com/post/133725850005/jetbrains-all-products-pack)됐다.
+JetBrains의 IDE를 사용해오면서 어떤 장단점이 있는지 정리해본다. 2014년 [IntelliJ IDEA 정품 구매](https://likejazz.tumblr.com/post/103532169020/intellij-idea-%EC%A0%95%ED%92%88-%EA%B5%AC%EB%A7%A4), 2015년 [CLions 1.0 릴리즈](https://likejazz.tumblr.com/post/118649049333/clion-1-0) 이후 정품 구매로 시작해 지금까지 계속 매년 정기 구독 중이다. [정기 구독 모델은 2015년 11월에 시행](https://likejazz.tumblr.com/post/133725850005/jetbrains-all-products-pack)됐다.
 
 # 장점
 1. 강력한 자동 완성  

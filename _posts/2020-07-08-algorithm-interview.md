@@ -2,7 +2,7 @@
 layout: post
 title: ! '알고리즘 코딩 테스트 책 출간 안내'
 tags: ["Books"]
-last_modified_at: 2025/05/17 19:55:07
+last_modified_at: 2025/06/08 19:25:15
 ---
 
 <div class="message">
@@ -147,7 +147,7 @@ last_modified_at: 2025/05/17 19:55:07
 
 실제로 온라인 코딩 테스트 시에 어떤 식으로 풀이하는지 영상을 통해 살펴볼 수 있습니다. 전문가는 어떻게 풀이 알고리즘을 설계하고, 어떤 식으로 문제를 풀이하고, 어떤 풀이 기법들을 사용하는지 유심히 살펴본다면 실제로 코딩 인터뷰 시에 문제를 제대로, 잘 풀이하는 데 많은 도움이 될 것입니다.
 
-아울러 몇 가지 [코딩 테스트 문제를 저자가 직접 함께 풀이하는 영상](https://likejazz.com/post/630859218303500288/유튜브에는-이미-네이버-카카오-코딩-테스트-기출-문제-풀이-영상들이-많이-있는데요)을 소개합니다.
+아울러 몇 가지 [코딩 테스트 문제를 저자가 직접 함께 풀이하는 영상](https://likejazz.tumblr.com/post/630859218303500288/유튜브에는-이미-네이버-카카오-코딩-테스트-기출-문제-풀이-영상들이-많이-있는데요)을 소개합니다.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H5RMk2cOz88" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 > 유튜브에는 이미 네이버, 카카오 코딩 테스트 기출 문제 풀이 영상들이 많이 있는데요. 하지만 중요한 부분은 건너 뛰거나 미리 정답을 준비해서 빠르게 풀이하는 영상들이 많아서, 실제로 많은 분들에게 도움이 될 수 있도록 처음부터 차근차근 풀이하는 영상을 한 번 만들어 봤습니다.

@@ -2,36 +2,35 @@
 layout: wiki 
 title: C++
 tags:  ["Languages & Framework"]
-last_modified_at: 2021/06/08 13:03:45
+last_modified_at: 2025/06/08 19:29:11
 ---
 
 <!-- TOC -->
 
 - [Modern C++](#modern-c)
 - [매크로](#매크로)
-    - [inline](#inline)
+  - [inline](#inline)
 - [Generic Programming](#generic-programming)
-    - [Templates](#templates)
-        - [Template Metaprogramming](#template-metaprogramming)
-        - [Template Specialization](#template-specialization)
-        - [Functors](#functors)
-    - [OOP](#oop)
-        - [pure virtual function](#pure-virtual-function)
-        - [객체의 클래스 알아내기](#객체의-클래스-알아내기)
+  - [Templates](#templates)
+    - [Template Metaprogramming](#template-metaprogramming)
+    - [Template Specialization](#template-specialization)
+    - [Functors](#functors)
+  - [OOP](#oop)
+    - [pure virtual function](#pure-virtual-function)
+    - [객체의 클래스 알아내기](#객체의-클래스-알아내기)
 - [스마트 포인터](#스마트-포인터)
-    - [부실 레퍼런스<sup>stale reference</sup>](#부실-레퍼런스stale-reference)
-    - [댕글링 포인터<sup>dangling pointer</sup>](#댕글링-포인터dangling-pointer)
-    - [포인터 vs 참조](#포인터-vs-참조)
-    - [우측값 참조<sup>rvalue reference</sup>](#우측값-참조rvalue-reference)
-    - [Stack Memory, Heap Memory](#stack-memory-heap-memory)
+  - [부실 레퍼런스stale reference](#부실-레퍼런스stale-reference)
+  - [댕글링 포인터dangling pointer](#댕글링-포인터dangling-pointer)
+  - [포인터 vs 참조](#포인터-vs-참조)
+  - [우측값 참조rvalue reference](#우측값-참조rvalue-reference)
+  - [Stack Memory, Heap Memory](#stack-memory-heap-memory)
 - [Lambda](#lambda)
 - [기타](#기타)
 - [SFINAE](#sfinae)
 - [include 기본 경로](#include-기본-경로)
 - [Memory Allocation](#memory-allocation)
-- [링크](#링크)
 - [Books](#books)
-    - [모던 C++로 배우는 함수형 프로그래밍 <sub>2017, 2018</sub>](#모던-c로-배우는-함수형-프로그래밍-2017-2018)
+  - [모던 C++로 배우는 함수형 프로그래밍 2017, 2018](#모던-c로-배우는-함수형-프로그래밍-2017-2018)
 
 <!-- /TOC -->
 
@@ -200,7 +199,6 @@ int &&i = 4;
 추가 정리 필요
 
 # include 기본 경로
-[gcc와 마찬가지](http://dev.likejazz.com/post/103371895601/what-is-the-default-path-for-osx-system-include)로 확인 가능하다.
 ```
 $ echo "" | g++ -xc - -v -E
 ...
@@ -219,9 +217,6 @@ $ echo "" | g++ -xc - -v -E
 - `malloc` allocates a block of memory.
   - `mmap`: In this respect an anonymous mapping is similar to malloc, and is used in some malloc implementations for certain allocations. 엔진에서는 이걸로 메모리를 할당한다.
 - `calloc`, same as malloc. Only difference is that it initializes the bytes to zero.
-
-# 링크
-[C++](https://dev.likejazz.com/post/187029899561/httpsgithubcomluncliffcoreguidelines-c-에서)
 
 # Books
 ## 모던 C++로 배우는 함수형 프로그래밍 <sub>2017, 2018</sub>

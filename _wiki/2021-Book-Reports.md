@@ -2,7 +2,7 @@
 layout: wiki 
 title: 2021 Book Reports
 tags:  ["Books"]
-last_modified_at: 2024/03/18 08:14:08
+last_modified_at: 2025/06/08 19:25:15
 ---
 
 **책 목록이 너무 늘어나서 이후 부터는 각 주제별 정리로 변경한다. (Sep 2021)**
@@ -235,7 +235,7 @@ GCP 사용법을 스크린 캡처와 함께 쉽게 기술한 튜토리얼 책이
 
 # 마이크로서비스 도입, 이렇게 한다 <sup>2019, 2020</sup>
 ★★★☆☆  
-[블로그 후기](https://likejazz.com/post/648393926647136256/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8F%84%EC%9E%85-%EC%9D%B4%EB%A0%87%EA%B2%8C-%ED%95%9C%EB%8B%A4%EB%8A%94-%ED%9D%94%ED%95%9C-%EC%BD%94%EB%93%9C-%ED%95%9C-%EC%A4%84-%EC%A0%9C%EC%8B%9C%ED%95%98%EC%A7%80-%EC%95%8A%EC%9C%BC%EB%A9%B4%EC%84%9C%EB%8F%84-%EC%96%B4%EB%96%BB%EA%B2%8C)
+[블로그 후기](https://likejazz.tumblr.com/post/648393926647136256/%EB%A7%88%EC%9D%B4%ED%81%AC%EB%A1%9C%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%8F%84%EC%9E%85-%EC%9D%B4%EB%A0%87%EA%B2%8C-%ED%95%9C%EB%8B%A4%EB%8A%94-%ED%9D%94%ED%95%9C-%EC%BD%94%EB%93%9C-%ED%95%9C-%EC%A4%84-%EC%A0%9C%EC%8B%9C%ED%95%98%EC%A7%80-%EC%95%8A%EC%9C%BC%EB%A9%B4%EC%84%9C%EB%8F%84-%EC%96%B4%EB%96%BB%EA%B2%8C)
 
 # 인공지능, 아직 쓰지 않은 이야기 <sup>2016, 2016</sup>
 ★★★☆☆  
@@ -247,7 +247,7 @@ GCP 사용법을 스크린 캡처와 함께 쉽게 기술한 튜토리얼 책이
 
 # 개발 7년차, 매니저 1일차 <sup>2017, 2020</sup>
 ★★★★☆  
-[블로그 후기](https://likejazz.com/post/648484561746051073/%EC%9E%AC%EB%B0%8C%EB%8A%94-%EC%A0%9C%EB%AA%A9-%EB%A7%8C%ED%81%BC%EC%9D%B4%EB%82%98-%EA%B4%9C%EC%B0%AE%EC%9D%80-%EB%A7%A4%EB%8B%88%EC%A0%80%EA%B0%80-%EB%90%98%EA%B8%B0-%EC%9C%84%ED%95%B4%EC%84%9C-%EB%9D%BC%EB%A9%B4-%EA%BC%AD-%EC%9D%BD%EC%96%B4%EC%95%BC-%ED%95%A0-%EC%B1%85%EC%9C%BC%EB%A1%9C-%EC%B6%94%EC%B2%9C%ED%95%9C%EB%8B%A4)
+[블로그 후기](https://likejazz.tumblr.com/post/648484561746051073/%EC%9E%AC%EB%B0%8C%EB%8A%94-%EC%A0%9C%EB%AA%A9-%EB%A7%8C%ED%81%BC%EC%9D%B4%EB%82%98-%EA%B4%9C%EC%B0%AE%EC%9D%80-%EB%A7%A4%EB%8B%88%EC%A0%80%EA%B0%80-%EB%90%98%EA%B8%B0-%EC%9C%84%ED%95%B4%EC%84%9C-%EB%9D%BC%EB%A9%B4-%EA%BC%AD-%EC%9D%BD%EC%96%B4%EC%95%BC-%ED%95%A0-%EC%B1%85%EC%9C%BC%EB%A1%9C-%EC%B6%94%EC%B2%9C%ED%95%9C%EB%8B%A4)
 
 # 모두 거짓말을 한다 <sup>2017, 2018</sup>
 ★★★★☆  
@@ -353,7 +353,7 @@ IT 분야의 궁금해할 만한 여러 주제를 깔끔하게 소개한다. 아
 
 # 더해빙 <sup>2020</sup>
 ★☆☆☆☆  
-[블로그 후기](https://likejazz.com/post/639968400961077248/%EC%8B%A0%ED%98%B8%EC%99%80-%EC%86%8C%EC%9D%8C)
+[블로그 후기](https://likejazz.tumblr.com/post/639968400961077248/%EC%8B%A0%ED%98%B8%EC%99%80-%EC%86%8C%EC%9D%8C)
 
 # Python을 이용한 개인화 추천시스템 <sup>2020</sup>
 ★★★☆☆  

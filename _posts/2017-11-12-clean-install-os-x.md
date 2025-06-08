@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2025/05/20 21:59:26
+last_modified_at: 2025/06/08 19:25:15
 ---
 
 <div class="message">
@@ -71,7 +71,7 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
   - Preferences > Profiles > Colors에서 Blue/Normal의 색상이 눈이 아프므로 조정한다.
 - 메인 브라우저는 [**Chrome**](https://www.google.com/chrome/)을 사용한다. `$ brew install google-chrome` 보조 브라우저로 **Firefox**도 함께 사용한다. `$ brew install firefox`
 - 키보드는 MX Mechanical Mini for Mac, MX Anywhere 3 for Mac을 사용하고 [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options-plus`
-- 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다. `$ brew install sublime-text`
+- 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.tumblr.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다. `$ brew install sublime-text`
 - 비밀번호 관리는 온라인의 경우 Chrome에 탑재되어 있는 Google Password Manager를 이용하고, 오프라인은 Bear에 그냥 메모로 기입한다. 이외 WiFi 정보가 애플의 Password Manager에, 일부 사이트가 Firefox의 Passwords에 저장되어 있다.
 - **카카오톡** 설명이 필요 없는 국민 메신저 `$ mas install 869223134`
 - [**Visual Studio Code**](https://code.visualstudio.com/download)는 위키를 편집하거나 발표 자료를 작성하고, 코드 리뷰 용도로도 사용하는 메인 편집기다. Settings Sync를 하면(GitHub 계정) 모든 설정과 Extensions를 설치해준다. `$ brew install visual-studio-code`
@@ -158,7 +158,7 @@ $ xcode-select --version
 xcode-select version 2395.
 ```
 - git 관리는 CLI로 대부분 가능하나 diff 등은 습관적으로 **GitHub Desktop**을 사용한다. `$ brew install github`
-- **JetBrains IDE(유료)** [All Products Pack 연간 라이센스를 사용](http://likejazz.com/post/133725850005/jetbrains-all-products-pack)하고 있다. IntelliJ 뿐만 아니라 [CLion](http://likejazz.com/post/118649049333/clion-1-0), PyCharm, PhpStorm, AppCode, GoLand등을 사용하는 [가장 즐겨쓰는 최고의 IDE](http://likejazz.com/post/112670720955/jetbrains-ide)다. 설정은 [JetBrains](/wiki/JetBrains/) 참고. 최근에는 JetBrains Gateway가 원격 개발에 매우 편리하다.
+- **JetBrains IDE(유료)** [All Products Pack 연간 라이센스를 사용](http://likejazz.tumblr.com/post/133725850005/jetbrains-all-products-pack)하고 있다. IntelliJ 뿐만 아니라 [CLion](http://likejazz.tumblr.com/post/118649049333/clion-1-0), PyCharm, PhpStorm, AppCode, GoLand등을 사용하는 [가장 즐겨쓰는 최고의 IDE](http://likejazz.tumblr.com/post/112670720955/jetbrains-ide)다. 설정은 [JetBrains](/wiki/JetBrains/) 참고. 최근에는 JetBrains Gateway가 원격 개발에 매우 편리하다.
   - **JetBrains ToolBox** IDE를 통합 관리할 수 있는 필수 메뉴바 앱이다. `$ brew install jetbrains-toolbox`
 - 개발/테스트/서비스로 이어지는 설정과 설치는 항상 고민거리다. **Docker**는 모든 고민을 말끔하게 해결해줬다. 게다가 M1에서도 잘 지원하기 때문에 **Docker Desktop**은 필수다.
 - 가끔 스니펫은 **[GitHub Gist](https://gist.github.com/likejazz)**에 보관한다. 비공개도 URL이 노출되면 안되기 때문에 별도로 관리한다. 

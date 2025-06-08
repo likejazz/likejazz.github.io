@@ -2,7 +2,7 @@
 layout: wiki 
 title: NLP
 tags: ["NLP"]
-last_modified_at: 2024/01/05 14:21:48
+last_modified_at: 2025/06/08 19:30:27
 ---
 
 <!-- TOC -->
@@ -18,7 +18,6 @@ last_modified_at: 2024/01/05 14:21:48
   - [Pretrained language models](#pretrained-language-models)
 - [LM Perplexity](#lm-perplexity)
 - [BERT, RoBERTa, DistilBERT, XLNet — which one to use?](#bert-roberta-distilbert-xlnet--which-one-to-use)
-- [링크](#링크)
 
 <!-- /TOC -->
 
@@ -76,7 +75,3 @@ language models only require unlabelled text; training can thus scale to billion
 <img src="https://miro.medium.com/max/2486/1*5PzGl1dNt_5jMH3_mm3PpA.png" width="80%">[^fn-which]
 
 [^fn-which]: <https://towardsdatascience.com/bert-roberta-distilbert-xlnet-which-one-to-use-3d5ab82ba5f8>
-
-# 링크
-- [NLP 링크](https://dev.likejazz.com/post/637368911926591488/nlp-%EB%A7%81%ED%81%AC)
-- [QA](https://dev.likejazz.com/post/187553539911/qa)

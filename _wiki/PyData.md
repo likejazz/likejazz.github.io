@@ -2,7 +2,7 @@
 layout: wiki 
 title: PyData
 tags: ["Data Science & Engineering"]
-last_modified_at: 2022/11/03 19:20:41
+last_modified_at: 2025/06/08 19:30:33
 ---
 
 <!-- TOC -->
@@ -80,9 +80,6 @@ regplot(), lmplot(), jointplot()등 단순 차트 외에 regression model과 결
 <img src="https://user-images.githubusercontent.com/1250095/99523276-309ae900-29da-11eb-82f2-2eafb1d27491.png" width="70%">
 
 # Anaconda
-Conda is too slow![^fn-slow]  
-
-[^fn-slow]: <https://dev.likejazz.com/post/658067622574866432/conda-is-too-slow>
 ```console
 # How to Install
 $ brew install --cask anaconda

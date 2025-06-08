@@ -2,7 +2,7 @@
 layout: wiki 
 title: AWS
 tags: ["Cloud"]
-last_modified_at: 2023/07/14 12:53:19
+last_modified_at: 2025/06/08 19:28:24
 ---
 
 <!-- TOC -->
@@ -97,6 +97,3 @@ AWS에서 Amazon Linux 2 설치 정리:
     - 추후 EKS 기반으로 개선하고 helm chart로 관리 필요
 
 CloudFront와 헷갈리지 말 것. CDN 없이도 ELB만으로 충분히 셋팅 가능하다.
-
-기타 링크:
-- [AWS](https://dev.likejazz.com/post/185786152196/aws)
