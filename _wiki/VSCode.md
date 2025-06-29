@@ -2,17 +2,21 @@
 layout: wiki 
 title: VSCode
 tags: ["Productivity"]
-last_modified_at: 2025/05/27 19:19:41
+last_modified_at: 2025/06/24 13:40:38
 ---
 
 <!-- TOC -->
 
+- [검색 설정](#검색-설정)
 - [Compare Folders](#compare-folders)
 - [미니맵 색상 변경](#미니맵-색상-변경)
 - [Extentions](#extentions)
 - [커서가 느려지는 문제](#커서가-느려지는-문제)
 
 <!-- /TOC -->
+
+# 검색 설정
+전체 설정에서 `@id:search.exclude`에서 `_site` 추가해서 generated html은 검색이 되지 않도록 설정
 
 # Compare Folders
 첫 번째가 my folder, 두 번째는 compared folder. 자동으로 순서가 선택되는 형태는 아니고 항상 위에서 아래로 선택되는 구조다. 변경은 Compare Folders 내에서 Swap Sides로 변경 가능
