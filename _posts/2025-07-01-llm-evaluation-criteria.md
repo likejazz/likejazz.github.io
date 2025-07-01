@@ -2,7 +2,7 @@
 layout: post
 title: ! 'LLM 한국어 성능 평가 기준 안내'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2025/07/01 09:43:29
+last_modified_at: 2025/07/01 10:10:25
 ---
 
 <div class="message">
@@ -10,7 +10,7 @@ last_modified_at: 2025/07/01 09:43:29
 </div>
 
 <small>
-*Jun 30, 2025*
+*Jul 01, 2025*
 </small>
 
 - [개요](#개요)
