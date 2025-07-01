@@ -3,7 +3,7 @@
 permalink:           "/:title/"
 
 # Setup
-title:               The Missing Papers
+title:               The LLM
 tagline:             Sang Park
 url:                 https://likejazz.com/
 baseurl:             ""
