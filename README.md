@@ -1,3 +1,3 @@
-# The LLM
+# The DNA
 
-The LLM based on [Poole](https://github.com/poole/poole).
+The DNA based on [Poole](https://github.com/poole/poole).
