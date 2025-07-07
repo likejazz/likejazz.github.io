@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2025/06/08 19:25:15
+last_modified_at: 2025/07/06 18:20:10
 ---
 
 <div class="message">
@@ -36,7 +36,7 @@ last_modified_at: 2025/06/08 19:25:15
   - [필수 앱](#필수-앱)
   - [안되는 것](#안되는-것)
 
-<img src="https://c2.staticflickr.com/8/7333/27218763503_715ebb8a06_b.jpg" width="30%" style="float: left; margin-right: 5px">
+<img src="https://github.com/user-attachments/assets/ce3c3eca-cff3-42c5-b3b7-c7a3518f32bc" width="30%" style="float: left; margin-right: 5px">
 <img src="https://user-images.githubusercontent.com/1250095/58238292-f4a1ac00-7d81-11e9-9762-6cd8b44b6461.jpeg" width="30%" style="float: left; margin-right: 5px">
 <img src="/images/2017/touchbar.jpg" width="30%">
 

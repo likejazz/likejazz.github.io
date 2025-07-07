@@ -2,7 +2,7 @@
 layout: post
 title: Apache와 Nginx의 PHP 성능 비교
 tags:  ["Network Programming"]
-last_modified_at: 2015/12/21 00:00:00
+last_modified_at: 2025/07/06 18:23:10
 ---
 
 <div class="message">
@@ -11,7 +11,7 @@ last_modified_at: 2015/12/21 00:00:00
 
 - [서론](#서론)
 - [테스트](#테스트)
-    - [성능](#성능)
+  - [성능](#성능)
 - [전통적인 CGI](#전통적인-cgi)
 - [결론](#결론)
 
@@ -46,13 +46,13 @@ PHP 를 웹으로 서빙하는 케이스는 크게 3 종류로 나눌 수 있다
 
 코드는 간단한 HTML 을 변수에 삽입한 다음 템플릿을 구성해서 내려주는 형태이며, 별도의 외부 서버나 DB 호출은 하지 않는다.
 
-<img src="https://c1.staticflickr.com/1/604/23769965592_288fec6c96_h.jpg" width="700" />
+<img src="https://github.com/user-attachments/assets/fed33f70-9902-402f-937a-c9f2e1429060" width="700" />
 
 **carrotw** 는 사내에서 만든 브라우저로 직접 부하 테스트가 가능한 성능 테스트 도구(외부에 공개되지 않은 사내 시스템이라 부득이하게 주소를 가림)다. 전통적인 쓰레드 방식으로 동작하며 여기서는 쓰레드를 200개 주어 최대 성능을 측정했다. 200개 쓰레드가 동시에 요청을 보내 응답을 받아오는 초당 평균 횟수/속도를 측정하는 방식이며 10초간 측정한 결과는 약 7,600 TPS 에, 평균 응답속도 25ms 수준이다.
 
 아주 좋은 성능의 서버가 아님에도 불구하고 초당 7,600회 처리라는 준수한 성능을 보여준다. 그렇다면 과연 아파치는 Nginx 에 비해 어느 정도 성능이 나오는지 확인해본다.
 
-<img src="https://c2.staticflickr.com/6/5706/23510393719_d14a9758f0_h.jpg" width="700" />
+<img src="https://github.com/user-attachments/assets/fba6b5e7-1a33-401b-bc62-dbce72bd19ae" width="700" />
 
 동일한 200개 쓰레드에서 7,100 TPS, 27ms 가 나왔다. 이를 표로 정리하면 아래와 같다.
 

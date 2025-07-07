@@ -2,7 +2,7 @@
 layout: post
 title: CLOSE_WAIT 문제 해결
 tags: ["Network Programming"]
-last_modified_at: 2015/06/06 00:00:00
+last_modified_at: 2025/07/06 18:33:32
 ---
 
 <div class="message">
@@ -18,8 +18,8 @@ last_modified_at: 2015/06/06 00:00:00
 - [서론](#서론)
 - [현상](#현상)
   - [TCP 상태](#tcp-상태)
-  - [CLOSE_WAIT 재현](#close_wait-재현)
-  - [CLOSE_WAIT 종료](#close_wait-종료)
+  - [CLOSE\_WAIT 재현](#close_wait-재현)
+  - [CLOSE\_WAIT 종료](#close_wait-종료)
 - [원인](#원인)
 - [결론](#결론)
 - [참고 문헌](#참고-문헌)
@@ -67,7 +67,7 @@ tcp        1      0 10.41.249.26:8080           10.51.31.152:30147          CLOS
 
 먼저 네트워크 서적의 바이블격인 TCP/IP Illustrated 에 등장하는 TCP 커넥션 다이어그램은 아래와 같다.
 
-<img src="https://farm1.staticflickr.com/440/18338404268_f693b065d4_o.png" width="350" />
+<img src="https://github.com/user-attachments/assets/826d8cc4-34f3-4622-8ff9-bd052ad64c0b" width="350" />
 
 이 중 `ESTABLISHED` 이후 종료 과정에서 어플리케이션의 `close()` 호출 부분을 추가로 표시해봤다. Active Close 쪽이 먼저 `close()`를 수행하고 `FIN`을 보내면 Passive Close 쪽은 `ACK`을 보낸 후 어플리케이션의 `close()`를 수행한다. 보다 상세한 과정은 아래와 같다.
 
@@ -141,7 +141,7 @@ public class Client {
 $ netstat -p tcp -a -n | grep CLOSE_WAIT | grep 12345
 {% endhighlight %}
 
-<img src="https://farm9.staticflickr.com/8822/17428044644_962ce32d71_b.jpg" width="512" />
+<img src="https://github.com/user-attachments/assets/271fa6dc-315c-46b7-84d5-56ff7808ebf1" width="512" />
 
 10분이 지나도 `CLOSE_WAIT` 상태가 계속 변하지 않음을 확인한 모습이다.
 
