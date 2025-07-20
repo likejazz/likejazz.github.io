@@ -1,3 +1,3 @@
-# The DNA
+# DNA
 
-The DNA based on [Poole](https://github.com/poole/poole).
+DNA based on [Poole](https://github.com/poole/poole).
