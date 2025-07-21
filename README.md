@@ -1,3 +1,3 @@
-# DNA
+# likejazz.com
 
-DNA based on [Poole](https://github.com/poole/poole).
+likejazz.com based on [Poole](https://github.com/poole/poole).
