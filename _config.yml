@@ -1,0 +1,54 @@
+# Permalinks
+#
+permalink:           "/:title/"
+
+# Setup
+title:               likejazz.com
+tagline:             Sang Park
+url:                 https://likejazz.com/
+baseurl:             ""
+
+# Assets
+#
+# We specify the directory for Jekyll so we can use @imports.
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+collections:
+  wiki:
+    output: true
+
+# About/contact
+author:
+  name:              Sang Park
+  url:               https://likejazz.com/
+  email:             likejazz@gmail.com
+
+# Custom vars
+version:             1.0.0
+github:
+  repo:              https://github.com/poole/poole
+
+# Custom Gems
+plugins:
+  - jekyll-redirect-from
+  - jekyll-sitemap
+
+# Exclude these files from your production _site
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+  - CNAME
+  - runme.sh
+  - vendor
+
+# Exclude pdf files from sitemap
+defaults:
+  -
+    scope:
+      path:            "paper/*.pdf"
+    values:
+      sitemap:         false

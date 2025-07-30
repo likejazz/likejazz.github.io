@@ -1,0 +1,32 @@
+// Archive
+//
+// page is wrapped in `.archive` and is only used on the page layout.
+
+// Page title
+.archive {
+  // Post title
+  h1 {
+    font-size: 1.1rem;
+    margin: 0;
+    // padding-left: 3.5em;
+  }
+  a {
+    padding-left: 0.5em;
+  }
+
+  // Posting year
+  h2 {
+    // float: left;
+    margin-top: 0;
+  }
+}
+
+// Meta data line below archive title
+.archive-date {
+  display: inline-block;
+  margin-top: .5rem;
+  margin-bottom: 1rem;
+  font-size: 0.6em;
+  font-family: "Consolas", "Roboto Mono";
+  color: #9a9a9a;
+}

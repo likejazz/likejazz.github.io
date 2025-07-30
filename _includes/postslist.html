@@ -1,0 +1,39 @@
+<h1>{{ include.category }}</h1>
+{% assign wikis = site.wiki | where: "tags", include.category | sort: 'last_modified_at' | reverse %}
+{% if wikis %}
+<div style="margin-bottom: 8px; font-size: 0.9em">
+{% if include.category == "LLM Training" %}
+(주요 항목 비공개)
+{% endif %}
+{% for w in wikis %}
+  {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+  {% assign is_private = false %}
+  {% for file in site.data.FILES %}
+    {% if file.file == w.path %}
+      {% assign is_private = true %}
+      <a href="{{ w.url }}" style="color: red">{{ w.title }}</a>
+    {% endif %}
+  {% endfor %}
+  {% if is_private == false %}
+    <a href="{{ w.url }}">{{ w.title }}</a>
+  {% endif %}
+  <span class="post-meta" style="font-size: 0.5em">{{ w.last_modified_at | date: date_format }}</span>
+  {% if forloop.last == false %}
+    &nbsp;·&nbsp; 
+  {% endif %}
+{% endfor %}
+</div>
+{% endif %}
+
+<!--
+{% assign posts = site.posts | where: "tags", include.category %}
+<ul>
+{% for p in posts %}
+  {% assign date_format = site.minima.date_format | default: "%b %Y" %}
+  <li>
+    <a href="{{ p.url }}">{{ p.title }}</a> 
+    <span class="post-meta" style="font-size: 0.5em">{{ p.date | date: date_format }}</span>
+  </li>
+{% endfor %}
+</ul>
+-->
