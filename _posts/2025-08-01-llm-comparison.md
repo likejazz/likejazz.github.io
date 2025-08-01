@@ -2,7 +2,7 @@
 layout: post
 title: ! 'LLM 아키텍처 비교'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2025/08/02 02:20:18
+last_modified_at: 2025/08/02 02:34:09
 ---
 
 <div class="message">
@@ -73,7 +73,7 @@ OLMo 2는 LayerNorm 대신 더 단순한 RMSNorm을 사용합니다. 이는 다�
 
 <img width="80%" src="https://github.com/user-attachments/assets/d07b969b-1d20-4b26-8514-e169f8253dd9" />
 
-원래 트랜스포머에서는 정규화 계층을 뒤에 배치했습니다. 이를 Post-LN 또는 Post-Norm이라고 하죠. 이후 GPT부터 대부분의 LLM은 정규화 계층을 앞쪽으로 이동했는데 이를 Pre-LN 또는 Pre-Norm이라고 합니다. 얼마전 [네이버에서 이 부분의 차이점을 잘 설명](https://clova.ai/tech-blog/%ED%9D%94%EB%93%A4%EB%A6%BC-%EC%97%86%EB%8A%94-%EC%95%88%EC%A0%95%EC%84%B1-peri-ln%EC%9C%BC%EB%A1%9C-%ED%95%99%EC%8A%B5-%EB%B0%9C%EC%82%B0%EC%9D%84-%EB%A7%89%EB%8B%A4)한 바 있습니다. 그런데 OLMo 2는 Pre-LN을 사용하던 최근 트렌드와 달리 다시 Post-LN을 채택했습니다. LayerNorm대신 RMSNorm을 사용했기 때문에 정확히는 Post-Norm입니다. 이렇게 위치를 이동한 이유는 학습 안정성이 더 뛰어났기 때문이라고 합니다. 그런데 OLMo 2는 정규화 계층만으로 성능 차이를 보이기보다 이와 함께 GQA에 QK-Norm을 함께 적용합니다.
+원래 트랜스포머에서는 정규화 계층을 뒤에 배치했습니다. 이를 Post-LN 또는 Post-Norm이라고 하죠. 이후 GPT부터 대부분의 LLM은 정규화 계층을 앞쪽으로 이동했는데 이를 Pre-LN 또는 Pre-Norm이라고 합니다. 얼마전 [네이버에서 이 부분의 차이점을 잘 설명](https://clova.ai/tech-blog/%ED%9D%94%EB%93%A4%EB%A6%BC-%EC%97%86%EB%8A%94-%EC%95%88%EC%A0%95%EC%84%B1-peri-ln%EC%9C%BC%EB%A1%9C-%ED%95%99%EC%8A%B5-%EB%B0%9C%EC%82%B0%EC%9D%84-%EB%A7%89%EB%8B%A4)한 바 있습니다. 그런데 OLMo 2는 Pre-LN을 사용하던 최근 트렌드와 달리 다시 Post-LN을 채택했습니다. LayerNorm대신 RMSNorm을 사용했기 때문에 정확히는 Post-Norm입니다. 이렇게 위치를 이동한 이유는 학습 안정성이 더 뛰어났기 때문이라고 합니다. 그런데 OLMo 2는 정규화 계층만으로 성능 차이를 보이기보다 이와 함께 GQA에 QK-Norm을 함께 적용했습니다.
 
 ```python
 class GroupedQueryAttention(nn.Module):
@@ -128,11 +128,11 @@ class GroupedQueryAttention(nn.Module):
 
 <img src="https://github.com/user-attachments/assets/71f773ea-77e8-4b5a-b116-d8b8d74d3437" width="80%">
 
-슬라이딩 윈도우 어텐션은 마치 CNN처럼 크기를 제한하는 로컬 어텐션 형태로 동작하는데,
+슬라이딩 윈도우 어텐션은 마치 CNN처럼 크기를 제한하는 로컬 어텐션 형태로 동작합니다.
 
 <img src="https://github.com/user-attachments/assets/8089e0b7-7b71-4350-8311-59b040c6537d" width="80%">
 
-젬마 3는 GQA에 슬라이딩 윈도우 어텐션도 함께 사용했습니다. 물론 일반적인 어텐션도 여전히 사용하며 5:1의 비율로 섞어서 사용합니다. 이와 함께 정규화 계층을 Pre-Norm과 Post-Norm에 모두 배치했습니다. 즉 2번씩 정규화를 진행하며, OLMo 2와 동일하게 QK-Norm도 함께 적용하여 정규화를 매우 빈번하게 진행하는 모델입니다.
+젬마 3는 GQA에 슬라이딩 윈도우 어텐션을 함께 적용했습니다. 물론 일반적인 어텐션도 여전히 사용하며 5:1의 비율로 섞어서 사용합니다. 이와 함께 정규화 계층을 Pre-Norm과 Post-Norm에 모두 배치했습니다. 즉 2번씩 정규화를 진행하며, OLMo 2와 마찬가지로 QK-Norm도 함께 적용하여 정규화를 매우 빈번하게 진행하는 모델입니다.
 
 ### 젬마 3n
 
