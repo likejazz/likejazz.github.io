@@ -2,7 +2,7 @@
 layout: post
 title: ! 'LLM 아키텍처 비교'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2025/08/02 02:19:23
+last_modified_at: 2025/08/02 02:20:18
 ---
 
 <div class="message">
@@ -192,7 +192,7 @@ SmolLM3가 다른 모델과 두드러지는 차이점이 있다면 NoPE(No Posit
 
 [^fn-muon]: <https://arxiv.org/abs/2502.16982>
 
-OLMo 2가 정규화를 활용해 그랬던 것처럼 키미 K2는 Muon 옵티마이저를 적용해 loss spikes를 줄였다고 얘기합니다. 모델 자체가 1T가 넘기 때문에 이를 증명하는 것 조차 쉽지 않으며, 키미 K2는 2025년 상반기 기준 공개된 가장 큰 LLM이기도 합니다.
+OLMo 2가 정규화를 활용해 그랬던 것처럼 키미 K2는 Muon 옵티마이저를 적용해 loss spikes를 줄였다고 얘기합니다. 모델 자체가 1T가 넘기 때문에 이를 보이는 것 조차 쉽지 않은데, 사실 키미 K2는 2025년 상반기 기준 지금까지 공개된 가장 큰 LLM이기도 합니다.
 
 <img width="80%" src="https://github.com/user-attachments/assets/8a360ad9-636d-46d5-aa46-67a658a867df">
 
