@@ -2,7 +2,7 @@
 layout: wiki 
 title: CLI Productivity
 tags: ["Productivity"]
-last_modified_at: 2025/04/25 18:10:45
+last_modified_at: 2025/10/11 01:06:58
 ---
 
 <!-- TOC -->
@@ -156,3 +156,4 @@ $ ls -al
 1. `cat /etc/os-release`
 2. `lsb_release -a`
 3. `uname -r`
+4. `hostnamectl`

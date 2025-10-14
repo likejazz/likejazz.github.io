@@ -32,3 +32,6 @@ Microsoft 계정 로그인을 기본으로 한다. 당연히 인터넷이 안되
 에지는 더욱 좋아졌다. 크롬 처럼 동기화를 지원한다. 이외에도 OneDrive 동기화도 지원하는 등 사실상 One ID로 통합된다. Microsoft To Do도 같은 계정을 사용한다.
 
 - Improvements to Microsoft Edge: New Microsoft Edge based on Chromium included by default
+
+# 기타
+- 시작프로그램을 여는데 Win+R에서 `shell:startup` 입력하면 해당 폴더가 열린다.
