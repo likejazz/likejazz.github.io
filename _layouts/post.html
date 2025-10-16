@@ -3,7 +3,7 @@ layout: default
 ---
 
 <article class="post">
-  <p style="margin-bottom: 4px;"><a href="/">HOME</a> » <a href="/articles">ARTICLES</a> » {{ page.title }}</p>
+  <p style="margin-bottom: 4px;"><a href="/">HOME</a> » {{ page.title }}</p>
   <h1 class="post-title">{{ page.title }}</h1>
   {% include confidential.html %}
   <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">{{ page.date | date_to_string }}</time>
