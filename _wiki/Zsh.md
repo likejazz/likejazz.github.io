@@ -2,13 +2,15 @@
 layout: wiki 
 title: Zsh
 tags: ["Productivity"]
-last_modified_at: 2021/10/02 15:59:01
+last_modified_at: 2025/10/17 18:39:24
+last_modified_history:
+  - 2021/10/02 초안 작성
 ---
 
 <!-- TOC -->
 
 - [Zsh](#zsh)
-    - [zshrc](#zshrc)
+  - [zshrc](#zshrc)
 
 <!-- /TOC -->
 

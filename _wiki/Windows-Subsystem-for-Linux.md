@@ -2,17 +2,98 @@
 layout: wiki 
 title: Windows Subsystem for Linux
 tags: ["Productivity"]
-last_modified_at: 2025/10/10 22:17:34
+last_modified_at: 2025/10/17 18:45:03
+last_modified_history:
+  - 2025/10/17 Windows 11 설치
+  - 2021/06/08 Windows 10 설치
 ---
 
 <!-- TOC -->
 
+- [개인 설정 정리](#개인-설정-정리)
 - [개요](#개요)
 - [설치](#설치)
 - [활용](#활용)
 - [CUDA on WSL2](#cuda-on-wsl2)
 
 <!-- /TOC -->
+
+# 개인 설정 정리
+- sar 설치
+
+```bash
+$ /etc/default/sysstat
+ENABLED="true"
+
+sudo systemctl enable sysstat
+sudo systemctl start sysstat
+```
+리소스 모니터링도 `$ sar -u 1 `이 가장 직관적
+
+- ssh
+
+```bash
+$ sudo systemctl enable ssh
+```
+
+- 설치 패키지
+
+```bash
+# Install additonal packages.
+apt-get update && \
+apt-get install -y \
+  vim silversearcher-ag fzf file screen wget curl git htop nvtop btop tree rsync \
+  telnet iputils-ping netcat-traditional openssh-server python3 python3-dev pipx npm
+
+# Install essential CLIs associated with LLM
+pipx install huggingface_hub wandb Pygments
+pipx ensurepath
+
+# Install essential NPM packages
+npm install -g gnomon
+npm install -g @anthropic-ai/claude-code
+
+# Install extremely fast Python package manager
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# pbcopy
+curl -fsSLo pbcopy-linux-amd64.tar.gz \
+    https://github.com/skaji/remote-pbcopy-iterm2/releases/latest/download/pbcopy-linux-amd64.tar.gz
+tar xf pbcopy-linux-amd64.tar.gz
+mv pbcopy /usr/bin/
+```
+
+- `.bashrc`
+
+```bash
+# Credentials: HuggingFace, GitHub, AWS, ChatGPT, Claude, Gemini, ...
+export HF_TOKEN=xxx
+export GITHUB_TOKEN=xxx
+export OPENROUTER_API_KEY=xxx
+export OPENAI_API_KEY=xxx
+export ANTHROPIC_API_KEY="xxx"
+export AWS_ACCESS_KEY_ID="xxx"
+export AWS_SECRET_ACCESS_KEY="xxx"
+export SLACK_TOKEN=xxx
+export WANDB_API_KEY="xxx"
+
+# Created by `pipx`
+export PATH="$PATH:/home/xxx/.local/bin"
+
+# z
+source ~/bin/z.sh
+
+# v
+alias v="source .venv/bin/activate"
+
+# fzf
+source /usr/share/doc/fzf/examples/key-bindings.bash
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+```
+
+---
 
 # 개요
 cygwin은 POSIX API를 부분 지원하여 바이너리를 새로 빌드해야 하지만 WSL은 리눅스 커널 ABI 호환성을 제공하여 ELF 바이너리를 그대로 실행할 수 있다.
@@ -30,9 +111,9 @@ cygwin은 POSIX API를 부분 지원하여 바이너리를 새로 빌드해야 �
 # CUDA on WSL2
 - ~~WSL2가 필요하기 때문에 Windows Insider에 참여하여 dev channel의 Preview 버전 설치. 처음에는 이더넷 드라이버가 안잡혔는데, 재부팅 후 잡힌다. 아마 VM 용도로 이더넷이 추가되면서 지연이 발생하는듯.~~ 이제 WSL 2가 기본이다. CUDA Toolkit 업데이트가 WSL 내에서는 driver 설치가 안됐고, 윈도우 드라이버를 설치하니 WSL 2 드라이버도 함께 따라갔다.
 - ~~수동 설치도 해보고 이후에는 `$ wsl --install`로 자동 설치도 진행. Ubuntu 20.04 설치. 버전이름이 없는 이미지는 항상 최신 버전으로 지정된다고. 기존에 WSL1이 공존하고 있어 Program Features에서 WSL 제거 후 `$ wsl --install`로 다시 설치.~~
-- NVIDIA 가이드[^fn-nvidia]대로 CUDA Toolkit 설치. pytorch에서는 gpu로 인식한다.
-- `$ sudo apt install nvtop`해봤으나 `Segmentation Fault` 발생. `nvidia-smi.exe`만 동작한다. 아예 윈도우의 성능 관리자가 더 보기 편했다.
-- tensorflow-gpu를 설치하고 Keras로 MNIST convnet 예제를 돌려봤으나 CPU만 100%를 치고 gpu를 인식하지 못함. DirectML 버전으로 설치 진행하려다 중단.
+- ~~NVIDIA 가이드[^fn-nvidia]대로 CUDA Toolkit 설치. pytorch에서는 gpu로 인식한다.~~
+- ~~`$ sudo apt install nvtop`해봤으나 `Segmentation Fault` 발생. `nvidia-smi.exe`만 동작한다. 아예 윈도우의 성능 관리자가 더 보기 편했다.~~
+- ~~tensorflow-gpu를 설치하고 Keras로 MNIST convnet 예제를 돌려봤으나 CPU만 100%를 치고 gpu를 인식하지 못함. DirectML 버전으로 설치 진행하려다 중단.~~
 - jupyterlab을 0.0.0.0으로 구동해도 WSL2는 VM 구조라 별도 IP를 갖기 때문에 다른 호스트(macOS)에서 접속 불가능. 동일 윈도우에서만 접속 가능하여 불편하다. Power Shell로 proxy 설정하는 방법이 있으나 복잡하다.
 
 [^fn-nvidia]: <https://docs.nvidia.com/cuda/wsl-user-guide/index.html>

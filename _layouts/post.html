@@ -8,6 +8,18 @@ layout: default
   {% include confidential.html %}
   <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">{{ page.date | date_to_string }}</time>
   {{ content }}
+  <div style="text-align: right;">
+    <small>
+      {% if page.last_modified_history %}
+        Recent Updates:
+        <div style="line-height: 1.4;">
+          {% for date in page.last_modified_history limit:20 %}
+            {{ date }}<br>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </small>
+  </div>  
   <p style="text-align: right; font-size: small;">
     이 글의 비용을 <a href="https://buymeacoffee.com/sangpark">후원</a>할 수 있으며, 후원자에게 다양한 혜택을 제공할 예정입니다.
   </p>

@@ -2,23 +2,28 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2025/07/06 18:20:10
+last_modified_at: 2025/10/17 18:43:33
+last_modified_history:
+  - 2025/10/17 Windows 설치
+  - 2024/03/25 맥북 M2 에어 신규 설치
+  - 2023/10/04 iOS 추가
+  - 2022/06/28 맥북 M1 프로 추가
+  - 2022/06/14 CLI 및 기타 도구 정리
+  - 2021/12/18 콘솔 프로그램 정리
+  - 2020/12/03 빅서 업데이트
+  - 2020/06/23 사용 프로그램 정리
+  - 2018/05/29 사용 프로그램 정리
+  - 2017/11/12 하이 시에라 설치
+  - 2017/01/20 맥북 프로 터치바 셋팅
+  - 2016/06/22 최신 내용 반영
+  - 2015/11/26 엘 캐피탄 업데이트
+  - 2015/05/29 1차 개정
+  - 2014/10/23 초안 작성
 ---
 
 <div class="message">
 2006년 PowerBook G4를 시작으로 줄곧 맥을 사용해왔다. 이후 요세미티 출시(Oct 2014)와 함께 맥북을 클린 인스톨 했던 경험을 남겼다. 이후 macOS 신규 버전이 릴리즈 될 때마다 꾸준히 내용을 업데이트했고, 이후에도 꾸준히 사용해 오면서 유용한 프로그램을 계속 정리해나가고 있다.
 </div>
-
-<small id="dates" style="line-height:70%;">
-*2024년 3월 25일 맥북 에어 신규 설치*  *2023년 10월 4일 iOS 추가*  
-*2022년 6월 28일 맥북 M1 프로 추가*  *2022년 6월 14일 CLI 및 기타 도구 정리*  
-*2021년 12월 18일 콘솔 프로그램 정리*  *2020년 12월 3일 빅서 업데이트*  
-*2020년 6월 23일 사용 프로그램 정리*  *2020년 1월 1일 사용 프로그램 정리*  
-*2019년 5월 23일 사용 프로그램 정리*  *2018년 5월 29일 사용 프로그램 정리*  
-*2017년 11월 12일 하이 시에라 설치*  *2017년 1월 20일 맥북 프로 터치바 셋팅*  
-*2016년 6월 22일 최신 내용 반영*  *2015년 11월 26일 엘 캐피탄 업데이트*  
-*2015년 5월 19일 1차 개정*  *2014년 10월 23일 초안 작성*  
-</small>
 
 - [필수 설정 \& 도구](#필수-설정--도구)
 - [인터넷](#인터넷)
@@ -54,6 +59,8 @@ last_modified_at: 2025/07/06 18:20:10
 2020년 1월 맥북 프로 터치바, 2022년 6월 M1 맥북 프로 14인치, 2024년 3월 M2 맥북 에어
 </small>
 
+윈도우를 설치한 경험은 [Windows 설치 프로그램 정리](/windows) 참고
+
 ## 필수 설정 & 도구
 - 언어 설정은 영어를 기본으로 사용한다. 오랫동안 영어로 사용해와서 한글보다 더 익숙하다.
 - `Caps Lock` 키가 한/영 변환 디폴트다. 이외에 기존처럼 `⌘ + 스페이스`도 함께 사용한다.
@@ -70,17 +77,11 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
   - [**Oh My Zsh**](https://ohmyz.sh/)를 설치했다.
   - Preferences > Profiles > Colors에서 Blue/Normal의 색상이 눈이 아프므로 조정한다.
 - 메인 브라우저는 [**Chrome**](https://www.google.com/chrome/)을 사용한다. `$ brew install google-chrome` 보조 브라우저로 **Firefox**도 함께 사용한다. `$ brew install firefox`
-- 키보드는 MX Mechanical Mini for Mac, MX Anywhere 3 for Mac을 사용하고 [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options-plus`
+- ~~키보드는 MX Mechanical Mini for Mac, MX Anywhere 3 for Mac을 사용하고~~ [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options-plus`
 - 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.tumblr.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다. `$ brew install sublime-text`
 - 비밀번호 관리는 온라인의 경우 Chrome에 탑재되어 있는 Google Password Manager를 이용하고, 오프라인은 Bear에 그냥 메모로 기입한다. 이외 WiFi 정보가 애플의 Password Manager에, 일부 사이트가 Firefox의 Passwords에 저장되어 있다.
 - **카카오톡** 설명이 필요 없는 국민 메신저 `$ mas install 869223134`
-- [**Visual Studio Code**](https://code.visualstudio.com/download)는 위키를 편집하거나 발표 자료를 작성하고, 코드 리뷰 용도로도 사용하는 메인 편집기다. Settings Sync를 하면(GitHub 계정) 모든 설정과 Extensions를 설치해준다. `$ brew install visual-studio-code`
-  - 편리한 이용을 위해 [Shell Command](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)를 설치한다.
-  - 위키의 최근 수정 날짜를 갱신하는 **[Auto Time Stamp](https://marketplace.visualstudio.com/items?itemName=lpubsppop01.vscode-auto-timestamp)**.
-  - JetBrains Tools와 Keymaps를 맞추기 위한 **[JetBrains IDE Keymap](https://marketplace.visualstudio.com/items?itemName=isudox.vscode-jetbrains-keybindings)**.
-  - Markdown TOC를 비롯한 여러 편리한 기능 **[Markdown All in One(Yu Zhang)](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)**
-  - Markdown으로 발표자료를 작성하는 **[Marp for VS Code](https://marketplace.visualstudio.com/items?itemName=marp-team.marp-vscode)**
-  - 문서의 길이 비율 표시 **[scroll percentage](https://marketplace.visualstudio.com/items?itemName=IdanRudich.scroll-percentage)** 긴 문서를 편집할 때 유용하다.
+- [**Visual Studio Code**](/wiki/Visual-Studio-Code) 정리 참고
 - [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 1/3, 1/2 순으로 Rotate되는 기능이 좋다. `$ brew install rectangle`
 - 런처는 기본 탑재된 Spotlight Search를 이용한다.
 - Notification Center는 전혀 이용하지 않는다. 일부러 모든 Widget을 삭제했다.
@@ -112,7 +113,7 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - 문서의 작성과 보관은 **GitHub Pages**를 이용한다. 지식 저장소로 활용하고 있으며, **MathJax**를 이용한 수식 지원도 좋다. 위키도 좋지만 수식을 지원하지 않기 때문에 페이지를 별도로 사용한다.
   - 개인 문서와 집필 초고 등은 GitHub의 Private Repository를 이용한다.
   - 집필한 원고는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
-  - 프리젠테이션을 위해 **Marp for VS Code**를 이용한다.
+  - ~~프리젠테이션을 위해 **Marp for VS Code**를 이용한다.~~
 - **Microsoft Office(유료)**에서 Excel을 주로 이용하고 집필시 Word를 가끔 이용한다. `$ mas install 462058435`
 - 간혹 아래아한글 파일을 읽을 일이 있다. **한컴오피스 한글 2014 VP 뷰어** 설치 `$ mas install 416746898`
 - 모든 원고는 마크다운으로 초고를 작성하는데, VSCode를 주로 이용하지만 편리한 WYSIWIG을 위해 [**Typora(유료)**](https://typora.io/)와 병행한다. `$ brew install typora`
@@ -160,7 +161,7 @@ xcode-select version 2395.
 - git 관리는 CLI로 대부분 가능하나 diff 등은 습관적으로 **GitHub Desktop**을 사용한다. `$ brew install github`
 - **JetBrains IDE(유료)** [All Products Pack 연간 라이센스를 사용](http://likejazz.tumblr.com/post/133725850005/jetbrains-all-products-pack)하고 있다. IntelliJ 뿐만 아니라 [CLion](http://likejazz.tumblr.com/post/118649049333/clion-1-0), PyCharm, PhpStorm, AppCode, GoLand등을 사용하는 [가장 즐겨쓰는 최고의 IDE](http://likejazz.tumblr.com/post/112670720955/jetbrains-ide)다. 설정은 [JetBrains](/wiki/JetBrains/) 참고. 최근에는 JetBrains Gateway가 원격 개발에 매우 편리하다.
   - **JetBrains ToolBox** IDE를 통합 관리할 수 있는 필수 메뉴바 앱이다. `$ brew install jetbrains-toolbox`
-- 개발/테스트/서비스로 이어지는 설정과 설치는 항상 고민거리다. **Docker**는 모든 고민을 말끔하게 해결해줬다. 게다가 M1에서도 잘 지원하기 때문에 **Docker Desktop**은 필수다.
+- ~~개발/테스트/서비스로 이어지는 설정과 설치는 항상 고민거리다. **Docker**는 모든 고민을 말끔하게 해결해줬다. 게다가 M1에서도 잘 지원하기 때문에 **Docker Desktop**은 필수다.~~
 - 가끔 스니펫은 **[GitHub Gist](https://gist.github.com/likejazz)**에 보관한다. 비공개도 URL이 노출되면 안되기 때문에 별도로 관리한다. 
 
 ## 자료
