@@ -1,0 +1,92 @@
+  <div style="text-align: right;">
+    <small>
+      {% if page.last_modified_history %}
+        Recent Updates:
+        <div style="line-height: 1.4;">
+          {% for date in page.last_modified_history limit:20 %}
+            {{ date }}<br>
+          {% endfor %}
+        </div>
+      {% elsif page.last_modified_at %}
+        Last Modified: {{ page.last_modified_at }}
+      {% endif %}
+    </small>
+  </div>
+  
+  <style>
+    .ads-container {
+      display: flex;
+      align-items: center;
+      background: hsla(200, 60%, 15%, 0.08);
+      border-radius: 8px;
+      padding: 6px 8px;
+      margin: 10px 0;
+    }
+    .ads-images {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      margin-right: 16px;
+    }
+    .ads-images img {
+      max-width: 80px;
+      height: auto;
+    }
+    .ads-text {
+      flex: 1;
+      color: #4a4a4a;
+    }
+    .ads-text p {
+      font-size: 0.9em;
+    }
+    .mobile-br {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-br {
+        display: inline;
+      }
+      .ads-container {
+        flex-direction: column;
+        padding: 12px;
+      }
+      .ads-images {
+        margin-right: 0;
+        margin-bottom: 12px;
+        gap: 12px;
+      }
+      .ads-images img {
+        max-width: 60px;
+      }
+      .ads-text p {
+        font-size: 0.85em;
+        text-align: center;
+      }
+    }
+    @media (max-width: 480px) {
+      .ads-images img {
+        max-width: 50px;
+      }
+      .ads-text p {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+  <div class="ads-container">
+    <div class="ads-images">
+      <a href="https://www.yes24.com/product/goods/122445610" target="_blank"><img src="/images/2024/268554749-f0a36611-8f70-44d6-b2f5-ba4fb2ff95ef.png" alt="자바 알고리즘 인터뷰"></a>
+      <a href="https://www.yes24.com/product/goods/91084402" target="_blank"><img src="/images/2020/book-cover.jpg" alt="파이썬 알고리즘 인터뷰"></a>
+    </div>
+    <div class="ads-text">
+      <p>
+        <strong>카카오 코딩 테스트 출제위원</strong>이 직접 집필한,<br> 
+        <a href="https://leetcode.com/" target="_blank">리트코드(LeetCode)</a> 문제로 풀어보는,<br>
+        구글, 마이크로소프트, 네이버, 카카오<br class="mobile-br"> 코딩 테스트 완벽 가이드<br>
+        <a href="https://www.yes24.com/product/goods/122445610" target="_blank">『자바 알고리즘 인터뷰』</a>,<br class="mobile-br"> <a href="https://www.yes24.com/product/goods/91084402" target="_blank">『파이썬 알고리즘 인터뷰』</a>
+      </p>
+    </div>
+  </div>
+  
+  <p style="text-align: right; font-size: small;">
+    이 사이트의 운영 비용을 <a href="https://buymeacoffee.com/sangpark">후원</a>할 수 있으며, 후원자에게 혜택을 제공할 예정입니다.
+  </p>

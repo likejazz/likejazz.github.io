@@ -1,0 +1,71 @@
+    <style>
+        .header-banner-container {
+        display: flex;
+        align-items: center;
+        background: hsla(200, 60%, 15%, 0.08);
+        border-radius: 8px;
+        padding: 6px 8px 0px 8px;
+        margin: 10px 0 0px 0;
+        }
+        .header-banner-image {
+        flex-shrink: 0;
+        margin-right: 16px;
+        }
+        .header-banner-image img {
+        max-width: 140px;
+        height: auto;
+        }
+        .header-banner-text {
+        flex: 1;
+        color: #4a4a4a;
+        }
+        .header-banner-text p {
+        margin: 0;
+        font-size: 0.9em;
+        }
+        .mobile-br {
+        display: none;
+        }
+        @media (max-width: 768px) {
+        .mobile-br {
+            display: inline;
+        }
+        .header-banner-container {
+            flex-direction: column;
+            padding: 12px;
+        }
+        .header-banner-image {
+            margin-right: 0;
+            margin-bottom: 12px;
+        }
+        .header-banner-image img {
+            max-width: 100px;
+        }
+        .header-banner-text p {
+            font-size: 0.85em;
+            text-align: center;
+        }
+        }
+        @media (max-width: 480px) {
+        .header-banner-image img {
+            max-width: 80px;
+        }
+        .header-banner-text p {
+            font-size: 0.8em;
+        }
+        }
+    </style>
+    <div class="header-banner-container">
+        <div class="header-banner-image">
+        <a href="https://www.yes24.com/product/goods/146290174" target="_blank">
+            <img src="/images/2025/books.png" alt="비전공자도 이해할 수 있는 챗GPT">
+        </a>
+        </div>
+        <div class="header-banner-text">
+        <p>
+            <a href="https://www.yes24.com/product/goods/146290174" target="_blank">『비전공자도 이해할 수 있는 챗GPT』</a>,<br class="mobile-br"> 
+            <a href="https://www.yes24.com/product/goods/134766939" target="_blank">『비전공자도 이해할 수 있는 AI 지식』</a><br>
+            10만 베스트셀러를 기록한 세상에서 가장 이해하기 쉬운 챗GPT 교양서
+        </p>
+        </div>
+    </div>
