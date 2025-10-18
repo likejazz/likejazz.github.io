@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2025/10/17 18:43:33
+last_modified_at: 2025/10/18 20:08:31
 last_modified_history:
   - 2025/10/17 Windows 설치
   - 2024/03/25 맥북 M2 에어 신규 설치
@@ -167,7 +167,7 @@ xcode-select version 2395.
 ## 자료
 개인 자료의 경우 사진과 비디오는 **Google Photos**를 활용한다. 비디오 중 공개적인건 **YouTube**에, 음악은 **멜론(유료)** 스트리밍을 이용하고, 문서는 **Dropbox**와 **iCloud Drive**에 적절히 나눠 저장하고, 정리가 필요한 문서는 **GitHub** 위키에 마크다운으로 작성한다. 코드는 **GitHub**을 활용한다.
 
-맥북 SSD 크기가 제한적이라 외장 SDD, SanDisk Extreme Portable SSD를 사용하고 있다. 방진, 방수에 500MB/s 속도를 지원한다. Disk Utility에서 APFS (Encrypted) 포맷으로 Attach시 비밀번호를 입력(저장 가능)해야 접근 가능하다. 250G가 69,000원. 2024년 9월 Portable SSD 2TB는 189,000원에 구매. 물론 외장 HDD가 용량이 더 크고, 가격도 저렴하지만 소음과 진동이 있고, 충격에 약해 휴대용으로는 적절치 않다. 2023년 9월 삼성 SSD 1TB를 129,000원에 구매. 삼성은 exFAT인데 인식 속도가 너무 늦다. SanDisk도 인식이 늦는 문제가 있었는데, 다른 케이블로 해결됐다.
+맥북 SSD 크기가 제한적이라 SanDisk Extreme Portable SSD 250GB 사용. 방진, 방수에 500MB/s 속도를 지원한다. Disk Utility에서 APFS (Encrypted) 포맷으로 Attach시 비밀번호를 입력(저장 가능)해야 접근 가능하다. 250G가 69,000원. 2024년 9월 Sandisk Portable SSD 2TB는 189,000원에 구매. 물론 외장 HDD가 용량이 더 크고, 가격도 저렴하지만 소음과 진동이 있고, 충격에 약해 휴대용으로는 적절치 않았다. 2023년 9월 삼성 SSD 1TB 129,000원에 구매. 삼성은 exFAT인데 인식 속도가 너무 늦다. SanDisk도 저대역폭 케이블을 연결하면 인식이 느리니 주의
 
 ## 기타
 대부분의 개인 자료는 클라우드에 두다 보니 맥북을 새로 구매하거나 클린 인스톨을 진행해도 별도로 백업이나 복원할게 없다. 동영상처럼 용량이 매우 큰 일부 자료나 여러 가지 아카이빙을 제외하면 더 이상 로컬에는 데이터를 보관하지 않는다. 회사 문서나 개인 자료만 별도로 시간순 월 단위로 관리하는데, 이 또한 한 번도 열어보지 않거나 결국은 손실되곤 한다.

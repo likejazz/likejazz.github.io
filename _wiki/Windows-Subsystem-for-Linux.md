@@ -2,7 +2,7 @@
 layout: wiki 
 title: Windows Subsystem for Linux
 tags: ["Productivity"]
-last_modified_at: 2025/10/17 23:14:20
+last_modified_at: 2025/10/18 19:46:29
 last_modified_history:
   - 2025/10/17 Windows 11 설치
   - 2021/06/08 Windows 10 설치
@@ -43,7 +43,7 @@ $ sudo systemctl enable ssh
 apt-get update && \
 apt-get install -y \
   vim silversearcher-ag fzf file screen wget curl git htop nvtop btop tree rsync \
-  telnet iputils-ping netcat-traditional openssh-server python3 python3-dev pipx npm unison
+  telnet iputils-ping netcat-traditional openssh-server python3 python3-dev pipx npm unison inotify-tools
 
 # Install essential CLIs associated with LLM
 pipx install huggingface_hub wandb Pygments

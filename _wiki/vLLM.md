@@ -2,53 +2,24 @@
 layout: wiki
 title: vLLM
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2025/03/14 19:08:05
+last_modified_at: 2025/10/18 20:52:07
+last_modified_history:
+  - 2025/10/18 내용 정리
+  - 2025/03/14 이전 버전
 ---
 
 - [실행](#실행)
-  - [서버](#서버)
-    - [curl](#curl)
-  - [Code](#code)
-  - [응용](#응용)
 - [Multi Nodes](#multi-nodes)
 
 # 실행
-## 서버
+Reasoning 모델 (Qwen3) 구동:
 ```
-$ vllm serve /models/xxx --served-model-name xxx
-```
-
-context length가 긴 경우 모델 로딩시 OOM이 발생할 수 있다.
-```
-$ vllm serve aa/bb --max-model-len 8192
-```
-
-### curl
-```
-$ curl http://localhost:8000/v1/chat/completions -i \
-  -H "Content-Type: application/json" \
-  -d '{
-     "model": "aa/bb",
-     "stream": true,
-     "max_tokens": 512,
-     "frequency_penalty": 1.5,
-     "messages": [{"role": "user", "content": "우리나라 대통령이 누구야?"}]
-   }'
-```
-
-## Code
-```python
-from vllm import LLM
-llm = LLM(model="/models/xxx")
-output = llm.generate('안녕하세요')
-```
-
-## 응용
-```python
-from vllm import LLM, SamplingParams
-llm = LLM(model='.')
-llm.generate(prompt, SamplingParams(temperature=0.0))[0].outputs
+$ vllm serve . \
+--served-model-name xxx \
+--reasoning-parser deepseek_r1 \
+--max-model-len 32000 \
+--port 18001
 ```
 
 # Multi Nodes
-`run_cluster.sh`를 제공하며, ray를 사용하고 docker로 구동한다. k8s내에서는 해당 docker 이미지를 배포하는 방식으로 적용이 가능할 거 같다. 스크립트에는 docker가 구동되자마자 ray를 실행하도록 되어 있다.
+`run_cluster.sh`를 제공하며, ray를 사용하고 docker로 구동한다. K8s내에서는 해당 docker 이미지를 배포하는 방식으로 적용이 가능할 거 같다. 스크립트에는 docker가 구동되자마자 ray를 실행하도록 되어 있다.

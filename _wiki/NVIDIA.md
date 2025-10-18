@@ -2,7 +2,10 @@
 layout: wiki 
 title: NVIDIA
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/10/14 15:47:40
+last_modified_at: 2025/10/18 20:10:54
+last_modified_history:
+  - 2025/10/18 M3 Ultra 추가
+  - 2024/10/14 이전 버전
 ---
 
 - [NVIDIA Data Center GPUs](#nvidia-data-center-gpus)
@@ -26,6 +29,7 @@ last_modified_at: 2024/10/14 15:47:40
 | M1 Pro Memory | | 200GB/s |
 | M1 Max Memory | | 400GB/s |
 | NVLink(A100) | | 600GB/s |
+| M3 Ultra Memory | | 800GB/s |
 | HBM(A100 40G) | | 1.5TB/s |
 | HBM(A100 80G) | | 1.9TB/s |
 | HBM(H100 SXM 80G) | | 3.35TB/s |
