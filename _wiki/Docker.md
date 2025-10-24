@@ -2,7 +2,10 @@
 layout: wiki 
 title: Docker
 tags:  ["Infrastructure"]
-last_modified_at: 2024/09/02 16:22:36
+last_modified_at: 2025/10/20 13:53:21
+last_modified_history:
+  - 2025/10/20 Harbor 추가
+  - 2024/09/02 이전 버전
 ---
 
 - [기본](#기본)
@@ -26,6 +29,7 @@ last_modified_at: 2024/09/02 16:22:36
 - [Dockerfile](#dockerfile)
 - [Docker without root](#docker-without-root)
 - [Change apt repo to kakao due to a hash error](#change-apt-repo-to-kakao-due-to-a-hash-error)
+- [Harbor](#harbor)
 
 # 기본
 ## multi-stage builds
@@ -294,3 +298,16 @@ $ sudo chmod 666 /var/run/docker.sock
 # Change apt repo to kakao due to a hash error.
 RUN sed -i "s/archive.ubuntu.com/mirror.kakao.com/g" /etc/apt/sources.list
 ```
+
+# Harbor
+
+harbor에 PUSH할 때,
+```
+push access denied, repository does not exist or may require authorization: authorization failed: no basic auth credentials
+```
+인증 오류가 발생한다면,
+```
+$ docker login harbor.dnotitia.xx
+```
+
+로그인 정보는 harbor에서 우측 상단 로그인 정보, User Profile > CLI secret을 복사해서 password로 진행하면 된다.
