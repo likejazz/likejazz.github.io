@@ -2,7 +2,7 @@
 layout: wiki 
 title: Windows Subsystem for Linux
 tags: ["Productivity"]
-last_modified_at: 2025/10/24 18:40:09
+last_modified_at: 2025/10/24 22:59:40
 last_modified_history:
   - 2025/10/24 CUDA Toolkit 재설치
   - 2025/10/17 Windows 11 설치
@@ -124,4 +124,5 @@ Linux   NVIDIA-SMI 580.102.01             Driver Version: 581.57         CUDA Ve
 오류입니다.
 오류 코드: Wsl/Service/E_UNEXPECTED
 ```
-- jupyterlab을 0.0.0.0으로 구동해도 WSL2는 VM 구조라 별도 IP를 갖기 때문에 다른 호스트(macOS)에서 접속 불가능. 동일 윈도우에서만 접속 가능하여 불편하다. Power Shell로 proxy 설정하는 방법이 있으나 복잡하다.
+- jupyterlab을 0.0.0.0으로 구동해도 WSL2는 VM 구조라 별도 IP를 갖기 때문에 다른 호스트(macOS)에서 접속 불가능. 동일 윈도우에서만 접속 가능하여 불편하다.
+- nvtop이 안됐는데, nvitop을 설치하면서 libnvidia-compute-580-server nvidia-firmware-580-server-580.95.05 nvidia-kernel-common-580-server같은 예전 드라이버 의존성이 있어 함께 설치하고 이 때문에 실행이 안됐다. GPU 드라이버를 윈도우쪽에서 설치하기 때문에 WSL 2에서 nvidia관련은 apt에서 모두 제거했다.
