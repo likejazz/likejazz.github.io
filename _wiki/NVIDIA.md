@@ -27,6 +27,7 @@ last_modified_history:
 | M2 Air 1TB SSD | | 2.8GB/s read |
 | M2 Air Memory | | 100GB/s |
 | M1 Pro Memory | | 200GB/s |
+| NVIDIA Jetson AGX Orin | | 204GB/s |
 | NVIDIA DGX Spark | | 273GB/s |
 | M1 Max Memory | | 400GB/s |
 | NVLink(A100) | | 600GB/s |
