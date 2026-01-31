@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2025/10/18 20:08:31
+last_modified_at: 2026/01/31 22:00:06
 last_modified_history:
   - 2025/10/17 Windows 설치
   - 2024/03/25 맥북 M2 에어 신규 설치
@@ -66,11 +66,14 @@ last_modified_history:
 - `Caps Lock` 키가 한/영 변환 디폴트다. 이외에 기존처럼 `⌘ + 스페이스`도 함께 사용한다.
 ```
 Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input source 변경
-                                     Modifier Keys > Caps Lock key 변경
                                      Spotlight > Show Spotlight search ⌥⌘Space 설정
                                      Spotlight > Show Finder search window 해제
 ```
   - Modifier Keys에서는 키보드 타입이 맞는지 확인 필요
+  - Keymap 변경은 [**Karabiner Elements**](https://karabiner-elements.pqrs.org/) 사용. 권한 설정할게 좀 많다.
+
+<img src="https://github.com/user-attachments/assets/cdf0fbdf-9079-4902-b772-6efc3b314179" width="70%">
+
 - 각종 도구와 컴파일러 등 모든 개발 관련 도구는 [**Homebrew**](https://github.com/Homebrew/brew/releases)를 통해 설치한다. pkg로 설치하고 `eval "$(/opt/homebrew/bin/brew shellenv)"`를 나중에 oh my zsh 설치 후 `.zshrc`에 두어 링크를 건다.
   - 버전 관리를 위해 앱은 가능한 앱스토어에서 설치한다. **mas**가 이를 CLI에서 관리해준다. `$ brew install mas`
 - 터미널은 [**iTerm2**](https://iterm2.com/downloads.html)를 사용한다. `$ brew install iterm2`
