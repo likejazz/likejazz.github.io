@@ -2,8 +2,9 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2026/01/31 22:00:06
+last_modified_at: 2026/02/19 14:54:48
 last_modified_history:
+  - 2026/02/19 iTerm2 단축키 추기
   - 2025/10/17 Windows 설치
   - 2024/03/25 맥북 M2 에어 신규 설치
   - 2023/10/04 iOS 추가
@@ -79,6 +80,8 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 - 터미널은 [**iTerm2**](https://iterm2.com/downloads.html)를 사용한다. `$ brew install iterm2`
   - [**Oh My Zsh**](https://ohmyz.sh/)를 설치했다.
   - Preferences > Profiles > Colors에서 Blue/Normal의 색상이 눈이 아프므로 조정한다.
+  - Settings > Profiles > Keys > Configure Hotkey Window `⌥⌘T` 등록
+    - Pin hotkey window 체크
 - 메인 브라우저는 [**Chrome**](https://www.google.com/chrome/)을 사용한다. `$ brew install google-chrome` 보조 브라우저로 **Firefox**도 함께 사용한다. `$ brew install firefox`
 - ~~키보드는 MX Mechanical Mini for Mac, MX Anywhere 3 for Mac을 사용하고~~ [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options-plus`
 - 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.tumblr.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 아무런 플러그인도 사용하지 않는다. `$ brew install sublime-text`

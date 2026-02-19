@@ -2,15 +2,17 @@
 layout: wiki 
 title: Firebase Cloud Messaging
 tags: ["Software Engineering"]
-last_modified_at: 2021/06/08 13:03:45
+last_modified_at: 2026/02/19 14:39:09
+last_modified_history:
+  - 2021/06/08
 ---
 
 <!-- TOC -->
 
 - [개요](#개요)
 - [방법](#방법)
-    - [Access Token 발급 받는 법](#access-token-발급-받는-법)
-    - [Python SDK](#python-sdk)
+  - [Access Token 발급 받는 법](#access-token-발급-받는-법)
+  - [Python SDK](#python-sdk)
 
 <!-- /TOC -->
 
@@ -19,7 +21,7 @@ last_modified_at: 2021/06/08 13:03:45
 
 # 방법
 ```bash
-ACCESS_TOKEN="ya29...8yNK8UlESsi4ye_i"
+ACCESS_TOKEN="xxx"
 NOW=$(date +'%Y-%m-%d %H:%M:%S')
 
 $ curl -i -X POST -H "Authorization: Bearer $ACCESS_TOKEN" \

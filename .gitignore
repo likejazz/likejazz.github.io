@@ -13,24 +13,11 @@ vendor/
 r.html
 private-deploy.sh
 _wiki/ChatBaker.md
-_wiki/lmeval.md
 _wiki/Private-Links.md
-_wiki/LLaMA-Factory.md
-_wiki/CPT-LLaMA-Factory.md
-_wiki/CPT-Axolotl.md
 _wiki/CPT-unsloth.md
-_wiki/CPT-성능-실험.md
 _wiki/학습-자료-정리.md
-_wiki/mergekit.md
-_wiki/RunPod.md
-_wiki/DeepSpeed.md
-_wiki/VESSL.md
-_wiki/KMMLU.md
 _wiki/이해관계-책.md
 _wiki/정성적-평가.md
-_wiki/Trainer.md
-_wiki/Wan.md
-_wiki/Qwen.md
 _posts/2024-07-22-hyperaccel.md
 _posts/2025-08-16-gpt-oss.md
 ### CONFIDENTIAL - END
