@@ -2,9 +2,9 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2026/02/19 14:54:48
+last_modified_at: 2026/02/19 15:08:36
 last_modified_history:
-  - 2026/02/19 iTerm2 단축키 추기
+  - 2026/02/19 iTerm2 단축키 추가
   - 2025/10/17 Windows 설치
   - 2024/03/25 맥북 M2 에어 신규 설치
   - 2023/10/04 iOS 추가

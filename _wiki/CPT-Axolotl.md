@@ -2,7 +2,7 @@
 layout: wiki 
 title: CPT Axolotl
 tags: ["LLM Training"]
-last_modified_at: 2026/02/19 14:22:00
+last_modified_at: 2026/02/20 02:28:08
 last_modified_history:
   - 2025/01/10
 ---
@@ -14,7 +14,6 @@ last_modified_history:
 # 설치
 기존에 아래와 같은 어려움이 있었으나, pytorch 2.5설치, torchvision==0.17.0 설치 (torch 2.2로 자동 다운그레이드), flash-attn 재설치 후 문제 없이 실행된다.
 
-[axolotl 홈](https://github.com/axolotl-ai-cloud/axolotl)
 ```
 git clone https://github.com/axolotl-ai-cloud/axolotl.git
 cd axolotl
