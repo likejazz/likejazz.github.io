@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2026/02/19 15:08:36
+last_modified_at: 2026/06/12 14:33:03
 last_modified_history:
   - 2026/02/19 iTerm2 단축키 추가
   - 2025/10/17 Windows 설치
@@ -75,10 +75,10 @@ Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input sou
 
 <img src="https://github.com/user-attachments/assets/cdf0fbdf-9079-4902-b772-6efc3b314179" width="70%">
 
-- 각종 도구와 컴파일러 등 모든 개발 관련 도구는 [**Homebrew**](https://github.com/Homebrew/brew/releases)를 통해 설치한다. pkg로 설치하고 `eval "$(/opt/homebrew/bin/brew shellenv)"`를 나중에 oh my zsh 설치 후 `.zshrc`에 두어 링크를 건다.
-  - 버전 관리를 위해 앱은 가능한 앱스토어에서 설치한다. **mas**가 이를 CLI에서 관리해준다. `$ brew install mas`
-- 터미널은 [**iTerm2**](https://iterm2.com/downloads.html)를 사용한다. `$ brew install iterm2`
-  - [**Oh My Zsh**](https://ohmyz.sh/)를 설치했다.
+- 각종 도구와 컴파일러 등 모든 개발 관련 도구는 **Homebrew**를 통해 설치한다. pkg로 설치하고 `eval "$(/opt/homebrew/bin/brew shellenv)"`를 `.zshrc`에 두어 링크를 건다.
+  - 버전 관리를 위해 앱은 가능한 앱스토어에서 설치한다. **mas**가 이를 CLI에서 관리해주나 일부만 사용한다. `$ brew install mas`
+- 터미널은 [**iTerm2**](https://iterm2.com/)를 사용한다. `$ brew install iterm2`
+  - [**Zsh**](/wiki/Zsh) 설정 참고
   - Preferences > Profiles > Colors에서 Blue/Normal의 색상이 눈이 아프므로 조정한다.
   - Settings > Profiles > Keys > Configure Hotkey Window `⌥⌘T` 등록
     - Pin hotkey window 체크

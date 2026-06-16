@@ -6,10 +6,16 @@ title: Home
 <div class="home">
   <div class="grid grid-pad">
     <div class="content">
-      <p style="margin-bottom: -12px;">HOME</p>
+      <p style="margin-bottom: -12px;">
+        {% if paginator.page > 1 %}
+          <a href="/">HOME</a> » {{ paginator.page }}페이지
+        {% else %}
+          HOME
+        {% endif %}
+      </p>
       <div class="listings">
         <div>
-          {% assign years = site.posts
+          {% assign years = paginator.posts
           | group_by_exp: "post", "post.date | date: '%Y'"
           %}
           {% for year in years %}
@@ -40,6 +46,30 @@ title: Home
               </div>
             {% endfor %}
           {% endfor %}
+
+          {% if paginator.total_pages > 1 %}
+          <div class="pagination">
+            {% comment %}
+            {% if paginator.previous_page %}
+              <a href="{{ paginator.previous_page_path | relative_url }}">&laquo;</a>
+            {% endif %}
+            {% endcomment %}
+            {% for page in (1..paginator.total_pages) %}
+              {% if page == paginator.page %}
+                <a class="active">{{ page }}</a>
+              {% elsif page == 1 %}
+                <a href="{{ '/' | relative_url }}">{{ page }}</a>
+              {% else %}
+                <a href="{{ site.paginate_path | replace: ':num', page | relative_url }}">{{ page }}</a>
+              {% endif %}
+            {% endfor %}
+            {% comment %}
+            {% if paginator.next_page %}
+              <a href="{{ paginator.next_page_path | relative_url }}">&raquo;</a>
+            {% endif %}
+            {% endcomment %}
+          </div>
+          {% endif %}
         </div>
       </div>
     </div>

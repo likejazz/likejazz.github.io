@@ -32,8 +32,13 @@ github:
 
 # Custom Gems
 plugins:
+  - jekyll-paginate
   - jekyll-redirect-from
   - jekyll-sitemap
+
+# Pagination
+paginate: 30
+paginate_path: "/page:num/"
 
 # Exclude these files from your production _site
 exclude:
