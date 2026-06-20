@@ -2,12 +2,14 @@
 layout: wiki 
 title: Jetson
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/12/17 12:51:01
+last_modified_at: 2026/06/20 00:12:51
 ---
 
 <!-- TOC -->
 
 - [설정](#설정)
+	- [Mount disk](#mount-disk)
+	- [lvm 확장](#lvm-확장)
 - [도구](#도구)
 	- [Transformers](#transformers)
 	- [SSH](#ssh)
@@ -39,6 +41,45 @@ resize > /dev/null
 ```
 
 `sudo apt install nvidia-jetpack`로 [JetPack](https://docs.nvidia.com/jetson/jetpack/install-jetpack/index.html#package-management-tool)을 설치한다. 9.1G이며 20분 소요. CUDA Toolkit과 cuDNN, TensorRT, NVIDIA container runtime 등을 패키지로 설치해준다.
+
+## Mount disk
+DGX:
+```shell
+$ lsblk
+# 파일시스템 포맷이므로 주의
+$ sudo mkfs.xfs /dev/nvmexxx
+$ sudo mkdir /models
+$ sudo chown hyperai /models
+$ sudo mount /dev/nvmexxx /models
+```
+
+Jetson:
+```shell
+$ sudo fdisk /dev/nvme0n1
+# n, p, [ENTER], [ENTER], w
+$ lsblk
+nvme0n1      259:0    0 931.5G  0 disk
+└─nvme0n1p1  259:1    0 931.5G  0 part
+$ sudo mkfs.ext4 /dev/nvme0n1
+$ sudo mkdir /models
+$ sudo chown sangpark /models
+$ sudo mount /dev/nvme0n1 /models
+# /etc/fstab 수정
+# <file system> <mount point>             <type>          <options>                               <dump> <pass>
+/dev/root            /                     ext4           defaults                                     0 1
+/dev/nvme0n1         /models               ext4           defaults                                     0 2
+```
+
+파일 시스템을 `ext4`로 사용하는 것외에는 동일하다. 전체 디스크를 단일 파티션으로 사용할 것이므로 굳이 fdisk 하지 않아도 된다.
+
+## lvm 확장
+lvm 논리 불륨을 확장하려면 `$ sudo vgs`로 볼륨 그룹의 이름 확인, 이후 다음과 같이 확장한다.
+```bash
+# 논리그룹 확장: 사용 가능한 모든 공간
+$ sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+# 파일시스템 확장
+$ sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
+```
 
 # 도구
 처음에 nvidia-smi가 없어서 당황할 수 있다.

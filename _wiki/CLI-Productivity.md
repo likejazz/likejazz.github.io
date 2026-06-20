@@ -2,7 +2,7 @@
 layout: wiki 
 title: CLI Productivity
 tags: ["Productivity"]
-last_modified_at: 2025/10/11 01:06:58
+last_modified_at: 2026/06/20 00:12:32
 ---
 
 <!-- TOC -->
@@ -13,12 +13,12 @@ last_modified_at: 2025/10/11 01:06:58
 - [tar with excludes](#tar-with-excludes)
 - [setup KST timezone](#setup-kst-timezone)
 - [asciinema](#asciinema)
-- [Mount disk](#mount-disk)
-  - [lvm 확장](#lvm-확장)
 - [htop](#htop)
 - [`set -eux`](#set--eux)
 - [맥의 한글 파일이 리눅스에서 escaped sequences로 보이는 경우](#맥의-한글-파일이-리눅스에서-escaped-sequences로-보이는-경우)
 - [To determine your Linux distribution](#to-determine-your-linux-distribution)
+- [iTerm2 관련 설정 백업](#iterm2-관련-설정-백업)
+- [mac에서 유용한 CLI 도구](#mac에서-유용한-cli-도구)
 
 <!-- /TOC -->
 
@@ -97,45 +97,6 @@ It will automatically set `/etc/localtime`.
 
 또 다른 옵션으로 [termtosvg](https://github.com/nbedos/termtosvg)도 있다. 바로 svg로 저장되므로 편리하지만 한글 출력시 약간씩 좌우로 흔들리는 버그가 있다.
 
-# Mount disk
-DGX:
-```shell
-$ lsblk
-# 파일시스템 포맷이므로 주의
-$ sudo mkfs.xfs /dev/nvmexxx
-$ sudo mkdir /models
-$ sudo chown hyperai /models
-$ sudo mount /dev/nvmexxx /models
-```
-
-Jetson:
-```shell
-$ sudo fdisk /dev/nvme0n1
-# n, p, [ENTER], [ENTER], w
-$ lsblk
-nvme0n1      259:0    0 931.5G  0 disk
-└─nvme0n1p1  259:1    0 931.5G  0 part
-$ sudo mkfs.ext4 /dev/nvme0n1
-$ sudo mkdir /models
-$ sudo chown sangpark /models
-$ sudo mount /dev/nvme0n1 /models
-# /etc/fstab 수정
-# <file system> <mount point>             <type>          <options>                               <dump> <pass>
-/dev/root            /                     ext4           defaults                                     0 1
-/dev/nvme0n1         /models               ext4           defaults                                     0 2
-```
-
-파일 시스템을 `ext4`로 사용하는 것외에는 동일하다. 전체 디스크를 단일 파티션으로 사용할 것이므로 굳이 fdisk 하지 않아도 된다.
-
-## lvm 확장
-lvm 논리 불륨을 확장하려면 `$ sudo vgs`로 볼륨 그룹의 이름 확인, 이후 다음과 같이 확장한다.
-```bash
-# 논리그룹 확장: 사용 가능한 모든 공간
-$ sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
-# 파일시스템 확장
-$ sudo resize2fs /dev/ubuntu-vg/ubuntu-lv
-```
-
 # htop
 top을 대체하는 최고의 프로젝트
 - `Shift+H` Turn off userland threads
@@ -157,3 +118,30 @@ $ ls -al
 2. `lsb_release -a`
 3. `uname -r`
 4. `hostnamectl`
+
+# iTerm2 관련 설정 백업
+Jun 2026 맥 기본 Terminal 실험 중이며 iTerm2 기존 설정은 여기에 백업한다.
+
+  - Preferences > Profiles > Colors에서 Blue/Normal의 색상이 눈이 아프므로 조정한다.
+  - Settings > Profiles > Keys > Configure Hotkey Window `⌥⌘T` 등록
+    - Pin hotkey window 체크
+
+# mac에서 유용한 CLI 도구
+```
+$ brew install huggingface-cli
+```
+- `kubernetes-cli`: kubectl
+- `firebase-cli`: HTML 호스팅 배포
+- `uv`: 파이썬 버전 관리
+- `pipx`: 파이썬 실행 패키지 별도 관리
+- time을 대체하는 **gnomon**:
+```
+$ npm install -g gnomon
+```
+
+- 실행 스크립트는 `~/bin`에 두고 활용한다. bin은 GitHub에 백업
+- 개발 관련 프로젝트는 `~/workspace` 디렉토리를 만들어 저장한다. 디렉토리 구조는 깃헙 URL 기준으로 만들어 관리하고 있다. 실험은 `~/workspace/sandbox`에서 진행한다.
+- 터미널에서 Touch ID를 사용하기 위해 다음 설정
+```
+$ sudo cp /etc/pam.d/sudo_local.template /etc/pam.d/sudo_local
+```

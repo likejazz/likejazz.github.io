@@ -2,7 +2,7 @@
 layout: wiki 
 title: Zsh
 tags: ["Productivity"]
-last_modified_at: 2026/06/12 14:41:50
+last_modified_at: 2026/06/20 10:53:02
 last_modified_history:
   - 2026/06/12 oh-my-zsh uninstall
   - 2021/10/02 초안 작성
@@ -30,5 +30,6 @@ PS1='🪟 \t \u@\h:\w\$ '
 ```
 $ brew install the_silver_searcher
 $ brew install fzf
+$ brew install helix
 ```  
 fzf는 `⌃R`(히스토리 검색)을 포함한 키 바인딩과 추가 맵핑을 .zshrc에서 `source <(fzf --zsh)`로 설치할 수 있다. 파일 검색은 `^T`, 모든 검색 인터페이스는 fzf로 통일.
