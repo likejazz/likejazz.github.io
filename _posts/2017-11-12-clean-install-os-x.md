@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2026/06/20 02:10:06
+last_modified_at: 2026/06/20 22:08:32
 last_modified_history:
   - 2026/06/19 맥북 네오 구매
   - 2026/02/19 iTerm2 단축키 추가
@@ -50,26 +50,36 @@ last_modified_history:
 
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="clear: both">
 
+<img src="https://github.com/user-attachments/assets/34c0d249-bf26-498f-8940-e5e66fd69d9f" width="30%" style="float: left; margin-right: 5px">
+
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="clear: both">
+
 <small>
 2016년 6월, 2017년 1월, 2019년 5월 맥북 프로 터치바  
-2020년 1월 맥북 프로 터치바, 2022년 6월 M1 맥북 프로 14인치, 2024년 3월 M2 맥북 에어
+2020년 1월 맥북 프로 터치바, 2022년 6월 M1 맥북 프로 14인치, 2024년 3월 M2 맥북 에어  
+2026년 6월 맥북 네오
 </small>
 
 윈도우를 설치한 경험은 [Windows 설치 프로그램 정리](/windows) 참고
 
 ## 필수 설정 & 도구
 - 언어 설정은 영어를 기본으로 사용한다. 오랫동안 영어로 사용해와서 한글보다 더 익숙하다.
+
 ```
-Display > Large Text
-Trackpad > Tap to click
-Touch ID & Password: 검지 등록
-Keyboard > Key repeat rate: Fast
-Keyboard > Delay until repeat: Short
-Keyboard > Keyboard Shortcuts... > Modifier Keys > Caps Lock key: ^ Control
-Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input source: ⌘Space
-Keyboard > Keyboard Shortcuts... > Spotlight > Show Spotlight search: ⌥⌘Space
-Keyboard > Keyboard Shortcuts... > Spotlight > Show Finder search window: 해제
+- Display > Large Text
+- Trackpad > Tap to click
+- Touch ID & Password: 검지 등록
+- Keyboard > Key repeat rate: Fast
+- Keyboard > Delay until repeat: Short
+- Keyboard > Keyboard Shortcuts... > Modifier Keys > Caps Lock key: ^ Control
+- Keyboard > Keyboard Shortcuts... > Input Sources > Select the previous input source: ⌘Space
+- Keyboard > Keyboard Shortcuts... > Spotlight > Show Spotlight search: ⌥⌘Space
+- Keyboard > Keyboard Shortcuts... > Spotlight > Show Finder search window: 해제
+- Desktop & Dock > Click wallpaper to show desktop: Only in Stage Manager
+- Battery > Charging > Charge Limit: 80%
+- Battery > Charging > Optimized Battery Charging: off
 ```
+
 - 간단한 메모 용도로는 여전히 **[Sublime Text 4](http://likejazz.tumblr.com/post/102824813705/sublime-text)**를 사용한다. 메모 용도로만 사용하기 때문에 더 이상 플러그인은 사용하지 않는다.
 - 각종 도구와 컴파일러, 앱 등 모든 도구는 **Homebrew**를 통해 설치
   - XCode Development Tools가 자동으로 함께 설치된다.
@@ -95,6 +105,16 @@ Keyboard > Keyboard Shortcuts... > Spotlight > Show Finder search window: 해제
 - 이미지 뷰어로 **Pixea** 사용 `$ mas install 1507782672`
 - **Pixelmator Pro(유료)**를 이미지 편집 용도로 사용한다. 아주 전문적인 기능이 필요한게 아니기 때문에 이 정도로 충분하다. `$ mas install 1289583905`
 - **밀리의 서재(유료)** macOS 앱 다운로드
+- **Calendar**
+  - Exchange: 회사 계정
+  - **네이버 캘린더** CalDAV 음력도 연동되며 readonly로 사용
+    - Account Type: Advanced
+    - User Name: xxx
+    - Password: xxx
+    - Server Address: caldav.calendar.naver.com
+    - Server Path: / (`/principals/users/xxx/` 나중에 자동 입력됨)
+    - Port 443, Use SSL: on
+- **Perplexity Personal Computer for Mac** 생성형 중에서 가장 높은 완성도를 보여주는 앱으로 설치
 
 ## 인증
 - 회사 맥북은 Microsoft Entra 인증이 필요하고, 인증 후 비번을 로컬 비번에서 회사 비번으로 변경한다. 또한 애플에 등록된 기기는 리커버리 모드를 회사 관리자만 접근할 수 있기 때문에 소유자는 비밀번호를 리셋할 수 없고 관리자는 사실상 모든 계정에 비밀번호 리셋으로 접근할 수 있다.
@@ -119,11 +139,13 @@ Keyboard > Keyboard Shortcuts... > Spotlight > Show Finder search window: 해제
   - 개인 문서와 집필 초고 등은 GitHub의 Private Repository를 이용한다.
   - 집필한 원고는 **Firebase Hosting**에 HTML 페이지로 Publish하여 공유한다.
   - 간단한 프리젠테이션은 **Marp for VS Code**를 이용한다.
-- **Microsoft Office(유료)**에서 Excel을 주로 이용하고 집필시 Word를 가끔 이용한다. `$ mas install 462058435`
+- **Microsoft Office(유료)**에서 Excel을 가장 즐겨 이용 `$ mas install 462058435`
+- **Microsoft Outlook**도 업무용으로 이용 `$ mas install 985367838`
 - 아래아한글 파일을 읽을 일이 있다. **한컴오피스 한글 2014 VP 뷰어** 설치 `$ mas install 416746898`
 - 모든 원고는 마크다운으로 초고를 작성하는데, VSCode를 주로 이용하지만 편리한 WYSIWIG을 위해 [**Typora(유료)**](https://typora.io/)와 병행한다. `$ brew install typora`
 - pdf, epub 같은 전자책은 **Yomu(유료)**를 이용한다. 유료 결제시 iCloud 동기화가 가능하다. `$ mas install 562211012`
 - **IINA** 중국 개발자가 만든 동영상 플레이어. 오픈소스로 진행되고 업데이트가 빨라 웬만한 국산 동영상 플레이어보다 좋다.
+- 알람 기능으로는 최고인 **Wake Up Time** `$ mas install 495945638` 아쉽게도 Rosetta 설치가 필요하고 sleep에서 깨어나게 하려면 별도의 플러그인 설치 필요
 
 ## 자료
 개인 자료의 경우 사진과 비디오는 **Google Photos**를 활용한다. 비디오 중 공개적인건 **YouTube**에, 문서는 **Bear**와 각종 아카이빙 문서는 **GitHub**에 정리한다.
