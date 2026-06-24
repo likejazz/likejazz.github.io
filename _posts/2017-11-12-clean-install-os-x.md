@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2026/06/20 22:08:32
+last_modified_at: 2026/06/24 12:25:27
 last_modified_history:
   - 2026/06/19 맥북 네오 구매
   - 2026/02/19 iTerm2 단축키 추가
@@ -28,7 +28,7 @@ last_modified_history:
 </div>
 
 - [필수 설정 \& 도구](#필수-설정--도구)
-- [인증](#인증)
+- [보안 \& 인증](#보안--인증)
 - [주변기기](#주변기기)
 - [기타 도구](#기타-도구)
 - [자료](#자료)
@@ -93,8 +93,7 @@ last_modified_history:
 - [**Visual Studio Code**](/wiki/Visual-Studio-Code) 정리 참고
   - 2번 로그인 한다. 우측 상단에 Login, 왼쪽 하단 Setting Sync is On. 둘 다 GitHub 로그인
 - 비밀번호 관리는 온라인의 경우 Chrome에 탑재되어 있는 Google Password Manager를 이용하고, 오프라인은 Bear에 그냥 메모로 기입한다. 이외 WiFi 정보가 애플의 Password Manager에, 일부 사이트가 Firefox의 Passwords에 저장되어 있다.
-- [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 1/3, 1/2 순으로 Rotate되는 기능이 좋다. `$ brew install rectangle`
-  - ==버전 확인 필요==
+- [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 Left Half, Right Half `^←`로 설정하고 Rotate되는 기능이 좋다. `$ brew install rectangle`
 - **Things**, **Bear** 설치 `$ mas install 904280696 1091189122`
   - Quick Entry: `⌥⌘N`
 - **Slack** 업무용 커뮤니케이션 도구 `$ mas install 803453959`
@@ -114,10 +113,12 @@ last_modified_history:
     - Server Address: caldav.calendar.naver.com
     - Server Path: / (`/principals/users/xxx/` 나중에 자동 입력됨)
     - Port 443, Use SSL: on
-- **Perplexity Personal Computer for Mac** 생성형 중에서 가장 높은 완성도를 보여주는 앱으로 설치
+- **Perplexity Personal Computer for Mac** 생성형 중에서 가장 높은 완성도를 보여주는 앱
 
-## 인증
-- 회사 맥북은 Microsoft Entra 인증이 필요하고, 인증 후 비번을 로컬 비번에서 회사 비번으로 변경한다. 또한 애플에 등록된 기기는 리커버리 모드를 회사 관리자만 접근할 수 있기 때문에 소유자는 비밀번호를 리셋할 수 없고 관리자는 사실상 모든 계정에 비밀번호 리셋으로 접근할 수 있다.
+## 보안 & 인증
+- 회사 맥북은 **Microsoft Entra** 인증이 필요하고, 인증 후 비번을 로컬 비번에서 회사 비번으로 변경한다. 또한 애플에 등록된 기기는 리커버리 모드를 회사 관리자만 접근할 수 있기 때문에 소유자는 비밀번호를 리셋할 수 없고 관리자는 사실상 모든 계정에 비밀번호 리셋으로 접근할 수 있다.
+- `System Settings > Wi-Fi > 접속 Network 선택 > Network Settings > Private Wi-Fi address: off` 회사 무선망은 인증된 MAC 어드레스만 접근 가능하므로 Private off
+- Endpoint DLP 보안 통제를 위한 **OfficeKeeper** 설치
 
 ## 주변기기
 - 외장 키보드를 위한 설정:
@@ -146,6 +147,7 @@ last_modified_history:
 - pdf, epub 같은 전자책은 **Yomu(유료)**를 이용한다. 유료 결제시 iCloud 동기화가 가능하다. `$ mas install 562211012`
 - **IINA** 중국 개발자가 만든 동영상 플레이어. 오픈소스로 진행되고 업데이트가 빨라 웬만한 국산 동영상 플레이어보다 좋다.
 - 알람 기능으로는 최고인 **Wake Up Time** `$ mas install 495945638` 아쉽게도 Rosetta 설치가 필요하고 sleep에서 깨어나게 하려면 별도의 플러그인 설치 필요
+- 기본 **Terminal**을 사용하지만 편리한 파일 전송을 위해 `it2dl`, `it2up`을 설치해 `iTerm2`를 사용할 때도 있다.
 
 ## 자료
 개인 자료의 경우 사진과 비디오는 **Google Photos**를 활용한다. 비디오 중 공개적인건 **YouTube**에, 문서는 **Bear**와 각종 아카이빙 문서는 **GitHub**에 정리한다.
@@ -167,7 +169,7 @@ last_modified_history:
 - Microsoft Authenticator(Microsoft 365)
   - Google Authenticator 나머지 모든 2FA 인증. 구글 로그인으로 기존 설정이 모두 백업된다.
 
-아이폰은 이제 생활 필수 앱이 대부분이다 보니 설치된 앱을 모두 나열하면 개인 사생활을 나열하는 느낌이다. 그래서 Bear에 모두 비공개로 정리한다.
+아이폰은 이제 생활 필수 앱이 대부분이다 보니 설치된 앱을 모두 나열하면 개인 사생활을 나열하는 느낌이다. 그래서 아이폰 앱은 Bear에 모두 비공개로 정리한다.
 
 ### 안되는 것
-- 클린 인스톨을 지향하다 보니 카톡 예전 대화는 복구하지 못했다.
+클린 인스톨을 지향하다 보니 카톡 예전 대화는 복구하지 못했다.
