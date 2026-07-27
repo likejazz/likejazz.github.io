@@ -2,7 +2,7 @@
 layout: post
 title: macOS 설치 프로그램 정리
 tags: Productivity
-last_modified_at: 2026/06/24 12:25:27
+last_modified_at: 2026/07/10 01:48:39
 last_modified_history:
   - 2026/06/19 맥북 네오 구매
   - 2026/02/19 iTerm2 단축키 추가
@@ -93,13 +93,13 @@ last_modified_history:
 - [**Visual Studio Code**](/wiki/Visual-Studio-Code) 정리 참고
   - 2번 로그인 한다. 우측 상단에 Login, 왼쪽 하단 Setting Sync is On. 둘 다 GitHub 로그인
 - 비밀번호 관리는 온라인의 경우 Chrome에 탑재되어 있는 Google Password Manager를 이용하고, 오프라인은 Bear에 그냥 메모로 기입한다. 이외 WiFi 정보가 애플의 Password Manager에, 일부 사이트가 Firefox의 Passwords에 저장되어 있다.
-- [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 Left Half, Right Half `^←`로 설정하고 Rotate되는 기능이 좋다. `$ brew install rectangle`
+- [**Rectangle**](https://rectangleapp.com/) Magnet(유료), Cinch, Divvy를 쓰다가 정착했다. 무료인데도 불구하고 디테일한 설정이 유료보다 낫다. 특히 Left Half, Right Half `^←`로 설정하고 Rotate되는 기능이 좋다. `$ brew install rectangle` 기본 키보드 맵핑이 Mission Control에 할당되어 있어서 그걸 해제하고 단축키 등록
 - **Things**, **Bear** 설치 `$ mas install 904280696 1091189122`
   - Quick Entry: `⌥⌘N`
 - **Slack** 업무용 커뮤니케이션 도구 `$ mas install 803453959`
 - 별도의 안티 바이러스 프로그램을 사용하지 않는 대신 **Little Snitch(유료)**를 사용한다. 기본 옵션인 Silent Mode로 해서 모두 허용해주고 필요시 차단하는 형태로 관리하고 있다.
   - OS 버전업이 되면 네트워크가 안될 때가 있는데, Quit로 종료 처리 후 AppCleaner에서 삭제하고 휴지통을 비운 후 재시작하면 된다.
-- [**Bartender(유료)**](https://www.macbartender.com/) 메뉴바를 정리하는 매우 유용한 앱이다. 메이저 버전업이 있을 때마다 꾸준히 추가 구매했다. `$ brew install bartender`
+- ~~[**Bartender(유료)**](https://www.macbartender.com/) 메뉴바를 정리하는 매우 유용한 앱이다. 메이저 버전업이 있을 때마다 꾸준히 추가 구매했다. `$ brew install bartender`~~
 - **AppCleaner** Uninstaller가 없는 맥에서는 삭제하는게 찝찝할때가 많다. 이 앱으로 설정까지 찾아서 삭제한다. `$ brew install appcleaner`
 - 이미지 뷰어로 **Pixea** 사용 `$ mas install 1507782672`
 - **Pixelmator Pro(유료)**를 이미지 편집 용도로 사용한다. 아주 전문적인 기능이 필요한게 아니기 때문에 이 정도로 충분하다. `$ mas install 1289583905`
@@ -119,13 +119,14 @@ last_modified_history:
 - 회사 맥북은 **Microsoft Entra** 인증이 필요하고, 인증 후 비번을 로컬 비번에서 회사 비번으로 변경한다. 또한 애플에 등록된 기기는 리커버리 모드를 회사 관리자만 접근할 수 있기 때문에 소유자는 비밀번호를 리셋할 수 없고 관리자는 사실상 모든 계정에 비밀번호 리셋으로 접근할 수 있다.
 - `System Settings > Wi-Fi > 접속 Network 선택 > Network Settings > Private Wi-Fi address: off` 회사 무선망은 인증된 MAC 어드레스만 접근 가능하므로 Private off
 - Endpoint DLP 보안 통제를 위한 **OfficeKeeper** 설치
+- 앱스토어에서 설치한 Office는 인증 문제(실행 시 행업)가 있어 Microsoft에서 직접 설치 프로그램을 다운로드 했다.
 
 ## 주변기기
 - 외장 키보드를 위한 설정:
   - Keymap 변경은 [**Karabiner Elements**](https://karabiner-elements.pqrs.org/) 사용. 권한 설정할게 좀 많다.
 
 <img src="https://github.com/user-attachments/assets/cdf0fbdf-9079-4902-b772-6efc3b314179" width="70%">
-- 로지텍 주변기기는 [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options-plus`
+- 로지텍 주변기기는 [**Logi Options+**](https://www.logitech.com/en-us/software/logi-options-plus.html)를 설치하고 셋팅했다. `$ brew install logi-options+`
 
 ## 기타 도구
 - 관심 있는 링크는 **Raindrop.io**에 저장한다. `$ brew install raindropio`
@@ -147,7 +148,7 @@ last_modified_history:
 - pdf, epub 같은 전자책은 **Yomu(유료)**를 이용한다. 유료 결제시 iCloud 동기화가 가능하다. `$ mas install 562211012`
 - **IINA** 중국 개발자가 만든 동영상 플레이어. 오픈소스로 진행되고 업데이트가 빨라 웬만한 국산 동영상 플레이어보다 좋다.
 - 알람 기능으로는 최고인 **Wake Up Time** `$ mas install 495945638` 아쉽게도 Rosetta 설치가 필요하고 sleep에서 깨어나게 하려면 별도의 플러그인 설치 필요
-- 기본 **Terminal**을 사용하지만 편리한 파일 전송을 위해 `it2dl`, `it2up`을 설치해 `iTerm2`를 사용할 때도 있다.
+- 기본 **Terminal**을 선호하지만 클립보드 관리 및 편리한 파일 전송(`it2dl`, `it2ul`) 때문에 **iTerm2**를 사용한다.
 
 ## 자료
 개인 자료의 경우 사진과 비디오는 **Google Photos**를 활용한다. 비디오 중 공개적인건 **YouTube**에, 문서는 **Bear**와 각종 아카이빙 문서는 **GitHub**에 정리한다.
