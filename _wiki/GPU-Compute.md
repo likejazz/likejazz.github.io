@@ -2,9 +2,10 @@
 layout: wiki 
 title: GPU Compute
 tags: ["MLOps & HPC"]
-last_modified_at: 2024/04/21 01:42:45
+last_modified_at: 2026/09/04 01:44:49
 ---
 
+- [GPU 속도 비교](#gpu-속도-비교)
 - [Platforms, Frameworks, Tools](#platforms-frameworks-tools)
 - [SYCL](#sycl)
 - [oneAPI](#oneapi)
@@ -12,6 +13,19 @@ last_modified_at: 2024/04/21 01:42:45
 - [ROCm](#rocm)
 - [SPIR](#spir)
 
+# GPU 속도 비교
+DNA Factory에서 `python sft.py`를 했을 때 속도 비교. 작은 모델이라 attn에 따른 속도 차이가 없는 거 같다.
+
+- B200 1장: /2816, 1.85s/it, 1h 30m, attn_implementation=sdpa
+- B200 1장: /2816, 1.83s/it, 1h 25m, attn_implementation=eager
+  - B200 2장: /1408, 1.98s/it, 45m, attn_implementation=sdpa
+- H200 1장: /2828, 2.34s/it, 1h 50m, attn_implementation=kernels-community/vllm-flash-attn3
+- H200 1장: /2828, 2.33s/it, 1h 50m, attn_implementation=sdpa
+- H200 1장: /2828, 2.28s/it, 1h 47m, attn_implementation=eager
+  - H200 2장: /1414, 2.47s/it, 58m, attn_implementation=kernels-community/vllm-flash-attn3
+- RTX4080 SUPER 1장: /2804, 6.08s/it, 4h 45m, attn_implementation=kernels-community/vllm-flash-attn3
+- RTX4080 SUPER 1장: /2804, 5.90s/it, 4h 35m, attn_implementation=sdpa
+- RTX4080 SUPER 1장: /2804, 6.06s/it, 4h 45m, attn_implementation=eager
 
 # Platforms, Frameworks, Tools
 - NVIDIA: CUDA

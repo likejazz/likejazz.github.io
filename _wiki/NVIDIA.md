@@ -2,8 +2,9 @@
 layout: wiki 
 title: NVIDIA
 tags: ["MLOps & HPC"]
-last_modified_at: 2025/10/24 19:31:31
+last_modified_at: 2026/09/04 01:45:55
 last_modified_history:
+  - 2026/09/94 B200, M5 추가
   - 2025/10/18 M3 Ultra 추가
   - 2024/10/14 이전 버전
 ---
@@ -15,27 +16,29 @@ last_modified_history:
 
 # NVIDIA Data Center GPUs
 
-<img src="/images/2024/293452912-bf1ac3b7-1c4c-4ee5-8036-44c3e73f13c7.png" width="100%">
+<img src="https://github.com/user-attachments/assets/61f88678-1e28-495a-ae14-3f404e0c42d3" width="60%">
 
 | Name | bits/s | Bytes/s |
 | ------ | ----- | ------ |
-| SanDisk Extreme SSD | | 550MB/s read |
-| USB 3.1 Gen 2 | 10Gb/s | 1.25GB/s |
-| HDMI | 10Gb/s | 1.25GB/s |
-| HDMI 4K | 18Gb/s | 2.25GB/s |
-| M1 Macbook Pro 1TB SSD | | 7.4GB/s read |
-| M2 Air 1TB SSD | | 2.8GB/s read |
-| M2 Air Memory | | 100GB/s |
-| M1 Pro Memory | | 200GB/s |
-| NVIDIA Jetson AGX Orin | | 204GB/s |
-| NVIDIA DGX Spark | | 273GB/s |
-| M1 Max Memory | | 400GB/s |
-| NVLink(A100) | | 600GB/s |
-| NVIDIA GeForce RTX 4080 Super | | 736GB/s |
-| M3 Ultra Memory | | 819GB/s |
-| HBM(A100 40G) | | 1.5TB/s |
-| HBM(A100 80G) | | 1.9TB/s |
+| HBM(B200 192GB) | | 8TB/s |
+| HBM(H200 141GB) | | 4.8TB/s |
 | HBM(H100 SXM 80G) | | 3.35TB/s |
+| HBM(A100 80G) | | 1.9TB/s |
+| HBM(A100 40G) | | 1.5TB/s |
+| M3 Ultra Memory | | 819GB/s |
+| NVIDIA GeForce RTX 4080 Super | | 736GB/s |
+| NVLink(A100) | | 600GB/s |
+| M1 Max Memory | | 400GB/s |
+| NVIDIA DGX Spark | | 273GB/s |
+| NVIDIA Jetson AGX Orin | | 204GB/s |
+| M1 Pro Memory | | 200GB/s |
+| M2 Air Memory | | 100GB/s |
+| M2 Air 1TB SSD | | 2.8GB/s read |
+| M1 Macbook Pro 1TB SSD | | 7.4GB/s read |
+| HDMI 4K | 18Gb/s | 2.25GB/s |
+| HDMI | 10Gb/s | 1.25GB/s |
+| USB 3.1 Gen 2 | 10Gb/s | 1.25GB/s |
+| SanDisk Extreme SSD | | 550MB/s read |
 
 ## V100, A100, H100
 <img src="/images/2024/Screenshot 2024-04-22 at 2.04.22 PM.png" width="70%"> 
