@@ -2,7 +2,7 @@
 layout: post
 title: ! 'Knowledge Distillation'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2026/09/07 03:11:41
+last_modified_at: 2026/09/07 08:36:44
 last_modified_history:
   - 2026/09/06 초안 작성
 ---
@@ -27,7 +27,7 @@ Distilling the Knowledge in a Neural Network 논문을 다시 읽으며 knowledg
 
 <img src="https://github.com/user-attachments/assets/ac232fd6-513d-47b0-8d4a-41c59dafdf6f" width="60%">
 
-원래 비전 분야에서 시작된 알고리즘이다 보니 이미지 분류 예시가 많지만, LLM에도 동일하게 적용할 수 있습니다. 다만 LLM에서는 true label 대신 teacher token을 사용한다는 차이가 있는데, 이 부분은 아래 Raschka의 그림이 더 도움이 될 것 같습니다.
+원래 비전 분야에서 시작된 알고리즘이다 보니 이미지 분류 예시가 많지만, LLM에도 동일하게 적용할 수 있습니다. 다만 LLM에서는 hard loss를 계산할 때 true label 대신 teacher token을 사용한다는 차이가 있는데, 이 부분은 아래 Raschka의 그림이 더 도움이 될 것 같습니다.
 
 <img src="https://github.com/user-attachments/assets/3dc3de2a-e5a2-4652-a2ff-0d26fe7b8c15" width="80%">
 
@@ -112,7 +112,7 @@ tensor([[0.3039, 0.0185, 0.6776],
         [0.0438, 0.8846, 0.0716]])
 ```
 
-이제 student가 teacher의 분포를 얼마나 잘 따라가는지 cross entropy로 측정합니다. 논문에서 첫 번째 목적 함수를 정의한 부분으로, "The first objective function is the cross entropy with the soft targets and this cross entropy is computed using the same high temperature in the softmax of the distilled model as was used for generating the soft targets from the cumbersome model."라고 설명합니다.
+이제 student가 teacher의 분포를 얼마나 잘 따라가는지 cross entropy로 측정합니다. 논문에서 첫 번째 목적 함수를 정의한 부분으로 soft target과의 cross entropy이며, teacher와 student가 동일한 T를 사용합니다.
 
 $$C = -\sum_i p_i \log q_i,$$
 
@@ -172,6 +172,8 @@ with torch.no_grad():
 z = student(data)
 
 loss = F.mse_loss(v, z)
+# or
+# loss = F.cross_entropy(p, q)
 ```
 
 distillation 자체가 목적이라면 복잡한 구현 없이 이처럼 두 logit 행렬의 MSE만 구해도 충분합니다. LLM처럼 정답 label이 없는 문제라면 hard loss 역시 필요하지 않습니다.
