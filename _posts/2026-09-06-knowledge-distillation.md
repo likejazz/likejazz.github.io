@@ -2,7 +2,7 @@
 layout: post
 title: ! 'Knowledge Distillation'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2026/09/07 02:54:49
+last_modified_at: 2026/09/07 03:11:41
 last_modified_history:
   - 2026/09/06 초안 작성
 ---
@@ -175,3 +175,5 @@ loss = F.mse_loss(v, z)
 ```
 
 distillation 자체가 목적이라면 복잡한 구현 없이 이처럼 두 logit 행렬의 MSE만 구해도 충분합니다. LLM처럼 정답 label이 없는 문제라면 hard loss 역시 필요하지 않습니다.
+
+그러나 Hinton이 KD의 존재 이유로 든 "오답들 사이의 상대적 유사도"를 파악하기가 어렵습니다. 또한 꼬리의 noise까지 똑같이 맞추려고 하는 문제가 있습니다. 만약 softmax MSE를 한다면 반대로 상위 한두 개 클래스만 보고 나머지는 무시하게 됩니다. KL은 그 중간에 있고, T로 그 균형을 조절하는 형태입니다.
