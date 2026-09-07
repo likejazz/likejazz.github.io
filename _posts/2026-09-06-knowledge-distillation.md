@@ -2,7 +2,7 @@
 layout: post
 title: ! 'Knowledge Distillation'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2026/09/07 08:36:44
+last_modified_at: 2026/09/07 12:46:23
 last_modified_history:
   - 2026/09/06 초안 작성
 ---
@@ -114,7 +114,7 @@ tensor([[0.3039, 0.0185, 0.6776],
 
 이제 student가 teacher의 분포를 얼마나 잘 따라가는지 cross entropy로 측정합니다. 논문에서 첫 번째 목적 함수를 정의한 부분으로 soft target과의 cross entropy이며, teacher와 student가 동일한 T를 사용합니다.
 
-$$C = -\sum_i p_i \log q_i,$$
+$$C = -\sum_i p_i \log q_i$$
 
 ```python
 log_q = F.log_softmax(z / T, dim=-1)
