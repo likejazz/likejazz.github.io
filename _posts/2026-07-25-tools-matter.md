@@ -1,8 +1,8 @@
 ---
 layout: post
-title: ! '도구가 중요합니다'
+title: ! 'Tools Matter!'
 tags: ["Productivity"]
-last_modified_at: 2026/07/27 23:38:20
+last_modified_at: 2026/09/07 23:23:07
 last_modified_history:
   - 2026/07/25 초안 작성
 ---
