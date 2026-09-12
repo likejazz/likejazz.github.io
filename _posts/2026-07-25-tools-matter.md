@@ -2,7 +2,7 @@
 layout: post
 title: ! 'Tools Matter!'
 tags: ["Productivity"]
-last_modified_at: 2026/09/07 23:23:07
+last_modified_at: 2026/09/12 00:47:08
 last_modified_history:
   - 2026/07/25 초안 작성
 ---
@@ -41,7 +41,7 @@ Cursor 때문이었죠.
 
 그러다 보니 이제 모든 도구를 CLI 기반으로 쓰게 됐습니다. 중심에는 당연히 Claude Code가 있고요. IDE는 포기했지만 좋은 에디터는 여전히 필요하기에 Vim 대신 [Helix](https://helix-editor.com/)를 씁니다. 복잡한 플러그인 없이 바로 사용 가능한 매력, '선택→행동'이라는 새로운 패러다임은 그간 Vim에서 느꼈던 불편함을 말끔히 해소해줬어요.
 
-Git의 diff는 기본 도구를 그대로 쓰되, [delta](https://dandavison.github.io/delta/)를 얹어 마치 GitHub에서 보는 것처럼 시각화해서 사용 중입니다. 최준건님의 역작 [fzf](https://junegunn.github.io/fzf/)도 당연히 빼놓을 수 없죠. 아마 우리나라 오픈소스 중 전 세계적으로 가장 유명할 텐데, CTRL+R에 매핑해 히스토리를 빠르게 검색하는 데 쓰고 있죠. [zoxide](https://crates.io/crates/zoxide)와 연결해 CLI 특유의 불편한 디렉토리 브라우징도 스마트하게 극복했습니다.
+Git의 diff는 매우 자주 사용 중입니다. 파일을 찾을 때는 [The Silver Searcher](https://github.com/ggreer/the_silver_searcher)를 사용하고, 최준건님의 역작 [fzf](https://junegunn.github.io/fzf/)도 당연히 빼놓을 수 없죠. 아마 우리나라 오픈소스 중 전 세계적으로 가장 유명할 텐데, CTRL+R에 매핑해 히스토리를 빠르게 검색하는 데 쓰고 있죠. [zoxide](https://crates.io/crates/zoxide)와 연결해 CLI 특유의 불편한 디렉토리 브라우징도 스마트하게 극복했습니다.
 
 [GitHub CLI](https://cli.github.com/)도 많이 사용합니다. Git의 부족한 부분을 보완하는 최고의 CLI 도구죠. 물론 가장 자주 사용하는 건 `$ gh auth switch` 같은 GitHub 사용자 전환인데 `ga`로 매핑해뒀고, `$ git log --oneline --graph --all -10`같은 Git 로그 조회도 `gl` 단축키로 매핑해서 사용 중이죠. 요즘은 API 키처럼 보관해야 할 인증 정보가 많은데 이런 환경설정과 alias는 모두 `.profile`에 등록해 한 곳에서 관리합니다. `export DNAROUTER_API_KEY=xxx` 같은 식으로 등록해두고 주기적으로 갱신하면서 쓰죠. API 키는 주로 30일 단위로 갱신하면서 사용 중인데, 매번 갱신하는 건 번거롭지만 대신 한 곳에 통합 관리하고 있습니다.
 
