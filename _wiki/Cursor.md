@@ -2,7 +2,7 @@
 layout: wiki 
 title: Cursor
 tags: ["Productivity"]
-last_modified_at: 2026/09/11 09:27:21
+last_modified_at: 2026/09/17 18:44:10
 last_modified_history:
   - 2026/09/11 작성
 ---
@@ -45,3 +45,5 @@ User Settings (JSON) `settings.json`은 다음과 같다.
 ```
 
 서버 설정으로 하려 했으나 그렇게 하면 서버별로 모두 설정해줘야 한다. 유저 설정 또한 사용 기기별로 해야한다.
+
+Cursor Settings → Git & PRs → Attribution 모두 off
