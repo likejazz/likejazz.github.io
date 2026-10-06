@@ -2,7 +2,7 @@
 layout: wiki 
 title: Visual Studio Code
 tags: ["Productivity"]
-last_modified_at: 2026/09/11 09:37:39
+last_modified_at: 2026/10/06 12:23:21
 last_modified_history:
   - 2026/09/11 내용 정리
   - 2025/10/17 Windows 설치
@@ -14,6 +14,7 @@ last_modified_history:
 - [설치 플러그인](#설치-플러그인)
 - [Compare Folders](#compare-folders)
 - [설정](#설정)
+- [Sublime Text 설정](#sublime-text-설정)
 
 <!-- /TOC -->
 
@@ -70,3 +71,12 @@ Compare Folders(MoshFeu): 첫 번째 upstream, 두 번째 working을 두고 Comp
 ```
 
 WSL2에서 Auto Time Stamp는 `/mnt/c/Users/xxx/AppData/Roaming/Code/User/settings.json`에 설정 필요
+
+# Sublime Text 설정
+
+```json
+{
+	"font_size": 13,
+    "update_check": false,
+}
+```
