@@ -2,7 +2,7 @@
 layout: wiki 
 title: Visual Studio Code
 tags: ["Productivity"]
-last_modified_at: 2026/10/06 12:23:21
+last_modified_at: 2026/10/06 12:36:54
 last_modified_history:
   - 2026/09/11 내용 정리
   - 2025/10/17 Windows 설치
@@ -76,7 +76,7 @@ WSL2에서 Auto Time Stamp는 `/mnt/c/Users/xxx/AppData/Roaming/Code/User/settin
 
 ```json
 {
-	"font_size": 13,
+    "font_size": 13,
     "update_check": false,
 }
 ```
