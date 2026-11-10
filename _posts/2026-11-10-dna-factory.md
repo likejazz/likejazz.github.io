@@ -2,7 +2,7 @@
 layout: post
 title: ! 'DNA Factory 소개'
 tags: ["Productivity"]
-last_modified_at: 2026/11/10 20:59:15
+last_modified_at: 2026/11/10 21:24:55
 last_modified_history:
   - 2026/11/10 초안 작성
 ---
@@ -12,6 +12,10 @@ last_modified_history:
 - [loss 계산 시각화](#loss-계산-시각화)
 - [학습 기법은 딱 5개](#학습-기법은-딱-5개)
 - [새 지식은 더하고 성능은 그대로](#새-지식은-더하고-성능은-그대로)
+
+<div class="bg-primary">
+<p>This article is written in Korean. For the English version, please refer to the Reddit post:<br><a href="https://www.reddit.com/r/LocalLLaMA/comments/1xskn3z/dna_factory_yet_another_llm_training_framework/">DNA Factory: yet another LLM training framework</a>.</p>
+</div>
 
 ## 왜 또 다른 LLM 학습 도구가 필요할까요?
 
