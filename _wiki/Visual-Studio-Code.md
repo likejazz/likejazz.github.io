@@ -2,7 +2,7 @@
 layout: wiki 
 title: Visual Studio Code
 tags: ["Productivity"]
-last_modified_at: 2026/10/06 12:36:54
+last_modified_at: 2026/10/29 14:42:44
 last_modified_history:
   - 2026/09/11 내용 정리
   - 2025/10/17 Windows 설치
@@ -66,7 +66,10 @@ Compare Folders(MoshFeu): 첫 번째 upstream, 두 번째 working을 두고 Comp
     },
     "lpubsppop01.autoTimeStamp.modifiedTimeStart": "[lL]ast[ -_][mM]odified(?:|[ -_]at): ",
     "lpubsppop01.autoTimeStamp.modifiedTimeEnd": "$",
-    "lpubsppop01.autoTimeStamp.modifiedTimeFormat": "YYYY/MM/DD HH:mm:ss"
+    "lpubsppop01.autoTimeStamp.modifiedTimeFormat": "YYYY/MM/DD HH:mm:ss",
+    "settingsSync.ignoredSettings": [
+        "workbench.colorTheme"
+    ]
 }
 ```
 
