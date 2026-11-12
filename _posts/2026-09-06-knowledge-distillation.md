@@ -2,8 +2,9 @@
 layout: post
 title: ! 'Knowledge Distillation'
 tags: ["Large Language Model (LLM)"]
-last_modified_at: 2026/09/07 12:46:23
+last_modified_at: 2026/11/12 20:35:09
 last_modified_history:
+  - 2026/11/12 On-Policy 추가
   - 2026/09/06 초안 작성
 ---
 
@@ -16,7 +17,8 @@ Distilling the Knowledge in a Neural Network 논문을 다시 읽으며 knowledg
   - [논문 수식](#논문-수식)
   - [코드 구현](#코드-구현)
 - [실험](#실험)
-- [기타](#기타)
+- [MSE와 비교](#mse와-비교)
+- [On-Policy와 비교](#on-policy와-비교)
 
 
 # 개요
@@ -164,7 +166,7 @@ soft_loss = (T**2) * C
 
 <img src="https://github.com/user-attachments/assets/ee1da56e-c68f-44f4-9ba3-f39799a3a6c8" width="100%">
 
-# 기타
+# MSE와 비교
 
 ```python
 with torch.no_grad():
@@ -178,4 +180,32 @@ loss = F.mse_loss(v, z)
 
 distillation 자체가 목적이라면 복잡한 구현 없이 이처럼 두 logit 행렬의 MSE만 구해도 충분합니다. LLM처럼 정답 label이 없는 문제라면 hard loss 역시 필요하지 않습니다.
 
-그러나 Hinton이 KD의 존재 이유로 든 "오답들 사이의 상대적 유사도"를 파악하기가 어렵습니다. 또한 꼬리의 noise까지 똑같이 맞추려고 하는 문제가 있습니다. 만약 softmax MSE를 한다면 반대로 상위 한두 개 클래스만 보고 나머지는 무시하게 됩니다. KL은 그 중간에 있고, T로 그 균형을 조절하는 형태입니다.
+그러나 logit MSE는 꼬리 쪽의 작은 noise까지 똑같이 맞추려고 하는 문제가 있습니다. 반대로 softmax MSE를 취한다면 상위 한두 개 클래스만 보고 나머지는 무시하게 됩니다. KL은 그 중간에 있고 확률 차이만큼 보므로 꼬리는 작게 반영됩니다.
+
+참고로 상단에 soft_loss 코드에서 T를 높이면 KL은 logit MSE에 가까워지고 1 이하로 낮출수록 정답 클래스 위주로 학습하게 됩니다.
+
+# On-Policy와 비교
+
+Hinton KD의 soft loss는 teacher 분포 p에 대한 cross-entropy이고, On-Policy KD는 student 분포 q에 대한 reverse KL입니다.
+
+$$\mathrm{KL}(q \,\|\, p) = \sum_i q_i \left( \log q_i - \log p_i \right)$$
+
+이를 코드로 표현해보면 다음과 같습니다.
+
+- Hinton KD: `C = -(p * log_q).sum(dim=-1).mean()`
+- On-Policy KD: `C = (q * (log_q - log_p)).sum(dim=-1).mean()`
+
+PyTorch의 functional을 이용해 보다 직관적으로 풀어보면 다음과 같습니다.
+
+```python
+log_p = F.log_softmax(v / T, dim=-1)
+log_q = F.log_softmax(z / T, dim=-1)
+
+# kl_div(input, target) = KL(target || input)
+if hinton_kd:
+    C = F.kl_div(log_q, log_p, reduction="batchmean", log_target=True)
+elif on_policy:
+    C = F.kl_div(log_p, log_q, reduction="batchmean", log_target=True)
+
+soft_loss = (T**2) * C
+```
